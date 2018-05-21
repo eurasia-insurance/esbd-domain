@@ -11,14 +11,23 @@ public class BranchEntity extends ADictEntity {
 	return new BranchEntityBuilder();
     }
 
-    public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity> {
+    public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity, BranchEntityBuilder> {
+
+	private BranchEntityBuilder() {
+	    super(BranchEntity::new);
+	}
+
 	@Override
-	public BranchEntity build() {
-	    return new BranchEntity(id, code, name);
+	protected BranchEntityBuilder _this() {
+	    return this;
 	}
     }
 
-    private BranchEntity(final Integer id, final String code, final String name) {
+    // constructor
+
+    private BranchEntity(final Integer id,
+	    final String code,
+	    final String name) {
 	super(id, code, name);
     }
 }

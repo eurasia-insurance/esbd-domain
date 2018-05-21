@@ -52,6 +52,8 @@ public class HandicappedInfo extends AEntity {
 	}
     }
 
+    // constructor
+
     private HandicappedInfo(final String certificateNumber,
 	    final LocalDate certificateValidFrom,
 	    final LocalDate certificateValidTill) {
