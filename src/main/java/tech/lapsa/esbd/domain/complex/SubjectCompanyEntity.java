@@ -1,11 +1,11 @@
-package tech.lapsa.esbd.dao.entities.complex;
+package tech.lapsa.esbd.domain.complex;
 
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
-import tech.lapsa.esbd.dao.entities.dict.CompanyActivityKindEntity;
-import tech.lapsa.esbd.dao.entities.embeded.ContactInfo;
-import tech.lapsa.esbd.dao.entities.embeded.OriginInfo;
+import tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity;
+import tech.lapsa.esbd.domain.embedded.ContactInfo;
+import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;

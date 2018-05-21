@@ -1,11 +1,11 @@
-package tech.lapsa.esbd.dao.entities.embeded;
+package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
+import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 

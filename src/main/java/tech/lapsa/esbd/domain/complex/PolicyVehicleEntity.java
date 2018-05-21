@@ -1,14 +1,14 @@
-package tech.lapsa.esbd.dao.entities.complex;
+package tech.lapsa.esbd.domain.complex;
 
 import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.VehicleAgeClass;
 import com.lapsa.insurance.elements.VehicleClass;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
-import tech.lapsa.esbd.dao.entities.dict.InsuranceCompanyEntity;
-import tech.lapsa.esbd.dao.entities.embeded.RecordOperationInfo;
-import tech.lapsa.esbd.dao.entities.embeded.VehicleCertificateInfo;
+import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
+import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
+import tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;

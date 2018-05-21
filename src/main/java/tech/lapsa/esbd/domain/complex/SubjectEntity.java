@@ -1,13 +1,13 @@
-package tech.lapsa.esbd.dao.entities.complex;
+package tech.lapsa.esbd.domain.complex;
 
 import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
-import tech.lapsa.esbd.dao.entities.embeded.ContactInfo;
-import tech.lapsa.esbd.dao.entities.embeded.OriginInfo;
+import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.embedded.ContactInfo;
+import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;

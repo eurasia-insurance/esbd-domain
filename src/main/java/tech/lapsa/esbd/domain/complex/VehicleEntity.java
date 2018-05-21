@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.entities.complex;
+package tech.lapsa.esbd.domain.complex;
 
 import java.time.LocalDate;
 import java.util.function.Consumer;
@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import com.lapsa.insurance.elements.SteeringWheelLocation;
 import com.lapsa.insurance.elements.VehicleClass;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
+import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;

@@ -1,10 +1,10 @@
-package tech.lapsa.esbd.dao.entities.embeded;
+package tech.lapsa.esbd.domain.embedded;
 
 import java.time.Instant;
 import java.util.function.Consumer;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
-import tech.lapsa.esbd.dao.entities.complex.UserEntity;
+import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.complex.UserEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 

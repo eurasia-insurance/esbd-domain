@@ -1,10 +1,10 @@
-package tech.lapsa.esbd.dao.entities.embeded;
+package tech.lapsa.esbd.domain.embedded;
 
 import java.util.function.Consumer;
 
 import com.lapsa.international.phone.PhoneNumber;
 
-import tech.lapsa.esbd.dao.entities.AEntity;
+import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
