@@ -13,13 +13,17 @@ public class CompanyActivityKindEntity extends ADictEntity {
 
     public static final class CompanyActivityKindEntityBuilder
 	    extends DictionaryEntityBuilder<CompanyActivityKindEntity> {
-	@Override
-	public CompanyActivityKindEntity build() {
-	    return new CompanyActivityKindEntity(id, code, name);
+
+	private CompanyActivityKindEntityBuilder() {
+	    super(CompanyActivityKindEntity::new);
 	}
     }
 
-    private CompanyActivityKindEntity(final Integer id, final String code, final String name) {
+    // constructor
+
+    private CompanyActivityKindEntity(final Integer id,
+	    final String code,
+	    final String name) {
 	super(id, code, name);
     }
 

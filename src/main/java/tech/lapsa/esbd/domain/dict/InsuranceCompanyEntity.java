@@ -11,12 +11,15 @@ public class InsuranceCompanyEntity extends ADictEntity {
 	return new InsuranceCompanyEntityBuilder();
     }
 
-    public static final class InsuranceCompanyEntityBuilder extends DictionaryEntityBuilder<InsuranceCompanyEntity> {
-	@Override
-	public InsuranceCompanyEntity build() {
-	    return new InsuranceCompanyEntity(id, code, name);
+    public static final class InsuranceCompanyEntityBuilder
+	    extends DictionaryEntityBuilder<InsuranceCompanyEntity> {
+
+	private InsuranceCompanyEntityBuilder() {
+	    super(InsuranceCompanyEntity::new);
 	}
     }
+
+    // constructor
 
     private InsuranceCompanyEntity(final Integer id, final String code, final String name) {
 	super(id, code, name);

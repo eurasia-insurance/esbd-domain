@@ -12,13 +12,17 @@ public class BranchEntity extends ADictEntity {
     }
 
     public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity> {
-	@Override
-	public BranchEntity build() {
-	    return new BranchEntity(id, code, name);
+
+	private BranchEntityBuilder() {
+	    super(BranchEntity::new);
 	}
     }
 
-    private BranchEntity(final Integer id, final String code, final String name) {
+    // constructor
+
+    private BranchEntity(final Integer id,
+	    final String code,
+	    final String name) {
 	super(id, code, name);
     }
 }
