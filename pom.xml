@@ -8,15 +8,14 @@
 	</parent>
 
 	<groupId>tech.lapsa.esbd</groupId>
-	<artifactId>esbd-dao-client</artifactId>
+	<artifactId>esbd-domain</artifactId>
 	<version>2.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ESBD Lib : DAO : EJB-client</name>
+	<name>ESBD Lib : Domain</name>
 
 	<properties>
 		<!-- BOMS -->
-		<javax-javaee-bom.version>7.0a</javax-javaee-bom.version>
 		<java-commons.version>1.4-SNAPSHOT</java-commons.version>
 		<!-- tech -->
 		<patterns-domain.version>1.1</patterns-domain.version>
@@ -29,13 +28,6 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- BOMS -->
-			<dependency>
-				<groupId>tech.lapsa.javax</groupId>
-				<artifactId>javax-javaee-bom</artifactId>
-				<version>${javax-javaee-bom.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 			<dependency>
 				<groupId>tech.lapsa.java</groupId>
 				<artifactId>java-commons-root</artifactId>
@@ -107,28 +99,17 @@
 			<scope>compile</scope>
 			<optional>false</optional>
 		</dependency>
-		<!-- JavaEE -->
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
 	</dependencies>
 
 	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/esbd/dao-client.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/esbd/dao-client.git</developerConnection>
+		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/esbd/domain.git</connection>
+		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/esbd/domain.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
 		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/esbd/dao-client/issues</url>
+		<url>https://gitlab.lapsa.tech/lapsa/esbd/domain/issues</url>
 	</issueManagement>
 
 </project>
