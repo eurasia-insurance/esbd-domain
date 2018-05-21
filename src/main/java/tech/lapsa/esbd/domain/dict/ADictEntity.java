@@ -11,7 +11,7 @@ public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class DictionaryEntityBuilder<T extends ADictEntity, THIS> {
+    public static abstract class DictionaryEntityBuilder<T extends ADictEntity> {
 
 	protected final TriFunction<Integer, String, String, T> constructor;
 
@@ -24,22 +24,20 @@ public abstract class ADictEntity extends AEntity {
 	protected String code;
 	protected String name;
 
-	public THIS withId(final Integer id) {
+	public DictionaryEntityBuilder<T> withId(final Integer id) {
 	    this.id = MyNumbers.requirePositive(id, "id");
-	    return _this();
+	    return this;
 	}
 
-	public THIS withCode(final String code) {
+	public DictionaryEntityBuilder<T> withCode(final String code) {
 	    this.code = MyStrings.requireNonEmpty(code, "code");
-	    return _this();
+	    return this;
 	}
 
-	public THIS withName(final String name) {
+	public DictionaryEntityBuilder<T> withName(final String name) {
 	    this.name = MyStrings.requireNonEmpty(name, "name");
-	    return _this();
+	    return this;
 	}
-
-	protected abstract THIS _this();
 
 	public T build() {
 	    return constructor.apply(id, code, name);

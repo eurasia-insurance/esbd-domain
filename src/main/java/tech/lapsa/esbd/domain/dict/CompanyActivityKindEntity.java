@@ -12,15 +12,10 @@ public class CompanyActivityKindEntity extends ADictEntity {
     }
 
     public static final class CompanyActivityKindEntityBuilder
-	    extends DictionaryEntityBuilder<CompanyActivityKindEntity, CompanyActivityKindEntityBuilder> {
+	    extends DictionaryEntityBuilder<CompanyActivityKindEntity> {
 
 	private CompanyActivityKindEntityBuilder() {
 	    super(CompanyActivityKindEntity::new);
-	}
-
-	@Override
-	protected CompanyActivityKindEntityBuilder _this() {
-	    return this;
 	}
     }
 

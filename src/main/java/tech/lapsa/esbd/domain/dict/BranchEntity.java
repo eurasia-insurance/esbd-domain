@@ -11,15 +11,10 @@ public class BranchEntity extends ADictEntity {
 	return new BranchEntityBuilder();
     }
 
-    public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity, BranchEntityBuilder> {
+    public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity> {
 
 	private BranchEntityBuilder() {
 	    super(BranchEntity::new);
-	}
-
-	@Override
-	protected BranchEntityBuilder _this() {
-	    return this;
 	}
     }
 

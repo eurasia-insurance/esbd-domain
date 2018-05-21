@@ -12,15 +12,10 @@ public class InsuranceCompanyEntity extends ADictEntity {
     }
 
     public static final class InsuranceCompanyEntityBuilder
-	    extends DictionaryEntityBuilder<InsuranceCompanyEntity, InsuranceCompanyEntityBuilder> {
+	    extends DictionaryEntityBuilder<InsuranceCompanyEntity> {
 
 	private InsuranceCompanyEntityBuilder() {
 	    super(InsuranceCompanyEntity::new);
-	}
-
-	@Override
-	protected InsuranceCompanyEntityBuilder _this() {
-	    return this;
 	}
     }
 
