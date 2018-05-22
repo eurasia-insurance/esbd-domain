@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.embedded;
 
-import java.util.function.Consumer;
-
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -14,7 +12,8 @@ public class VehicleEngineInfo extends AEntity {
 	return new VehicleEngineInfoBuilder();
     }
 
-    public static final class VehicleEngineInfoBuilder {
+    public static final class VehicleEngineInfoBuilder
+	    extends AEntityBuilder<VehicleEngineInfo, VehicleEngineInfoBuilder> {
 
 	// private
 
@@ -75,14 +74,11 @@ public class VehicleEngineInfo extends AEntity {
 		    .withVolume(volume);
 	}
 
+	@Override
 	public VehicleEngineInfo build() {
 	    return new VehicleEngineInfo(volume,
 		    number,
 		    power);
-	}
-
-	public void buildTo(final Consumer<VehicleEngineInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

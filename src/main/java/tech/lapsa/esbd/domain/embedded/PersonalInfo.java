@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.Sex;
 
@@ -17,7 +16,8 @@ public class PersonalInfo extends AEntity {
 	return new PersonalInfoBuilder();
     }
 
-    public static final class PersonalInfoBuilder {
+    public static final class PersonalInfoBuilder
+	    extends AEntityBuilder<PersonalInfo, PersonalInfoBuilder> {
 
 	// private
 
@@ -101,16 +101,13 @@ public class PersonalInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public PersonalInfo build() {
 	    return new PersonalInfo(name,
 		    surename,
 		    patronymic,
 		    dayOfBirth,
 		    gender);
-	}
-
-	public void buildTo(final Consumer<PersonalInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

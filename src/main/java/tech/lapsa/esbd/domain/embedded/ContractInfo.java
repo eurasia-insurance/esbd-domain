@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
@@ -15,7 +14,8 @@ public class ContractInfo extends AEntity {
 	return new ContractInfoBuilder();
     }
 
-    public static final class ContractInfoBuilder {
+    public static final class ContractInfoBuilder
+	    extends AEntityBuilder<ContractInfo, ContractInfoBuilder> {
 
 	// private
 
@@ -54,13 +54,10 @@ public class ContractInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public ContractInfo build() {
 	    return new ContractInfo(number,
 		    dateOf);
-	}
-
-	public void buildTo(final Consumer<ContractInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

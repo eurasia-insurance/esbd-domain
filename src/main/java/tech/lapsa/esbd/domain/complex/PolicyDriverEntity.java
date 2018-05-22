@@ -11,10 +11,10 @@ import com.lapsa.insurance.elements.MaritalStatus;
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.DriverLicenseInfo;
-import tech.lapsa.esbd.domain.embedded.GPWParticipantInfo;
-import tech.lapsa.esbd.domain.embedded.HandicappedInfo;
-import tech.lapsa.esbd.domain.embedded.PensionerInfo;
-import tech.lapsa.esbd.domain.embedded.PrivilegerInfo;
+import tech.lapsa.esbd.domain.embedded.GPWParticipantCertificateInfo;
+import tech.lapsa.esbd.domain.embedded.HandicappedCertificateInfo;
+import tech.lapsa.esbd.domain.embedded.PensionerCertificateInfo;
+import tech.lapsa.esbd.domain.embedded.PrivilegerDocumentInfo;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodeMultiplier;
@@ -102,43 +102,43 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insuraceClassType = insuraceClassType;
 	}
 
-	private PrivilegerInfo privilegerInfo;
+	private PrivilegerDocumentInfo privilegerInfo;
 
-	private PrivilegerInfo getPrivilegerInfo() {
+	private PrivilegerDocumentInfo getPrivilegerInfo() {
 	    return privilegerInfo;
 	}
 
-	private void setPrivilegerInfo(PrivilegerInfo privilegerInfo) {
+	private void setPrivilegerInfo(PrivilegerDocumentInfo privilegerInfo) {
 	    this.privilegerInfo = privilegerInfo;
 	}
 
-	private GPWParticipantInfo gpwParticipantInfo;
+	private GPWParticipantCertificateInfo gpwParticipantInfo;
 
-	private GPWParticipantInfo getGpwParticipantInfo() {
+	private GPWParticipantCertificateInfo getGpwParticipantInfo() {
 	    return gpwParticipantInfo;
 	}
 
-	private void setGpwParticipantInfo(GPWParticipantInfo gpwParticipantInfo) {
+	private void setGpwParticipantInfo(GPWParticipantCertificateInfo gpwParticipantInfo) {
 	    this.gpwParticipantInfo = gpwParticipantInfo;
 	}
 
-	private PensionerInfo pensionerInfo;
+	private PensionerCertificateInfo pensionerInfo;
 
-	private PensionerInfo getPensionerInfo() {
+	private PensionerCertificateInfo getPensionerInfo() {
 	    return pensionerInfo;
 	}
 
-	private void setPensionerInfo(PensionerInfo pensionerInfo) {
+	private void setPensionerInfo(PensionerCertificateInfo pensionerInfo) {
 	    this.pensionerInfo = pensionerInfo;
 	}
 
-	private HandicappedInfo handicappedInfo;
+	private HandicappedCertificateInfo handicappedInfo;
 
-	private HandicappedInfo getHandicappedInfo() {
+	private HandicappedCertificateInfo getHandicappedInfo() {
 	    return handicappedInfo;
 	}
 
-	private void setHandicappedInfo(HandicappedInfo handicappedInfo) {
+	private void setHandicappedInfo(HandicappedCertificateInfo handicappedInfo) {
 	    this.handicappedInfo = handicappedInfo;
 	}
 
@@ -221,26 +221,26 @@ public class PolicyDriverEntity extends AEntity {
 	    return this;
 	}
 
-	public PolicyDriverEntityBuilder withPrivilegerInfo(final PrivilegerInfo privilegerInfo)
+	public PolicyDriverEntityBuilder withPrivilegerInfo(final PrivilegerDocumentInfo privilegerInfo)
 		throws IllegalArgumentException {
 	    setIfNullOrThrow("privilegerInfo", this::getPrivilegerInfo, this::setPrivilegerInfo, privilegerInfo);
 	    return this;
 	}
 
-	public PolicyDriverEntityBuilder withGpwParticipantInfo(final GPWParticipantInfo gpwParticipantInfo)
+	public PolicyDriverEntityBuilder withGpwParticipantInfo(final GPWParticipantCertificateInfo gpwParticipantInfo)
 		throws IllegalArgumentException {
 	    setIfNullOrThrow("gpwParticipantInfo", this::getGpwParticipantInfo, this::setGpwParticipantInfo,
 		    gpwParticipantInfo);
 	    return this;
 	}
 
-	public PolicyDriverEntityBuilder withPensionerInfo(final PensionerInfo pensionerInfo)
+	public PolicyDriverEntityBuilder withPensionerInfo(final PensionerCertificateInfo pensionerInfo)
 		throws IllegalArgumentException {
 	    setIfNullOrThrow("pensionerInfo", this::getPensionerInfo, this::setPensionerInfo, pensionerInfo);
 	    return this;
 	}
 
-	public PolicyDriverEntityBuilder withHandicappedInfo(final HandicappedInfo handicappedInfo)
+	public PolicyDriverEntityBuilder withHandicappedInfo(final HandicappedCertificateInfo handicappedInfo)
 		throws IllegalArgumentException {
 	    setIfNullOrThrow("handicappedInfo", this::getHandicappedInfo, this::setHandicappedInfo, handicappedInfo);
 	    return this;
@@ -295,10 +295,10 @@ public class PolicyDriverEntity extends AEntity {
 	    final Integer drivingExpirience,
 	    final DriverLicenseInfo driverLicense,
 	    final InsuranceClassType insuraceClassType,
-	    final PrivilegerInfo privilegerInfo,
-	    final GPWParticipantInfo gpwParticipantInfo,
-	    final PensionerInfo pensionerInfo,
-	    final HandicappedInfo handicappedInfo,
+	    final PrivilegerDocumentInfo privilegerInfo,
+	    final GPWParticipantCertificateInfo gpwParticipantInfo,
+	    final PensionerCertificateInfo pensionerInfo,
+	    final HandicappedCertificateInfo handicappedInfo,
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final InsuranceCompanyEntity insurer) {
@@ -386,49 +386,49 @@ public class PolicyDriverEntity extends AEntity {
 
     // privilegerInfo
 
-    private final PrivilegerInfo privilegerInfo;
+    private final PrivilegerDocumentInfo privilegerInfo;
 
     public boolean isPrivileger() {
 	return MyObjects.nonNull(privilegerInfo);
     }
 
-    public PrivilegerInfo getPrivilegerInfo() {
+    public PrivilegerDocumentInfo getPrivilegerInfo() {
 	return privilegerInfo;
     }
 
     // gpwParticipantInfo
 
-    private final GPWParticipantInfo gpwParticipantInfo;
+    private final GPWParticipantCertificateInfo gpwParticipantInfo;
 
     public boolean isGpwParticipant() {
 	return MyObjects.nonNull(gpwParticipantInfo);
     }
 
-    public GPWParticipantInfo getGpwParticipantInfo() {
+    public GPWParticipantCertificateInfo getGpwParticipantInfo() {
 	return gpwParticipantInfo;
     }
 
     // pensionerInfo
 
-    private final PensionerInfo pensionerInfo;
+    private final PensionerCertificateInfo pensionerInfo;
 
     public boolean isPensioner() {
 	return MyObjects.nonNull(pensionerInfo);
     }
 
-    public PensionerInfo getPensionerInfo() {
+    public PensionerCertificateInfo getPensionerInfo() {
 	return pensionerInfo;
     }
 
     // handicappedInfo
 
-    private final HandicappedInfo handicappedInfo;
+    private final HandicappedCertificateInfo handicappedInfo;
 
     public boolean isHandicapped() {
 	return MyObjects.nonNull(handicappedInfo);
     }
 
-    public HandicappedInfo getHandicappedInfo() {
+    public HandicappedCertificateInfo getHandicappedInfo() {
 	return handicappedInfo;
     }
 

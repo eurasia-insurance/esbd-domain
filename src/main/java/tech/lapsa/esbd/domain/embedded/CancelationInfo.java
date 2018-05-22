@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
@@ -17,7 +16,8 @@ public class CancelationInfo extends AEntity {
 	return new CancelationInfoBuilder();
     }
 
-    public static final class CancelationInfoBuilder {
+    public static final class CancelationInfoBuilder
+	    extends AEntityBuilder<CancelationInfo, CancelationInfoBuilder> {
 
 	// private
 
@@ -56,13 +56,10 @@ public class CancelationInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public CancelationInfo build() {
 	    return new CancelationInfo(dateOf,
 		    reason);
-	}
-
-	public void buildTo(final Consumer<CancelationInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

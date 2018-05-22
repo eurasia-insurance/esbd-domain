@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.embedded;
 
-import java.util.function.Consumer;
-
 import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
@@ -17,7 +15,8 @@ public class OriginInfo extends AEntity {
 	return new OriginInfoBuilder();
     }
 
-    public static final class OriginInfoBuilder {
+    public static final class OriginInfoBuilder
+	    extends AEntityBuilder<OriginInfo, OriginInfoBuilder> {
 
 	// private
 
@@ -56,12 +55,9 @@ public class OriginInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public OriginInfo build() {
 	    return new OriginInfo(country, city);
-	}
-
-	public void buildTo(final Consumer<OriginInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

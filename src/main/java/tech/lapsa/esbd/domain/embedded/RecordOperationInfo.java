@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.Instant;
-import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.complex.UserEntity;
@@ -16,7 +15,8 @@ public class RecordOperationInfo extends AEntity {
 	return new RecordOperationInfoBuilder();
     }
 
-    public static final class RecordOperationInfoBuilder {
+    public static final class RecordOperationInfoBuilder
+	    extends AEntityBuilder<RecordOperationInfo, RecordOperationInfoBuilder> {
 
 	// private
 
@@ -55,13 +55,10 @@ public class RecordOperationInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public RecordOperationInfo build() {
 	    return new RecordOperationInfo(instant,
 		    author);
-	}
-
-	public void buildTo(final Consumer<RecordOperationInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

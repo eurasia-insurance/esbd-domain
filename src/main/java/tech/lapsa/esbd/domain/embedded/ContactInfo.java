@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.embedded;
 
-import java.util.function.Consumer;
-
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.AEntity;
@@ -16,7 +14,8 @@ public class ContactInfo extends AEntity {
 	return new ContactInfoBuilder();
     }
 
-    public static final class ContactInfoBuilder {
+    public static final class ContactInfoBuilder
+	    extends AEntityBuilder<ContactInfo, ContactInfoBuilder> {
 
 	// private
 
@@ -85,15 +84,12 @@ public class ContactInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public ContactInfo build() {
 	    return new ContactInfo(phone,
 		    email,
 		    homeAdress,
 		    siteUrl);
-	}
-
-	public void buildTo(final Consumer<ContactInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 
