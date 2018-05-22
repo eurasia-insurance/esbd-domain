@@ -11,12 +11,6 @@ import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для представления субъекта - юридического лица (компания)
- *
- * @author vadim.isaev
- *
- */
 @HashCodePrime(19)
 public class SubjectCompanyEntity extends SubjectEntity {
 

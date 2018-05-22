@@ -9,12 +9,6 @@ import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для представления данных о происхождении клиента
- *
- * @author vadim.isaev
- *
- */
 @HashCodePrime(67)
 public class OriginInfo extends AEntity {
 

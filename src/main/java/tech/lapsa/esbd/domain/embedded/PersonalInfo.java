@@ -10,13 +10,6 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для предсталвения основных персональных данных клиента - физического
- * лица
- *
- * @author vadim.isaev
- *
- */
 @HashCodePrime(73)
 public class PersonalInfo extends AEntity {
 

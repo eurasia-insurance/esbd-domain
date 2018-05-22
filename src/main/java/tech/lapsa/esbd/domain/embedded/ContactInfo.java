@@ -9,12 +9,6 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для представления контактных данных
- *
- * @author vadim.isaev
- *
- */
 @HashCodePrime(43)
 public class ContactInfo extends AEntity {
 
