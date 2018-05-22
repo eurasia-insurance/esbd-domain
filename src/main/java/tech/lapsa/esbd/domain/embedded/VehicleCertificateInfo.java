@@ -4,12 +4,11 @@ import java.time.LocalDate;
 
 import com.lapsa.kz.country.KZArea;
 
-import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(311)
-public class VehicleCertificateInfo extends AEntity {
+public class VehicleCertificateInfo extends ADocumentInfo {
 
     private static final long serialVersionUID = 1L;
 
@@ -18,7 +17,7 @@ public class VehicleCertificateInfo extends AEntity {
     }
 
     public static final class VehicleCertificateInfoBuilder
-	    extends AEntityBuilder<VehicleCertificateInfo, VehicleCertificateInfoBuilder> {
+	    extends ADocumentInfoBuilder<VehicleCertificateInfo, VehicleCertificateInfoBuilder> {
 
 	// private
 
@@ -30,26 +29,6 @@ public class VehicleCertificateInfo extends AEntity {
 
 	private void setRegistrationNumber(VehicleRegNumber registrationNumber) {
 	    this.registrationNumber = registrationNumber;
-	}
-
-	private String certificateNumber;
-
-	private String getCertificateNumber() {
-	    return certificateNumber;
-	}
-
-	private void setCertificateNumber(String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	}
-
-	private LocalDate dateOfIssue;
-
-	private LocalDate getDateOfIssue() {
-	    return dateOfIssue;
-	}
-
-	private void setDateOfIssue(LocalDate dateOfIssue) {
-	    this.dateOfIssue = dateOfIssue;
 	}
 
 	private KZArea registrationRegion;
@@ -72,6 +51,11 @@ public class VehicleCertificateInfo extends AEntity {
 	    this.registrationMajorCity = registrationMajorCity;
 	}
 
+	@Override
+	protected VehicleCertificateInfoBuilder _this() {
+	    return this;
+	}
+
 	private VehicleCertificateInfoBuilder() {
 	}
 
@@ -80,17 +64,6 @@ public class VehicleCertificateInfo extends AEntity {
 	public VehicleCertificateInfoBuilder withRegistrationNumber(final VehicleRegNumber registrationNumber) {
 	    setIfNullOrThrow("registrationNumber", this::getRegistrationNumber, this::setRegistrationNumber,
 		    registrationNumber);
-	    return this;
-	}
-
-	public VehicleCertificateInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
-		    certificateNumber);
-	    return this;
-	}
-
-	public VehicleCertificateInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return this;
 	}
 
@@ -108,22 +81,21 @@ public class VehicleCertificateInfo extends AEntity {
 
 	@Override
 	public VehicleCertificateInfo build() {
-	    return new VehicleCertificateInfo(registrationNumber,
-		    certificateNumber,
+	    return new VehicleCertificateInfo(number,
 		    dateOfIssue,
+		    registrationNumber,
 		    registrationRegion,
 		    registrationMajorCity);
 	}
     }
 
-    private VehicleCertificateInfo(final VehicleRegNumber registrationNumber,
-	    final String certificateNumber,
+    private VehicleCertificateInfo(final String number,
 	    final LocalDate dateOfIssue,
+	    final VehicleRegNumber registrationNumber,
 	    final KZArea registrationRegion,
 	    final Boolean registrationMajorCity) {
+	super(number, dateOfIssue);
 	this.registrationNumber = registrationNumber;
-	this.certificateNumber = certificateNumber;
-	this.dateOfIssue = dateOfIssue;
 	this.registrationRegion = registrationRegion;
 	this.registrationMajorCity = registrationMajorCity;
     }
@@ -134,22 +106,6 @@ public class VehicleCertificateInfo extends AEntity {
 
     public VehicleRegNumber getRegistrationNumber() {
 	return registrationNumber;
-    }
-
-    // certificateNumber
-
-    private final String certificateNumber;
-
-    public String getCertificateNumber() {
-	return certificateNumber;
-    }
-
-    // dateOfIssue
-
-    private final LocalDate dateOfIssue;
-
-    public LocalDate getDateOfIssue() {
-	return dateOfIssue;
     }
 
     // registrationRegion
