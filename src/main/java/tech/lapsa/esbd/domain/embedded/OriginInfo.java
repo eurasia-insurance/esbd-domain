@@ -1,11 +1,17 @@
 package tech.lapsa.esbd.domain.embedded;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(281)
 public class OriginInfo extends AEntity {
 
@@ -61,14 +67,23 @@ public class OriginInfo extends AEntity {
 	}
     }
 
+    // constructor
+
     private OriginInfo(final Country country,
 	    final KZCity city) {
 	this.country = country;
 	this.city = city;
     }
 
+    protected OriginInfo() {
+	this.country = null;
+	this.city = null;
+    }
+
     // country
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final Country country;
 
     public Country getCountry() {
@@ -77,6 +92,8 @@ public class OriginInfo extends AEntity {
 
     // city
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final KZCity city;
 
     public KZCity getCity() {

@@ -2,11 +2,19 @@ package tech.lapsa.esbd.domain.complex;
 
 import java.time.Instant;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(29)
 public class UserEntity extends AEntity {
 
@@ -180,8 +188,20 @@ public class UserEntity extends AEntity {
 	this.lastActivity = lastActivity;
     }
 
+    protected UserEntity() {
+	this.id = null;
+	this.login = null;
+	this.branch = null;
+	this.subject = null;
+	this.organization = null;
+	this.authentificated = null;
+	this.lastSesionId = null;
+	this.lastActivity = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -190,6 +210,7 @@ public class UserEntity extends AEntity {
 
     // login
 
+    @Basic
     private final String login;
 
     public String getLogin() {
@@ -198,6 +219,7 @@ public class UserEntity extends AEntity {
 
     // branch
 
+    @ManyToOne
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -206,6 +228,7 @@ public class UserEntity extends AEntity {
 
     // subject
 
+    @ManyToOne
     private final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
@@ -214,6 +237,7 @@ public class UserEntity extends AEntity {
 
     // organization
 
+    @ManyToOne
     private final InsuranceCompanyEntity organization;
 
     public InsuranceCompanyEntity getOrganization() {
@@ -222,6 +246,7 @@ public class UserEntity extends AEntity {
 
     // authentificated
 
+    @Basic
     private final Boolean authentificated;
 
     public Boolean isAuthentificated() {
@@ -230,6 +255,7 @@ public class UserEntity extends AEntity {
 
     // lastSesionId
 
+    @Basic
     private final String lastSesionId;
 
     public String getLastSesionId() {
@@ -238,6 +264,8 @@ public class UserEntity extends AEntity {
 
     // lastActivity
 
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     private final Instant lastActivity;
 
     public Instant getLastActivity() {

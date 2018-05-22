@@ -2,6 +2,16 @@ package tech.lapsa.esbd.domain.complex;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.SteeringWheelLocation;
 import com.lapsa.insurance.elements.VehicleClass;
 
@@ -9,6 +19,7 @@ import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(31)
 public class VehicleEntity extends AEntity {
 
@@ -182,8 +193,20 @@ public class VehicleEntity extends AEntity {
 	this.realeaseDate = realeaseDate;
     }
 
+    protected VehicleEntity() {
+	this.id = null;
+	this.vehicleClass = null;
+	this.vinCode = null;
+	this.vehicleModel = null;
+	this.steeringWheelLocation = null;
+	this.engine = null;
+	this.color = null;
+	this.realeaseDate = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -192,6 +215,8 @@ public class VehicleEntity extends AEntity {
 
     // vehicleClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
@@ -200,6 +225,7 @@ public class VehicleEntity extends AEntity {
 
     // vinCode
 
+    @Basic
     private final String vinCode;
 
     public String getVinCode() {
@@ -208,6 +234,7 @@ public class VehicleEntity extends AEntity {
 
     // vehicleModel
 
+    @ManyToOne
     private final VehicleModelEntity vehicleModel;
 
     public VehicleModelEntity getVehicleModel() {
@@ -216,6 +243,8 @@ public class VehicleEntity extends AEntity {
 
     // steeringWheelLocation
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final SteeringWheelLocation steeringWheelLocation;
 
     public SteeringWheelLocation getSteeringWheelLocation() {
@@ -224,6 +253,7 @@ public class VehicleEntity extends AEntity {
 
     // color
 
+    @Basic
     private final String color;
 
     public String getColor() {
@@ -232,6 +262,8 @@ public class VehicleEntity extends AEntity {
 
     // realeaseDate
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate realeaseDate;
 
     public LocalDate getRealeaseDate() {
@@ -240,6 +272,7 @@ public class VehicleEntity extends AEntity {
 
     // engine
 
+    @Embedded
     private final VehicleEngineInfo engine;
 
     public VehicleEngineInfo getEngine() {

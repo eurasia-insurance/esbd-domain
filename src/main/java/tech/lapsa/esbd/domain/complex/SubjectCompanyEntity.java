@@ -1,5 +1,9 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -9,6 +13,7 @@ import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(19)
 public class SubjectCompanyEntity extends SubjectEntity {
 
@@ -133,6 +138,13 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	this.companyActivityKind = companyActivityKind;
     }
 
+    protected SubjectCompanyEntity() {
+	this.companyName = null;
+	this.headName = null;
+	this.accountantName = null;
+	this.companyActivityKind = null;
+    }
+
     // subjectType
 
     @Override
@@ -142,6 +154,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyName
 
+    @Basic
     private final String companyName;
 
     public String getCompanyName() {
@@ -150,6 +163,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // headName
 
+    @Basic
     private final String headName;
 
     public String getHeadName() {
@@ -158,6 +172,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // accountantName
 
+    @Basic
     private final String accountantName;
 
     public String getAccountantName() {
@@ -166,6 +181,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyActivityKind
 
+    @ManyToOne
     private final CompanyActivityKindEntity companyActivityKind;
 
     public CompanyActivityKindEntity getCompanyActivityKind() {

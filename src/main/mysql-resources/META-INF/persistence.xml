@@ -19,6 +19,41 @@
 
 		<class>tech.lapsa.esbd.jpa.EsbdVersion</class>
 
+		<class>tech.lapsa.esbd.domain.AEntity</class>
+
+		<class>tech.lapsa.esbd.domain.embedded.ADocumentInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.CancelationInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.ContactInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.ContractInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.DriverLicenseInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.GPWParticipantCertificateInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.HandicappedCertificateInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.IdentityCardInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.OriginInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.PensionerCertificateInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.PersonalInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.PrivilegerDocumentInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.RecordOperationInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo</class>
+		<class>tech.lapsa.esbd.domain.embedded.VehicleEngineInfo</class>
+
+		<class>tech.lapsa.esbd.domain.dict.ADictEntity</class>
+		<class>tech.lapsa.esbd.domain.dict.BranchEntity</class>
+		<class>tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity</class>
+		<class>tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity</class>
+
+		<class>tech.lapsa.esbd.domain.complex.InsuranceAgentEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.PolicyDriverEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.PolicyEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.PolicyVehicleEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.SubjectCompanyEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.SubjectEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.SubjectPersonEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.UserEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.VehicleEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.VehicleManufacturerEntity</class>
+		<class>tech.lapsa.esbd.domain.complex.VehicleModelEntity</class>
+
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<validation-mode>NONE</validation-mode>

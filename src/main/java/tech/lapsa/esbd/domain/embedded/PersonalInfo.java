@@ -2,11 +2,19 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.Sex;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(293)
 public class PersonalInfo extends AEntity {
 
@@ -111,6 +119,8 @@ public class PersonalInfo extends AEntity {
 	}
     }
 
+    // constructor
+
     private PersonalInfo(final String name,
 	    final String surename,
 	    final String patronymic,
@@ -123,8 +133,17 @@ public class PersonalInfo extends AEntity {
 	this.gender = gender;
     }
 
+    protected PersonalInfo() {
+	this.name = null;
+	this.surename = null;
+	this.patronymic = null;
+	this.dayOfBirth = null;
+	this.gender = null;
+    }
+
     // name
 
+    @Basic
     private final String name;
 
     public String getName() {
@@ -133,6 +152,7 @@ public class PersonalInfo extends AEntity {
 
     // surename
 
+    @Basic
     private final String surename;
 
     public String getSurename() {
@@ -141,6 +161,7 @@ public class PersonalInfo extends AEntity {
 
     // patronymic
 
+    @Basic
     private final String patronymic;
 
     public String getPatronymic() {
@@ -149,6 +170,8 @@ public class PersonalInfo extends AEntity {
 
     // dayOfBirth
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dayOfBirth;
 
     public LocalDate getDayOfBirth() {
@@ -157,6 +180,8 @@ public class PersonalInfo extends AEntity {
 
     // gender
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final Sex gender;
 
     public Sex getGender() {

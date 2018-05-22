@@ -1,5 +1,11 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
@@ -7,6 +13,7 @@ import tech.lapsa.esbd.domain.embedded.ContractInfo;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(43)
 public class InsuranceAgentEntity extends AEntity {
 
@@ -196,8 +203,20 @@ public class InsuranceAgentEntity extends AEntity {
 	this.letterOfAttorneyNumber = letterOfAttorneyNumber;
     }
 
+    protected InsuranceAgentEntity() {
+	this.id = null;
+	this.contract = null;
+	this.branch = null;
+	this.owner = null;
+	this.subject = null;
+	this.created = null;
+	this.modified = null;
+	this.letterOfAttorneyNumber = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -206,6 +225,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // contract
 
+    @Embedded
     private final ContractInfo contract;
 
     public ContractInfo getContract() {
@@ -214,6 +234,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // letterOfAttorneyNumber
 
+    @Basic
     private final String letterOfAttorneyNumber;
 
     public String getLetterOfAttorneyNumber() {
@@ -222,6 +243,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // branch
 
+    @ManyToOne
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -230,12 +252,14 @@ public class InsuranceAgentEntity extends AEntity {
 
     // user
 
+    @ManyToOne
     private final UserEntity owner;
 
     public UserEntity getOwner() {
 	return owner;
     }
 
+    @ManyToOne
     private final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
@@ -244,6 +268,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // created
 
+    @Embedded
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -252,6 +277,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // modified
 
+    @Embedded
     private final RecordOperationInfo modified;
 
     public RecordOperationInfo getModified() {

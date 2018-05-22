@@ -1,10 +1,14 @@
 package tech.lapsa.esbd.domain.embedded;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(251)
 public class ContactInfo extends AEntity {
 
@@ -103,8 +107,16 @@ public class ContactInfo extends AEntity {
 	this.siteUrl = siteUrl;
     }
 
+    protected ContactInfo() {
+	this.phone = null;
+	this.email = null;
+	this.homeAdress = null;
+	this.siteUrl = null;
+    }
+
     // phone
 
+    @Basic
     private final PhoneNumber phone;
 
     public PhoneNumber getPhone() {
@@ -113,6 +125,7 @@ public class ContactInfo extends AEntity {
 
     // email
 
+    @Basic
     private final String email;
 
     public String getEmail() {
@@ -121,6 +134,7 @@ public class ContactInfo extends AEntity {
 
     // homeAdress
 
+    @Basic
     private final String homeAdress;
 
     public String getHomeAdress() {
@@ -129,6 +143,7 @@ public class ContactInfo extends AEntity {
 
     // siteUrl
 
+    @Basic
     private final String siteUrl;
 
     public String getSiteUrl() {

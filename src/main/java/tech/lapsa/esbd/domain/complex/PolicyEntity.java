@@ -5,6 +5,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.PaymentType;
 import com.lapsa.insurance.elements.PersonType;
 
@@ -16,6 +27,7 @@ import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(17)
 public class PolicyEntity extends AEntity {
 
@@ -437,8 +449,34 @@ public class PolicyEntity extends AEntity {
 	this.insuranceAgent = insuranceAgent;
     }
 
+    protected PolicyEntity() {
+	this.id = null;
+	this.number = null;
+	this.internalNumber = null;
+	this.validFrom = null;
+	this.validTill = null;
+	this.actualPremium = null;
+	this.calculatedPremium = null;
+	this.insurer = null;
+	this.insurant = null;
+	this.insurantPersonType = null;
+	this.dateOfIssue = null;
+	this.cancelation = null;
+	this.branch = null;
+	this.reissuedPolicyId = null;
+	this.comments = null;
+	this.insuredDrivers = null;
+	this.insuredVehicles = null;
+	this.created = null;
+	this.modified = null;
+	this.dateOfPayment = null;
+	this.paymentType = null;
+	this.insuranceAgent = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -447,6 +485,7 @@ public class PolicyEntity extends AEntity {
 
     // number
 
+    @Basic
     private final String number;
 
     public String getNumber() {
@@ -455,6 +494,7 @@ public class PolicyEntity extends AEntity {
 
     // internalNumber
 
+    @Basic
     private final String internalNumber;
 
     public String getInternalNumber() {
@@ -463,6 +503,8 @@ public class PolicyEntity extends AEntity {
 
     // validFrom
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
@@ -471,6 +513,8 @@ public class PolicyEntity extends AEntity {
 
     // validTill
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate validTill;
 
     public LocalDate getValidTill() {
@@ -479,6 +523,7 @@ public class PolicyEntity extends AEntity {
 
     // actualPremium
 
+    @Basic
     private final Double actualPremium;
 
     public Double getActualPremium() {
@@ -487,6 +532,7 @@ public class PolicyEntity extends AEntity {
 
     // calculatedPremium
 
+    @Basic
     private final Double calculatedPremium;
 
     public Double getCalculatedPremium() {
@@ -495,6 +541,7 @@ public class PolicyEntity extends AEntity {
 
     // insurer
 
+    @ManyToOne
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
@@ -503,6 +550,7 @@ public class PolicyEntity extends AEntity {
 
     // insurant
 
+    @ManyToOne
     private final SubjectEntity insurant;
 
     public SubjectEntity getInsurant() {
@@ -511,6 +559,8 @@ public class PolicyEntity extends AEntity {
 
     // insurantType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final PersonType insurantPersonType;
 
     public PersonType getInsurantPersonType() {
@@ -519,6 +569,8 @@ public class PolicyEntity extends AEntity {
 
     // dateOfIssue
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
@@ -527,6 +579,8 @@ public class PolicyEntity extends AEntity {
 
     // cancelation
 
+    @Basic
+    @Embedded
     private final CancelationInfo cancelation;
 
     public CancelationInfo getCancelation() {
@@ -539,6 +593,7 @@ public class PolicyEntity extends AEntity {
 
     // branch
 
+    @ManyToOne
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -547,6 +602,7 @@ public class PolicyEntity extends AEntity {
 
     // reissuedPolicy
 
+    @Basic
     private final Integer reissuedPolicyId;
 
     public boolean isReissued() {
@@ -559,6 +615,7 @@ public class PolicyEntity extends AEntity {
 
     // comments
 
+    @Basic
     private final String comments;
 
     public String getComments() {
@@ -567,6 +624,7 @@ public class PolicyEntity extends AEntity {
 
     // insuredDrivers
 
+    @OneToMany
     private final List<PolicyDriverEntity> insuredDrivers;
 
     public List<PolicyDriverEntity> getInsuredDrivers() {
@@ -575,6 +633,7 @@ public class PolicyEntity extends AEntity {
 
     // insuredVehicles
 
+    @OneToMany
     private final List<PolicyVehicleEntity> insuredVehicles;
 
     public List<PolicyVehicleEntity> getInsuredVehicles() {
@@ -583,6 +642,7 @@ public class PolicyEntity extends AEntity {
 
     // created
 
+    @Embedded
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -591,6 +651,7 @@ public class PolicyEntity extends AEntity {
 
     // modified
 
+    @Embedded
     private final RecordOperationInfo modified;
 
     public boolean isModified() {
@@ -603,6 +664,8 @@ public class PolicyEntity extends AEntity {
 
     // dateOfPayment
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dateOfPayment;
 
     public LocalDate getDateOfPayment() {
@@ -615,6 +678,8 @@ public class PolicyEntity extends AEntity {
 
     // paymentType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final PaymentType paymentType;
 
     public PaymentType getPaymentType() {
@@ -623,6 +688,7 @@ public class PolicyEntity extends AEntity {
 
     // insuranceAgent
 
+    @ManyToOne
     private final InsuranceAgentEntity insuranceAgent;
 
     public InsuranceAgentEntity getInsuranceAgent() {

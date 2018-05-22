@@ -1,7 +1,10 @@
 package tech.lapsa.esbd.domain.dict;
 
+import javax.persistence.Entity;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(523)
 public class InsuranceCompanyEntity extends ADictEntity {
 
@@ -30,5 +33,8 @@ public class InsuranceCompanyEntity extends ADictEntity {
 	    final String code,
 	    final String name) {
 	super(id, code, name);
+    }
+
+    protected InsuranceCompanyEntity() {
     }
 }

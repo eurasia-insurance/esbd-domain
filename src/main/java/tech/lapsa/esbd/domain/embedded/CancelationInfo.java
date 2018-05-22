@@ -2,11 +2,19 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.CancelationReason;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(241)
 public class CancelationInfo extends AEntity {
 
@@ -69,8 +77,15 @@ public class CancelationInfo extends AEntity {
 	this.reason = reason;
     }
 
+    protected CancelationInfo() {
+	this.dateOf = null;
+	this.reason = null;
+    }
+
     // dateOf
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dateOf;
 
     public LocalDate getDateOf() {
@@ -79,6 +94,8 @@ public class CancelationInfo extends AEntity {
 
     // reason
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final CancelationReason reason;
 
     public CancelationReason getReason() {

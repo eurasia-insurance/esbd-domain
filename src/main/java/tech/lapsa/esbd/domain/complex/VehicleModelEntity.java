@@ -1,8 +1,14 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(41)
 public class VehicleModelEntity extends AEntity {
 
@@ -85,8 +91,15 @@ public class VehicleModelEntity extends AEntity {
 	this.manufacturer = manufacturer;
     }
 
+    protected VehicleModelEntity() {
+	this.id = null;
+	this.name = null;
+	this.manufacturer = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -95,6 +108,7 @@ public class VehicleModelEntity extends AEntity {
 
     // name
 
+    @Basic
     private final String name;
 
     public String getName() {
@@ -103,6 +117,7 @@ public class VehicleModelEntity extends AEntity {
 
     // manufacturer
 
+    @ManyToOne
     private final VehicleManufacturerEntity manufacturer;
 
     public VehicleManufacturerEntity getManufacturer() {

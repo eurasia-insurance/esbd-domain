@@ -2,8 +2,11 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embeddable;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(263)
 public class DriverLicenseInfo extends ADocumentInfo {
 
@@ -35,8 +38,13 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private DriverLicenseInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
+    }
+
+    protected DriverLicenseInfo() {
     }
 }

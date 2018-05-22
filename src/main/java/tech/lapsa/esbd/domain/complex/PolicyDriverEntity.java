@@ -1,5 +1,13 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import com.lapsa.insurance.elements.InsuranceClassType;
 import com.lapsa.insurance.elements.InsuredAgeAndExpirienceClass;
 import com.lapsa.insurance.elements.InsuredAgeClass;
@@ -17,6 +25,7 @@ import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodeMultiplier;
 
+@Entity
 @HashCodeMultiplier(11)
 public class PolicyDriverEntity extends AEntity {
 
@@ -314,8 +323,26 @@ public class PolicyDriverEntity extends AEntity {
 	this.insurer = insurer;
     }
 
+    protected PolicyDriverEntity() {
+	this.id = null;
+	this.insuredPerson = null;
+	this.maritalStatus = null;
+	this.insuredAgeExpirienceClass = null;
+	this.drivingExpirience = null;
+	this.driverLicense = null;
+	this.insuraceClassType = null;
+	this.privilegerInfo = null;
+	this.gpwParticipantInfo = null;
+	this.pensionerInfo = null;
+	this.handicappedInfo = null;
+	this.created = null;
+	this.modified = null;
+	this.insurer = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -324,6 +351,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredPerson
 
+    @ManyToOne
     private final SubjectPersonEntity insuredPerson;
 
     public SubjectPersonEntity getInsuredPerson() {
@@ -332,6 +360,8 @@ public class PolicyDriverEntity extends AEntity {
 
     // maritalStatus
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final MaritalStatus maritalStatus;
 
     public MaritalStatus getMaritalStatus() {
@@ -340,6 +370,8 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredAgeExpirienceClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 
     public InsuredAgeAndExpirienceClass getInsuredAgeExpirienceClass() {
@@ -360,12 +392,16 @@ public class PolicyDriverEntity extends AEntity {
 
     // drivingExpirience
 
+    @Basic
     private final Integer drivingExpirience;
 
     public Integer getDrivingExpirience() {
 	return drivingExpirience;
     }
 
+    // driverLicense
+
+    @Embedded
     private final DriverLicenseInfo driverLicense;
 
     public DriverLicenseInfo getDriverLicense() {
@@ -374,6 +410,8 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuraceClassType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final InsuranceClassType insuraceClassType;
 
     public InsuranceClassType getInsuraceClassType() {
@@ -382,6 +420,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // privilegerInfo
 
+    @Embedded
     private final PrivilegerDocumentInfo privilegerInfo;
 
     public boolean isPrivileger() {
@@ -394,6 +433,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // gpwParticipantInfo
 
+    @Embedded
     private final GPWParticipantCertificateInfo gpwParticipantInfo;
 
     public boolean isGpwParticipant() {
@@ -406,6 +446,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // pensionerInfo
 
+    @Embedded
     private final PensionerCertificateInfo pensionerInfo;
 
     public boolean isPensioner() {
@@ -418,6 +459,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // handicappedInfo
 
+    @Embedded
     private final HandicappedCertificateInfo handicappedInfo;
 
     public boolean isHandicapped() {
@@ -430,6 +472,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // created
 
+    @Embedded
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -438,6 +481,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // modified
 
+    @Embedded
     private final RecordOperationInfo modified;
 
     public boolean isModified() {
@@ -450,6 +494,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insurer
 
+    @ManyToOne
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {

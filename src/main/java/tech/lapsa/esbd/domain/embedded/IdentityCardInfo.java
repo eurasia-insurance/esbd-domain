@@ -2,10 +2,16 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.insurance.elements.IdentityCardType;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(277)
 public class IdentityCardInfo extends ADocumentInfo {
 
@@ -71,6 +77,8 @@ public class IdentityCardInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private IdentityCardInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final String issuingAuthority,
@@ -80,8 +88,14 @@ public class IdentityCardInfo extends ADocumentInfo {
 	this.identityCardType = identityCardType;
     }
 
+    protected IdentityCardInfo() {
+	this.issuingAuthority = null;
+	this.identityCardType = null;
+    }
+
     // issuingAuthority
 
+    @Basic
     private String issuingAuthority;
 
     public String getIssuingAuthority() {
@@ -90,6 +104,8 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // identityCardType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {

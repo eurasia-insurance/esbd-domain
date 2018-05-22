@@ -1,5 +1,13 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import com.lapsa.insurance.elements.VehicleAgeClass;
 import com.lapsa.insurance.elements.VehicleClass;
 
@@ -10,6 +18,7 @@ import tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(13)
 public class PolicyVehicleEntity extends AEntity {
 
@@ -227,8 +236,22 @@ public class PolicyVehicleEntity extends AEntity {
 	this.insurer = insurer;
     }
 
+    protected PolicyVehicleEntity() {
+	this.id = null;
+	this.vehicle = null;
+	this.vehicleClass = null;
+	this.vehicleAgeClass = null;
+	this.certificate = null;
+	this.vehiclePurpose = null;
+	this.currentOdometerValue = null;
+	this.created = null;
+	this.modified = null;
+	this.insurer = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -237,6 +260,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicle
 
+    @ManyToOne
     private final VehicleEntity vehicle;
 
     public VehicleEntity getVehicle() {
@@ -245,6 +269,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicleClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
@@ -253,6 +279,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicleAgeClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final VehicleAgeClass vehicleAgeClass;
 
     public VehicleAgeClass getVehicleAgeClass() {
@@ -261,6 +289,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // certificate
 
+    @Embedded
     private final VehicleCertificateInfo certificate;
 
     public VehicleCertificateInfo getCertificate() {
@@ -269,6 +298,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehiclePurpose
 
+    @Basic
     private final String vehiclePurpose;
 
     public String getVehiclePurpose() {
@@ -277,6 +307,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // currentOdometerValue
 
+    @Basic
     private final Integer currentOdometerValue;
 
     public Integer getCurrentOdometerValue() {
@@ -285,6 +316,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // created
 
+    @Embedded
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -293,6 +325,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // modified
 
+    @Embedded
     private final RecordOperationInfo modified;
 
     public boolean isModified() {
@@ -305,6 +338,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // insurer
 
+    @ManyToOne
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {

@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import javax.persistence.MappedSuperclass;
+
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.MyHcEqToStr;
 
+@MappedSuperclass
 public abstract class AEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

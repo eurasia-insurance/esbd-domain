@@ -2,9 +2,15 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(239)
 public class ContractInfo extends AEntity {
 
@@ -69,8 +75,14 @@ public class ContractInfo extends AEntity {
 	this.dateOf = dateOf;
     }
 
+    protected ContractInfo() {
+	this.number = null;
+	this.dateOf = null;
+    }
+
     // certificateNumber
 
+    @Basic
     private final String number;
 
     public final String getNumber() {
@@ -79,6 +91,8 @@ public class ContractInfo extends AEntity {
 
     // certificateValidFrom
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dateOf;
 
     public LocalDate getDateOf() {

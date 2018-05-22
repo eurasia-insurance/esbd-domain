@@ -2,8 +2,12 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(307)
 public class PrivilegerDocumentInfo extends ADocumentInfo {
 
@@ -51,6 +55,8 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private PrivilegerDocumentInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final String type) {
@@ -58,8 +64,13 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	this.type = type;
     }
 
+    protected PrivilegerDocumentInfo() {
+	this.type = null;
+    }
+
     // type
 
+    @Basic
     private final String type;
 
     public String getType() {

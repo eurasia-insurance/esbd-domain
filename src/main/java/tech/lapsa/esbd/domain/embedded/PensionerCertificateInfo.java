@@ -2,8 +2,11 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embeddable;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(283)
 public class PensionerCertificateInfo extends ADocumentInfo {
 
@@ -35,8 +38,13 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private PensionerCertificateInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
+    }
+
+    protected PensionerCertificateInfo() {
     }
 }

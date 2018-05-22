@@ -1,8 +1,16 @@
 package tech.lapsa.esbd.domain.dict;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyFunctions.TriFunction;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -82,8 +90,15 @@ public abstract class ADictEntity extends AEntity {
 	this.name = name;
     }
 
+    protected ADictEntity() {
+	this.id = null;
+	this.code = null;
+	this.name = null;
+    }
+
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
@@ -92,6 +107,7 @@ public abstract class ADictEntity extends AEntity {
 
     // code
 
+    @Basic
     private final String code;
 
     public String getCode() {
@@ -100,6 +116,7 @@ public abstract class ADictEntity extends AEntity {
 
     // name
 
+    @Basic
     private final String name;
 
     public String getName() {

@@ -2,11 +2,17 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.kz.country.KZArea;
 
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(311)
 public class VehicleCertificateInfo extends ADocumentInfo {
 
@@ -89,6 +95,8 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private VehicleCertificateInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final VehicleRegNumber registrationNumber,
@@ -100,8 +108,15 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	this.registrationMajorCity = registrationMajorCity;
     }
 
+    protected VehicleCertificateInfo() {
+	this.registrationNumber = null;
+	this.registrationRegion = null;
+	this.registrationMajorCity = null;
+    }
+
     // registrationNumber
 
+    @Basic
     private final VehicleRegNumber registrationNumber;
 
     public VehicleRegNumber getRegistrationNumber() {
@@ -110,6 +125,8 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationRegion
 
+    @Basic
+    @Enumerated(EnumType.STRING)
     private final KZArea registrationRegion;
 
     public KZArea getRegistrationRegion() {
@@ -118,6 +135,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationMajorCity
 
+    @Basic
     private final Boolean registrationMajorCity;
 
     boolean isRegistrationMajorCity() {

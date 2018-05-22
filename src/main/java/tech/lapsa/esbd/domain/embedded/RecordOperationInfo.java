@@ -2,10 +2,17 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.Instant;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.complex.UserEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(257)
 public class RecordOperationInfo extends AEntity {
 
@@ -62,14 +69,23 @@ public class RecordOperationInfo extends AEntity {
 	}
     }
 
+    // constructor
+
     private RecordOperationInfo(final Instant instant,
 	    final UserEntity author) {
 	this.instant = instant;
 	this.author = author;
     }
 
-    // res
+    protected RecordOperationInfo() {
+	this.instant = null;
+	this.author = null;
+    }
 
+    // instant
+
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     private final Instant instant;
 
     public Instant getInstant() {
@@ -78,6 +94,7 @@ public class RecordOperationInfo extends AEntity {
 
     // author
 
+    @ManyToOne
     private final UserEntity author;
 
     public UserEntity getAuthor() {

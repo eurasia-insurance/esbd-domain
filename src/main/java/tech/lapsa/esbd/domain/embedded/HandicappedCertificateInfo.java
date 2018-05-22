@@ -2,8 +2,14 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(271)
 public class HandicappedCertificateInfo extends ADocumentInfo {
 
@@ -78,8 +84,15 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	this.validTill = validTill;
     }
 
+    protected HandicappedCertificateInfo() {
+	this.validFrom = null;
+	this.validTill = null;
+    }
+
     // validFrom
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
@@ -88,6 +101,8 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     // validTill
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate validTill;
 
     public LocalDate getValidTill() {

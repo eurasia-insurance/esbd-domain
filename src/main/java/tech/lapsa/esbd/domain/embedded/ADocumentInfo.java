@@ -2,8 +2,14 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.AEntity;
 
+@MappedSuperclass
 public abstract class ADocumentInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -57,8 +63,14 @@ public abstract class ADocumentInfo extends AEntity {
 	this.dateOfIssue = dateOfIssue;
     }
 
+    protected ADocumentInfo() {
+	this.number = null;
+	this.dateOfIssue = null;
+    }
+
     // number
 
+    @Basic
     private final String number;
 
     public String getCertificateNumber() {
@@ -67,6 +79,8 @@ public abstract class ADocumentInfo extends AEntity {
 
     // dateOfIssue
 
+    @Basic
+    @Temporal(TemporalType.DATE)
     private final LocalDate dateOfIssue;
 
     public LocalDate getCertificateDateOfIssue() {

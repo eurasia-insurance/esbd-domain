@@ -2,8 +2,11 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embeddable;
+
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(269)
 public class GPWParticipantCertificateInfo extends ADocumentInfo {
 
@@ -35,8 +38,13 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 	}
     }
 
+    // constructor
+
     private GPWParticipantCertificateInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
+    }
+
+    protected GPWParticipantCertificateInfo() {
     }
 }
