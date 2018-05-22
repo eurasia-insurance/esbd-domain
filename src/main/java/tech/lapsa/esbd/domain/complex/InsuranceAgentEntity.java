@@ -52,14 +52,14 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.branch = branch;
 	}
 
-	private UserEntity user;
+	private UserEntity owner;
 
-	private UserEntity getUser() {
-	    return user;
+	private UserEntity getOwner() {
+	    return owner;
 	}
 
-	private void setUser(UserEntity user) {
-	    this.user = user;
+	private void setOwner(UserEntity owner) {
+	    this.owner = owner;
 	}
 
 	private SubjectEntity subject;
@@ -132,8 +132,8 @@ public class InsuranceAgentEntity extends AEntity {
 	    return this;
 	}
 
-	public InsuranceAgentEntityBuilder withUser(final UserEntity user) {
-	    setIfNullOrThrow("user", this::getUser, this::setUser, user);
+	public InsuranceAgentEntityBuilder withOwner(final UserEntity owner) {
+	    setIfNullOrThrow("owner", this::getOwner, this::setOwner, owner);
 	    return this;
 	}
 
@@ -168,7 +168,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return new InsuranceAgentEntity(id,
 		    contract,
 		    branch,
-		    user,
+		    owner,
 		    subject,
 		    created,
 		    modified,
@@ -185,7 +185,7 @@ public class InsuranceAgentEntity extends AEntity {
     private InsuranceAgentEntity(final Integer id,
 	    final ContractInfo contract,
 	    final BranchEntity branch,
-	    final UserEntity user,
+	    final UserEntity owner,
 	    final SubjectEntity subject,
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
@@ -193,7 +193,7 @@ public class InsuranceAgentEntity extends AEntity {
 	this.id = id;
 	this.contract = contract;
 	this.branch = branch;
-	this.user = user;
+	this.owner = owner;
 	this.subject = subject;
 	this.created = created;
 	this.modified = modified;
@@ -234,10 +234,10 @@ public class InsuranceAgentEntity extends AEntity {
 
     // user
 
-    private final UserEntity user;
+    private final UserEntity owner;
 
-    public UserEntity getUser() {
-	return user;
+    public UserEntity getOwner() {
+	return owner;
     }
 
     private final SubjectEntity subject;
