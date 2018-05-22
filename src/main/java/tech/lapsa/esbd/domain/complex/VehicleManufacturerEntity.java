@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -14,7 +12,8 @@ public class VehicleManufacturerEntity extends AEntity {
 	return new VehicleManufacturerEntityBuilder();
     }
 
-    public static final class VehicleManufacturerEntityBuilder {
+    public static final class VehicleManufacturerEntityBuilder
+	    extends AEntityBuilder<VehicleManufacturerEntity, VehicleManufacturerEntityBuilder> {
 
 	// private
 
@@ -68,14 +67,11 @@ public class VehicleManufacturerEntity extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public VehicleManufacturerEntity build() throws IllegalArgumentException {
 	    return new VehicleManufacturerEntity(id,
 		    name,
 		    foreign);
-	}
-
-	public void buildTo(final Consumer<VehicleManufacturerEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

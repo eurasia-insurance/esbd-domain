@@ -63,6 +63,11 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    this.companyActivityKind = companyActivityKind;
 	}
 
+	@Override
+	protected SubjectCompanyEntityBuilder _this() {
+	    return this;
+	}
+
 	private SubjectCompanyEntityBuilder() {
 	}
 
@@ -87,11 +92,6 @@ public class SubjectCompanyEntity extends SubjectEntity {
 		final CompanyActivityKindEntity companyActivityKind) {
 	    setIfNullOrThrow("companyActivityKind", this::getCompanyActivityKind, this::setCompanyActivityKind,
 		    companyActivityKind);
-	    return this;
-	}
-
-	@Override
-	protected SubjectCompanyEntityBuilder _this() {
 	    return this;
 	}
 

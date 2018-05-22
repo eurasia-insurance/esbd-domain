@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
@@ -18,7 +16,8 @@ public class InsuranceAgentEntity extends AEntity {
 	return new InsuranceAgentEntityBuilder();
     }
 
-    public static final class InsuranceAgentEntityBuilder {
+    public static final class InsuranceAgentEntityBuilder
+	    extends AEntityBuilder<InsuranceAgentEntity, InsuranceAgentEntityBuilder> {
 
 	// private
 
@@ -164,6 +163,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public InsuranceAgentEntity build() throws IllegalArgumentException {
 	    return new InsuranceAgentEntity(id,
 		    contract,
@@ -173,10 +173,6 @@ public class InsuranceAgentEntity extends AEntity {
 		    created,
 		    modified,
 		    letterOfAttorneyNumber);
-	}
-
-	public void buildTo(final Consumer<InsuranceAgentEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

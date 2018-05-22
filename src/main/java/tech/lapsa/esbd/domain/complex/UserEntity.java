@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.complex;
 
 import java.time.Instant;
-import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
@@ -17,7 +16,8 @@ public class UserEntity extends AEntity {
 	return new UserEntityBuilder();
     }
 
-    public static final class UserEntityBuilder {
+    public static final class UserEntityBuilder
+	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
 
 	// private
 
@@ -147,6 +147,7 @@ public class UserEntity extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public UserEntity build() throws IllegalArgumentException {
 	    return new UserEntity(id,
 		    login,
@@ -156,10 +157,6 @@ public class UserEntity extends AEntity {
 		    authentificated,
 		    lastSesionId,
 		    lastActivity);
-	}
-
-	public void buildTo(final Consumer<UserEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

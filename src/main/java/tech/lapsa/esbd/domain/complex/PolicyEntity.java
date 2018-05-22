@@ -25,7 +25,8 @@ public class PolicyEntity extends AEntity {
 	return new PolicyEntityBuilder();
     }
 
-    public static final class PolicyEntityBuilder {
+    public static final class PolicyEntityBuilder
+	    extends AEntityBuilder<PolicyEntity, PolicyEntityBuilder> {
 
 	// private
 

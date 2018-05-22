@@ -7,10 +7,10 @@ public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class ADictEntityBuilder<T extends ADictEntity, B extends ADictEntityBuilder<?, ?>>
-	    extends AEntityBuilder<T, B> {
+    public static abstract class ADictEntityBuilder<ET extends ADictEntity, BT extends ADictEntityBuilder<ET, BT>>
+	    extends AEntityBuilder<ET, BT> {
 
-	private final TriFunction<Integer, String, String, T> constructor;
+	private final TriFunction<Integer, String, String, ET> constructor;
 
 	// private
 
@@ -44,32 +44,32 @@ public abstract class ADictEntity extends AEntity {
 	    this.name = name;
 	}
 
-	protected abstract B _this();
+	protected abstract BT _this();
 
-	protected ADictEntityBuilder(final TriFunction<Integer, String, String, T> constructor) {
+	protected ADictEntityBuilder(final TriFunction<Integer, String, String, ET> constructor) {
 	    assert constructor != null;
 	    this.constructor = constructor;
 	}
 
 	// public
 
-	public B withId(final Integer id) {
+	public BT withId(final Integer id) {
 	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return _this();
 	}
 
-	public B withCode(final String code) {
+	public BT withCode(final String code) {
 	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
 	    return _this();
 	}
 
-	public B withName(final String name) {
+	public BT withName(final String name) {
 	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return _this();
 	}
 
 	@Override
-	public T build() {
+	public ET build() {
 	    return constructor.apply(id, code, name);
 	}
     }

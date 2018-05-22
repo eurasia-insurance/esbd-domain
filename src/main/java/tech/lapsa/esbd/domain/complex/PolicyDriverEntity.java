@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import com.lapsa.insurance.elements.InsuranceClassType;
 import com.lapsa.insurance.elements.InsuredAgeAndExpirienceClass;
 import com.lapsa.insurance.elements.InsuredAgeClass;
@@ -28,7 +26,8 @@ public class PolicyDriverEntity extends AEntity {
 	return new PolicyDriverEntityBuilder();
     }
 
-    public static final class PolicyDriverEntityBuilder {
+    public static final class PolicyDriverEntityBuilder
+	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
 	// private
 
@@ -264,6 +263,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public PolicyDriverEntity build() throws IllegalArgumentException {
 	    return new PolicyDriverEntity(id,
 		    insuredPerson,
@@ -279,10 +279,6 @@ public class PolicyDriverEntity extends AEntity {
 		    created,
 		    modified,
 		    insurer);
-	}
-
-	public void buildTo(final Consumer<PolicyDriverEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

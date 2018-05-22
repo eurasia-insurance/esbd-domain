@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.complex;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.SteeringWheelLocation;
 import com.lapsa.insurance.elements.VehicleClass;
@@ -19,7 +18,8 @@ public class VehicleEntity extends AEntity {
 	return new VehicleEntityBuilder();
     }
 
-    public static final class VehicleEntityBuilder {
+    public static final class VehicleEntityBuilder
+	    extends AEntityBuilder<VehicleEntity, VehicleEntityBuilder> {
 
 	// private
 
@@ -149,7 +149,8 @@ public class VehicleEntity extends AEntity {
 	    return this;
 	}
 
-	public VehicleEntity build() throws IllegalArgumentException {
+	@Override
+	public VehicleEntity build() {
 	    return new VehicleEntity(id,
 		    vehicleClass,
 		    vinCode,
@@ -158,10 +159,6 @@ public class VehicleEntity extends AEntity {
 		    engine,
 		    color,
 		    realeaseDate);
-	}
-
-	public void buildTo(final Consumer<VehicleEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

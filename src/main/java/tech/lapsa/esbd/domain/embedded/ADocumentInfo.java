@@ -8,8 +8,8 @@ public abstract class ADocumentInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class ADocumentInfoBuilder<T extends ADocumentInfo, X extends ADocumentInfoBuilder<?, ?>>
-	    extends AEntityBuilder<T, X> {
+    public static abstract class ADocumentInfoBuilder<ET extends ADocumentInfo, BT extends ADocumentInfoBuilder<ET, BT>>
+	    extends AEntityBuilder<ET, BT> {
 
 	// private
 
@@ -36,16 +36,16 @@ public abstract class ADocumentInfo extends AEntity {
 	protected ADocumentInfoBuilder() {
 	}
 
-	protected abstract X _this();
+	protected abstract BT _this();
 
 	// public
 
-	public X withNumber(final String number) {
+	public BT withNumber(final String number) {
 	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
 	    return _this();
 	}
 
-	public X withDateOfIssue(final LocalDate dateOfIssue) {
+	public BT withDateOfIssue(final LocalDate dateOfIssue) {
 	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return _this();
 	}

@@ -44,6 +44,11 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    this.identityCard = identityCard;
 	}
 
+	@Override
+	protected SubjectPersonEntityBuilder _this() {
+	    return this;
+	}
+
 	private SubjectPersonEntityBuilder() {
 	}
 
@@ -56,11 +61,6 @@ public class SubjectPersonEntity extends SubjectEntity {
 
 	public SubjectPersonEntityBuilder withIdentityCard(final IdentityCardInfo identityCard) {
 	    setIfNullOrThrow("identityCard", this::getIdentityCard, this::setIdentityCard, identityCard);
-	    return this;
-	}
-
-	@Override
-	protected SubjectPersonEntityBuilder _this() {
 	    return this;
 	}
 

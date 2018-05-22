@@ -14,7 +14,8 @@ public abstract class SubjectEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
 
-    public abstract static class SubjectEntityBuilder<T extends SubjectEntity, THIS> {
+    public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
+	    extends AEntityBuilder<T, B> {
 
 	protected Integer id;
 
@@ -99,46 +100,46 @@ public abstract class SubjectEntity extends AEntity {
 	protected SubjectEntityBuilder() {
 	}
 
-	protected abstract THIS _this();
+	protected abstract B _this();
 
 	// public
 
-	public THIS withId(final Integer id) {
+	public B withId(final Integer id) {
 	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return _this();
 	}
 
-	public THIS withOrigin(final OriginInfo origin) {
+	public B withOrigin(final OriginInfo origin) {
 	    setIfNullOrThrow("origin", this::getOrigin, this::setOrigin, origin);
 	    return _this();
 	}
 
-	public THIS withContact(final ContactInfo contact) {
+	public B withContact(final ContactInfo contact) {
 	    setIfNullOrThrow("contact", this::getContact, this::setContact, contact);
 	    return _this();
 	}
 
-	public THIS withTaxPayerNumber(final String taxPayerNumber) {
+	public B withTaxPayerNumber(final String taxPayerNumber) {
 	    setIfNullOrThrow("taxPayerNumber", this::getTaxPayerNumber, this::setTaxPayerNumber, taxPayerNumber);
 	    return _this();
 	}
 
-	public THIS withComments(final String comments) {
+	public B withComments(final String comments) {
 	    setStringIfNullOrThrow("comments", this::getComments, this::setComments, comments);
 	    return _this();
 	}
 
-	public THIS withResident(final Boolean resident) {
+	public B withResident(final Boolean resident) {
 	    setIfNullOrThrow("resident", this::getResident, this::setResident, resident);
 	    return _this();
 	}
 
-	public THIS withIdNumber(final TaxpayerNumber idNumber) {
+	public B withIdNumber(final TaxpayerNumber idNumber) {
 	    setIfNullOrThrow("idNumber", this::getIdNumber, this::setIdNumber, idNumber);
 	    return _this();
 	}
 
-	public THIS withEconomicsSector(final KZEconomicSector economicsSector) {
+	public B withEconomicsSector(final KZEconomicSector economicsSector) {
 	    setIfNullOrThrow("economicsSector", this::getEconomicsSector, this::setEconomicsSector, economicsSector);
 	    return _this();
 	}
