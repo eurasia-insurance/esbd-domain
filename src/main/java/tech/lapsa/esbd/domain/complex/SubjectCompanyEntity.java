@@ -6,17 +6,9 @@ import com.lapsa.kz.economic.KZEconomicSector;
 import tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity;
 import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для представления субъекта - юридического лица (компания)
- *
- * @author vadim.isaev
- *
- */
 @HashCodePrime(19)
 public class SubjectCompanyEntity extends SubjectEntity {
 
@@ -29,37 +21,77 @@ public class SubjectCompanyEntity extends SubjectEntity {
     public static final class SubjectCompanyEntityBuilder
 	    extends SubjectEntityBuilder<SubjectCompanyEntity, SubjectCompanyEntityBuilder> {
 
+	// private
+
 	private String companyName;
+
+	private String getCompanyName() {
+	    return companyName;
+	}
+
+	private void setCompanyName(String companyName) {
+	    this.companyName = companyName;
+	}
+
 	private String headName;
+
+	private String getHeadName() {
+	    return headName;
+	}
+
+	private void setHeadName(String headName) {
+	    this.headName = headName;
+	}
+
 	private String accountantName;
+
+	private String getAccountantName() {
+	    return accountantName;
+	}
+
+	private void setAccountantName(String accountantName) {
+	    this.accountantName = accountantName;
+	}
+
 	private CompanyActivityKindEntity companyActivityKind;
+
+	private CompanyActivityKindEntity getCompanyActivityKind() {
+	    return companyActivityKind;
+	}
+
+	private void setCompanyActivityKind(CompanyActivityKindEntity companyActivityKind) {
+	    this.companyActivityKind = companyActivityKind;
+	}
+
+	@Override
+	protected SubjectCompanyEntityBuilder _this() {
+	    return this;
+	}
 
 	private SubjectCompanyEntityBuilder() {
 	}
 
+	// public
+
 	public SubjectCompanyEntityBuilder withCompanyName(final String companyName) {
-	    this.companyName = MyStrings.requireNonEmpty(companyName, "companyName");
+	    setIfNullOrThrow("companyName", this::getCompanyName, this::setCompanyName, companyName);
 	    return this;
 	}
 
 	public SubjectCompanyEntityBuilder withHeadName(final String headName) {
-	    this.headName = MyStrings.requireNonEmpty(headName, "headName");
+	    setStringIfNullOrThrow("headName", this::getHeadName, this::setHeadName, headName);
 	    return this;
 	}
 
 	public SubjectCompanyEntityBuilder withAccountantName(final String accountantName) {
-	    this.accountantName = MyStrings.requireNonEmpty(accountantName, "accountantName");
+	    setStringIfNullOrThrow("accountantName", this::getAccountantName, this::setAccountantName, accountantName);
 	    return this;
 	}
 
 	public SubjectCompanyEntityBuilder withCompanyActivityKind(
 		final CompanyActivityKindEntity companyActivityKind) {
-	    this.companyActivityKind = MyObjects.requireNonNull(companyActivityKind, "companyActivityKind");
-	    return this;
-	}
-
-	@Override
-	protected SubjectCompanyEntityBuilder _this() {
+	    setIfNullOrThrow("companyActivityKind", this::getCompanyActivityKind, this::setCompanyActivityKind,
+		    companyActivityKind);
 	    return this;
 	}
 

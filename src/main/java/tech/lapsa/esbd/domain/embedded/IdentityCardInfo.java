@@ -1,17 +1,13 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.IdentityCardType;
 
-import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(59)
-public class IdentityCardInfo extends AEntity {
+@HashCodePrime(277)
+public class IdentityCardInfo extends ADocumentInfo {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,64 +15,69 @@ public class IdentityCardInfo extends AEntity {
 	return new IdentityCardInfoBuilder();
     }
 
-    public static final class IdentityCardInfoBuilder {
+    public static final class IdentityCardInfoBuilder
+	    extends ADocumentInfoBuilder<IdentityCardInfo, IdentityCardInfoBuilder> {
 
-	private LocalDate dateOfIssue;
+	// private
+
 	private String issuingAuthority;
-	private String number;
+
+	private String getIssuingAuthority() {
+	    return issuingAuthority;
+	}
+
+	private void setIssuingAuthority(String issuingAuthority) {
+	    this.issuingAuthority = issuingAuthority;
+	}
+
 	private IdentityCardType identityCardType;
+
+	private IdentityCardType getIdentityCardType() {
+	    return identityCardType;
+	}
+
+	private void setIdentityCardType(IdentityCardType identityCardType) {
+	    this.identityCardType = identityCardType;
+	}
+
+	@Override
+	protected IdentityCardInfoBuilder _this() {
+	    return this;
+	}
 
 	private IdentityCardInfoBuilder() {
 	}
 
-	public IdentityCardInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
-	    return this;
-	}
+	// public
 
 	public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
-	    this.issuingAuthority = MyStrings.requireNonEmpty(issuingAuthority, "issuingAuthority");
-	    return this;
-	}
-
-	public IdentityCardInfoBuilder withNumber(final String number) {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
+	    setStringIfNullOrThrow("issuingAuthority", this::getIssuingAuthority, this::setIssuingAuthority,
+		    issuingAuthority);
 	    return this;
 	}
 
 	public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
-	    this.identityCardType = MyObjects.requireNonNull(identityCardType, "identityCardType");
+	    setIfNullOrThrow("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
+		    identityCardType);
 	    return this;
 	}
 
+	@Override
 	public IdentityCardInfo build() {
-	    return new IdentityCardInfo(dateOfIssue,
+	    return new IdentityCardInfo(number,
+		    dateOfIssue,
 		    issuingAuthority,
-		    number,
 		    identityCardType);
 	}
-
-	public void buildTo(final Consumer<IdentityCardInfo> consumer) {
-	    consumer.accept(build());
-	}
     }
 
-    private IdentityCardInfo(final LocalDate dateOfIssue,
+    private IdentityCardInfo(final String number,
+	    final LocalDate dateOfIssue,
 	    final String issuingAuthority,
-	    final String number,
 	    final IdentityCardType identityCardType) {
-	this.dateOfIssue = dateOfIssue;
+	super(number, dateOfIssue);
 	this.issuingAuthority = issuingAuthority;
-	this.number = number;
 	this.identityCardType = identityCardType;
-    }
-
-    // dateOfIssue
-
-    private LocalDate dateOfIssue;
-
-    public LocalDate getDateOfIssue() {
-	return dateOfIssue;
     }
 
     // issuingAuthority
@@ -85,14 +86,6 @@ public class IdentityCardInfo extends AEntity {
 
     public String getIssuingAuthority() {
 	return issuingAuthority;
-    }
-
-    // number
-
-    private String number;
-
-    public String getNumber() {
-	return number;
     }
 
     // identityCardType

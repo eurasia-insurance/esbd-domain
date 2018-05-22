@@ -1,15 +1,13 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(101)
+@HashCodePrime(241)
 public class CancelationInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -18,31 +16,50 @@ public class CancelationInfo extends AEntity {
 	return new CancelationInfoBuilder();
     }
 
-    public static final class CancelationInfoBuilder {
+    public static final class CancelationInfoBuilder
+	    extends AEntityBuilder<CancelationInfo, CancelationInfoBuilder> {
+
+	// private
 
 	private LocalDate dateOf;
+
+	private LocalDate getDateOf() {
+	    return dateOf;
+	}
+
+	private void setDateOf(LocalDate dateOf) {
+	    this.dateOf = dateOf;
+	}
+
 	private CancelationReason reason;
+
+	private CancelationReason getReason() {
+	    return reason;
+	}
+
+	private void setReason(CancelationReason reason) {
+	    this.reason = reason;
+	}
 
 	private CancelationInfoBuilder() {
 	}
 
+	// public
+
 	public CancelationInfoBuilder withDateOf(final LocalDate dateOf) {
-	    this.dateOf = MyObjects.requireNonNull(dateOf, "dateOf");
+	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
 	    return this;
 	}
 
 	public CancelationInfoBuilder withReason(final CancelationReason reason) {
-	    this.reason = MyObjects.requireNonNull(reason, "reason");
+	    setIfNullOrThrow("reason", this::getReason, this::setReason, reason);
 	    return this;
 	}
 
+	@Override
 	public CancelationInfo build() {
 	    return new CancelationInfo(dateOf,
 		    reason);
-	}
-
-	public void buildTo(final Consumer<CancelationInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

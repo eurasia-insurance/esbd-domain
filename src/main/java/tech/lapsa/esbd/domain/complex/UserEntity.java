@@ -1,14 +1,10 @@
 package tech.lapsa.esbd.domain.complex;
 
 import java.time.Instant;
-import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(29)
@@ -20,61 +16,138 @@ public class UserEntity extends AEntity {
 	return new UserEntityBuilder();
     }
 
-    public static final class UserEntityBuilder {
+    public static final class UserEntityBuilder
+	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
+
+	// private
 
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private String login;
+
+	private String getLogin() {
+	    return login;
+	}
+
+	private void setLogin(String login) {
+	    this.login = login;
+	}
+
 	private BranchEntity branch;
+
+	private BranchEntity getBranch() {
+	    return branch;
+	}
+
+	private void setBranch(BranchEntity branch) {
+	    this.branch = branch;
+	}
+
 	private SubjectEntity subject;
+
+	private SubjectEntity getSubject() {
+	    return subject;
+	}
+
+	private void setSubject(SubjectEntity subject) {
+	    this.subject = subject;
+	}
+
 	private InsuranceCompanyEntity organization;
-	private boolean authentificated;
+
+	private InsuranceCompanyEntity getOrganization() {
+	    return organization;
+	}
+
+	private void setOrganization(InsuranceCompanyEntity organization) {
+	    this.organization = organization;
+	}
+
+	private Boolean authentificated;
+
+	private Boolean getAuthentificated() {
+	    return authentificated;
+	}
+
+	private void setAuthentificated(Boolean authentificated) {
+	    this.authentificated = authentificated;
+	}
+
 	private String lastSesionId;
+
+	private String getLastSesionId() {
+	    return lastSesionId;
+	}
+
+	private void setLastSesionId(String lastSesionId) {
+	    this.lastSesionId = lastSesionId;
+	}
+
 	private Instant lastActivity;
+
+	private Instant getLastActivity() {
+	    return lastActivity;
+	}
+
+	private void setLastActivity(Instant lastActivity) {
+	    this.lastActivity = lastActivity;
+	}
 
 	private UserEntityBuilder() {
 	}
 
+	// public
+
 	public UserEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public UserEntityBuilder withLogin(final String login) throws IllegalArgumentException {
-	    this.login = MyStrings.requireNonEmpty(login, "login");
+	    setStringIfNullOrThrow("login", this::getLogin, this::setLogin, login);
 	    return this;
 	}
 
 	public UserEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
-	    this.branch = MyObjects.requireNonNull(branch, "branch");
+	    setIfNullOrThrow("branch", this::getBranch, this::setBranch, branch);
 	    return this;
 	}
 
 	public UserEntityBuilder withSubject(final SubjectEntity subject) throws IllegalArgumentException {
-	    this.subject = MyObjects.requireNonNull(subject, "subject");
+	    setIfNullOrThrow("subject", this::getSubject, this::setSubject, subject);
 	    return this;
 	}
 
 	public UserEntityBuilder withOrganization(final InsuranceCompanyEntity organization)
 		throws IllegalArgumentException {
-	    this.organization = MyObjects.requireNonNull(organization, "organization");
+	    setIfNullOrThrow("organization", this::getOrganization, this::setOrganization, organization);
 	    return this;
 	}
 
 	public UserEntityBuilder withAuthentificated(final Boolean authentificated) {
-	    this.authentificated = MyObjects.requireNonNull(authentificated, "authentificated");
+	    setIfNullOrThrow("authentificated", this::getAuthentificated, this::setAuthentificated, authentificated);
 	    return this;
 	}
 
 	public UserEntityBuilder withLastSesionId(final String lastSesionId) {
-	    this.lastSesionId = lastSesionId;
+	    setStringIfNullOrThrow("lastSesionId", this::getLastSesionId, this::setLastSesionId, lastSesionId);
 	    return this;
 	}
 
 	public UserEntityBuilder withLastActivity(final Instant lastActivity) {
-	    this.lastActivity = MyObjects.requireNonNull(lastActivity, "lastActivity");
+	    setIfNullOrThrow("lastActivity", this::getLastActivity, this::setLastActivity, lastActivity);
 	    return this;
 	}
 
+	@Override
 	public UserEntity build() throws IllegalArgumentException {
 	    return new UserEntity(id,
 		    login,
@@ -84,10 +157,6 @@ public class UserEntity extends AEntity {
 		    authentificated,
 		    lastSesionId,
 		    lastActivity);
-	}
-
-	public void buildTo(final Consumer<UserEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

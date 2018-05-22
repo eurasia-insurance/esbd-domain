@@ -2,7 +2,7 @@ package tech.lapsa.esbd.domain.dict;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(7)
+@HashCodePrime(523)
 public class InsuranceCompanyEntity extends ADictEntity {
 
     private static final long serialVersionUID = 1L;
@@ -12,7 +12,12 @@ public class InsuranceCompanyEntity extends ADictEntity {
     }
 
     public static final class InsuranceCompanyEntityBuilder
-	    extends DictionaryEntityBuilder<InsuranceCompanyEntity> {
+	    extends ADictEntityBuilder<InsuranceCompanyEntity, InsuranceCompanyEntityBuilder> {
+
+	@Override
+	protected InsuranceCompanyEntityBuilder _this() {
+	    return this;
+	}
 
 	private InsuranceCompanyEntityBuilder() {
 	    super(InsuranceCompanyEntity::new);
@@ -21,8 +26,9 @@ public class InsuranceCompanyEntity extends ADictEntity {
 
     // constructor
 
-    private InsuranceCompanyEntity(final Integer id, final String code, final String name) {
+    private InsuranceCompanyEntity(final Integer id,
+	    final String code,
+	    final String name) {
 	super(id, code, name);
     }
-
 }

@@ -1,14 +1,12 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.Instant;
-import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.complex.UserEntity;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(83)
+@HashCodePrime(257)
 public class RecordOperationInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -17,31 +15,50 @@ public class RecordOperationInfo extends AEntity {
 	return new RecordOperationInfoBuilder();
     }
 
-    public static final class RecordOperationInfoBuilder {
+    public static final class RecordOperationInfoBuilder
+	    extends AEntityBuilder<RecordOperationInfo, RecordOperationInfoBuilder> {
+
+	// private
 
 	private Instant instant;
+
+	private Instant getInstant() {
+	    return instant;
+	}
+
+	private void setInstant(Instant instant) {
+	    this.instant = instant;
+	}
+
 	private UserEntity author;
+
+	private UserEntity getAuthor() {
+	    return author;
+	}
+
+	private void setAuthor(UserEntity author) {
+	    this.author = author;
+	}
 
 	private RecordOperationInfoBuilder() {
 	}
 
+	// public
+
 	public RecordOperationInfoBuilder withInstant(final Instant instant) {
-	    this.instant = MyObjects.requireNonNull(instant, "instant");
+	    setIfNullOrThrow("instant", this::getInstant, this::setInstant, instant);
 	    return this;
 	}
 
 	public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
-	    this.author = MyObjects.requireNonNull(author, "author");
+	    setIfNullOrThrow("author", this::getAuthor, this::setAuthor, author);
 	    return this;
 	}
 
+	@Override
 	public RecordOperationInfo build() {
 	    return new RecordOperationInfo(instant,
 		    author);
-	}
-
-	public void buildTo(final Consumer<RecordOperationInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

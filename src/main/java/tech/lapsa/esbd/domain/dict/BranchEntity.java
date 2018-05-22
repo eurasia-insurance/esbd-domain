@@ -2,7 +2,7 @@ package tech.lapsa.esbd.domain.dict;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(3)
+@HashCodePrime(509)
 public class BranchEntity extends ADictEntity {
 
     private static final long serialVersionUID = 1L;
@@ -11,7 +11,13 @@ public class BranchEntity extends ADictEntity {
 	return new BranchEntityBuilder();
     }
 
-    public static final class BranchEntityBuilder extends DictionaryEntityBuilder<BranchEntity> {
+    public static final class BranchEntityBuilder
+	    extends ADictEntityBuilder<BranchEntity, BranchEntityBuilder> {
+
+	@Override
+	protected BranchEntityBuilder _this() {
+	    return this;
+	}
 
 	private BranchEntityBuilder() {
 	    super(BranchEntity::new);

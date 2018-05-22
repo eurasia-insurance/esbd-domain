@@ -1,11 +1,6 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(41)
@@ -17,38 +12,66 @@ public class VehicleModelEntity extends AEntity {
 	return new VehicleModelEntityBuilder();
     }
 
-    public static final class VehicleModelEntityBuilder {
+    public static final class VehicleModelEntityBuilder
+	    extends AEntityBuilder<VehicleModelEntity, VehicleModelEntityBuilder> {
+
+	// private
 
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private String name;
+
+	private String getName() {
+	    return name;
+	}
+
+	private void setName(String name) {
+	    this.name = name;
+	}
+
 	private VehicleManufacturerEntity manufacturer;
+
+	private VehicleManufacturerEntity getManufacturer() {
+	    return manufacturer;
+	}
+
+	private void setManufacturer(VehicleManufacturerEntity manufacturer) {
+	    this.manufacturer = manufacturer;
+	}
 
 	private VehicleModelEntityBuilder() {
 	}
 
+	// public
+
 	public VehicleModelEntityBuilder withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public VehicleModelEntityBuilder withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
+	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return this;
 	}
 
 	public VehicleModelEntityBuilder withManufacturer(final VehicleManufacturerEntity manufacturer) {
-	    this.manufacturer = MyObjects.requireNonNull(manufacturer, "manufacturer");
+	    setIfNullOrThrow("manufacturer", this::getManufacturer, this::setManufacturer, manufacturer);
 	    return this;
 	}
 
+	@Override
 	public VehicleModelEntity build() throws IllegalArgumentException {
 	    return new VehicleModelEntity(id,
 		    name,
 		    manufacturer);
-	}
-
-	public void buildTo(final Consumer<VehicleModelEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
 	}
     }
 

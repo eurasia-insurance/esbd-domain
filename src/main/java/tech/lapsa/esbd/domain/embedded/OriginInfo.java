@@ -1,21 +1,12 @@
 package tech.lapsa.esbd.domain.embedded;
 
-import java.util.function.Consumer;
-
 import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-/**
- * Класс для представления данных о происхождении клиента
- *
- * @author vadim.isaev
- *
- */
-@HashCodePrime(67)
+@HashCodePrime(281)
 public class OriginInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -24,30 +15,49 @@ public class OriginInfo extends AEntity {
 	return new OriginInfoBuilder();
     }
 
-    public static final class OriginInfoBuilder {
+    public static final class OriginInfoBuilder
+	    extends AEntityBuilder<OriginInfo, OriginInfoBuilder> {
+
+	// private
 
 	private Country country;
+
+	private Country getCountry() {
+	    return country;
+	}
+
+	private void setCountry(Country country) {
+	    this.country = country;
+	}
+
 	private KZCity city;
+
+	private KZCity getCity() {
+	    return city;
+	}
+
+	private void setCity(KZCity city) {
+	    this.city = city;
+	}
 
 	private OriginInfoBuilder() {
 	}
 
+	// public
+
 	public OriginInfoBuilder withCountry(final Country country) {
-	    this.country = MyObjects.requireNonNull(country, "country");
+	    setIfNullOrThrow("country", this::getCountry, this::setCountry, country);
 	    return this;
 	}
 
 	public OriginInfoBuilder withCity(final KZCity city) {
-	    this.city = MyObjects.requireNonNull(city, "city");
+	    setIfNullOrThrow("city", this::getCity, this::setCity, city);
 	    return this;
 	}
 
+	@Override
 	public OriginInfo build() {
 	    return new OriginInfo(country, city);
-	}
-
-	public void buildTo(final Consumer<OriginInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

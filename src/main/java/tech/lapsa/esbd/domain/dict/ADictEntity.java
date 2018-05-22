@@ -1,50 +1,76 @@
 package tech.lapsa.esbd.domain.dict;
 
-import java.util.function.Consumer;
-
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyFunctions.TriFunction;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyStrings;
 
 public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class DictionaryEntityBuilder<T extends ADictEntity> {
+    public static abstract class ADictEntityBuilder<ET extends ADictEntity, BT extends ADictEntityBuilder<ET, BT>>
+	    extends AEntityBuilder<ET, BT> {
 
-	protected final TriFunction<Integer, String, String, T> constructor;
+	private final TriFunction<Integer, String, String, ET> constructor;
 
-	protected DictionaryEntityBuilder(final TriFunction<Integer, String, String, T> constructor) {
+	// private
+
+	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
+	private String code;
+
+	private String getCode() {
+	    return code;
+	}
+
+	private void setCode(String code) {
+	    this.code = code;
+	}
+
+	private String name;
+
+	private String getName() {
+	    return name;
+	}
+
+	private void setName(String name) {
+	    this.name = name;
+	}
+
+	protected abstract BT _this();
+
+	protected ADictEntityBuilder(final TriFunction<Integer, String, String, ET> constructor) {
 	    assert constructor != null;
 	    this.constructor = constructor;
 	}
 
-	protected Integer id;
-	protected String code;
-	protected String name;
+	// public
 
-	public DictionaryEntityBuilder<T> withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
-	    return this;
+	public BT withId(final Integer id) {
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
+	    return _this();
 	}
 
-	public DictionaryEntityBuilder<T> withCode(final String code) {
-	    this.code = MyStrings.requireNonEmpty(code, "code");
-	    return this;
+	public BT withCode(final String code) {
+	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
+	    return _this();
 	}
 
-	public DictionaryEntityBuilder<T> withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
-	    return this;
+	public BT withName(final String name) {
+	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
+	    return _this();
 	}
 
-	public T build() {
+	@Override
+	public ET build() {
 	    return constructor.apply(id, code, name);
-	}
-
-	public void buildTo(final Consumer<T> consumer) {
-	    consumer.accept(build());
 	}
     }
 
