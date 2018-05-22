@@ -2,7 +2,7 @@ package tech.lapsa.esbd.domain.dict;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(3)
+@HashCodePrime(509)
 public class BranchEntity extends ADictEntity {
 
     private static final long serialVersionUID = 1L;

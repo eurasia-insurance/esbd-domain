@@ -8,7 +8,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(53)
+@HashCodePrime(269)
 public class GPWParticipantInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;

@@ -8,7 +8,7 @@ import tech.lapsa.esbd.domain.complex.UserEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(83)
+@HashCodePrime(257)
 public class RecordOperationInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;

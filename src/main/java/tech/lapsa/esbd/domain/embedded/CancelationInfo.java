@@ -9,7 +9,7 @@ import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(101)
+@HashCodePrime(241)
 public class CancelationInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;

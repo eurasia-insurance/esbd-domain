@@ -1,28 +1,28 @@
-       3 tech.lapsa.esbd.dao.entities.dict.BranchEntity
-       5 tech.lapsa.esbd.dao.entities.dict.CompanyActivityKindEntity
-       7 tech.lapsa.esbd.dao.entities.dict.InsuranceCompanyEntity
-      11 tech.lapsa.esbd.dao.entities.complex.PolicyDriverEntity
-      13 tech.lapsa.esbd.dao.entities.complex.PolicyVehicleEntity
-      17 tech.lapsa.esbd.dao.entities.complex.PolicyEntity
-      19 tech.lapsa.esbd.dao.entities.complex.SubjectCompanyEntity
-      23 tech.lapsa.esbd.dao.entities.complex.SubjectPersonEntity
-      29 tech.lapsa.esbd.dao.entities.complex.UserEntity
-      31 tech.lapsa.esbd.dao.entities.complex.VehicleEntity
-      37 tech.lapsa.esbd.dao.entities.complex.VehicleManufacturerEntity
-      41 tech.lapsa.esbd.dao.entities.complex.VehicleModelEntity
-      43 tech.lapsa.esbd.dao.entities.embeded.ContactInfo
-      47 tech.lapsa.esbd.dao.entities.embeded.DriverLicenseInfo
-      53 tech.lapsa.esbd.dao.entities.embeded.GPWParticipantInfo
-      59 tech.lapsa.esbd.dao.entities.embeded.IdentityCardInfo
-      61 tech.lapsa.esbd.dao.entities.embeded.HandicappedInfo
-      67 tech.lapsa.esbd.dao.entities.embeded.OriginInfo
-      71 tech.lapsa.esbd.dao.entities.embeded.PensionerInfo
-      73 tech.lapsa.esbd.dao.entities.embeded.PersonalInfo
-      79 tech.lapsa.esbd.dao.entities.embeded.PrivilegerInfo
-      83 tech.lapsa.esbd.dao.entities.embeded.RecordOperationInfo
-      89 tech.lapsa.esbd.dao.entities.embeded.VehicleCertificateInfo
-      97 tech.lapsa.esbd.dao.entities.complex.InsuranceAgentEntity
-     101 tech.lapsa.esbd.dao.entities.embeded.CancelationInfo
+       3 
+       5 
+       7 
+      11 tech.lapsa.esbd.domain.complex.PolicyDriverEntity
+      13 tech.lapsa.esbd.domain.complex.PolicyVehicleEntity
+      17 tech.lapsa.esbd.domain.complex.PolicyEntity
+      19 tech.lapsa.esbd.domain.complex.SubjectCompanyEntity
+      23 tech.lapsa.esbd.domain.complex.SubjectPersonEntity
+      29 tech.lapsa.esbd.domain.complex.UserEntity
+      31 tech.lapsa.esbd.domain.complex.VehicleEntity
+      37 tech.lapsa.esbd.domain.complex.VehicleManufacturerEntity
+      41 tech.lapsa.esbd.domain.complex.VehicleModelEntity
+      43 tech.lapsa.esbd.domain.complex.InsuranceAgentEntity
+      47 
+      53 
+      59 
+      61 
+      67 
+      71 
+      73 
+      79 
+      83 
+      89 
+      97 
+     101 
      103 
      107 
      109 
@@ -49,18 +49,18 @@
      229 
      233 tech.lapsa.esbd.domain.embedded.VehicleEngineInfo
      239 tech.lapsa.esbd.domain.embedded.ContractInfo
-     241 
-     251 
-     257 
-     263 
-     269 
-     271 
-     277 
-     281 
-     283 
-     293 
-     307 
-     311 
+     241 tech.lapsa.esbd.domain.embedded.CancelationInfo
+     251 tech.lapsa.esbd.domain.embedded.ContactInfo
+     257 tech.lapsa.esbd.domain.embedded.RecordOperationInfo
+     263 tech.lapsa.esbd.domain.embedded.DriverLicenseInfo
+     269 tech.lapsa.esbd.domain.embedded.GPWParticipantInfo
+     271 tech.lapsa.esbd.domain.embedded.HandicappedInfo
+     277 tech.lapsa.esbd.domain.embedded.IdentityCardInfo
+     281 tech.lapsa.esbd.domain.embedded.OriginInfo
+     283 tech.lapsa.esbd.domain.embedded.PensionerInfo
+     293 tech.lapsa.esbd.domain.embedded.PersonalInfo
+     307 tech.lapsa.esbd.domain.embedded.PrivilegerInfo
+     311 tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo
      313 
      317 
      331 
@@ -93,9 +93,9 @@
      491 
      499 
      503 
-     509 
-     521 
-     523 
+     509 tech.lapsa.esbd.domain.dict.BranchEntity
+     521 tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity
+     523 tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity
      541 
      547 
      557 

@@ -11,7 +11,7 @@ import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(89)
+@HashCodePrime(311)
 public class VehicleCertificateInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;

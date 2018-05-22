@@ -9,7 +9,7 @@ import tech.lapsa.esbd.domain.embedded.ContractInfo;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(97)
+@HashCodePrime(43)
 public class InsuranceAgentEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;

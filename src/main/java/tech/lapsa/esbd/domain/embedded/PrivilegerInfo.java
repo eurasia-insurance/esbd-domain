@@ -8,7 +8,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(79)
+@HashCodePrime(307)
 public class PrivilegerInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;

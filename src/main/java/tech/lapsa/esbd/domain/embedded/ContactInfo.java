@@ -9,7 +9,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
-@HashCodePrime(43)
+@HashCodePrime(251)
 public class ContactInfo extends AEntity {
 
     private static final long serialVersionUID = 1L;
