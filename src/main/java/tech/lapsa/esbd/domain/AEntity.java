@@ -54,6 +54,17 @@ public abstract class AEntity implements Serializable {
 			"Zero number value '%1$s' property", propertyName));
     }
 
+    protected static <T extends Number> T setPositiveNumberIfNullOrThrow(final String propertyName,
+	    final Supplier<T> geter,
+	    final Consumer<T> seter,
+	    final T newValue) {
+	return setIfNullOrThrow(propertyName,
+		geter,
+		seter,
+		MyNumbers.requirePositiveMsg(IllegalArgumentException::new, newValue,
+			"Non-positive number value '%1$s' property", propertyName));
+    }
+
     protected static String setStringIfNullOrThrow(final String propertyName,
 	    final Supplier<String> geter,
 	    final Consumer<String> seter,

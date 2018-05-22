@@ -3,8 +3,6 @@ package tech.lapsa.esbd.domain.embedded;
 import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(233)
@@ -18,25 +16,55 @@ public class VehicleEngineInfo extends AEntity {
 
     public static final class VehicleEngineInfoBuilder {
 
+	// private
+
 	private Integer volume;
+
+	private Integer getVolume() {
+	    return volume;
+	}
+
+	private void setVolume(Integer volume) {
+	    this.volume = volume;
+	}
+
 	private String number;
+
+	private String getNumber() {
+	    return number;
+	}
+
+	private void setNumber(String number) {
+	    this.number = number;
+	}
+
 	private Integer power;
+
+	private Integer getPower() {
+	    return power;
+	}
+
+	private void setPower(Integer power) {
+	    this.power = power;
+	}
 
 	private VehicleEngineInfoBuilder() {
 	}
 
+	// public
+
 	public VehicleEngineInfoBuilder withVolume(final Integer volume) {
-	    this.volume = MyNumbers.requireNonZero(volume, "volume");
+	    setPositiveNumberIfNullOrThrow("volume", this::getVolume, this::setVolume, volume);
 	    return this;
 	}
 
 	public VehicleEngineInfoBuilder withNumber(final String number) {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
+	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
 	    return this;
 	}
 
 	public VehicleEngineInfoBuilder withPower(final Integer power) {
-	    this.power = MyNumbers.requireNonZero(power, "power");
+	    setPositiveNumberIfNullOrThrow("power", this::getPower, this::setPower, power);
 	    return this;
 	}
 

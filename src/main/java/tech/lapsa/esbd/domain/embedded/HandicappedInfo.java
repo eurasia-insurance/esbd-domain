@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(271)
@@ -19,25 +17,58 @@ public class HandicappedInfo extends AEntity {
 
     public static final class HandicappedInfoBuilder {
 
+	// private
+
 	private String certificateNumber;
+
+	private String getCertificateNumber() {
+	    return certificateNumber;
+	}
+
+	private void setCertificateNumber(String certificateNumber) {
+	    this.certificateNumber = certificateNumber;
+	}
+
 	private LocalDate certificateValidFrom;
+
+	private LocalDate getCertificateValidFrom() {
+	    return certificateValidFrom;
+	}
+
+	private void setCertificateValidFrom(LocalDate certificateValidFrom) {
+	    this.certificateValidFrom = certificateValidFrom;
+	}
+
 	private LocalDate certificateValidTill;
+
+	private LocalDate getCertificateValidTill() {
+	    return certificateValidTill;
+	}
+
+	private void setCertificateValidTill(LocalDate certificateValidTill) {
+	    this.certificateValidTill = certificateValidTill;
+	}
 
 	private HandicappedInfoBuilder() {
 	}
 
+	// public
+
 	public HandicappedInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = MyStrings.requireNonEmpty(certificateNumber, "certificateNumber");
+	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
+		    certificateNumber);
 	    return this;
 	}
 
 	public HandicappedInfoBuilder withCertificateValidFrom(final LocalDate certificateValidFrom) {
-	    this.certificateValidFrom = MyObjects.requireNonNull(certificateValidFrom, "certificateValidFrom");
+	    setIfNullOrThrow("certificateValidFrom", this::getCertificateValidFrom, this::setCertificateValidFrom,
+		    certificateValidFrom);
 	    return this;
 	}
 
 	public HandicappedInfoBuilder withCertificateValidTill(final LocalDate certificateValidTill) {
-	    this.certificateValidTill = MyObjects.requireNonNull(certificateValidTill, "certificateValidTill");
+	    setIfNullOrThrow("certificateValidTill", this::getCertificateValidTill, this::setCertificateValidTill,
+		    certificateValidTill);
 	    return this;
 	}
 

@@ -6,8 +6,6 @@ import java.util.function.Consumer;
 import com.lapsa.insurance.elements.Sex;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(293)
@@ -21,37 +19,85 @@ public class PersonalInfo extends AEntity {
 
     public static final class PersonalInfoBuilder {
 
+	// private
+
 	private String name;
+
+	private String getName() {
+	    return name;
+	}
+
+	private void setName(String name) {
+	    this.name = name;
+	}
+
 	private String surename;
+
+	private String getSurename() {
+	    return surename;
+	}
+
+	private void setSurename(String surename) {
+	    this.surename = surename;
+	}
+
 	private String patronymic;
+
+	private String getPatronymic() {
+	    return patronymic;
+	}
+
+	private void setPatronymic(String patronymic) {
+	    this.patronymic = patronymic;
+	}
+
 	private LocalDate dayOfBirth;
+
+	private LocalDate getDayOfBirth() {
+	    return dayOfBirth;
+	}
+
+	private void setDayOfBirth(LocalDate dayOfBirth) {
+	    this.dayOfBirth = dayOfBirth;
+	}
+
 	private Sex gender;
+
+	private Sex getGender() {
+	    return gender;
+	}
+
+	private void setGender(Sex gender) {
+	    this.gender = gender;
+	}
 
 	private PersonalInfoBuilder() {
 	}
 
+	// public
+
 	public PersonalInfoBuilder withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
+	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return this;
 	}
 
 	public PersonalInfoBuilder withSurename(final String surename) {
-	    this.surename = MyStrings.requireNonEmpty(surename, "surename");
+	    setStringIfNullOrThrow("surename", this::getSurename, this::setSurename, surename);
 	    return this;
 	}
 
 	public PersonalInfoBuilder withPatronymic(final String patronymic) {
-	    this.patronymic = MyStrings.requireNonEmpty(patronymic, "patronymic");
+	    setStringIfNullOrThrow("patronymic", this::getPatronymic, this::setPatronymic, patronymic);
 	    return this;
 	}
 
 	public PersonalInfoBuilder withDayOfBirth(final LocalDate dayOfBirth) {
-	    this.dayOfBirth = MyObjects.requireNonNull(dayOfBirth, "dayOfBirth");
+	    setIfNullOrThrow("dayOfBirth", this::getDayOfBirth, this::setDayOfBirth, dayOfBirth);
 	    return this;
 	}
 
 	public PersonalInfoBuilder withGender(final Sex gender) {
-	    this.gender = MyObjects.requireNonNull(gender, "gender");
+	    setIfNullOrThrow("gender", this::getGender, this::setGender, gender);
 	    return this;
 	}
 

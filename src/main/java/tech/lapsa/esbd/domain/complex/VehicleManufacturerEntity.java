@@ -3,9 +3,6 @@ package tech.lapsa.esbd.domain.complex;
 import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(37)
@@ -19,25 +16,55 @@ public class VehicleManufacturerEntity extends AEntity {
 
     public static final class VehicleManufacturerEntityBuilder {
 
+	// private
+
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private String name;
+
+	private String getName() {
+	    return name;
+	}
+
+	private void setName(String name) {
+	    this.name = name;
+	}
+
 	private Boolean foreign;
+
+	private Boolean getForeign() {
+	    return foreign;
+	}
+
+	private void setForeign(Boolean foreign) {
+	    this.foreign = foreign;
+	}
 
 	private VehicleManufacturerEntityBuilder() {
 	}
 
+	// public
+
 	public VehicleManufacturerEntityBuilder withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public VehicleManufacturerEntityBuilder withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
+	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return this;
 	}
 
 	public VehicleManufacturerEntityBuilder withForeign(final Boolean foreign) {
-	    this.foreign = MyObjects.requireNonNull(foreign, "foreign");
+	    setIfNullOrThrow("foreign", this::getForeign, this::setForeign, foreign);
 	    return this;
 	}
 

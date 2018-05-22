@@ -8,8 +8,6 @@ import com.lapsa.insurance.elements.VehicleClass;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(31)
@@ -23,55 +21,131 @@ public class VehicleEntity extends AEntity {
 
     public static final class VehicleEntityBuilder {
 
+	// private
+
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private VehicleClass vehicleClass;
+
+	private VehicleClass getVehicleClass() {
+	    return vehicleClass;
+	}
+
+	private void setVehicleClass(VehicleClass vehicleClass) {
+	    this.vehicleClass = vehicleClass;
+	}
+
 	private String vinCode;
+
+	private String getVinCode() {
+	    return vinCode;
+	}
+
+	private void setVinCode(String vinCode) {
+	    this.vinCode = vinCode;
+	}
+
 	private VehicleModelEntity vehicleModel;
+
+	private VehicleModelEntity getVehicleModel() {
+	    return vehicleModel;
+	}
+
+	private void setVehicleModel(VehicleModelEntity vehicleModel) {
+	    this.vehicleModel = vehicleModel;
+	}
+
 	private SteeringWheelLocation steeringWheelLocation;
+
+	private SteeringWheelLocation getSteeringWheelLocation() {
+	    return steeringWheelLocation;
+	}
+
+	private void setSteeringWheelLocation(SteeringWheelLocation steeringWheelLocation) {
+	    this.steeringWheelLocation = steeringWheelLocation;
+	}
+
 	private String color;
+
+	private String getColor() {
+	    return color;
+	}
+
+	private void setColor(String color) {
+	    this.color = color;
+	}
+
 	private LocalDate realeaseDate;
+
+	private LocalDate getRealeaseDate() {
+	    return realeaseDate;
+	}
+
+	private void setRealeaseDate(LocalDate realeaseDate) {
+	    this.realeaseDate = realeaseDate;
+	}
+
 	private VehicleEngineInfo engine;
+
+	private VehicleEngineInfo getEngine() {
+	    return engine;
+	}
+
+	private void setEngine(VehicleEngineInfo engine) {
+	    this.engine = engine;
+	}
 
 	private VehicleEntityBuilder() {
 	}
 
+	// public
+
 	public VehicleEntityBuilder withId(final Integer id) {
-	    this.id = MyObjects.requireNonNull(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass) {
-	    this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+	    setIfNullOrThrow("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withVinCode(final String vinCode) {
-	    this.vinCode = MyStrings.requireNonEmpty(vinCode, "vinCode");
+	    setStringIfNullOrThrow("vinCode", this::getVinCode, this::setVinCode, vinCode);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withVehicleModel(final VehicleModelEntity vehicleModel) {
-	    this.vehicleModel = MyObjects.requireNonNull(vehicleModel, "vehicleModel");
+	    setIfNullOrThrow("vehicleModel", this::getVehicleModel, this::setVehicleModel, vehicleModel);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withSteeringWheelLocation(final SteeringWheelLocation steeringWheelLocation) {
-	    this.steeringWheelLocation = MyObjects.requireNonNull(steeringWheelLocation, "steeringWheelLocation");
+	    setIfNullOrThrow("steeringWheelLocation", this::getSteeringWheelLocation, this::setSteeringWheelLocation,
+		    steeringWheelLocation);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withColor(final String color) {
-	    this.color = MyStrings.requireNonEmpty(color, "color");
+	    setStringIfNullOrThrow("color", this::getColor, this::setColor, color);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withRealeaseDate(final LocalDate realeaseDate) {
-	    this.realeaseDate = MyObjects.requireNonNull(realeaseDate, "realeaseDate");
+	    setIfNullOrThrow("realeaseDate", this::getRealeaseDate, this::setRealeaseDate, realeaseDate);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withEngine(final VehicleEngineInfo engine) {
-	    this.engine = MyObjects.requireNonNull(engine, "engine");
+	    setIfNullOrThrow("engine", this::getEngine, this::setEngine, engine);
 	    return this;
 	}
 

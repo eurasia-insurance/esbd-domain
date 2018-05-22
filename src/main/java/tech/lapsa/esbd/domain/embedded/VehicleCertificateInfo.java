@@ -6,8 +6,6 @@ import java.util.function.Consumer;
 import com.lapsa.kz.country.KZArea;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -22,37 +20,89 @@ public class VehicleCertificateInfo extends AEntity {
 
     public static final class VehicleCertificateInfoBuilder {
 
+	// private
+
 	private VehicleRegNumber registrationNumber;
+
+	private VehicleRegNumber getRegistrationNumber() {
+	    return registrationNumber;
+	}
+
+	private void setRegistrationNumber(VehicleRegNumber registrationNumber) {
+	    this.registrationNumber = registrationNumber;
+	}
+
 	private String certificateNumber;
+
+	private String getCertificateNumber() {
+	    return certificateNumber;
+	}
+
+	private void setCertificateNumber(String certificateNumber) {
+	    this.certificateNumber = certificateNumber;
+	}
+
 	private LocalDate dateOfIssue;
+
+	private LocalDate getDateOfIssue() {
+	    return dateOfIssue;
+	}
+
+	private void setDateOfIssue(LocalDate dateOfIssue) {
+	    this.dateOfIssue = dateOfIssue;
+	}
+
 	private KZArea registrationRegion;
+
+	private KZArea getRegistrationRegion() {
+	    return registrationRegion;
+	}
+
+	private void setRegistrationRegion(KZArea registrationRegion) {
+	    this.registrationRegion = registrationRegion;
+	}
+
 	private Boolean registrationMajorCity;
+
+	private Boolean getRegistrationMajorCity() {
+	    return registrationMajorCity;
+	}
+
+	private void setRegistrationMajorCity(Boolean registrationMajorCity) {
+	    this.registrationMajorCity = registrationMajorCity;
+	}
 
 	private VehicleCertificateInfoBuilder() {
 	}
 
+	// public
+
 	public VehicleCertificateInfoBuilder withRegistrationNumber(final VehicleRegNumber registrationNumber) {
-	    this.registrationNumber = MyObjects.requireNonNull(registrationNumber, "registrationNumber");
+	    setIfNullOrThrow("registrationNumber", this::getRegistrationNumber, this::setRegistrationNumber,
+		    registrationNumber);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = MyStrings.requireNonEmpty(certificateNumber, "certificateNumber");
+	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
+		    certificateNumber);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withRegistrationRegion(final KZArea registrationRegion) {
-	    this.registrationRegion = MyObjects.requireNonNull(registrationRegion, "registrationRegion");
+	    setIfNullOrThrow("registrationRegion", this::getRegistrationRegion, this::setRegistrationRegion,
+		    registrationRegion);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withRegistrationMajorCity(final Boolean registrationMajorCity) {
-	    this.registrationMajorCity = MyObjects.requireNonNull(registrationMajorCity, "registrationMajorCity");
+	    setIfNullOrThrow("registrationMajorCity", this::getRegistrationMajorCity, this::setRegistrationMajorCity,
+		    registrationMajorCity);
 	    return this;
 	}
 

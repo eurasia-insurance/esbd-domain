@@ -6,8 +6,6 @@ import java.util.function.Consumer;
 import com.lapsa.insurance.elements.IdentityCardType;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(277)
@@ -21,31 +19,72 @@ public class IdentityCardInfo extends AEntity {
 
     public static final class IdentityCardInfoBuilder {
 
+	// private
+
 	private LocalDate dateOfIssue;
+
+	private LocalDate getDateOfIssue() {
+	    return dateOfIssue;
+	}
+
+	private void setDateOfIssue(LocalDate dateOfIssue) {
+	    this.dateOfIssue = dateOfIssue;
+	}
+
 	private String issuingAuthority;
+
+	private String getIssuingAuthority() {
+	    return issuingAuthority;
+	}
+
+	private void setIssuingAuthority(String issuingAuthority) {
+	    this.issuingAuthority = issuingAuthority;
+	}
+
 	private String number;
+
+	private String getNumber() {
+	    return number;
+	}
+
+	private void setNumber(String number) {
+	    this.number = number;
+	}
+
 	private IdentityCardType identityCardType;
+
+	private IdentityCardType getIdentityCardType() {
+	    return identityCardType;
+	}
+
+	private void setIdentityCardType(IdentityCardType identityCardType) {
+	    this.identityCardType = identityCardType;
+	}
 
 	private IdentityCardInfoBuilder() {
 	}
 
+	// public
+
 	public IdentityCardInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return this;
 	}
 
 	public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
-	    this.issuingAuthority = MyStrings.requireNonEmpty(issuingAuthority, "issuingAuthority");
+	    setStringIfNullOrThrow("issuingAuthority", this::getIssuingAuthority, this::setIssuingAuthority,
+		    issuingAuthority);
 	    return this;
 	}
 
 	public IdentityCardInfoBuilder withNumber(final String number) {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
+	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
 	    return this;
 	}
 
 	public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
-	    this.identityCardType = MyObjects.requireNonNull(identityCardType, "identityCardType");
+	    setIfNullOrThrow("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
+		    identityCardType);
 	    return this;
 	}
 

@@ -17,21 +17,9 @@ public class ContractInfo extends AEntity {
 
     public static final class ContractInfoBuilder {
 
+	// private
+
 	private String number;
-	private LocalDate dateOf;
-
-	private ContractInfoBuilder() {
-	}
-
-	public ContractInfoBuilder withNumber(final String number) {
-	    setIfNullOrThrow("number", this::getNumber, this::setNumber, number);
-	    return this;
-	}
-
-	public ContractInfoBuilder withDateOf(LocalDate dateOf) {
-	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
-	    return this;
-	}
 
 	private String getNumber() {
 	    return number;
@@ -41,12 +29,29 @@ public class ContractInfo extends AEntity {
 	    this.number = number;
 	}
 
+	private LocalDate dateOf;
+
 	private LocalDate getDateOf() {
 	    return dateOf;
 	}
 
 	private void setDateOf(LocalDate dateOf) {
 	    this.dateOf = dateOf;
+	}
+
+	private ContractInfoBuilder() {
+	}
+
+	// public
+
+	public ContractInfoBuilder withNumber(final String number) {
+	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
+	    return this;
+	}
+
+	public ContractInfoBuilder withDateOf(LocalDate dateOf) {
+	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
+	    return this;
 	}
 
 	public ContractInfo build() {

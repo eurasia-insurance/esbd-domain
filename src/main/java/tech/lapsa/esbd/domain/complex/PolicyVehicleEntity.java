@@ -9,9 +9,7 @@ import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo;
-import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(13)
@@ -25,75 +23,169 @@ public class PolicyVehicleEntity extends AEntity {
 
     public static final class PolicyVehicleEntityBuilder {
 
+	// private
+
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private VehicleEntity vehicle;
+
+	private VehicleEntity getVehicle() {
+	    return vehicle;
+	}
+
+	private void setVehicle(VehicleEntity vehicle) {
+	    this.vehicle = vehicle;
+	}
+
 	private VehicleClass vehicleClass;
+
+	private VehicleClass getVehicleClass() {
+	    return vehicleClass;
+	}
+
+	private void setVehicleClass(VehicleClass vehicleClass) {
+	    this.vehicleClass = vehicleClass;
+	}
+
 	private VehicleAgeClass vehicleAgeClass;
+
+	private VehicleAgeClass getVehicleAgeClass() {
+	    return vehicleAgeClass;
+	}
+
+	private void setVehicleAgeClass(VehicleAgeClass vehicleAgeClass) {
+	    this.vehicleAgeClass = vehicleAgeClass;
+	}
+
 	private VehicleCertificateInfo certificate;
+
+	private VehicleCertificateInfo getCertificate() {
+	    return certificate;
+	}
+
+	private void setCertificate(VehicleCertificateInfo certificate) {
+	    this.certificate = certificate;
+	}
+
 	private String vehiclePurpose;
+
+	private String getVehiclePurpose() {
+	    return vehiclePurpose;
+	}
+
+	private void setVehiclePurpose(String vehiclePurpose) {
+	    this.vehiclePurpose = vehiclePurpose;
+	}
+
 	private Integer currentOdometerValue;
+
+	private Integer getCurrentOdometerValue() {
+	    return currentOdometerValue;
+	}
+
+	private void setCurrentOdometerValue(Integer currentOdometerValue) {
+	    this.currentOdometerValue = currentOdometerValue;
+	}
+
 	private RecordOperationInfo created;
+
+	private RecordOperationInfo getCreated() {
+	    return created;
+	}
+
+	private void setCreated(RecordOperationInfo created) {
+	    this.created = created;
+	}
+
 	private RecordOperationInfo modified;
+
+	private RecordOperationInfo getModified() {
+	    return modified;
+	}
+
+	private void setModified(RecordOperationInfo modified) {
+	    this.modified = modified;
+	}
+
 	private InsuranceCompanyEntity insurer;
+
+	private InsuranceCompanyEntity getInsurer() {
+	    return insurer;
+	}
+
+	private void setInsurer(InsuranceCompanyEntity insurer) {
+	    this.insurer = insurer;
+	}
 
 	private PolicyVehicleEntityBuilder() {
 	}
 
+	// public
+
 	public PolicyVehicleEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
-	    this.vehicle = MyObjects.requireNonNull(vehicle, "vehicle");
+	    setIfNullOrThrow("vehicle", this::getVehicle, this::setVehicle, vehicle);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass)
 		throws IllegalArgumentException {
-	    this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+	    setIfNullOrThrow("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehicleAgeClass(final VehicleAgeClass vehicleAgeClass)
 		throws IllegalArgumentException {
-	    this.vehicleAgeClass = MyObjects.requireNonNull(vehicleAgeClass, "vehicleAgeClass");
+	    setIfNullOrThrow("vehicleAgeClass", this::getVehicleAgeClass, this::setVehicleAgeClass, vehicleAgeClass);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCertificate(final VehicleCertificateInfo certificate)
 		throws IllegalArgumentException {
-	    this.certificate = MyObjects.requireNonNull(certificate, "certificate");
+	    setIfNullOrThrow("certificate", this::getCertificate, this::setCertificate, certificate);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehiclePurpose(final String vehiclePurpose)
 		throws IllegalArgumentException {
-	    this.vehiclePurpose = MyStrings.requireNonEmpty(vehiclePurpose, "vehiclePurpose");
+	    setIfNullOrThrow("vehiclePurpose", this::getVehiclePurpose, this::setVehiclePurpose, vehiclePurpose);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCurrentOdometerValue(final Integer currentOdometerValue)
 		throws IllegalArgumentException {
-	    this.currentOdometerValue = MyNumbers.requirePositive(currentOdometerValue, "currentOdometerValue");
+	    setNumberIfNullOrThrow("currentOdometerValue", this::getCurrentOdometerValue, this::setCurrentOdometerValue,
+		    currentOdometerValue);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCreated(final RecordOperationInfo created)
 		throws IllegalArgumentException {
-	    this.created = MyObjects.requireNonNull(created, "created");
+	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withModified(final RecordOperationInfo modified)
 		throws IllegalArgumentException {
-	    this.modified = MyObjects.requireNonNull(modified, "modified");
+	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withInsurer(final InsuranceCompanyEntity insurer)
 		throws IllegalArgumentException {
-	    this.insurer = MyObjects.requireNonNull(insurer, "insurer");
+	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 

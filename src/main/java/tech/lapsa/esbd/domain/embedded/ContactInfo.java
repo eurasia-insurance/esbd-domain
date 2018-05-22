@@ -5,8 +5,6 @@ import java.util.function.Consumer;
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(251)
@@ -20,31 +18,70 @@ public class ContactInfo extends AEntity {
 
     public static final class ContactInfoBuilder {
 
+	// private
+
 	private PhoneNumber phone;
+
+	private PhoneNumber getPhone() {
+	    return phone;
+	}
+
+	private void setPhone(PhoneNumber phone) {
+	    this.phone = phone;
+	}
+
 	private String email;
+
+	private String getEmail() {
+	    return email;
+	}
+
+	private void setEmail(String email) {
+	    this.email = email;
+	}
+
 	private String homeAdress;
+
+	private String getHomeAdress() {
+	    return homeAdress;
+	}
+
+	private void setHomeAdress(String homeAdress) {
+	    this.homeAdress = homeAdress;
+	}
+
 	private String siteUrl;
+
+	private String getSiteUrl() {
+	    return siteUrl;
+	}
+
+	private void setSiteUrl(String siteUrl) {
+	    this.siteUrl = siteUrl;
+	}
 
 	private ContactInfoBuilder() {
 	}
 
+	// public
+
 	public ContactInfoBuilder withPhone(final PhoneNumber phone) {
-	    this.phone = MyObjects.requireNonNull(phone, "phone");
+	    setIfNullOrThrow("phone", this::getPhone, this::setPhone, phone);
 	    return this;
 	}
 
 	public ContactInfoBuilder withEmail(final String email) {
-	    this.email = MyStrings.requireNonEmpty(email, "email");
+	    setStringIfNullOrThrow("email", this::getEmail, this::setEmail, email);
 	    return this;
 	}
 
 	public ContactInfoBuilder withHomeAdress(final String homeAdress) {
-	    this.homeAdress = MyStrings.requireNonEmpty(homeAdress, "homeAdress");
+	    setStringIfNullOrThrow("homeAdress", this::getHomeAdress, this::setHomeAdress, homeAdress);
 	    return this;
 	}
 
 	public ContactInfoBuilder withSiteUrl(final String siteUrl) {
-	    this.siteUrl = MyStrings.requireNonEmpty(siteUrl, "siteUrl");
+	    setStringIfNullOrThrow("siteUrl", this::getSiteUrl, this::setSiteUrl, siteUrl);
 	    return this;
 	}
 

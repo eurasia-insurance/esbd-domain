@@ -13,9 +13,7 @@ import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.CancelationInfo;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
-import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(17)
@@ -29,112 +27,297 @@ public class PolicyEntity extends AEntity {
 
     public static final class PolicyEntityBuilder {
 
+	// private
+
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private String number;
+
+	private String getNumber() {
+	    return number;
+	}
+
+	private void setNumber(String number) {
+	    this.number = number;
+	}
+
 	private String internalNumber;
+
+	private String getInternalNumber() {
+	    return internalNumber;
+	}
+
+	private void setInternalNumber(String internalNumber) {
+	    this.internalNumber = internalNumber;
+	}
+
 	private LocalDate validFrom;
+
+	private LocalDate getValidFrom() {
+	    return validFrom;
+	}
+
+	private void setValidFrom(LocalDate validFrom) {
+	    this.validFrom = validFrom;
+	}
+
 	private LocalDate validTill;
+
+	private LocalDate getValidTill() {
+	    return validTill;
+	}
+
+	private void setValidTill(LocalDate validTill) {
+	    this.validTill = validTill;
+	}
+
 	private Double actualPremium;
+
+	private Double getActualPremium() {
+	    return actualPremium;
+	}
+
+	private void setActualPremium(Double actualPremium) {
+	    this.actualPremium = actualPremium;
+	}
+
 	private Double calculatedPremium;
+
+	private Double getCalculatedPremium() {
+	    return calculatedPremium;
+	}
+
+	private void setCalculatedPremium(Double calculatedPremium) {
+	    this.calculatedPremium = calculatedPremium;
+	}
+
 	private InsuranceCompanyEntity insurer;
+
+	private InsuranceCompanyEntity getInsurer() {
+	    return insurer;
+	}
+
+	private void setInsurer(InsuranceCompanyEntity insurer) {
+	    this.insurer = insurer;
+	}
+
 	private SubjectEntity insurant;
+
+	private SubjectEntity getInsurant() {
+	    return insurant;
+	}
+
+	private void setInsurant(SubjectEntity insurant) {
+	    this.insurant = insurant;
+	}
+
 	private PersonType insurantPersonType;
+
+	private PersonType getInsurantPersonType() {
+	    return insurantPersonType;
+	}
+
+	private void setInsurantPersonType(PersonType insurantPersonType) {
+	    this.insurantPersonType = insurantPersonType;
+	}
+
 	private LocalDate dateOfIssue;
+
+	private LocalDate getDateOfIssue() {
+	    return dateOfIssue;
+	}
+
+	private void setDateOfIssue(LocalDate dateOfIssue) {
+	    this.dateOfIssue = dateOfIssue;
+	}
 
 	private CancelationInfo cancelation;
 
+	private CancelationInfo getCancelation() {
+	    return cancelation;
+	}
+
+	private void setCancelation(CancelationInfo cancelation) {
+	    this.cancelation = cancelation;
+	}
+
 	private BranchEntity branch;
+
+	private BranchEntity getBranch() {
+	    return branch;
+	}
+
+	private void setBranch(BranchEntity branch) {
+	    this.branch = branch;
+	}
+
 	private Integer reissuedPolicyId;
+
+	private Integer getReissuedPolicyId() {
+	    return reissuedPolicyId;
+	}
+
+	private void setReissuedPolicyId(Integer reissuedPolicyId) {
+	    this.reissuedPolicyId = reissuedPolicyId;
+	}
+
 	private String comments;
+
+	private String getComments() {
+	    return comments;
+	}
+
+	private void setComments(String comments) {
+	    this.comments = comments;
+	}
+
 	private List<PolicyDriverEntity> insuredDrivers;
+
 	private List<PolicyVehicleEntity> insuredVehicles;
+
 	private RecordOperationInfo created;
+
+	private RecordOperationInfo getCreated() {
+	    return created;
+	}
+
+	private void setCreated(RecordOperationInfo created) {
+	    this.created = created;
+	}
+
 	private RecordOperationInfo modified;
 
+	private RecordOperationInfo getModified() {
+	    return modified;
+	}
+
+	private void setModified(RecordOperationInfo modified) {
+	    this.modified = modified;
+	}
+
 	private LocalDate dateOfPayment;
+
+	private LocalDate getDateOfPayment() {
+	    return dateOfPayment;
+	}
+
+	private void setDateOfPayment(LocalDate dateOfPayment) {
+	    this.dateOfPayment = dateOfPayment;
+	}
+
 	private PaymentType paymentType;
 
+	private PaymentType getPaymentType() {
+	    return paymentType;
+	}
+
+	private void setPaymentType(PaymentType paymentType) {
+	    this.paymentType = paymentType;
+	}
+
 	private InsuranceAgentEntity insuranceAgent;
+
+	private InsuranceAgentEntity getInsuranceAgent() {
+	    return insuranceAgent;
+	}
+
+	private void setInsuranceAgent(InsuranceAgentEntity insuranceAgent) {
+	    this.insuranceAgent = insuranceAgent;
+	}
 
 	private PolicyEntityBuilder() {
 	}
 
+	// public
+
 	public PolicyEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
+	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInternalNumber(final String internalNumber) throws IllegalArgumentException {
-	    this.internalNumber = MyStrings.requireNonEmpty(internalNumber, "internalNumber");
+	    setStringIfNullOrThrow("internalNumber", this::getInternalNumber, this::setInternalNumber, internalNumber);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withValidFrom(final LocalDate validFrom) throws IllegalArgumentException {
-	    this.validFrom = MyObjects.requireNonNull(validFrom, "validFrom");
+	    setIfNullOrThrow("validFrom", this::getValidFrom, this::setValidFrom, validFrom);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withValidTill(final LocalDate validTill) throws IllegalArgumentException {
-	    this.validTill = MyObjects.requireNonNull(validTill, "validTill");
+	    setIfNullOrThrow("validTill", this::getValidTill, this::setValidTill, validTill);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withActualPremium(final Double actualPremium) throws IllegalArgumentException {
-	    this.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
+	    setPositiveNumberIfNullOrThrow("actualPremium", this::getActualPremium, this::setActualPremium,
+		    actualPremium);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withCalculatedPremium(final Double calculatedPremium)
 		throws IllegalArgumentException {
-	    this.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+	    setPositiveNumberIfNullOrThrow("calculatedPremium", this::getCalculatedPremium, this::setCalculatedPremium,
+		    calculatedPremium);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsurer(final InsuranceCompanyEntity insurer) throws IllegalArgumentException {
-	    this.insurer = MyObjects.requireNonNull(insurer, "insurer");
+	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsurant(final SubjectEntity insurant) throws IllegalArgumentException {
-	    this.insurant = MyObjects.requireNonNull(insurant, "insurant");
+	    setIfNullOrThrow("insurant", this::getInsurant, this::setInsurant, insurant);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsurantPersonType(final PersonType insurantPersonType)
 		throws IllegalArgumentException {
-	    this.insurantPersonType = MyObjects.requireNonNull(insurantPersonType, "insurantPersonType");
+	    setIfNullOrThrow("insurantPersonType", this::getInsurantPersonType, this::setInsurantPersonType,
+		    insurantPersonType);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withDateOfIssue(final LocalDate dateOfIssue) throws IllegalArgumentException {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withCancelation(final CancelationInfo cancelation)
 		throws IllegalArgumentException {
-	    this.cancelation = MyObjects.requireNonNull(cancelation, "cancelation");
+	    setIfNullOrThrow("cancelation", this::getCancelation, this::setCancelation, cancelation);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
-	    this.branch = MyObjects.requireNonNull(branch, "branch");
+	    setIfNullOrThrow("branch", this::getBranch, this::setBranch, branch);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withReissuedPolicyId(final Integer reissuedPolicyId)
 		throws IllegalArgumentException {
-	    this.reissuedPolicyId = MyNumbers.requirePositive(reissuedPolicyId, "reissuedPolicyId");
+	    setPositiveNumberIfNullOrThrow("reissuedPolicyId", this::getReissuedPolicyId, this::setReissuedPolicyId,
+		    reissuedPolicyId);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withComments(final String comments) throws IllegalArgumentException {
-	    this.comments = MyStrings.requireNonEmpty(comments, "comments");
+	    setStringIfNullOrThrow("comments", this::getComments, this::setComments, comments);
 	    return this;
 	}
 
@@ -155,27 +338,27 @@ public class PolicyEntity extends AEntity {
 	}
 
 	public PolicyEntityBuilder withCreated(final RecordOperationInfo created) throws IllegalArgumentException {
-	    this.created = MyObjects.requireNonNull(created, "created");
+	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withModified(final RecordOperationInfo modified) throws IllegalArgumentException {
-	    this.modified = MyObjects.requireNonNull(modified, "modified");
+	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withDateOfPayment(final LocalDate dateOfPayment) throws IllegalArgumentException {
-	    this.dateOfPayment = MyObjects.requireNonNull(dateOfPayment, "dateOfPayment");
+	    setIfNullOrThrow("dateOfPayment", this::getDateOfPayment, this::setDateOfPayment, dateOfPayment);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withPaymentType(final PaymentType paymentType) {
-	    this.paymentType = MyObjects.requireNonNull(paymentType, "paymentType");
+	    setIfNullOrThrow("paymentType", this::getPaymentType, this::setPaymentType, paymentType);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsuranceAgent(final InsuranceAgentEntity insuranceAgent) {
-	    this.insuranceAgent = MyObjects.requireNonNull(insuranceAgent, "insuranceAgent");
+	    setIfNullOrThrow("insuranceAgent", this::getInsuranceAgent, this::setInsuranceAgent, insuranceAgent);
 	    return this;
 	}
 

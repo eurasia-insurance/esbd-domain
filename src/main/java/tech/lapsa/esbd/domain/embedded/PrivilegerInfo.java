@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(307)
@@ -19,25 +17,57 @@ public class PrivilegerInfo extends AEntity {
 
     public static final class PrivilegerInfoBuilder {
 
+	// private
+
 	private String type;
+
+	private String getType() {
+	    return type;
+	}
+
+	private void setType(String type) {
+	    this.type = type;
+	}
+
 	private String certificateNumber;
+
+	private String getCertificateNumber() {
+	    return certificateNumber;
+	}
+
+	private void setCertificateNumber(String certificateNumber) {
+	    this.certificateNumber = certificateNumber;
+	}
+
 	private LocalDate certificateDateOfIssue;
+
+	private LocalDate getCertificateDateOfIssue() {
+	    return certificateDateOfIssue;
+	}
+
+	private void setCertificateDateOfIssue(LocalDate certificateDateOfIssue) {
+	    this.certificateDateOfIssue = certificateDateOfIssue;
+	}
 
 	private PrivilegerInfoBuilder() {
 	}
 
+	// public
+
 	public PrivilegerInfoBuilder withType(final String type) {
-	    this.type = MyStrings.requireNonEmpty(type, "type");
+	    setStringIfNullOrThrow("type", this::getType, this::setType, type);
 	    return this;
 	}
 
 	public PrivilegerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = MyStrings.requireNonEmpty(certificateNumber, "certificateNumber");
+	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
+		    certificateNumber);
 	    return this;
 	}
 
 	public PrivilegerInfoBuilder withCertificateDateOfIssue(final LocalDate certificateDateOfIssue) {
-	    this.certificateDateOfIssue = MyObjects.requireNonNull(certificateDateOfIssue, "certificateDateOfIssue");
+	    setIfNullOrThrow("certificateDateOfIssue", this::getCertificateDateOfIssue, this::setCertificateDateOfIssue,
+		    certificateDateOfIssue);
 	    return this;
 	}
 

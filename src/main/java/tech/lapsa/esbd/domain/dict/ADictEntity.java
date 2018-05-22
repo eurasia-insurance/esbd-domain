@@ -4,8 +4,6 @@ import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyFunctions.TriFunction;
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyStrings;
 
 public abstract class ADictEntity extends AEntity {
 
@@ -15,27 +13,57 @@ public abstract class ADictEntity extends AEntity {
 
 	protected final TriFunction<Integer, String, String, T> constructor;
 
+	// private
+
+	protected Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
+	protected String code;
+
+	private String getCode() {
+	    return code;
+	}
+
+	private void setCode(String code) {
+	    this.code = code;
+	}
+
+	protected String name;
+
+	private String getName() {
+	    return name;
+	}
+
+	private void setName(String name) {
+	    this.name = name;
+	}
+
 	protected DictionaryEntityBuilder(final TriFunction<Integer, String, String, T> constructor) {
 	    assert constructor != null;
 	    this.constructor = constructor;
 	}
 
-	protected Integer id;
-	protected String code;
-	protected String name;
+	// public
 
 	public DictionaryEntityBuilder<T> withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
 	public DictionaryEntityBuilder<T> withCode(final String code) {
-	    this.code = MyStrings.requireNonEmpty(code, "code");
+	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
 	    return this;
 	}
 
 	public DictionaryEntityBuilder<T> withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
+	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return this;
 	}
 

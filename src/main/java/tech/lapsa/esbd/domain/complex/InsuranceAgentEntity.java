@@ -20,21 +20,105 @@ public class InsuranceAgentEntity extends AEntity {
 
     public static final class InsuranceAgentEntityBuilder {
 
+	// private
+
 	private Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
 	private ContractInfo contract;
+
+	private ContractInfo getContract() {
+	    return contract;
+	}
+
+	private void setContract(ContractInfo contract) {
+	    this.contract = contract;
+	}
+
 	private BranchEntity branch;
+
+	private BranchEntity getBranch() {
+	    return branch;
+	}
+
+	private void setBranch(BranchEntity branch) {
+	    this.branch = branch;
+	}
+
 	private UserEntity user;
+
+	private UserEntity getUser() {
+	    return user;
+	}
+
+	private void setUser(UserEntity user) {
+	    this.user = user;
+	}
+
 	private SubjectEntity subject;
+
+	private SubjectEntity getSubject() {
+	    return subject;
+	}
+
+	private void setSubject(SubjectEntity subject) {
+	    this.subject = subject;
+	}
+
 	private RecordOperationInfo created;
+
+	private RecordOperationInfo getCreated() {
+	    return created;
+	}
+
+	private void setCreated(RecordOperationInfo created) {
+	    this.created = created;
+	}
+
 	private RecordOperationInfo modified;
+
+	private RecordOperationInfo getModified() {
+	    return modified;
+	}
+
+	private void setModified(RecordOperationInfo modified) {
+	    this.modified = modified;
+	}
+
 	private InsuranceCompanyEntity insurer;
+
+	private InsuranceCompanyEntity getInsurer() {
+	    return insurer;
+	}
+
+	private void setInsurer(InsuranceCompanyEntity insurer) {
+	    this.insurer = insurer;
+	}
+
 	private String letterOfAttorneyNumber;
+
+	private String getLetterOfAttorneyNumber() {
+	    return letterOfAttorneyNumber;
+	}
+
+	private void setLetterOfAttorneyNumber(String letterOfAttorneyNumber) {
+	    this.letterOfAttorneyNumber = letterOfAttorneyNumber;
+	}
 
 	private InsuranceAgentEntityBuilder() {
 	}
 
+	// public
+
 	public InsuranceAgentEntityBuilder withId(final Integer id) {
-	    setIfNullOrThrow("id", this::getId, this::setId, id);
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return this;
 	}
 
@@ -74,81 +158,10 @@ public class InsuranceAgentEntity extends AEntity {
 	}
 
 	public InsuranceAgentEntityBuilder withLetterOfAttorneyNumber(final String letterOfAttorneyNumber) {
-	    setIfNullOrThrow("letterOfAttorneyNumber", this::getLetterOfAttorneyNumber, this::setLetterOfAttorneyNumber,
+	    setStringIfNullOrThrow("letterOfAttorneyNumber", this::getLetterOfAttorneyNumber,
+		    this::setLetterOfAttorneyNumber,
 		    letterOfAttorneyNumber);
 	    return this;
-	}
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
-	private ContractInfo getContract() {
-	    return contract;
-	}
-
-	private void setContract(ContractInfo contract) {
-	    this.contract = contract;
-	}
-
-	private BranchEntity getBranch() {
-	    return branch;
-	}
-
-	private void setBranch(BranchEntity branch) {
-	    this.branch = branch;
-	}
-
-	private UserEntity getUser() {
-	    return user;
-	}
-
-	private void setUser(UserEntity user) {
-	    this.user = user;
-	}
-
-	private SubjectEntity getSubject() {
-	    return subject;
-	}
-
-	private void setSubject(SubjectEntity subject) {
-	    this.subject = subject;
-	}
-
-	private RecordOperationInfo getCreated() {
-	    return created;
-	}
-
-	private void setCreated(RecordOperationInfo created) {
-	    this.created = created;
-	}
-
-	private RecordOperationInfo getModified() {
-	    return modified;
-	}
-
-	private void setModified(RecordOperationInfo modified) {
-	    this.modified = modified;
-	}
-
-	private InsuranceCompanyEntity getInsurer() {
-	    return insurer;
-	}
-
-	private void setInsurer(InsuranceCompanyEntity insurer) {
-	    this.insurer = insurer;
-	}
-
-	private String getLetterOfAttorneyNumber() {
-	    return letterOfAttorneyNumber;
-	}
-
-	private void setLetterOfAttorneyNumber(String letterOfAttorneyNumber) {
-	    this.letterOfAttorneyNumber = letterOfAttorneyNumber;
 	}
 
 	public InsuranceAgentEntity build() throws IllegalArgumentException {

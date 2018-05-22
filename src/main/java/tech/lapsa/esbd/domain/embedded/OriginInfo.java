@@ -6,7 +6,6 @@ import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(281)
@@ -20,19 +19,40 @@ public class OriginInfo extends AEntity {
 
     public static final class OriginInfoBuilder {
 
+	// private
+
 	private Country country;
+
+	private Country getCountry() {
+	    return country;
+	}
+
+	private void setCountry(Country country) {
+	    this.country = country;
+	}
+
 	private KZCity city;
+
+	private KZCity getCity() {
+	    return city;
+	}
+
+	private void setCity(KZCity city) {
+	    this.city = city;
+	}
 
 	private OriginInfoBuilder() {
 	}
 
+	// public
+
 	public OriginInfoBuilder withCountry(final Country country) {
-	    this.country = MyObjects.requireNonNull(country, "country");
+	    setIfNullOrThrow("country", this::getCountry, this::setCountry, country);
 	    return this;
 	}
 
 	public OriginInfoBuilder withCity(final KZCity city) {
-	    this.city = MyObjects.requireNonNull(city, "city");
+	    setIfNullOrThrow("city", this::getCity, this::setCity, city);
 	    return this;
 	}
 

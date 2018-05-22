@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(283)
@@ -19,19 +17,42 @@ public class PensionerInfo extends AEntity {
 
     public static final class PensionerInfoBuilder {
 
+	// private
+
 	private String certificateNumber;
+
+	private String getCertificateNumber() {
+	    return certificateNumber;
+	}
+
+	private void setCertificateNumber(String certificateNumber) {
+	    this.certificateNumber = certificateNumber;
+	}
+
 	private LocalDate certiticateDateOfIssue;
+
+	private LocalDate getCertiticateDateOfIssue() {
+	    return certiticateDateOfIssue;
+	}
+
+	private void setCertiticateDateOfIssue(LocalDate certiticateDateOfIssue) {
+	    this.certiticateDateOfIssue = certiticateDateOfIssue;
+	}
 
 	private PensionerInfoBuilder() {
 	}
 
+	// public
+
 	public PensionerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = MyStrings.requireNonEmpty(certificateNumber, "certificateNumber");
+	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
+		    certificateNumber);
 	    return this;
 	}
 
 	public PensionerInfoBuilder withCertiticateDateOfIssue(final LocalDate certiticateDateOfIssue) {
-	    this.certiticateDateOfIssue = MyObjects.requireNonNull(certiticateDateOfIssue, "certiticateDateOfIssue");
+	    setIfNullOrThrow("certiticateDateOfIssue", this::getCertiticateDateOfIssue, this::setCertiticateDateOfIssue,
+		    certiticateDateOfIssue);
 	    return this;
 	}
 

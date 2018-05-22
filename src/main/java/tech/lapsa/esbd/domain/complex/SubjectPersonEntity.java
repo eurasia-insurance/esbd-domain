@@ -7,7 +7,6 @@ import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.IdentityCardInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.esbd.domain.embedded.PersonalInfo;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -23,19 +22,40 @@ public class SubjectPersonEntity extends SubjectEntity {
     public static final class SubjectPersonEntityBuilder
 	    extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
 
+	// private
+
 	private PersonalInfo personal;
+
+	private PersonalInfo getPersonal() {
+	    return personal;
+	}
+
+	private void setPersonal(PersonalInfo personal) {
+	    this.personal = personal;
+	}
+
 	private IdentityCardInfo identityCard;
+
+	private IdentityCardInfo getIdentityCard() {
+	    return identityCard;
+	}
+
+	private void setIdentityCard(IdentityCardInfo identityCard) {
+	    this.identityCard = identityCard;
+	}
 
 	private SubjectPersonEntityBuilder() {
 	}
 
+	// public
+
 	public SubjectPersonEntityBuilder withPersonal(final PersonalInfo personal) {
-	    this.personal = MyObjects.requireNonNull(personal, "personal");
+	    setIfNullOrThrow("personal", this::getPersonal, this::setPersonal, personal);
 	    return this;
 	}
 
 	public SubjectPersonEntityBuilder withIdentityCard(final IdentityCardInfo identityCard) {
-	    this.identityCard = MyObjects.requireNonNull(identityCard, "identityCard");
+	    setIfNullOrThrow("identityCard", this::getIdentityCard, this::setIdentityCard, identityCard);
 	    return this;
 	}
 

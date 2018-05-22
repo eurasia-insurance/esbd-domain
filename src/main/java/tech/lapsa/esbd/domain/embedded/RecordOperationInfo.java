@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.complex.UserEntity;
-import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(257)
@@ -19,19 +18,40 @@ public class RecordOperationInfo extends AEntity {
 
     public static final class RecordOperationInfoBuilder {
 
+	// private
+
 	private Instant instant;
+
+	private Instant getInstant() {
+	    return instant;
+	}
+
+	private void setInstant(Instant instant) {
+	    this.instant = instant;
+	}
+
 	private UserEntity author;
+
+	private UserEntity getAuthor() {
+	    return author;
+	}
+
+	private void setAuthor(UserEntity author) {
+	    this.author = author;
+	}
 
 	private RecordOperationInfoBuilder() {
 	}
 
+	// public
+
 	public RecordOperationInfoBuilder withInstant(final Instant instant) {
-	    this.instant = MyObjects.requireNonNull(instant, "instant");
+	    setIfNullOrThrow("instant", this::getInstant, this::setInstant, instant);
 	    return this;
 	}
 
 	public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
-	    this.author = MyObjects.requireNonNull(author, "author");
+	    setIfNullOrThrow("author", this::getAuthor, this::setAuthor, author);
 	    return this;
 	}
 
