@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
 import com.lapsa.kz.country.KZArea;
 
@@ -18,7 +17,8 @@ public class VehicleCertificateInfo extends AEntity {
 	return new VehicleCertificateInfoBuilder();
     }
 
-    public static final class VehicleCertificateInfoBuilder {
+    public static final class VehicleCertificateInfoBuilder
+	    extends AEntityBuilder<VehicleCertificateInfo, VehicleCertificateInfoBuilder> {
 
 	// private
 
@@ -106,16 +106,13 @@ public class VehicleCertificateInfo extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public VehicleCertificateInfo build() {
 	    return new VehicleCertificateInfo(registrationNumber,
 		    certificateNumber,
 		    dateOfIssue,
 		    registrationRegion,
 		    registrationMajorCity);
-	}
-
-	public void buildTo(final Consumer<VehicleCertificateInfo> consumer) {
-	    consumer.accept(build());
 	}
     }
 

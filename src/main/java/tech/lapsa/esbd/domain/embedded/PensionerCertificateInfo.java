@@ -1,90 +1,42 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
-import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(283)
-public class PensionerInfo extends AEntity {
+public class PensionerCertificateInfo extends ADocumentInfo {
 
     private static final long serialVersionUID = 1L;
 
-    public static final PensionerInfoBuilder builder() {
-	return new PensionerInfoBuilder();
+    public static final PensionerCertificateInfoBuilder builder() {
+	return new PensionerCertificateInfoBuilder();
     }
 
-    public static final class PensionerInfoBuilder {
+    public static final class PensionerCertificateInfoBuilder
+	    extends ADocumentInfoBuilder<PensionerCertificateInfo, PensionerCertificateInfoBuilder> {
 
 	// private
 
-	private String certificateNumber;
-
-	private String getCertificateNumber() {
-	    return certificateNumber;
+	@Override
+	protected PensionerCertificateInfoBuilder _this() {
+	    return this;
 	}
 
-	private void setCertificateNumber(String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	}
-
-	private LocalDate certiticateDateOfIssue;
-
-	private LocalDate getCertiticateDateOfIssue() {
-	    return certiticateDateOfIssue;
-	}
-
-	private void setCertiticateDateOfIssue(LocalDate certiticateDateOfIssue) {
-	    this.certiticateDateOfIssue = certiticateDateOfIssue;
-	}
-
-	private PensionerInfoBuilder() {
+	private PensionerCertificateInfoBuilder() {
 	}
 
 	// public
 
-	public PensionerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
-		    certificateNumber);
-	    return this;
-	}
-
-	public PensionerInfoBuilder withCertiticateDateOfIssue(final LocalDate certiticateDateOfIssue) {
-	    setIfNullOrThrow("certiticateDateOfIssue", this::getCertiticateDateOfIssue, this::setCertiticateDateOfIssue,
-		    certiticateDateOfIssue);
-	    return this;
-	}
-
-	public PensionerInfo build() {
-	    return new PensionerInfo(certificateNumber,
-		    certiticateDateOfIssue);
-	}
-
-	public void buildTo(final Consumer<PensionerInfo> consumer) {
-	    consumer.accept(build());
+	@Override
+	public PensionerCertificateInfo build() {
+	    return new PensionerCertificateInfo(number,
+		    dateOfIssue);
 	}
     }
 
-    private PensionerInfo(final String certificateNumber,
-	    final LocalDate certiticateDateOfIssue) {
-	this.certificateNumber = certificateNumber;
-	this.certiticateDateOfIssue = certiticateDateOfIssue;
-    }
-
-    // certificateNumber
-
-    private final String certificateNumber;
-
-    public String getCertificateNumber() {
-	return certificateNumber;
-    }
-
-    // certiticateDateOfIssue
-
-    private final LocalDate certiticateDateOfIssue;
-
-    public LocalDate getCertiticateDateOfIssue() {
-	return certiticateDateOfIssue;
+    private PensionerCertificateInfo(final String number,
+	    final LocalDate dateOfIssue) {
+	super(number, dateOfIssue);
     }
 }

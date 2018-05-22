@@ -1,21 +1,20 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
-import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(307)
-public class PrivilegerInfo extends AEntity {
+public class PrivilegerDocumentInfo extends ADocumentInfo {
 
     private static final long serialVersionUID = 1L;
 
-    public static final PrivilegerInfoBuilder builder() {
-	return new PrivilegerInfoBuilder();
+    public static final PrivilegerDocumentInfoBuilder builder() {
+	return new PrivilegerDocumentInfoBuilder();
     }
 
-    public static final class PrivilegerInfoBuilder {
+    public static final class PrivilegerDocumentInfoBuilder
+	    extends ADocumentInfoBuilder<PrivilegerDocumentInfo, PrivilegerDocumentInfoBuilder> {
 
 	// private
 
@@ -29,65 +28,34 @@ public class PrivilegerInfo extends AEntity {
 	    this.type = type;
 	}
 
-	private String certificateNumber;
-
-	private String getCertificateNumber() {
-	    return certificateNumber;
+	@Override
+	protected PrivilegerDocumentInfoBuilder _this() {
+	    return this;
 	}
 
-	private void setCertificateNumber(String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	}
-
-	private LocalDate certificateDateOfIssue;
-
-	private LocalDate getCertificateDateOfIssue() {
-	    return certificateDateOfIssue;
-	}
-
-	private void setCertificateDateOfIssue(LocalDate certificateDateOfIssue) {
-	    this.certificateDateOfIssue = certificateDateOfIssue;
-	}
-
-	private PrivilegerInfoBuilder() {
+	private PrivilegerDocumentInfoBuilder() {
 	}
 
 	// public
 
-	public PrivilegerInfoBuilder withType(final String type) {
+	public PrivilegerDocumentInfoBuilder withType(final String type) {
 	    setStringIfNullOrThrow("type", this::getType, this::setType, type);
 	    return this;
 	}
 
-	public PrivilegerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
-		    certificateNumber);
-	    return this;
-	}
-
-	public PrivilegerInfoBuilder withCertificateDateOfIssue(final LocalDate certificateDateOfIssue) {
-	    setIfNullOrThrow("certificateDateOfIssue", this::getCertificateDateOfIssue, this::setCertificateDateOfIssue,
-		    certificateDateOfIssue);
-	    return this;
-	}
-
-	public PrivilegerInfo build() {
-	    return new PrivilegerInfo(type,
-		    certificateNumber,
-		    certificateDateOfIssue);
-	}
-
-	public void buildTo(final Consumer<PrivilegerInfo> consumer) {
-	    consumer.accept(build());
+	@Override
+	public PrivilegerDocumentInfo build() {
+	    return new PrivilegerDocumentInfo(number,
+		    dateOfIssue,
+		    type);
 	}
     }
 
-    private PrivilegerInfo(final String type,
-	    final String certificateNumber,
-	    final LocalDate certificateDateOfIssue) {
+    private PrivilegerDocumentInfo(final String number,
+	    final LocalDate dateOfIssue,
+	    final String type) {
+	super(number, dateOfIssue);
 	this.type = type;
-	this.certificateNumber = certificateNumber;
-	this.certificateDateOfIssue = certificateDateOfIssue;
     }
 
     // type
@@ -96,21 +64,5 @@ public class PrivilegerInfo extends AEntity {
 
     public String getType() {
 	return type;
-    }
-
-    // certificateNumber
-
-    private final String certificateNumber;
-
-    public String getCertificateNumber() {
-	return certificateNumber;
-    }
-
-    // certificateDateOfIssue
-
-    private final LocalDate certificateDateOfIssue;
-
-    public LocalDate getCertificateDateOfIssue() {
-	return certificateDateOfIssue;
     }
 }

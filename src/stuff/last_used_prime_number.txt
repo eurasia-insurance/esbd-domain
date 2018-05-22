@@ -53,13 +53,13 @@
      251 tech.lapsa.esbd.domain.embedded.ContactInfo
      257 tech.lapsa.esbd.domain.embedded.RecordOperationInfo
      263 tech.lapsa.esbd.domain.embedded.DriverLicenseInfo
-     269 tech.lapsa.esbd.domain.embedded.GPWParticipantInfo
-     271 tech.lapsa.esbd.domain.embedded.HandicappedInfo
+     269 tech.lapsa.esbd.domain.embedded.GPWParticipantCertificateInfo
+     271 tech.lapsa.esbd.domain.embedded.HandicappedCertificateInfo
      277 tech.lapsa.esbd.domain.embedded.IdentityCardInfo
      281 tech.lapsa.esbd.domain.embedded.OriginInfo
-     283 tech.lapsa.esbd.domain.embedded.PensionerInfo
+     283 tech.lapsa.esbd.domain.embedded.PensionerCertificateInfo
      293 tech.lapsa.esbd.domain.embedded.PersonalInfo
-     307 tech.lapsa.esbd.domain.embedded.PrivilegerInfo
+     307 tech.lapsa.esbd.domain.embedded.PrivilegerDocumentInfo
      311 tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo
      313 
      317 

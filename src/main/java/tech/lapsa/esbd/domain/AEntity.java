@@ -13,6 +13,22 @@ public abstract class AEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public static abstract class AEntityBuilder<T extends AEntity, X extends AEntityBuilder<?, ?>> {
+
+	// private
+
+	protected AEntityBuilder() {
+	}
+
+	// public
+
+	public abstract T build();
+
+	public void buildTo(final Consumer<T> consumer) {
+	    consumer.accept(build());
+	}
+    }
+
     protected AEntity() {
     }
 

@@ -1,119 +1,96 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
-import java.util.function.Consumer;
 
-import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(271)
-public class HandicappedInfo extends AEntity {
+public class HandicappedCertificateInfo extends ADocumentInfo {
 
     private static final long serialVersionUID = 1L;
 
-    public static final HandicappedInfoBuilder builder() {
-	return new HandicappedInfoBuilder();
+    public static final HandicappedCertificateInfoBuilder builder() {
+	return new HandicappedCertificateInfoBuilder();
     }
 
-    public static final class HandicappedInfoBuilder {
+    public static final class HandicappedCertificateInfoBuilder
+	    extends ADocumentInfoBuilder<HandicappedCertificateInfo, HandicappedCertificateInfoBuilder> {
 
 	// private
 
-	private String certificateNumber;
+	private LocalDate validFrom;
 
-	private String getCertificateNumber() {
-	    return certificateNumber;
+	private LocalDate getValidFrom() {
+	    return validFrom;
 	}
 
-	private void setCertificateNumber(String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
+	private void setValidFrom(LocalDate validFrom) {
+	    this.validFrom = validFrom;
 	}
 
-	private LocalDate certificateValidFrom;
+	private LocalDate validTill;
 
-	private LocalDate getCertificateValidFrom() {
-	    return certificateValidFrom;
+	private LocalDate getValidTill() {
+	    return validTill;
 	}
 
-	private void setCertificateValidFrom(LocalDate certificateValidFrom) {
-	    this.certificateValidFrom = certificateValidFrom;
+	private void setValidTill(LocalDate validTill) {
+	    this.validTill = validTill;
 	}
 
-	private LocalDate certificateValidTill;
-
-	private LocalDate getCertificateValidTill() {
-	    return certificateValidTill;
+	@Override
+	protected HandicappedCertificateInfoBuilder _this() {
+	    return this;
 	}
 
-	private void setCertificateValidTill(LocalDate certificateValidTill) {
-	    this.certificateValidTill = certificateValidTill;
-	}
-
-	private HandicappedInfoBuilder() {
+	private HandicappedCertificateInfoBuilder() {
 	}
 
 	// public
 
-	public HandicappedInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    setStringIfNullOrThrow("certificateNumber", this::getCertificateNumber, this::setCertificateNumber,
-		    certificateNumber);
+	public HandicappedCertificateInfoBuilder withValidFrom(final LocalDate validFrom) {
+	    setIfNullOrThrow("validFrom", this::getValidFrom, this::setValidFrom,
+		    validFrom);
 	    return this;
 	}
 
-	public HandicappedInfoBuilder withCertificateValidFrom(final LocalDate certificateValidFrom) {
-	    setIfNullOrThrow("certificateValidFrom", this::getCertificateValidFrom, this::setCertificateValidFrom,
-		    certificateValidFrom);
+	public HandicappedCertificateInfoBuilder withValidTill(final LocalDate validTill) {
+	    setIfNullOrThrow("validTill", this::getValidTill, this::setValidTill,
+		    validTill);
 	    return this;
 	}
 
-	public HandicappedInfoBuilder withCertificateValidTill(final LocalDate certificateValidTill) {
-	    setIfNullOrThrow("certificateValidTill", this::getCertificateValidTill, this::setCertificateValidTill,
-		    certificateValidTill);
-	    return this;
-	}
-
-	public HandicappedInfo build() {
-	    return new HandicappedInfo(certificateNumber,
-		    certificateValidFrom,
-		    certificateValidTill);
-	}
-
-	public void buildTo(final Consumer<HandicappedInfo> consumer) {
-	    consumer.accept(build());
+	@Override
+	public HandicappedCertificateInfo build() {
+	    return new HandicappedCertificateInfo(number,
+		    validFrom,
+		    validTill);
 	}
     }
 
     // constructor
 
-    private HandicappedInfo(final String certificateNumber,
-	    final LocalDate certificateValidFrom,
-	    final LocalDate certificateValidTill) {
-	this.certificateNumber = certificateNumber;
-	this.certificateValidFrom = certificateValidFrom;
-	this.certificateValidTill = certificateValidTill;
+    private HandicappedCertificateInfo(final String number,
+	    final LocalDate validFrom,
+	    final LocalDate validTill) {
+	super(number, null);
+	this.validFrom = validFrom;
+	this.validTill = validTill;
     }
 
-    // certificateNumber
+    // validFrom
 
-    private final String certificateNumber;
+    private final LocalDate validFrom;
 
-    public final String getCertificateNumber() {
-	return certificateNumber;
+    public LocalDate getValidFrom() {
+	return validFrom;
     }
 
-    // certificateValidFrom
+    // validTill
 
-    private final LocalDate certificateValidFrom;
+    private final LocalDate validTill;
 
-    public LocalDate getCertificateValidFrom() {
-	return certificateValidFrom;
-    }
-
-    // certificateValidTill
-
-    private final LocalDate certificateValidTill;
-
-    public LocalDate getCertificateValidTill() {
-	return certificateValidTill;
+    public LocalDate getValidTill() {
+	return validTill;
     }
 }
