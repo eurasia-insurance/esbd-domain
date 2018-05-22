@@ -7,7 +7,7 @@ import com.lapsa.insurance.elements.SteeringWheelLocation;
 import com.lapsa.insurance.elements.VehicleClass;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyNumbers;
+import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.java.commons.function.MyStrings;
 import tech.lapsa.patterns.domain.HashCodePrime;
@@ -28,11 +28,9 @@ public class VehicleEntity extends AEntity {
 	private String vinCode;
 	private VehicleModelEntity vehicleModel;
 	private SteeringWheelLocation steeringWheelLocation;
-	private Integer engineVolume;
-	private String engineNumber;
-	private Integer enginePower;
 	private String color;
 	private LocalDate realeaseDate;
+	private VehicleEngineInfo engine;
 
 	private VehicleEntityBuilder() {
 	}
@@ -62,28 +60,6 @@ public class VehicleEntity extends AEntity {
 	    return this;
 	}
 
-	public VehicleEntityBuilder withEngineVolume(final Integer engineVolume) {
-	    this.engineVolume = MyNumbers.requireNonZero(engineVolume, "engineVolume");
-	    return this;
-	}
-
-	public VehicleEntityBuilder withEngineNumber(final String engineNumber) {
-	    this.engineNumber = MyStrings.requireNonEmpty(engineNumber, "engineNumber");
-	    return this;
-	}
-
-	public VehicleEntityBuilder withEnginePower(final Integer enginePower) {
-	    this.enginePower = MyNumbers.requireNonZero(enginePower, "enginePower");
-	    return this;
-	}
-
-	public VehicleEntityBuilder withEngine(final String engineNumber, final Integer engineVolume,
-		final Integer enginePower) {
-	    return withEngineNumber(engineNumber)
-		    .withEnginePower(enginePower)
-		    .withEngineVolume(engineVolume);
-	}
-
 	public VehicleEntityBuilder withColor(final String color) {
 	    this.color = MyStrings.requireNonEmpty(color, "color");
 	    return this;
@@ -94,15 +70,18 @@ public class VehicleEntity extends AEntity {
 	    return this;
 	}
 
+	public VehicleEntityBuilder withEngine(final VehicleEngineInfo engine) {
+	    this.engine = MyObjects.requireNonNull(engine, "engine");
+	    return this;
+	}
+
 	public VehicleEntity build() throws IllegalArgumentException {
 	    return new VehicleEntity(id,
 		    vehicleClass,
 		    vinCode,
 		    vehicleModel,
 		    steeringWheelLocation,
-		    engineVolume,
-		    engineNumber,
-		    enginePower,
+		    engine,
 		    color,
 		    realeaseDate);
 	}
@@ -119,9 +98,7 @@ public class VehicleEntity extends AEntity {
 	    final String vinCode,
 	    final VehicleModelEntity vehicleModel,
 	    final SteeringWheelLocation steeringWheelLocation,
-	    final Integer engineVolume,
-	    final String engineNumber,
-	    final Integer enginePower,
+	    final VehicleEngineInfo engine,
 	    final String color,
 	    final LocalDate realeaseDate) {
 	this.id = id;
@@ -129,9 +106,7 @@ public class VehicleEntity extends AEntity {
 	this.vinCode = vinCode;
 	this.vehicleModel = vehicleModel;
 	this.steeringWheelLocation = steeringWheelLocation;
-	this.engineVolume = engineVolume;
-	this.engineNumber = engineNumber;
-	this.enginePower = enginePower;
+	this.engine = engine;
 	this.color = color;
 	this.realeaseDate = realeaseDate;
     }
@@ -176,30 +151,6 @@ public class VehicleEntity extends AEntity {
 	return steeringWheelLocation;
     }
 
-    // engineVolume
-
-    private final Integer engineVolume;
-
-    public Integer getEngineVolume() {
-	return engineVolume;
-    }
-
-    // engineNumber
-
-    private final String engineNumber;
-
-    public String getEngineNumber() {
-	return engineNumber;
-    }
-
-    // enginePower
-
-    private final Integer enginePower;
-
-    public Integer getEnginePower() {
-	return enginePower;
-    }
-
     // color
 
     private final String color;
@@ -214,5 +165,13 @@ public class VehicleEntity extends AEntity {
 
     public LocalDate getRealeaseDate() {
 	return realeaseDate;
+    }
+
+    // engine
+
+    private final VehicleEngineInfo engine;
+
+    public VehicleEngineInfo getEngine() {
+	return engine;
     }
 }
