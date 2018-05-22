@@ -47,7 +47,7 @@
      223 
      227 
      229 
-     233 
+     233 tech.lapsa.esbd.domain.embedded.VehicleEngineInfo
      239 
      241 
      251 
