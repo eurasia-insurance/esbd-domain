@@ -48,7 +48,7 @@
      227 
      229 
      233 tech.lapsa.esbd.domain.embedded.VehicleEngineInfo
-     239 
+     239 tech.lapsa.esbd.domain.embedded.ContractInfo
      241 
      251 
      257 
