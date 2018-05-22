@@ -31,10 +31,10 @@ public abstract class AEntity implements Serializable {
 	return MyHcEqToStr.equals(this, other);
     }
 
-    protected static <T, X extends Exception> T setIfNullOrThrow(final String propertyName,
+    protected static <T> T setIfNullOrThrow(final String propertyName,
 	    final Supplier<T> geter,
 	    final Consumer<T> seter,
-	    final T newValue) throws X, IllegalArgumentException {
+	    final T newValue) throws IllegalStateException, IllegalArgumentException {
 	final T oldValue = geter.get();
 	MyObjects.requireNullMsg(IllegalStateException::new, oldValue, "'%1$s' property is already set", propertyName);
 	MyObjects.requireNonNullMsg(IllegalArgumentException::new, newValue, "Null value for '%1$s' property",
@@ -43,7 +43,7 @@ public abstract class AEntity implements Serializable {
 	return newValue;
     }
 
-    protected static <T extends Number> T setIfNullOrThrow(final String propertyName,
+    protected static <T extends Number> T setNumberIfNullOrThrow(final String propertyName,
 	    final Supplier<T> geter,
 	    final Consumer<T> seter,
 	    final T newValue) {
@@ -54,7 +54,7 @@ public abstract class AEntity implements Serializable {
 			"Zero number value '%1$s' property", propertyName));
     }
 
-    protected static String setIfNullOrThrow(final String propertyName,
+    protected static String setStringIfNullOrThrow(final String propertyName,
 	    final Supplier<String> geter,
 	    final Consumer<String> seter,
 	    final String newValue) {
