@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,6 +16,7 @@ import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "USER")
 @HashCodePrime(29)
 public class UserEntity extends AEntity {
 

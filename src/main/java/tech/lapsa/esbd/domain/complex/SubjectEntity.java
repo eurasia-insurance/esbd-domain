@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
@@ -21,6 +22,7 @@ import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "SUBJECT")
 public abstract class SubjectEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;

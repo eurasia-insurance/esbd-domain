@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.complex;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
@@ -14,6 +15,7 @@ import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "SUBJECT_COMPANY")
 @HashCodePrime(19)
 public class SubjectCompanyEntity extends SubjectEntity {
 

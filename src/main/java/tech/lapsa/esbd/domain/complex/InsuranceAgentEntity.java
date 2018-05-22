@@ -5,6 +5,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
@@ -14,6 +15,7 @@ import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "INSURANCE_AGENT")
 @HashCodePrime(43)
 public class InsuranceAgentEntity extends AEntity {
 

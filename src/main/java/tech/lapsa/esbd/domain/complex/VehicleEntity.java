@@ -9,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +21,7 @@ import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "VEHICLE")
 @HashCodePrime(31)
 public class VehicleEntity extends AEntity {
 

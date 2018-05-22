@@ -3,11 +3,13 @@ package tech.lapsa.esbd.domain.complex;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "VEHICLE_MANUFACTURER")
 @HashCodePrime(37)
 public class VehicleManufacturerEntity extends AEntity {
 

@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyFunctions.TriFunction;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "DICTIONARY")
 public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;

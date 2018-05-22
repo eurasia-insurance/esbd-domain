@@ -11,8 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,6 +30,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "POLICY")
 @HashCodePrime(17)
 public class PolicyEntity extends AEntity {
 
@@ -625,6 +628,7 @@ public class PolicyEntity extends AEntity {
     // insuredDrivers
 
     @OneToMany
+    @JoinColumn(name="POLICY_ID")
     private final List<PolicyDriverEntity> insuredDrivers;
 
     public List<PolicyDriverEntity> getInsuredDrivers() {
@@ -634,6 +638,7 @@ public class PolicyEntity extends AEntity {
     // insuredVehicles
 
     @OneToMany
+    @JoinColumn(name="POLICY_ID")
     private final List<PolicyVehicleEntity> insuredVehicles;
 
     public List<PolicyVehicleEntity> getInsuredVehicles() {

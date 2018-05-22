@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.lapsa.insurance.elements.InsuranceClassType;
 import com.lapsa.insurance.elements.InsuredAgeAndExpirienceClass;
@@ -26,6 +27,7 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodeMultiplier;
 
 @Entity
+@Table(name = "POLICY_DRIVER")
 @HashCodeMultiplier(11)
 public class PolicyDriverEntity extends AEntity {
 

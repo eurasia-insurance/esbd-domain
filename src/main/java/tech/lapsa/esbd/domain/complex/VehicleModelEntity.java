@@ -4,11 +4,13 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
+@Table(name = "VEHICLE_MODEL")
 @HashCodePrime(41)
 public class VehicleModelEntity extends AEntity {
 
