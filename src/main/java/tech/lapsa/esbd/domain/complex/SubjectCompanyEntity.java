@@ -1,7 +1,9 @@
 package tech.lapsa.esbd.domain.complex;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -157,6 +159,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     // companyName
 
     @Basic
+    @Column(name = "COMPANY_NAME")
     private final String companyName;
 
     public String getCompanyName() {
@@ -166,6 +169,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     // headName
 
     @Basic
+    @Column(name = "HEAD_NAME")
     private final String headName;
 
     public String getHeadName() {
@@ -175,6 +179,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     // accountantName
 
     @Basic
+    @Column(name = "ACCOUNTANT_NAME")
     private final String accountantName;
 
     public String getAccountantName() {
@@ -184,6 +189,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     // companyActivityKind
 
     @ManyToOne
+    @JoinColumn(name = "COMPANY_ACTIVITY_KIND_ID")
     private final CompanyActivityKindEntity companyActivityKind;
 
     public CompanyActivityKindEntity getCompanyActivityKind() {

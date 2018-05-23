@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.complex;
 import java.util.function.Consumer;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -202,6 +203,7 @@ public abstract class SubjectEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -229,6 +231,7 @@ public abstract class SubjectEntity extends AEntity {
     // taxPayerNumber
 
     @Basic
+    @Column(name = "TAX_PAYER_NUMBER")
     private final String taxPayerNumber;
 
     public String getTaxPayerNumber() {
@@ -238,6 +241,7 @@ public abstract class SubjectEntity extends AEntity {
     // comments
 
     @Basic
+    @Column(name = "COMMENTS")
     private final String comments;
 
     public String getComments() {
@@ -247,6 +251,7 @@ public abstract class SubjectEntity extends AEntity {
     // resident
 
     @Basic
+    @Column(name = "RESIDENT")
     private final Boolean resident;
 
     public Boolean isResident() {
@@ -256,6 +261,7 @@ public abstract class SubjectEntity extends AEntity {
     // idNumber
 
     @Basic
+    @Column(name = "ID_NUMBER")
     private final TaxpayerNumber idNumber;
 
     public TaxpayerNumber getIdNumber() {
@@ -266,6 +272,7 @@ public abstract class SubjectEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "ECONOMICS_SECTOR")
     private final KZEconomicSector economicsSector;
 
     public KZEconomicSector getEconomicsSector() {
