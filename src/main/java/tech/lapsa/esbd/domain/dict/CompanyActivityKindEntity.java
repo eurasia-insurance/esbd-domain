@@ -17,19 +17,29 @@ public class CompanyActivityKindEntity extends ADictEntity {
     public static final class CompanyActivityKindEntityBuilder
 	    extends ADictEntityBuilder<CompanyActivityKindEntity, CompanyActivityKindEntityBuilder> {
 
+	// private & protected
+
 	@Override
 	protected CompanyActivityKindEntityBuilder _this() {
 	    return this;
 	}
 
-	private CompanyActivityKindEntityBuilder() {
-	    super(CompanyActivityKindEntity::new);
+	// constructor
+
+	protected CompanyActivityKindEntityBuilder() {
+	}
+
+	// public
+
+	@Override
+	public CompanyActivityKindEntity build() {
+	    return new CompanyActivityKindEntity(id, code, name);
 	}
     }
 
     // constructor
 
-    private CompanyActivityKindEntity(final Integer id,
+    protected CompanyActivityKindEntity(final Integer id,
 	    final String code,
 	    final String name) {
 	super(id, code, name);

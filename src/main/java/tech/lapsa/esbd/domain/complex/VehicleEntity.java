@@ -35,9 +35,9 @@ public class VehicleEntity extends AEntity {
     public static final class VehicleEntityBuilder
 	    extends AEntityBuilder<VehicleEntity, VehicleEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private VehicleClass vehicleClass;
+	protected VehicleClass vehicleClass;
 
 	private VehicleClass getVehicleClass() {
 	    return vehicleClass;
@@ -47,7 +47,7 @@ public class VehicleEntity extends AEntity {
 	    this.vehicleClass = vehicleClass;
 	}
 
-	private String vinCode;
+	protected String vinCode;
 
 	private String getVinCode() {
 	    return vinCode;
@@ -57,7 +57,7 @@ public class VehicleEntity extends AEntity {
 	    this.vinCode = vinCode;
 	}
 
-	private VehicleModelEntity vehicleModel;
+	protected VehicleModelEntity vehicleModel;
 
 	private VehicleModelEntity getVehicleModel() {
 	    return vehicleModel;
@@ -67,7 +67,7 @@ public class VehicleEntity extends AEntity {
 	    this.vehicleModel = vehicleModel;
 	}
 
-	private SteeringWheelLocation steeringWheelLocation;
+	protected SteeringWheelLocation steeringWheelLocation;
 
 	private SteeringWheelLocation getSteeringWheelLocation() {
 	    return steeringWheelLocation;
@@ -77,7 +77,7 @@ public class VehicleEntity extends AEntity {
 	    this.steeringWheelLocation = steeringWheelLocation;
 	}
 
-	private String color;
+	protected String color;
 
 	private String getColor() {
 	    return color;
@@ -87,7 +87,7 @@ public class VehicleEntity extends AEntity {
 	    this.color = color;
 	}
 
-	private LocalDate realeaseDate;
+	protected LocalDate realeaseDate;
 
 	private LocalDate getRealeaseDate() {
 	    return realeaseDate;
@@ -97,7 +97,7 @@ public class VehicleEntity extends AEntity {
 	    this.realeaseDate = realeaseDate;
 	}
 
-	private VehicleEngineInfo engine;
+	protected VehicleEngineInfo engine;
 
 	private VehicleEngineInfo getEngine() {
 	    return engine;
@@ -112,7 +112,9 @@ public class VehicleEntity extends AEntity {
 	    return this;
 	}
 
-	private VehicleEntityBuilder() {
+	// constructor
+
+	protected VehicleEntityBuilder() {
 	}
 
 	// public
@@ -168,7 +170,7 @@ public class VehicleEntity extends AEntity {
 
     // constructor
 
-    private VehicleEntity(final Integer id,
+    protected VehicleEntity(final Integer id,
 	    final VehicleClass vehicleClass,
 	    final String vinCode,
 	    final VehicleModelEntity vehicleModel,

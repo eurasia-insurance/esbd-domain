@@ -33,19 +33,9 @@ public class InsuranceAgentEntity extends AEntity {
     public static final class InsuranceAgentEntityBuilder
 	    extends AEntityBuilder<InsuranceAgentEntity, InsuranceAgentEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
-	private ContractInfo contract;
+	protected ContractInfo contract;
 
 	private ContractInfo getContract() {
 	    return contract;
@@ -55,7 +45,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.contract = contract;
 	}
 
-	private BranchEntity branch;
+	protected BranchEntity branch;
 
 	private BranchEntity getBranch() {
 	    return branch;
@@ -65,7 +55,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.branch = branch;
 	}
 
-	private UserEntity owner;
+	protected UserEntity owner;
 
 	private UserEntity getOwner() {
 	    return owner;
@@ -75,7 +65,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.owner = owner;
 	}
 
-	private SubjectEntity subject;
+	protected SubjectEntity subject;
 
 	private SubjectEntity getSubject() {
 	    return subject;
@@ -85,7 +75,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.subject = subject;
 	}
 
-	private RecordOperationInfo created;
+	protected RecordOperationInfo created;
 
 	private RecordOperationInfo getCreated() {
 	    return created;
@@ -95,7 +85,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.created = created;
 	}
 
-	private RecordOperationInfo modified;
+	protected RecordOperationInfo modified;
 
 	private RecordOperationInfo getModified() {
 	    return modified;
@@ -105,7 +95,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.modified = modified;
 	}
 
-	private InsuranceCompanyEntity insurer;
+	protected InsuranceCompanyEntity insurer;
 
 	private InsuranceCompanyEntity getInsurer() {
 	    return insurer;
@@ -115,7 +105,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
-	private String letterOfAttorneyNumber;
+	protected String letterOfAttorneyNumber;
 
 	private String getLetterOfAttorneyNumber() {
 	    return letterOfAttorneyNumber;
@@ -130,15 +120,12 @@ public class InsuranceAgentEntity extends AEntity {
 	    return this;
 	}
 
-	private InsuranceAgentEntityBuilder() {
+	// constructor
+
+	protected InsuranceAgentEntityBuilder() {
 	}
 
 	// public
-
-	public InsuranceAgentEntityBuilder withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public InsuranceAgentEntityBuilder withContract(final ContractInfo contract) {
 	    setIfNullOrThrow("contract", this::getContract, this::setContract, contract);
@@ -197,7 +184,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // constructor
 
-    private InsuranceAgentEntity(final Integer id,
+    protected InsuranceAgentEntity(final Integer id,
 	    final ContractInfo contract,
 	    final BranchEntity branch,
 	    final UserEntity owner,

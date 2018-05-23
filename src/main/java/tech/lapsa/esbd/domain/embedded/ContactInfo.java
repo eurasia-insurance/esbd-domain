@@ -22,9 +22,9 @@ public class ContactInfo extends ADomain {
     public static final class ContactInfoBuilder
 	    extends ADomainBuilder<ContactInfo, ContactInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private PhoneNumber phone;
+	protected PhoneNumber phone;
 
 	private PhoneNumber getPhone() {
 	    return phone;
@@ -34,7 +34,7 @@ public class ContactInfo extends ADomain {
 	    this.phone = phone;
 	}
 
-	private String email;
+	protected String email;
 
 	private String getEmail() {
 	    return email;
@@ -44,7 +44,7 @@ public class ContactInfo extends ADomain {
 	    this.email = email;
 	}
 
-	private String homeAdress;
+	protected String homeAdress;
 
 	private String getHomeAdress() {
 	    return homeAdress;
@@ -54,7 +54,7 @@ public class ContactInfo extends ADomain {
 	    this.homeAdress = homeAdress;
 	}
 
-	private String siteUrl;
+	protected String siteUrl;
 
 	private String getSiteUrl() {
 	    return siteUrl;
@@ -69,7 +69,9 @@ public class ContactInfo extends ADomain {
 	    return this;
 	}
 
-	private ContactInfoBuilder() {
+	// constructor
+
+	protected ContactInfoBuilder() {
 	}
 
 	// public
@@ -103,7 +105,9 @@ public class ContactInfo extends ADomain {
 	}
     }
 
-    private ContactInfo(final PhoneNumber phone,
+    // constructor
+
+    protected ContactInfo(final PhoneNumber phone,
 	    final String email,
 	    final String homeAdress,
 	    final String siteUrl) {

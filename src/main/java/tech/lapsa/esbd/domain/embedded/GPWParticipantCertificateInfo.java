@@ -26,14 +26,16 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
     public static final class GPWParticipantCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<GPWParticipantCertificateInfo, GPWParticipantCertificateInfoBuilder> {
 
-	// private
+	// private & protected
 
 	@Override
 	protected GPWParticipantCertificateInfoBuilder _this() {
 	    return this;
 	}
 
-	private GPWParticipantCertificateInfoBuilder() {
+	// constructor
+
+	protected GPWParticipantCertificateInfoBuilder() {
 	}
 
 	// public
@@ -47,7 +49,7 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 
     // constructor
 
-    private GPWParticipantCertificateInfo(final String number,
+    protected GPWParticipantCertificateInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
     }

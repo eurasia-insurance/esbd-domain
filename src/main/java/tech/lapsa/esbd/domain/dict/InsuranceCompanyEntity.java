@@ -17,19 +17,29 @@ public class InsuranceCompanyEntity extends ADictEntity {
     public static final class InsuranceCompanyEntityBuilder
 	    extends ADictEntityBuilder<InsuranceCompanyEntity, InsuranceCompanyEntityBuilder> {
 
+	// private & protected
+
 	@Override
 	protected InsuranceCompanyEntityBuilder _this() {
 	    return this;
 	}
 
-	private InsuranceCompanyEntityBuilder() {
-	    super(InsuranceCompanyEntity::new);
+	// constructor
+
+	protected InsuranceCompanyEntityBuilder() {
+	}
+
+	// public
+
+	@Override
+	public InsuranceCompanyEntity build() {
+	    return new InsuranceCompanyEntity(id, code, name);
 	}
     }
 
     // constructor
 
-    private InsuranceCompanyEntity(final Integer id,
+    protected InsuranceCompanyEntity(final Integer id,
 	    final String code,
 	    final String name) {
 	super(id, code, name);

@@ -30,9 +30,9 @@ public class SubjectCompanyEntity extends SubjectEntity {
     public static final class SubjectCompanyEntityBuilder
 	    extends SubjectEntityBuilder<SubjectCompanyEntity, SubjectCompanyEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private String companyName;
+	protected String companyName;
 
 	private String getCompanyName() {
 	    return companyName;
@@ -42,7 +42,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    this.companyName = companyName;
 	}
 
-	private String headName;
+	protected String headName;
 
 	private String getHeadName() {
 	    return headName;
@@ -52,7 +52,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    this.headName = headName;
 	}
 
-	private String accountantName;
+	protected String accountantName;
 
 	private String getAccountantName() {
 	    return accountantName;
@@ -62,7 +62,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    this.accountantName = accountantName;
 	}
 
-	private CompanyActivityKindEntity companyActivityKind;
+	protected CompanyActivityKindEntity companyActivityKind;
 
 	private CompanyActivityKindEntity getCompanyActivityKind() {
 	    return companyActivityKind;
@@ -76,6 +76,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	protected SubjectCompanyEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private SubjectCompanyEntityBuilder() {
 	}
@@ -123,7 +125,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // constructor
 
-    private SubjectCompanyEntity(Integer id,
+    protected SubjectCompanyEntity(Integer id,
 	    final OriginInfo origin,
 	    final ContactInfo contact,
 	    final String taxPayerNumber,

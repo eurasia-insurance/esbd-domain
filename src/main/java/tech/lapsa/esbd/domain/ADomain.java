@@ -18,11 +18,11 @@ public abstract class ADomain implements Serializable {
 
     public static abstract class ADomainBuilder<ET extends ADomain, BT extends ADomainBuilder<ET, BT>> {
 
-	// private
-
-	// private
+	// private & protected
 
 	protected abstract BT _this();
+
+	// constructor
 
 	protected ADomainBuilder() {
 	}

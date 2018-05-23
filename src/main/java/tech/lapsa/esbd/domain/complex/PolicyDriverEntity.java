@@ -45,9 +45,9 @@ public class PolicyDriverEntity extends AEntity {
     public static final class PolicyDriverEntityBuilder
 	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private SubjectPersonEntity insuredPerson;
+	protected SubjectPersonEntity insuredPerson;
 
 	private SubjectPersonEntity getInsuredPerson() {
 	    return insuredPerson;
@@ -57,7 +57,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insuredPerson = insuredPerson;
 	}
 
-	private MaritalStatus maritalStatus;
+	protected MaritalStatus maritalStatus;
 
 	private MaritalStatus getMaritalStatus() {
 	    return maritalStatus;
@@ -67,7 +67,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.maritalStatus = maritalStatus;
 	}
 
-	private InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
+	protected InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 
 	private InsuredAgeAndExpirienceClass getInsuredAgeExpirienceClass() {
 	    return insuredAgeExpirienceClass;
@@ -77,7 +77,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insuredAgeExpirienceClass = insuredAgeExpirienceClass;
 	}
 
-	private Integer drivingExpirience;
+	protected Integer drivingExpirience;
 
 	private Integer getDrivingExpirience() {
 	    return drivingExpirience;
@@ -87,7 +87,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.drivingExpirience = drivingExpirience;
 	}
 
-	private DriverLicenseInfo driverLicense;
+	protected DriverLicenseInfo driverLicense;
 
 	private DriverLicenseInfo getDriverLicense() {
 	    return driverLicense;
@@ -97,7 +97,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.driverLicense = driverLicense;
 	}
 
-	private InsuranceClassType insuranceClassType;
+	protected InsuranceClassType insuranceClassType;
 
 	private InsuranceClassType getInsuranceClassType() {
 	    return insuranceClassType;
@@ -107,7 +107,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insuranceClassType = insuranceClassType;
 	}
 
-	private PrivilegerDocumentInfo privilegerInfo;
+	protected PrivilegerDocumentInfo privilegerInfo;
 
 	private PrivilegerDocumentInfo getPrivilegerInfo() {
 	    return privilegerInfo;
@@ -117,7 +117,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.privilegerInfo = privilegerInfo;
 	}
 
-	private GPWParticipantCertificateInfo gpwParticipantInfo;
+	protected GPWParticipantCertificateInfo gpwParticipantInfo;
 
 	private GPWParticipantCertificateInfo getGpwParticipantInfo() {
 	    return gpwParticipantInfo;
@@ -127,7 +127,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.gpwParticipantInfo = gpwParticipantInfo;
 	}
 
-	private PensionerCertificateInfo pensionerInfo;
+	protected PensionerCertificateInfo pensionerInfo;
 
 	private PensionerCertificateInfo getPensionerInfo() {
 	    return pensionerInfo;
@@ -137,7 +137,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.pensionerInfo = pensionerInfo;
 	}
 
-	private HandicappedCertificateInfo handicappedInfo;
+	protected HandicappedCertificateInfo handicappedInfo;
 
 	private HandicappedCertificateInfo getHandicappedInfo() {
 	    return handicappedInfo;
@@ -147,7 +147,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.handicappedInfo = handicappedInfo;
 	}
 
-	private RecordOperationInfo created;
+	protected RecordOperationInfo created;
 
 	private RecordOperationInfo getCreated() {
 	    return created;
@@ -157,7 +157,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.created = created;
 	}
 
-	private RecordOperationInfo modified;
+	protected RecordOperationInfo modified;
 
 	private RecordOperationInfo getModified() {
 	    return modified;
@@ -167,7 +167,7 @@ public class PolicyDriverEntity extends AEntity {
 	    this.modified = modified;
 	}
 
-	private InsuranceCompanyEntity insurer;
+	protected InsuranceCompanyEntity insurer;
 
 	private InsuranceCompanyEntity getInsurer() {
 	    return insurer;
@@ -182,7 +182,9 @@ public class PolicyDriverEntity extends AEntity {
 	    return this;
 	}
 
-	private PolicyDriverEntityBuilder() {
+	// constructor
+
+	protected PolicyDriverEntityBuilder() {
 	}
 
 	// public
@@ -290,7 +292,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // constructor
 
-    private PolicyDriverEntity(final Integer id,
+    protected PolicyDriverEntity(final Integer id,
 	    final SubjectPersonEntity insuredPerson,
 	    final MaritalStatus maritalStatus,
 	    final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass,

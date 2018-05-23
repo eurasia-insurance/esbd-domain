@@ -25,9 +25,9 @@ public class OriginInfo extends ADomain {
     public static final class OriginInfoBuilder
 	    extends ADomainBuilder<OriginInfo, OriginInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private Country country;
+	protected Country country;
 
 	private Country getCountry() {
 	    return country;
@@ -37,7 +37,7 @@ public class OriginInfo extends ADomain {
 	    this.country = country;
 	}
 
-	private KZCity city;
+	protected KZCity city;
 
 	private KZCity getCity() {
 	    return city;
@@ -52,7 +52,9 @@ public class OriginInfo extends ADomain {
 	    return this;
 	}
 
-	private OriginInfoBuilder() {
+	// constructor
+
+	protected OriginInfoBuilder() {
 	}
 
 	// public
@@ -75,7 +77,7 @@ public class OriginInfo extends ADomain {
 
     // constructor
 
-    private OriginInfo(final Country country,
+    protected OriginInfo(final Country country,
 	    final KZCity city) {
 	this.country = country;
 	this.city = city;

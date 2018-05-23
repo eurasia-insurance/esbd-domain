@@ -28,9 +28,9 @@ public class PersonalInfo extends ADomain {
     public static final class PersonalInfoBuilder
 	    extends ADomainBuilder<PersonalInfo, PersonalInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private String name;
+	protected String name;
 
 	private String getName() {
 	    return name;
@@ -40,7 +40,7 @@ public class PersonalInfo extends ADomain {
 	    this.name = name;
 	}
 
-	private String surename;
+	protected String surename;
 
 	private String getSurename() {
 	    return surename;
@@ -50,7 +50,7 @@ public class PersonalInfo extends ADomain {
 	    this.surename = surename;
 	}
 
-	private String patronymic;
+	protected String patronymic;
 
 	private String getPatronymic() {
 	    return patronymic;
@@ -60,7 +60,7 @@ public class PersonalInfo extends ADomain {
 	    this.patronymic = patronymic;
 	}
 
-	private LocalDate dayOfBirth;
+	protected LocalDate dayOfBirth;
 
 	private LocalDate getDayOfBirth() {
 	    return dayOfBirth;
@@ -70,7 +70,7 @@ public class PersonalInfo extends ADomain {
 	    this.dayOfBirth = dayOfBirth;
 	}
 
-	private Sex gender;
+	protected Sex gender;
 
 	private Sex getGender() {
 	    return gender;
@@ -85,7 +85,9 @@ public class PersonalInfo extends ADomain {
 	    return this;
 	}
 
-	private PersonalInfoBuilder() {
+	// constructor
+
+	protected PersonalInfoBuilder() {
 	}
 
 	// public
@@ -127,7 +129,7 @@ public class PersonalInfo extends ADomain {
 
     // constructor
 
-    private PersonalInfo(final String name,
+    protected PersonalInfo(final String name,
 	    final String surename,
 	    final String patronymic,
 	    final LocalDate dayOfBirth,

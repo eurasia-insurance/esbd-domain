@@ -32,9 +32,9 @@ public class VehicleCertificateInfo extends ADocumentInfo {
     public static final class VehicleCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<VehicleCertificateInfo, VehicleCertificateInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private VehicleRegNumber registrationNumber;
+	protected VehicleRegNumber registrationNumber;
 
 	private VehicleRegNumber getRegistrationNumber() {
 	    return registrationNumber;
@@ -44,7 +44,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    this.registrationNumber = registrationNumber;
 	}
 
-	private KZArea registrationRegion;
+	protected KZArea registrationRegion;
 
 	private KZArea getRegistrationRegion() {
 	    return registrationRegion;
@@ -54,7 +54,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    this.registrationRegion = registrationRegion;
 	}
 
-	private Boolean registrationMajorCity;
+	protected Boolean registrationMajorCity;
 
 	private Boolean getRegistrationMajorCity() {
 	    return registrationMajorCity;
@@ -69,7 +69,9 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    return this;
 	}
 
-	private VehicleCertificateInfoBuilder() {
+	// constructor
+
+	protected VehicleCertificateInfoBuilder() {
 	}
 
 	// public
@@ -104,7 +106,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // constructor
 
-    private VehicleCertificateInfo(final String number,
+    protected VehicleCertificateInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final VehicleRegNumber registrationNumber,
 	    final KZArea registrationRegion,

@@ -24,9 +24,9 @@ public class ContractInfo extends ADomain {
     public static final class ContractInfoBuilder
 	    extends ADomainBuilder<ContractInfo, ContractInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private String number;
+	protected String number;
 
 	private String getNumber() {
 	    return number;
@@ -36,7 +36,7 @@ public class ContractInfo extends ADomain {
 	    this.number = number;
 	}
 
-	private LocalDate dateOf;
+	protected LocalDate dateOf;
 
 	private LocalDate getDateOf() {
 	    return dateOf;
@@ -51,7 +51,9 @@ public class ContractInfo extends ADomain {
 	    return this;
 	}
 
-	private ContractInfoBuilder() {
+	// constructor
+
+	protected ContractInfoBuilder() {
 	}
 
 	// public
@@ -75,7 +77,7 @@ public class ContractInfo extends ADomain {
 
     // constructor
 
-    private ContractInfo(final String number,
+    protected ContractInfo(final String number,
 	    final LocalDate dateOf) {
 	this.number = number;
 	this.dateOf = dateOf;

@@ -30,6 +30,8 @@ public abstract class SubjectEntity extends AEntity {
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
 	    extends AEntityBuilder<T, B> {
 
+	// private & protected
+
 	protected OriginInfo origin;
 
 	private OriginInfo getOrigin() {
@@ -100,10 +102,10 @@ public abstract class SubjectEntity extends AEntity {
 	    this.economicsSector = economicsSector;
 	}
 
+	// constructor
+
 	protected SubjectEntityBuilder() {
 	}
-
-	protected abstract B _this();
 
 	// public
 

@@ -27,9 +27,9 @@ public class RecordOperationInfo extends ADomain {
     public static final class RecordOperationInfoBuilder
 	    extends ADomainBuilder<RecordOperationInfo, RecordOperationInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private Instant instant;
+	protected Instant instant;
 
 	private Instant getInstant() {
 	    return instant;
@@ -39,7 +39,7 @@ public class RecordOperationInfo extends ADomain {
 	    this.instant = instant;
 	}
 
-	private UserEntity author;
+	protected UserEntity author;
 
 	private UserEntity getAuthor() {
 	    return author;
@@ -54,7 +54,9 @@ public class RecordOperationInfo extends ADomain {
 	    return this;
 	}
 
-	private RecordOperationInfoBuilder() {
+	// constructor
+
+	protected RecordOperationInfoBuilder() {
 	}
 
 	// public
@@ -78,7 +80,7 @@ public class RecordOperationInfo extends ADomain {
 
     // constructor
 
-    private RecordOperationInfo(final Instant instant,
+    protected RecordOperationInfo(final Instant instant,
 	    final UserEntity author) {
 	this.instant = instant;
 	this.author = author;

@@ -27,9 +27,9 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
     public static final class PrivilegerDocumentInfoBuilder
 	    extends ADocumentInfoBuilder<PrivilegerDocumentInfo, PrivilegerDocumentInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private String type;
+	protected String type;
 
 	private String getType() {
 	    return type;
@@ -44,7 +44,9 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	    return this;
 	}
 
-	private PrivilegerDocumentInfoBuilder() {
+	// constructor
+
+	protected PrivilegerDocumentInfoBuilder() {
 	}
 
 	// public
@@ -64,7 +66,7 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 
     // constructor
 
-    private PrivilegerDocumentInfo(final String number,
+    protected PrivilegerDocumentInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final String type) {
 	super(number, dateOfIssue);

@@ -31,9 +31,9 @@ public class IdentityCardInfo extends ADocumentInfo {
     public static final class IdentityCardInfoBuilder
 	    extends ADocumentInfoBuilder<IdentityCardInfo, IdentityCardInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private String issuingAuthority;
+	protected String issuingAuthority;
 
 	private String getIssuingAuthority() {
 	    return issuingAuthority;
@@ -43,7 +43,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    this.issuingAuthority = issuingAuthority;
 	}
 
-	private IdentityCardType identityCardType;
+	protected IdentityCardType identityCardType;
 
 	private IdentityCardType getIdentityCardType() {
 	    return identityCardType;
@@ -58,7 +58,9 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    return this;
 	}
 
-	private IdentityCardInfoBuilder() {
+	// constructor
+
+	protected IdentityCardInfoBuilder() {
 	}
 
 	// public
@@ -86,7 +88,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // constructor
 
-    private IdentityCardInfo(final String number,
+    protected IdentityCardInfo(final String number,
 	    final LocalDate dateOfIssue,
 	    final String issuingAuthority,
 	    final IdentityCardType identityCardType) {

@@ -11,9 +11,7 @@ public abstract class AEntity extends ADomain {
     public static abstract class AEntityBuilder<ET extends ADomain, BT extends AEntityBuilder<ET, BT>>
 	    extends ADomainBuilder<ET, BT> {
 
-	// private
-
-	// private
+	// private & protected
 
 	protected Integer id;
 
@@ -26,6 +24,8 @@ public abstract class AEntity extends ADomain {
 	}
 
 	protected abstract BT _this();
+
+	// constructor
 
 	protected AEntityBuilder() {
 	}
