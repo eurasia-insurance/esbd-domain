@@ -16,14 +16,16 @@ public class PensionerCertificateInfo extends ADocumentInfo {
     public static final class PensionerCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<PensionerCertificateInfo, PensionerCertificateInfoBuilder> {
 
-	// private
+	// private & protected
 
 	@Override
 	protected PensionerCertificateInfoBuilder _this() {
 	    return this;
 	}
 
-	private PensionerCertificateInfoBuilder() {
+	// constructor
+
+	protected PensionerCertificateInfoBuilder() {
 	}
 
 	// public
@@ -35,7 +37,9 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	}
     }
 
-    private PensionerCertificateInfo(final String number,
+    // constructor
+
+    protected PensionerCertificateInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
     }
