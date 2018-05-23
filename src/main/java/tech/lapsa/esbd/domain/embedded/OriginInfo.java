@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -84,6 +85,7 @@ public class OriginInfo extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "ORIGIN_COUNTRY")
     private final Country country;
 
     public Country getCountry() {
@@ -94,6 +96,7 @@ public class OriginInfo extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "ORIGIN_CITY")
     private final KZCity city;
 
     public KZCity getCity() {

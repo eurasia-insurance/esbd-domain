@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -117,6 +118,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
     // registrationNumber
 
     @Basic
+    @Column(name = "VEHICLE_CERTIFICATE_REGNUM")
     private final VehicleRegNumber registrationNumber;
 
     public VehicleRegNumber getRegistrationNumber() {
@@ -127,6 +129,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "VEHICLE_CERTIFICATE_REGION")
     private final KZArea registrationRegion;
 
     public KZArea getRegistrationRegion() {
@@ -136,6 +139,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
     // registrationMajorCity
 
     @Basic
+    @Column(name = "VEHICLE_CERTIFICATE_MAJOR_CITY")
     private final Boolean registrationMajorCity;
 
     boolean isRegistrationMajorCity() {

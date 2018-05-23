@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -86,6 +87,7 @@ public class CancelationInfo extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "CANCELATION_DATE_OF")
     private final LocalDate dateOf;
 
     public LocalDate getDateOf() {
@@ -96,6 +98,7 @@ public class CancelationInfo extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "CANCELATION_REASON")
     private final CancelationReason reason;
 
     public CancelationReason getReason() {

@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -106,6 +107,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "IDENTITY_CARD_TYPE")
     private IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {

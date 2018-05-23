@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
@@ -71,6 +72,7 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
     // type
 
     @Basic
+    @Column(name = "PRIVILEGER_TYPE")
     private final String type;
 
     public String getType() {

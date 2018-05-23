@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import com.lapsa.international.phone.PhoneNumber;
@@ -117,6 +118,7 @@ public class ContactInfo extends AEntity {
     // phone
 
     @Basic
+    @Column(name = "CONTACT_PHONE")
     private final PhoneNumber phone;
 
     public PhoneNumber getPhone() {
@@ -126,6 +128,7 @@ public class ContactInfo extends AEntity {
     // email
 
     @Basic
+    @Column(name = "CONTACT_EMAIL")
     private final String email;
 
     public String getEmail() {
@@ -135,6 +138,7 @@ public class ContactInfo extends AEntity {
     // homeAdress
 
     @Basic
+    @Column(name = "CONTACT_HOME_ADDRESS")
     private final String homeAdress;
 
     public String getHomeAdress() {
@@ -144,6 +148,7 @@ public class ContactInfo extends AEntity {
     // siteUrl
 
     @Basic
+    @Column(name = "CONTACT_SITE_URL")
     private final String siteUrl;
 
     public String getSiteUrl() {

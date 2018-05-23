@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -144,6 +145,7 @@ public class PersonalInfo extends AEntity {
     // name
 
     @Basic
+    @Column(name = "PERSONAL_NAME")
     private final String name;
 
     public String getName() {
@@ -153,6 +155,7 @@ public class PersonalInfo extends AEntity {
     // surename
 
     @Basic
+    @Column(name = "PERSONAL_SURENAME")
     private final String surename;
 
     public String getSurename() {
@@ -162,6 +165,7 @@ public class PersonalInfo extends AEntity {
     // patronymic
 
     @Basic
+    @Column(name = "PERSONAL_PATRONYMIC")
     private final String patronymic;
 
     public String getPatronymic() {
@@ -172,6 +176,7 @@ public class PersonalInfo extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "PERSONAL_DATE_OF_BIRTH")
     private final LocalDate dayOfBirth;
 
     public LocalDate getDayOfBirth() {
@@ -182,6 +187,7 @@ public class PersonalInfo extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "PERSONAL_GENDER")
     private final Sex gender;
 
     public Sex getGender() {

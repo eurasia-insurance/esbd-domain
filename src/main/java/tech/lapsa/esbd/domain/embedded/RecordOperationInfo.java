@@ -88,7 +88,7 @@ public class RecordOperationInfo extends AEntity {
 
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "INSTANT")
+    @Column(name = "OPERATION_INSTANT")
     private final Instant instant;
 
     public Instant getInstant() {
@@ -98,7 +98,7 @@ public class RecordOperationInfo extends AEntity {
     // author
 
     @ManyToOne
-    @JoinColumn(name = "AUTHOR_ID")
+    @JoinColumn(name = "OPERATION_AUTHOR_ID")
     private final UserEntity author;
 
     public UserEntity getAuthor() {

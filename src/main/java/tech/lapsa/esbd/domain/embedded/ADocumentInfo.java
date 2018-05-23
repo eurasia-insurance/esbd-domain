@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -71,6 +72,7 @@ public abstract class ADocumentInfo extends AEntity {
     // number
 
     @Basic
+    @Column(name = "DOCUMENT_NUMBER")
     private final String number;
 
     public String getCertificateNumber() {
@@ -81,6 +83,7 @@ public abstract class ADocumentInfo extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "DOCUMENT_DATE_OF_ISSUE")
     private final LocalDate dateOfIssue;
 
     public LocalDate getCertificateDateOfIssue() {

@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import tech.lapsa.esbd.domain.AEntity;
@@ -105,6 +106,7 @@ public class VehicleEngineInfo extends AEntity {
     // engineVolume
 
     @Basic
+    @Column(name = "VEHICLE_ENGINE_VOLUME")
     private final Integer volume;
 
     public Integer getVolume() {
@@ -114,6 +116,7 @@ public class VehicleEngineInfo extends AEntity {
     // engineNumber
 
     @Basic
+    @Column(name = "VEHICLE_ENGINE_NUMBER")
     private final String number;
 
     public String getNumber() {
@@ -123,6 +126,7 @@ public class VehicleEngineInfo extends AEntity {
     // enginePower
 
     @Basic
+    @Column(name = "VEHICLE_ENGINE_POWER")
     private final Integer power;
 
     public Integer getPower() {

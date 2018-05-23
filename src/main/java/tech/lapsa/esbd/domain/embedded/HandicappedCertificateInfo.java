@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -93,6 +94,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "CERTIFICATE_VALID_FROM")
     private final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
@@ -103,6 +105,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "CERTIFICATE_VALID_TILL")
     private final LocalDate validTill;
 
     public LocalDate getValidTill() {
