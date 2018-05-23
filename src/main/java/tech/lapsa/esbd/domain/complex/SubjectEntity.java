@@ -18,6 +18,8 @@ public abstract class SubjectEntity extends AEntity {
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
 	    extends AEntityBuilder<T, B> {
 
+	// private & protected
+
 	protected OriginInfo origin;
 
 	private OriginInfo getOrigin() {
@@ -87,6 +89,8 @@ public abstract class SubjectEntity extends AEntity {
 	private void setEconomicsSector(KZEconomicSector economicsSector) {
 	    this.economicsSector = economicsSector;
 	}
+
+	// constructor
 
 	protected SubjectEntityBuilder() {
 	}

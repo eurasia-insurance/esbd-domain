@@ -29,7 +29,7 @@ public class PolicyEntity extends AEntity {
     public static final class PolicyEntityBuilder
 	    extends AEntityBuilder<PolicyEntity, PolicyEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private String number;
 
@@ -229,6 +229,8 @@ public class PolicyEntity extends AEntity {
 	protected PolicyEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private PolicyEntityBuilder() {
 	}

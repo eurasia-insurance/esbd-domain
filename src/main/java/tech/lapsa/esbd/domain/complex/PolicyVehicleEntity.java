@@ -22,7 +22,7 @@ public class PolicyVehicleEntity extends AEntity {
     public static final class PolicyVehicleEntityBuilder
 	    extends AEntityBuilder<PolicyVehicleEntity, PolicyVehicleEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private VehicleEntity vehicle;
 
@@ -118,6 +118,8 @@ public class PolicyVehicleEntity extends AEntity {
 	protected PolicyVehicleEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private PolicyVehicleEntityBuilder() {
 	}

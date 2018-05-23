@@ -21,7 +21,7 @@ public class VehicleEntity extends AEntity {
     public static final class VehicleEntityBuilder
 	    extends AEntityBuilder<VehicleEntity, VehicleEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private VehicleClass vehicleClass;
 
@@ -97,6 +97,8 @@ public class VehicleEntity extends AEntity {
 	protected VehicleEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private VehicleEntityBuilder() {
 	}

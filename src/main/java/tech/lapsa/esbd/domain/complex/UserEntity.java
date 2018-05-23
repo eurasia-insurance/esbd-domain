@@ -19,7 +19,7 @@ public class UserEntity extends AEntity {
     public static final class UserEntityBuilder
 	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private String login;
 
@@ -95,6 +95,8 @@ public class UserEntity extends AEntity {
 	protected UserEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private UserEntityBuilder() {
 	}

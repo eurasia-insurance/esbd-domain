@@ -30,7 +30,7 @@ public class PolicyDriverEntity extends AEntity {
     public static final class PolicyDriverEntityBuilder
 	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private SubjectPersonEntity insuredPerson;
 
@@ -166,6 +166,8 @@ public class PolicyDriverEntity extends AEntity {
 	protected PolicyDriverEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private PolicyDriverEntityBuilder() {
 	}

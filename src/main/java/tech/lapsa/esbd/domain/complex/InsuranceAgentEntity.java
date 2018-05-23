@@ -19,17 +19,7 @@ public class InsuranceAgentEntity extends AEntity {
     public static final class InsuranceAgentEntityBuilder
 	    extends AEntityBuilder<InsuranceAgentEntity, InsuranceAgentEntityBuilder> {
 
-	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
+	// private & protected
 
 	private ContractInfo contract;
 
@@ -115,6 +105,8 @@ public class InsuranceAgentEntity extends AEntity {
 	protected InsuranceAgentEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private InsuranceAgentEntityBuilder() {
 	}

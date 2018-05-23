@@ -22,7 +22,7 @@ public class SubjectPersonEntity extends SubjectEntity {
     public static final class SubjectPersonEntityBuilder
 	    extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private PersonalInfo personal;
 
@@ -48,6 +48,8 @@ public class SubjectPersonEntity extends SubjectEntity {
 	protected SubjectPersonEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private SubjectPersonEntityBuilder() {
 	}

@@ -21,7 +21,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     public static final class SubjectCompanyEntityBuilder
 	    extends SubjectEntityBuilder<SubjectCompanyEntity, SubjectCompanyEntityBuilder> {
 
-	// private
+	// private & protected
 
 	private String companyName;
 
@@ -67,6 +67,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	protected SubjectCompanyEntityBuilder _this() {
 	    return this;
 	}
+
+	// constructor
 
 	private SubjectCompanyEntityBuilder() {
 	}
