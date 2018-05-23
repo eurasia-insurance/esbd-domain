@@ -3,7 +3,6 @@ package tech.lapsa.esbd.domain.complex;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
@@ -25,16 +24,6 @@ public class VehicleManufacturerEntity extends AEntity {
 
 	// private
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
 	private String name;
 
 	private String getName() {
@@ -55,15 +44,15 @@ public class VehicleManufacturerEntity extends AEntity {
 	    this.foreign = foreign;
 	}
 
+	@Override
+	protected VehicleManufacturerEntityBuilder _this() {
+	    return this;
+	}
+
 	private VehicleManufacturerEntityBuilder() {
 	}
 
 	// public
-
-	public VehicleManufacturerEntityBuilder withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public VehicleManufacturerEntityBuilder withName(final String name) {
 	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
@@ -88,25 +77,14 @@ public class VehicleManufacturerEntity extends AEntity {
     private VehicleManufacturerEntity(final Integer id,
 	    final String name,
 	    final Boolean foreign) {
-	this.id = id;
+	super(id);
 	this.name = name;
 	this.foreign = foreign;
     }
 
     protected VehicleManufacturerEntity() {
-	this.id = null;
 	this.name = null;
 	this.foreign = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // name

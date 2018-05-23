@@ -10,13 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.esbd.domain.complex.UserEntity;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
 @HashCodePrime(257)
-public class RecordOperationInfo extends AEntity {
+public class RecordOperationInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,7 +25,7 @@ public class RecordOperationInfo extends AEntity {
     }
 
     public static final class RecordOperationInfoBuilder
-	    extends AEntityBuilder<RecordOperationInfo, RecordOperationInfoBuilder> {
+	    extends ADomainBuilder<RecordOperationInfo, RecordOperationInfoBuilder> {
 
 	// private
 
@@ -47,6 +47,11 @@ public class RecordOperationInfo extends AEntity {
 
 	private void setAuthor(UserEntity author) {
 	    this.author = author;
+	}
+
+	@Override
+	protected RecordOperationInfoBuilder _this() {
+	    return this;
 	}
 
 	private RecordOperationInfoBuilder() {

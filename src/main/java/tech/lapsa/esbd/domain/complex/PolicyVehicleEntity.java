@@ -10,7 +10,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -40,16 +39,6 @@ public class PolicyVehicleEntity extends AEntity {
 	    extends AEntityBuilder<PolicyVehicleEntity, PolicyVehicleEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private VehicleEntity vehicle;
 
@@ -141,15 +130,15 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
+	@Override
+	protected PolicyVehicleEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyVehicleEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyVehicleEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
 	    setIfNullOrThrow("vehicle", this::getVehicle, this::setVehicle, vehicle);
@@ -232,7 +221,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final InsuranceCompanyEntity insurer) {
-	this.id = id;
+	super(id);
 	this.vehicle = vehicle;
 	this.vehicleClass = vehicleClass;
 	this.vehicleAgeClass = vehicleAgeClass;
@@ -245,7 +234,6 @@ public class PolicyVehicleEntity extends AEntity {
     }
 
     protected PolicyVehicleEntity() {
-	this.id = null;
 	this.vehicle = null;
 	this.vehicleClass = null;
 	this.vehicleAgeClass = null;
@@ -255,16 +243,6 @@ public class PolicyVehicleEntity extends AEntity {
 	this.created = null;
 	this.modified = null;
 	this.insurer = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // vehicle

@@ -12,12 +12,12 @@ import javax.persistence.TemporalType;
 
 import com.lapsa.insurance.elements.Sex;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
 @HashCodePrime(293)
-public class PersonalInfo extends AEntity {
+public class PersonalInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class PersonalInfo extends AEntity {
     }
 
     public static final class PersonalInfoBuilder
-	    extends AEntityBuilder<PersonalInfo, PersonalInfoBuilder> {
+	    extends ADomainBuilder<PersonalInfo, PersonalInfoBuilder> {
 
 	// private
 
@@ -78,6 +78,11 @@ public class PersonalInfo extends AEntity {
 
 	private void setGender(Sex gender) {
 	    this.gender = gender;
+	}
+
+	@Override
+	protected PersonalInfoBuilder _this() {
+	    return this;
 	}
 
 	private PersonalInfoBuilder() {

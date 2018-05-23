@@ -10,7 +10,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -47,16 +46,6 @@ public class PolicyDriverEntity extends AEntity {
 	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private SubjectPersonEntity insuredPerson;
 
@@ -188,15 +177,15 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
+	@Override
+	protected PolicyDriverEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyDriverEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyDriverEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyDriverEntityBuilder withInsuredPerson(final SubjectPersonEntity insuredPerson)
 		throws IllegalArgumentException {
@@ -315,7 +304,7 @@ public class PolicyDriverEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final InsuranceCompanyEntity insurer) {
-	this.id = id;
+	super(id);
 	this.insuredPerson = insuredPerson;
 	this.maritalStatus = maritalStatus;
 	this.insuredAgeExpirienceClass = insuredAgeExpirienceClass;
@@ -332,7 +321,6 @@ public class PolicyDriverEntity extends AEntity {
     }
 
     protected PolicyDriverEntity() {
-	this.id = null;
 	this.insuredPerson = null;
 	this.maritalStatus = null;
 	this.insuredAgeExpirienceClass = null;
@@ -346,16 +334,6 @@ public class PolicyDriverEntity extends AEntity {
 	this.created = null;
 	this.modified = null;
 	this.insurer = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // insuredPerson

@@ -8,7 +8,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -30,16 +29,6 @@ public abstract class SubjectEntity extends AEntity {
 
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
 	    extends AEntityBuilder<T, B> {
-
-	protected Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	protected OriginInfo origin;
 
@@ -118,11 +107,6 @@ public abstract class SubjectEntity extends AEntity {
 
 	// public
 
-	public B withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return _this();
-	}
-
 	public B withOrigin(final OriginInfo origin) {
 	    setIfNullOrThrow("origin", this::getOrigin, this::setOrigin, origin);
 	    return _this();
@@ -175,7 +159,7 @@ public abstract class SubjectEntity extends AEntity {
 	    final Boolean resident,
 	    final TaxpayerNumber idNumber,
 	    final KZEconomicSector economicsSector) {
-	this.id = id;
+	super(id);
 	this.origin = origin;
 	this.contact = contact;
 	this.taxPayerNumber = taxPayerNumber;
@@ -186,7 +170,6 @@ public abstract class SubjectEntity extends AEntity {
     }
 
     protected SubjectEntity() {
-	this.id = null;
 	this.origin = null;
 	this.contact = null;
 	this.taxPayerNumber = null;
@@ -199,16 +182,6 @@ public abstract class SubjectEntity extends AEntity {
     // subjectType
 
     public abstract SubjectType getSubjectType();
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
-    }
 
     // origin
 

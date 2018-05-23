@@ -15,7 +15,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -49,16 +48,6 @@ public class PolicyEntity extends AEntity {
 	    extends AEntityBuilder<PolicyEntity, PolicyEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private String number;
 
@@ -254,15 +243,15 @@ public class PolicyEntity extends AEntity {
 	    this.insuranceAgent = insuranceAgent;
 	}
 
+	@Override
+	protected PolicyEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
 	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
@@ -433,7 +422,7 @@ public class PolicyEntity extends AEntity {
 	    final LocalDate dateOfPayment,
 	    final PaymentType paymentType,
 	    final InsuranceAgentEntity insuranceAgent) {
-	this.id = id;
+	super(id);
 	this.number = number;
 	this.internalNumber = internalNumber;
 	this.validFrom = validFrom;
@@ -458,7 +447,6 @@ public class PolicyEntity extends AEntity {
     }
 
     protected PolicyEntity() {
-	this.id = null;
 	this.number = null;
 	this.internalNumber = null;
 	this.validFrom = null;
@@ -480,16 +468,6 @@ public class PolicyEntity extends AEntity {
 	this.dateOfPayment = null;
 	this.paymentType = null;
 	this.insuranceAgent = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // number

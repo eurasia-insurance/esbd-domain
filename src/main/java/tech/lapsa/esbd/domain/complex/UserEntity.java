@@ -5,7 +5,6 @@ import java.time.Instant;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -32,16 +31,6 @@ public class UserEntity extends AEntity {
 	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private String login;
 
@@ -113,15 +102,15 @@ public class UserEntity extends AEntity {
 	    this.lastActivity = lastActivity;
 	}
 
+	@Override
+	protected UserEntityBuilder _this() {
+	    return this;
+	}
+
 	private UserEntityBuilder() {
 	}
 
 	// public
-
-	public UserEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public UserEntityBuilder withLogin(final String login) throws IllegalArgumentException {
 	    setStringIfNullOrThrow("login", this::getLogin, this::setLogin, login);
@@ -182,7 +171,7 @@ public class UserEntity extends AEntity {
 	    final Boolean authentificated,
 	    final String lastSesionId,
 	    final Instant lastActivity) {
-	this.id = id;
+	super(id);
 	this.login = login;
 	this.branch = branch;
 	this.subject = subject;
@@ -193,7 +182,6 @@ public class UserEntity extends AEntity {
     }
 
     protected UserEntity() {
-	this.id = null;
 	this.login = null;
 	this.branch = null;
 	this.subject = null;
@@ -201,16 +189,6 @@ public class UserEntity extends AEntity {
 	this.authentificated = null;
 	this.lastSesionId = null;
 	this.lastActivity = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // login

@@ -8,7 +8,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -126,6 +125,11 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.letterOfAttorneyNumber = letterOfAttorneyNumber;
 	}
 
+	@Override
+	protected InsuranceAgentEntityBuilder _this() {
+	    return this;
+	}
+
 	private InsuranceAgentEntityBuilder() {
 	}
 
@@ -201,7 +205,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final String letterOfAttorneyNumber) {
-	this.id = id;
+	super(id);
 	this.contract = contract;
 	this.branch = branch;
 	this.owner = owner;
@@ -212,7 +216,6 @@ public class InsuranceAgentEntity extends AEntity {
     }
 
     protected InsuranceAgentEntity() {
-	this.id = null;
 	this.contract = null;
 	this.branch = null;
 	this.owner = null;
@@ -220,16 +223,6 @@ public class InsuranceAgentEntity extends AEntity {
 	this.created = null;
 	this.modified = null;
 	this.letterOfAttorneyNumber = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // contract

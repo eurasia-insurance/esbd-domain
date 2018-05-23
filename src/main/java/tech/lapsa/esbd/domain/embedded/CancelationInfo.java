@@ -12,12 +12,12 @@ import javax.persistence.TemporalType;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
 @HashCodePrime(241)
-public class CancelationInfo extends AEntity {
+public class CancelationInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class CancelationInfo extends AEntity {
     }
 
     public static final class CancelationInfoBuilder
-	    extends AEntityBuilder<CancelationInfo, CancelationInfoBuilder> {
+	    extends ADomainBuilder<CancelationInfo, CancelationInfoBuilder> {
 
 	// private
 
@@ -48,6 +48,11 @@ public class CancelationInfo extends AEntity {
 
 	private void setReason(CancelationReason reason) {
 	    this.reason = reason;
+	}
+
+	@Override
+	protected CancelationInfoBuilder _this() {
+	    return this;
 	}
 
 	private CancelationInfoBuilder() {

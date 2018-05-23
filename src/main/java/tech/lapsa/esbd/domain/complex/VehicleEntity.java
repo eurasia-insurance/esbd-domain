@@ -8,7 +8,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -37,16 +36,6 @@ public class VehicleEntity extends AEntity {
 	    extends AEntityBuilder<VehicleEntity, VehicleEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private VehicleClass vehicleClass;
 
@@ -118,15 +107,15 @@ public class VehicleEntity extends AEntity {
 	    this.engine = engine;
 	}
 
+	@Override
+	protected VehicleEntityBuilder _this() {
+	    return this;
+	}
+
 	private VehicleEntityBuilder() {
 	}
 
 	// public
-
-	public VehicleEntityBuilder withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public VehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass) {
 	    setIfNullOrThrow("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
@@ -187,7 +176,7 @@ public class VehicleEntity extends AEntity {
 	    final VehicleEngineInfo engine,
 	    final String color,
 	    final LocalDate realeaseDate) {
-	this.id = id;
+	super(id);
 	this.vehicleClass = vehicleClass;
 	this.vinCode = vinCode;
 	this.vehicleModel = vehicleModel;
@@ -198,7 +187,6 @@ public class VehicleEntity extends AEntity {
     }
 
     protected VehicleEntity() {
-	this.id = null;
 	this.vehicleClass = null;
 	this.vinCode = null;
 	this.vehicleModel = null;
@@ -206,16 +194,6 @@ public class VehicleEntity extends AEntity {
 	this.engine = null;
 	this.color = null;
 	this.realeaseDate = null;
-    }
-
-    // id
-
-    @Id
-    @Column(name = "ID")
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
     }
 
     // vehicleClass
