@@ -1,95 +1,54 @@
 package tech.lapsa.esbd.domain;
 
-import java.io.Serializable;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-import tech.lapsa.java.commons.function.MyNumbers;
-import tech.lapsa.java.commons.function.MyObjects;
-import tech.lapsa.java.commons.function.MyStrings;
-import tech.lapsa.patterns.domain.MyHcEqToStr;
-
-public abstract class AEntity implements Serializable {
+public abstract class AEntity extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class AEntityBuilder<ET extends AEntity, BT extends AEntityBuilder<ET, BT>> {
+    public static abstract class AEntityBuilder<ET extends ADomain, BT extends AEntityBuilder<ET, BT>>
+	    extends ADomainBuilder<ET, BT> {
 
 	// private
+
+	// private
+
+	protected Integer id;
+
+	private Integer getId() {
+	    return id;
+	}
+
+	private void setId(Integer id) {
+	    this.id = id;
+	}
+
+	protected abstract BT _this();
 
 	protected AEntityBuilder() {
 	}
 
 	// public
 
-	public abstract ET build();
-
-	public void buildTo(final Consumer<ET> consumer) {
-	    consumer.accept(build());
+	public BT withId(final Integer id) {
+	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
+	    return _this();
 	}
     }
 
+    // constructor
+
+    protected AEntity(Integer id) {
+	this.id = id;
+    }
+
     protected AEntity() {
+	this.id = null;
     }
 
-    @Override
-    public String toString() {
-	return MyHcEqToStr.toString(this);
-    }
+    // id
 
-    @Override
-    public final int hashCode() {
-	return MyHcEqToStr.hashCode(this);
-    }
+    private final Integer id;
 
-    @Override
-    public final boolean equals(final Object other) {
-	return MyHcEqToStr.equals(this, other);
+    public Integer getId() {
+	return id;
     }
-
-    protected static <T> T setIfNullOrThrow(final String propertyName,
-	    final Supplier<T> geter,
-	    final Consumer<T> seter,
-	    final T newValue) throws IllegalStateException, IllegalArgumentException {
-	final T oldValue = geter.get();
-	MyObjects.requireNullMsg(IllegalStateException::new, oldValue, "'%1$s' property is already set", propertyName);
-	MyObjects.requireNonNullMsg(IllegalArgumentException::new, newValue, "Null value for '%1$s' property",
-		propertyName);
-	seter.accept(newValue);
-	return newValue;
-    }
-
-    protected static <T extends Number> T setNumberIfNullOrThrow(final String propertyName,
-	    final Supplier<T> geter,
-	    final Consumer<T> seter,
-	    final T newValue) {
-	return setIfNullOrThrow(propertyName,
-		geter,
-		seter,
-		MyNumbers.requireNonZeroMsg(IllegalArgumentException::new, newValue,
-			"Zero number value '%1$s' property", propertyName));
-    }
-
-    protected static <T extends Number> T setPositiveNumberIfNullOrThrow(final String propertyName,
-	    final Supplier<T> geter,
-	    final Consumer<T> seter,
-	    final T newValue) {
-	return setIfNullOrThrow(propertyName,
-		geter,
-		seter,
-		MyNumbers.requirePositiveMsg(IllegalArgumentException::new, newValue,
-			"Non-positive number value '%1$s' property", propertyName));
-    }
-
-    protected static String setStringIfNullOrThrow(final String propertyName,
-	    final Supplier<String> geter,
-	    final Consumer<String> seter,
-	    final String newValue) {
-	return setIfNullOrThrow(propertyName,
-		geter,
-		seter,
-		MyStrings.requireNonEmptyMsg(IllegalArgumentException::new, newValue,
-			"Empty string value '%1$s' property", propertyName));
-    }
-
 }

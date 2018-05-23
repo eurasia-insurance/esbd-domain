@@ -21,16 +21,6 @@ public class UserEntity extends AEntity {
 
 	// private
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
 	private String login;
 
 	private String getLogin() {
@@ -101,15 +91,15 @@ public class UserEntity extends AEntity {
 	    this.lastActivity = lastActivity;
 	}
 
+	@Override
+	protected UserEntityBuilder _this() {
+	    return this;
+	}
+
 	private UserEntityBuilder() {
 	}
 
 	// public
-
-	public UserEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public UserEntityBuilder withLogin(final String login) throws IllegalArgumentException {
 	    setStringIfNullOrThrow("login", this::getLogin, this::setLogin, login);
@@ -170,7 +160,7 @@ public class UserEntity extends AEntity {
 	    final Boolean authentificated,
 	    final String lastSesionId,
 	    final Instant lastActivity) {
-	this.id = id;
+	super(id);
 	this.login = login;
 	this.branch = branch;
 	this.subject = subject;
@@ -180,12 +170,14 @@ public class UserEntity extends AEntity {
 	this.lastActivity = lastActivity;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected UserEntity() {
+	this.login = null;
+	this.branch = null;
+	this.subject = null;
+	this.organization = null;
+	this.authentificated = null;
+	this.lastSesionId = null;
+	this.lastActivity = null;
     }
 
     // login

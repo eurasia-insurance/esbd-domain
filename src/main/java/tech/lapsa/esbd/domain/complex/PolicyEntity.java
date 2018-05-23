@@ -9,6 +9,7 @@ import com.lapsa.insurance.elements.PaymentType;
 import com.lapsa.insurance.elements.PersonType;
 
 import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.AEntity.AEntityBuilder;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.CancelationInfo;
@@ -29,16 +30,6 @@ public class PolicyEntity extends AEntity {
 	    extends AEntityBuilder<PolicyEntity, PolicyEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private String number;
 
@@ -234,15 +225,15 @@ public class PolicyEntity extends AEntity {
 	    this.insuranceAgent = insuranceAgent;
 	}
 
+	@Override
+	protected PolicyEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
 	    setStringIfNullOrThrow("number", this::getNumber, this::setNumber, number);
@@ -413,7 +404,7 @@ public class PolicyEntity extends AEntity {
 	    final LocalDate dateOfPayment,
 	    final PaymentType paymentType,
 	    final InsuranceAgentEntity insuranceAgent) {
-	this.id = id;
+	super(id);
 	this.number = number;
 	this.internalNumber = internalNumber;
 	this.validFrom = validFrom;
@@ -437,12 +428,28 @@ public class PolicyEntity extends AEntity {
 	this.insuranceAgent = insuranceAgent;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected PolicyEntity() {
+	this.number = null;
+	this.internalNumber = null;
+	this.validFrom = null;
+	this.validTill = null;
+	this.actualPremium = null;
+	this.calculatedPremium = null;
+	this.insurer = null;
+	this.insurant = null;
+	this.insurantPersonType = null;
+	this.dateOfIssue = null;
+	this.cancelation = null;
+	this.branch = null;
+	this.reissuedPolicyId = null;
+	this.comments = null;
+	this.insuredDrivers = null;
+	this.insuredVehicles = null;
+	this.created = null;
+	this.modified = null;
+	this.dateOfPayment = null;
+	this.paymentType = null;
+	this.insuranceAgent = null;
     }
 
     // number

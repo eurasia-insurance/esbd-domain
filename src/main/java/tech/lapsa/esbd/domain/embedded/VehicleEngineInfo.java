@@ -1,10 +1,10 @@
 package tech.lapsa.esbd.domain.embedded;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(233)
-public class VehicleEngineInfo extends AEntity {
+public class VehicleEngineInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -13,7 +13,7 @@ public class VehicleEngineInfo extends AEntity {
     }
 
     public static final class VehicleEngineInfoBuilder
-	    extends AEntityBuilder<VehicleEngineInfo, VehicleEngineInfoBuilder> {
+	    extends ADomainBuilder<VehicleEngineInfo, VehicleEngineInfoBuilder> {
 
 	// private
 
@@ -45,6 +45,11 @@ public class VehicleEngineInfo extends AEntity {
 
 	private void setPower(Integer power) {
 	    this.power = power;
+	}
+
+	@Override
+	protected VehicleEngineInfoBuilder _this() {
+	    return this;
 	}
 
 	private VehicleEngineInfoBuilder() {

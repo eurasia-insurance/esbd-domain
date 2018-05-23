@@ -2,14 +2,14 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 
-public abstract class ADocumentInfo extends AEntity {
+public abstract class ADocumentInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
     public static abstract class ADocumentInfoBuilder<ET extends ADocumentInfo, BT extends ADocumentInfoBuilder<ET, BT>>
-	    extends AEntityBuilder<ET, BT> {
+	    extends ADomainBuilder<ET, BT> {
 
 	// private
 

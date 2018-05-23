@@ -3,11 +3,11 @@ package tech.lapsa.esbd.domain.embedded;
 import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(281)
-public class OriginInfo extends AEntity {
+public class OriginInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -16,7 +16,7 @@ public class OriginInfo extends AEntity {
     }
 
     public static final class OriginInfoBuilder
-	    extends AEntityBuilder<OriginInfo, OriginInfoBuilder> {
+	    extends ADomainBuilder<OriginInfo, OriginInfoBuilder> {
 
 	// private
 
@@ -38,6 +38,11 @@ public class OriginInfo extends AEntity {
 
 	private void setCity(KZCity city) {
 	    this.city = city;
+	}
+
+	@Override
+	protected OriginInfoBuilder _this() {
+	    return this;
 	}
 
 	private OriginInfoBuilder() {
