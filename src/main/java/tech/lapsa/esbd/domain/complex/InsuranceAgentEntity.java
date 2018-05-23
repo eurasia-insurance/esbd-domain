@@ -225,6 +225,7 @@ public class InsuranceAgentEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -243,6 +244,7 @@ public class InsuranceAgentEntity extends AEntity {
     // letterOfAttorneyNumber
 
     @Basic
+    @Column(name = "LETTER_OF_ATTORNEY_NUMBER")
     private final String letterOfAttorneyNumber;
 
     public String getLetterOfAttorneyNumber() {
@@ -252,6 +254,7 @@ public class InsuranceAgentEntity extends AEntity {
     // branch
 
     @ManyToOne
+    @JoinColumn(name = "BRANCH_ID")
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -261,6 +264,7 @@ public class InsuranceAgentEntity extends AEntity {
     // user
 
     @ManyToOne
+    @JoinColumn(name = "OWNER_ID")
     private final UserEntity owner;
 
     public UserEntity getOwner() {
@@ -268,6 +272,7 @@ public class InsuranceAgentEntity extends AEntity {
     }
 
     @ManyToOne
+    @JoinColumn(name = "SUBJECT_ID")
     private final SubjectEntity subject;
 
     public SubjectEntity getSubject() {

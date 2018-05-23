@@ -351,6 +351,7 @@ public class PolicyDriverEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -360,6 +361,7 @@ public class PolicyDriverEntity extends AEntity {
     // insuredPerson
 
     @ManyToOne
+    @JoinColumn(name = "INSURED_PERSON_ID")
     private final SubjectPersonEntity insuredPerson;
 
     public SubjectPersonEntity getInsuredPerson() {
@@ -370,6 +372,7 @@ public class PolicyDriverEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "MARITAL_STATUS")
     private final MaritalStatus maritalStatus;
 
     public MaritalStatus getMaritalStatus() {
@@ -380,6 +383,7 @@ public class PolicyDriverEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "INSURED_AGE_EXPIRIENCE_CLASS")
     private final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 
     public InsuredAgeAndExpirienceClass getInsuredAgeExpirienceClass() {
@@ -401,6 +405,7 @@ public class PolicyDriverEntity extends AEntity {
     // drivingExpirience
 
     @Basic
+    @Column(name = "DRIVING_EXPIRIENCE")
     private final Integer drivingExpirience;
 
     public Integer getDrivingExpirience() {
@@ -420,6 +425,7 @@ public class PolicyDriverEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "INSURANCE_CLASS_TYPE")
     private final InsuranceClassType insuraceClassType;
 
     public InsuranceClassType getInsuraceClassType() {
@@ -517,6 +523,7 @@ public class PolicyDriverEntity extends AEntity {
     // insurer
 
     @ManyToOne
+    @JoinColumn(name = "INSURER_ID")
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {

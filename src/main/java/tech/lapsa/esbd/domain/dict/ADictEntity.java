@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.dict;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -101,6 +102,7 @@ public abstract class ADictEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -110,6 +112,7 @@ public abstract class ADictEntity extends AEntity {
     // code
 
     @Basic
+    @Column(name = "CODE")
     private final String code;
 
     public String getCode() {
@@ -119,6 +122,7 @@ public abstract class ADictEntity extends AEntity {
     // name
 
     @Basic
+    @Column(name = "NAME")
     private final String name;
 
     public String getName() {
