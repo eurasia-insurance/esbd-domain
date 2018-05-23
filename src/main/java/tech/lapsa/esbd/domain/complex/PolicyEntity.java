@@ -582,7 +582,6 @@ public class PolicyEntity extends AEntity {
 
     // cancelation
 
-    @Basic
     @Embedded
     private final CancelationInfo cancelation;
 
