@@ -17,7 +17,7 @@ public class VehicleModelEntity extends AEntity {
 
 	// private & protected
 
-	private String name;
+	protected String name;
 
 	private String getName() {
 	    return name;
@@ -27,7 +27,7 @@ public class VehicleModelEntity extends AEntity {
 	    this.name = name;
 	}
 
-	private VehicleManufacturerEntity manufacturer;
+	protected VehicleManufacturerEntity manufacturer;
 
 	private VehicleManufacturerEntity getManufacturer() {
 	    return manufacturer;
@@ -44,7 +44,7 @@ public class VehicleModelEntity extends AEntity {
 
 	// constructor
 
-	private VehicleModelEntityBuilder() {
+	protected VehicleModelEntityBuilder() {
 	}
 
 	// public
@@ -69,7 +69,7 @@ public class VehicleModelEntity extends AEntity {
 
     // constructor
 
-    private VehicleModelEntity(final Integer id,
+    protected VehicleModelEntity(final Integer id,
 	    final String name,
 	    final VehicleManufacturerEntity manufacturer) {
 	super(id);

@@ -31,7 +31,7 @@ public class PolicyEntity extends AEntity {
 
 	// private & protected
 
-	private String number;
+	protected String number;
 
 	private String getNumber() {
 	    return number;
@@ -41,7 +41,7 @@ public class PolicyEntity extends AEntity {
 	    this.number = number;
 	}
 
-	private String internalNumber;
+	protected String internalNumber;
 
 	private String getInternalNumber() {
 	    return internalNumber;
@@ -51,7 +51,7 @@ public class PolicyEntity extends AEntity {
 	    this.internalNumber = internalNumber;
 	}
 
-	private LocalDate validFrom;
+	protected LocalDate validFrom;
 
 	private LocalDate getValidFrom() {
 	    return validFrom;
@@ -61,7 +61,7 @@ public class PolicyEntity extends AEntity {
 	    this.validFrom = validFrom;
 	}
 
-	private LocalDate validTill;
+	protected LocalDate validTill;
 
 	private LocalDate getValidTill() {
 	    return validTill;
@@ -71,7 +71,7 @@ public class PolicyEntity extends AEntity {
 	    this.validTill = validTill;
 	}
 
-	private Double actualPremium;
+	protected Double actualPremium;
 
 	private Double getActualPremium() {
 	    return actualPremium;
@@ -81,7 +81,7 @@ public class PolicyEntity extends AEntity {
 	    this.actualPremium = actualPremium;
 	}
 
-	private Double calculatedPremium;
+	protected Double calculatedPremium;
 
 	private Double getCalculatedPremium() {
 	    return calculatedPremium;
@@ -91,7 +91,7 @@ public class PolicyEntity extends AEntity {
 	    this.calculatedPremium = calculatedPremium;
 	}
 
-	private InsuranceCompanyEntity insurer;
+	protected InsuranceCompanyEntity insurer;
 
 	private InsuranceCompanyEntity getInsurer() {
 	    return insurer;
@@ -101,7 +101,7 @@ public class PolicyEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
-	private SubjectEntity insurant;
+	protected SubjectEntity insurant;
 
 	private SubjectEntity getInsurant() {
 	    return insurant;
@@ -111,7 +111,7 @@ public class PolicyEntity extends AEntity {
 	    this.insurant = insurant;
 	}
 
-	private PersonType insurantPersonType;
+	protected PersonType insurantPersonType;
 
 	private PersonType getInsurantPersonType() {
 	    return insurantPersonType;
@@ -121,7 +121,7 @@ public class PolicyEntity extends AEntity {
 	    this.insurantPersonType = insurantPersonType;
 	}
 
-	private LocalDate dateOfIssue;
+	protected LocalDate dateOfIssue;
 
 	private LocalDate getDateOfIssue() {
 	    return dateOfIssue;
@@ -131,7 +131,7 @@ public class PolicyEntity extends AEntity {
 	    this.dateOfIssue = dateOfIssue;
 	}
 
-	private CancelationInfo cancelation;
+	protected CancelationInfo cancelation;
 
 	private CancelationInfo getCancelation() {
 	    return cancelation;
@@ -141,7 +141,7 @@ public class PolicyEntity extends AEntity {
 	    this.cancelation = cancelation;
 	}
 
-	private BranchEntity branch;
+	protected BranchEntity branch;
 
 	private BranchEntity getBranch() {
 	    return branch;
@@ -151,7 +151,7 @@ public class PolicyEntity extends AEntity {
 	    this.branch = branch;
 	}
 
-	private Integer reissuedPolicyId;
+	protected Integer reissuedPolicyId;
 
 	private Integer getReissuedPolicyId() {
 	    return reissuedPolicyId;
@@ -161,7 +161,7 @@ public class PolicyEntity extends AEntity {
 	    this.reissuedPolicyId = reissuedPolicyId;
 	}
 
-	private String comments;
+	protected String comments;
 
 	private String getComments() {
 	    return comments;
@@ -171,11 +171,11 @@ public class PolicyEntity extends AEntity {
 	    this.comments = comments;
 	}
 
-	private List<PolicyDriverEntity> insuredDrivers;
+	protected List<PolicyDriverEntity> insuredDrivers;
 
-	private List<PolicyVehicleEntity> insuredVehicles;
+	protected List<PolicyVehicleEntity> insuredVehicles;
 
-	private RecordOperationInfo created;
+	protected RecordOperationInfo created;
 
 	private RecordOperationInfo getCreated() {
 	    return created;
@@ -185,7 +185,7 @@ public class PolicyEntity extends AEntity {
 	    this.created = created;
 	}
 
-	private RecordOperationInfo modified;
+	protected RecordOperationInfo modified;
 
 	private RecordOperationInfo getModified() {
 	    return modified;
@@ -197,7 +197,7 @@ public class PolicyEntity extends AEntity {
 
 	private LocalDate dateOfPayment;
 
-	private LocalDate getDateOfPayment() {
+	protected LocalDate getDateOfPayment() {
 	    return dateOfPayment;
 	}
 
@@ -205,7 +205,7 @@ public class PolicyEntity extends AEntity {
 	    this.dateOfPayment = dateOfPayment;
 	}
 
-	private PaymentType paymentType;
+	protected PaymentType paymentType;
 
 	private PaymentType getPaymentType() {
 	    return paymentType;
@@ -215,7 +215,7 @@ public class PolicyEntity extends AEntity {
 	    this.paymentType = paymentType;
 	}
 
-	private InsuranceAgentEntity insuranceAgent;
+	protected InsuranceAgentEntity insuranceAgent;
 
 	private InsuranceAgentEntity getInsuranceAgent() {
 	    return insuranceAgent;
@@ -232,7 +232,7 @@ public class PolicyEntity extends AEntity {
 
 	// constructor
 
-	private PolicyEntityBuilder() {
+	protected PolicyEntityBuilder() {
 	}
 
 	// public
@@ -384,7 +384,7 @@ public class PolicyEntity extends AEntity {
 
     // constructor
 
-    private PolicyEntity(Integer id,
+    protected PolicyEntity(Integer id,
 	    final String number,
 	    final String internalNumber,
 	    final LocalDate validFrom,

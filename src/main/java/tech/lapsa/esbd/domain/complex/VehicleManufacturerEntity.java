@@ -17,7 +17,7 @@ public class VehicleManufacturerEntity extends AEntity {
 
 	// private & protected
 
-	private String name;
+	protected String name;
 
 	private String getName() {
 	    return name;
@@ -27,7 +27,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	    this.name = name;
 	}
 
-	private Boolean foreign;
+	protected Boolean foreign;
 
 	private Boolean getForeign() {
 	    return foreign;
@@ -44,7 +44,7 @@ public class VehicleManufacturerEntity extends AEntity {
 
 	// constructor
 
-	private VehicleManufacturerEntityBuilder() {
+	protected VehicleManufacturerEntityBuilder() {
 	}
 
 	// public
@@ -69,7 +69,7 @@ public class VehicleManufacturerEntity extends AEntity {
 
     // constructor
 
-    private VehicleManufacturerEntity(final Integer id,
+    protected VehicleManufacturerEntity(final Integer id,
 	    final String name,
 	    final Boolean foreign) {
 	super(id);
