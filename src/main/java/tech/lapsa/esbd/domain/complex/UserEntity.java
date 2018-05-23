@@ -3,8 +3,10 @@ package tech.lapsa.esbd.domain.complex;
 import java.time.Instant;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -204,6 +206,7 @@ public class UserEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -213,6 +216,7 @@ public class UserEntity extends AEntity {
     // login
 
     @Basic
+    @Column(name = "LOGIN")
     private final String login;
 
     public String getLogin() {
@@ -222,6 +226,7 @@ public class UserEntity extends AEntity {
     // branch
 
     @ManyToOne
+    @JoinColumn(name = "BRANCH_ID")
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -231,6 +236,7 @@ public class UserEntity extends AEntity {
     // subject
 
     @ManyToOne
+    @JoinColumn(name = "SUBJECT_ID")
     private final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
@@ -240,6 +246,7 @@ public class UserEntity extends AEntity {
     // organization
 
     @ManyToOne
+    @JoinColumn(name = "ORGANIZATION_ID")
     private final InsuranceCompanyEntity organization;
 
     public InsuranceCompanyEntity getOrganization() {
@@ -249,6 +256,7 @@ public class UserEntity extends AEntity {
     // authentificated
 
     @Basic
+    @Column(name = "AUTHENTIFICATED")
     private final Boolean authentificated;
 
     public Boolean isAuthentificated() {
@@ -258,6 +266,7 @@ public class UserEntity extends AEntity {
     // lastSesionId
 
     @Basic
+    @Column(name = "LAST_SESSION_ID")
     private final String lastSesionId;
 
     public String getLastSesionId() {
@@ -268,6 +277,7 @@ public class UserEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_ACTIVITY")
     private final Instant lastActivity;
 
     public Instant getLastActivity() {
