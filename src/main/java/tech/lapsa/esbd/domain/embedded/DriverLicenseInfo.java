@@ -39,4 +39,7 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
     }
+
+    protected DriverLicenseInfo() {
+    }
 }

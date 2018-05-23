@@ -78,6 +78,11 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	this.validTill = validTill;
     }
 
+    protected HandicappedCertificateInfo() {
+	this.validFrom = null;
+	this.validTill = null;
+    }
+
     // validFrom
 
     private final LocalDate validFrom;

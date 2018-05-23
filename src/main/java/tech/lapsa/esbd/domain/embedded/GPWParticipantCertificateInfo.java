@@ -39,4 +39,7 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
     }
+
+    protected GPWParticipantCertificateInfo() {
+    }
 }

@@ -100,6 +100,12 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	this.registrationMajorCity = registrationMajorCity;
     }
 
+    protected VehicleCertificateInfo() {
+	this.registrationNumber = null;
+	this.registrationRegion = null;
+	this.registrationMajorCity = null;
+    }
+
     // registrationNumber
 
     private final VehicleRegNumber registrationNumber;

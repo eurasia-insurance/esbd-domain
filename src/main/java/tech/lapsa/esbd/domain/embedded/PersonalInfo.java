@@ -128,6 +128,14 @@ public class PersonalInfo extends ADomain {
 	this.gender = gender;
     }
 
+    protected PersonalInfo() {
+	this.name = null;
+	this.surename = null;
+	this.patronymic = null;
+	this.dayOfBirth = null;
+	this.gender = null;
+    }
+
     // name
 
     private final String name;

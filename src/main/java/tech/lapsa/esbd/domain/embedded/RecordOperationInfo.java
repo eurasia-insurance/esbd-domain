@@ -73,6 +73,11 @@ public class RecordOperationInfo extends ADomain {
 	this.author = author;
     }
 
+    protected RecordOperationInfo() {
+	this.instant = null;
+	this.author = null;
+    }
+
     // res
 
     private final Instant instant;

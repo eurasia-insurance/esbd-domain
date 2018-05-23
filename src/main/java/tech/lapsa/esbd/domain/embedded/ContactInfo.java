@@ -108,6 +108,13 @@ public class ContactInfo extends ADomain {
 	this.siteUrl = siteUrl;
     }
 
+    protected ContactInfo() {
+	this.phone = null;
+	this.email = null;
+	this.homeAdress = null;
+	this.siteUrl = null;
+    }
+
     // phone
 
     private final PhoneNumber phone;

@@ -74,6 +74,11 @@ public class CancelationInfo extends ADomain {
 	this.reason = reason;
     }
 
+    protected CancelationInfo() {
+	this.dateOf = null;
+	this.reason = null;
+    }
+
     // dateOf
 
     private final LocalDate dateOf;

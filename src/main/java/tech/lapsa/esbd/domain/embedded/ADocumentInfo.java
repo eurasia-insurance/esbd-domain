@@ -36,8 +36,6 @@ public abstract class ADocumentInfo extends ADomain {
 	protected ADocumentInfoBuilder() {
 	}
 
-	protected abstract BT _this();
-
 	// public
 
 	public BT withNumber(final String number) {
@@ -55,6 +53,11 @@ public abstract class ADocumentInfo extends ADomain {
 	    final LocalDate dateOfIssue) {
 	this.number = number;
 	this.dateOfIssue = dateOfIssue;
+    }
+
+    protected ADocumentInfo() {
+	this.number = null;
+	this.dateOfIssue = null;
     }
 
     // number

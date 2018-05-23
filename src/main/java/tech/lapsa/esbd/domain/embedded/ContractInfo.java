@@ -74,6 +74,11 @@ public class ContractInfo extends ADomain {
 	this.dateOf = dateOf;
     }
 
+    protected ContractInfo() {
+	this.number = null;
+	this.dateOf = null;
+    }
+
     // certificateNumber
 
     private final String number;

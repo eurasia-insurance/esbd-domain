@@ -58,6 +58,10 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	this.type = type;
     }
 
+    protected PrivilegerDocumentInfo() {
+	this.type = null;
+    }
+
     // type
 
     private final String type;

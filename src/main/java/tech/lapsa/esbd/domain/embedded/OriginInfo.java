@@ -72,6 +72,11 @@ public class OriginInfo extends ADomain {
 	this.city = city;
     }
 
+    protected OriginInfo() {
+	this.country = null;
+	this.city = null;
+    }
+
     // country
 
     private final Country country;

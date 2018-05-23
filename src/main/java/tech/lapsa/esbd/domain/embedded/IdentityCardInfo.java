@@ -80,6 +80,11 @@ public class IdentityCardInfo extends ADocumentInfo {
 	this.identityCardType = identityCardType;
     }
 
+    protected IdentityCardInfo() {
+	this.issuingAuthority = null;
+	this.identityCardType = null;
+    }
+
     // issuingAuthority
 
     private String issuingAuthority;

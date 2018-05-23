@@ -97,6 +97,12 @@ public class VehicleEngineInfo extends ADomain {
 	this.power = power;
     }
 
+    protected VehicleEngineInfo() {
+	this.volume = null;
+	this.number = null;
+	this.power = null;
+    }
+
     // engineVolume
 
     private final Integer volume;
