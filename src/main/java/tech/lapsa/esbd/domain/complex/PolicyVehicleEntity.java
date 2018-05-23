@@ -260,6 +260,7 @@ public class PolicyVehicleEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -269,6 +270,7 @@ public class PolicyVehicleEntity extends AEntity {
     // vehicle
 
     @ManyToOne
+    @JoinColumn(name = "VEHICLE_ID")
     private final VehicleEntity vehicle;
 
     public VehicleEntity getVehicle() {
@@ -279,6 +281,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "VEHICLE_CLASS")
     private final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
@@ -289,6 +292,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "VEHICLE_AGE_CLASS")
     private final VehicleAgeClass vehicleAgeClass;
 
     public VehicleAgeClass getVehicleAgeClass() {
@@ -307,6 +311,7 @@ public class PolicyVehicleEntity extends AEntity {
     // vehiclePurpose
 
     @Basic
+    @Column(name = "VEHICLE_PURPOSE")
     private final String vehiclePurpose;
 
     public String getVehiclePurpose() {
@@ -316,6 +321,7 @@ public class PolicyVehicleEntity extends AEntity {
     // currentOdometerValue
 
     @Basic
+    @Column(name = "CURRENT_ODOMETER_VALUE")
     private final Integer currentOdometerValue;
 
     public Integer getCurrentOdometerValue() {
@@ -361,6 +367,7 @@ public class PolicyVehicleEntity extends AEntity {
     // insurer
 
     @ManyToOne
+    @JoinColumn(name = "INSURER_ID")
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
