@@ -1,7 +1,6 @@
 package tech.lapsa.esbd.domain.dict;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.java.commons.function.MyFunctions.TriFunction;
 
 public abstract class ADictEntity extends AEntity {
 
@@ -10,11 +9,9 @@ public abstract class ADictEntity extends AEntity {
     public static abstract class ADictEntityBuilder<ET extends ADictEntity, BT extends ADictEntityBuilder<ET, BT>>
 	    extends AEntityBuilder<ET, BT> {
 
-	private final TriFunction<Integer, String, String, ET> constructor;
+	// private & protected
 
-	// private
-
-	private String code;
+	protected String code;
 
 	private String getCode() {
 	    return code;
@@ -24,7 +21,7 @@ public abstract class ADictEntity extends AEntity {
 	    this.code = code;
 	}
 
-	private String name;
+	protected String name;
 
 	private String getName() {
 	    return name;
@@ -34,9 +31,9 @@ public abstract class ADictEntity extends AEntity {
 	    this.name = name;
 	}
 
-	protected ADictEntityBuilder(final TriFunction<Integer, String, String, ET> constructor) {
-	    assert constructor != null;
-	    this.constructor = constructor;
+	// constructor
+
+	protected ADictEntityBuilder() {
 	}
 
 	// public
@@ -49,11 +46,6 @@ public abstract class ADictEntity extends AEntity {
 	public BT withName(final String name) {
 	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
 	    return _this();
-	}
-
-	@Override
-	public ET build() {
-	    return constructor.apply(id, code, name);
 	}
     }
 
