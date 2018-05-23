@@ -3,11 +3,13 @@ package tech.lapsa.esbd.domain.complex;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -209,6 +211,7 @@ public class VehicleEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -218,6 +221,7 @@ public class VehicleEntity extends AEntity {
     // vehicleClass
 
     @Basic
+    @Column(name = "VEHICLE_CLASS")
     @Enumerated(EnumType.STRING)
     private final VehicleClass vehicleClass;
 
@@ -228,6 +232,7 @@ public class VehicleEntity extends AEntity {
     // vinCode
 
     @Basic
+    @Column(name = "VIN_CODE")
     private final String vinCode;
 
     public String getVinCode() {
@@ -237,6 +242,7 @@ public class VehicleEntity extends AEntity {
     // vehicleModel
 
     @ManyToOne
+    @JoinColumn(name = "VEHICLE_MODEL_ID")
     private final VehicleModelEntity vehicleModel;
 
     public VehicleModelEntity getVehicleModel() {
@@ -247,6 +253,7 @@ public class VehicleEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "STEERING_WHEEL_LOCATION")
     private final SteeringWheelLocation steeringWheelLocation;
 
     public SteeringWheelLocation getSteeringWheelLocation() {
@@ -256,6 +263,7 @@ public class VehicleEntity extends AEntity {
     // color
 
     @Basic
+    @Column(name = "COLOR")
     private final String color;
 
     public String getColor() {
@@ -266,6 +274,7 @@ public class VehicleEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "RELEASE_DATE")
     private final LocalDate realeaseDate;
 
     public LocalDate getRealeaseDate() {
