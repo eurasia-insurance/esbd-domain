@@ -6,7 +6,6 @@ import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.esbd.domain.AEntity.AEntityBuilder;
 import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
@@ -17,6 +16,8 @@ public abstract class SubjectEntity extends AEntity {
 
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
 	    extends AEntityBuilder<T, B> {
+
+	// private & protected
 
 	protected OriginInfo origin;
 
@@ -88,10 +89,10 @@ public abstract class SubjectEntity extends AEntity {
 	    this.economicsSector = economicsSector;
 	}
 
+	// constructor
+
 	protected SubjectEntityBuilder() {
 	}
-
-	protected abstract B _this();
 
 	// public
 

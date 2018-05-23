@@ -15,9 +15,9 @@ public class VehicleEngineInfo extends ADomain {
     public static final class VehicleEngineInfoBuilder
 	    extends ADomainBuilder<VehicleEngineInfo, VehicleEngineInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private Integer volume;
+	protected Integer volume;
 
 	private Integer getVolume() {
 	    return volume;
@@ -27,7 +27,7 @@ public class VehicleEngineInfo extends ADomain {
 	    this.volume = volume;
 	}
 
-	private String number;
+	protected String number;
 
 	private String getNumber() {
 	    return number;
@@ -37,7 +37,7 @@ public class VehicleEngineInfo extends ADomain {
 	    this.number = number;
 	}
 
-	private Integer power;
+	protected Integer power;
 
 	private Integer getPower() {
 	    return power;
@@ -52,7 +52,9 @@ public class VehicleEngineInfo extends ADomain {
 	    return this;
 	}
 
-	private VehicleEngineInfoBuilder() {
+	// constructor
+
+	protected VehicleEngineInfoBuilder() {
 	}
 
 	// public
@@ -89,12 +91,18 @@ public class VehicleEngineInfo extends ADomain {
 
     // constructor
 
-    private VehicleEngineInfo(final Integer volume,
+    protected VehicleEngineInfo(final Integer volume,
 	    final String number,
 	    final Integer power) {
 	this.volume = volume;
 	this.number = number;
 	this.power = power;
+    }
+
+    protected VehicleEngineInfo() {
+	this.volume = null;
+	this.number = null;
+	this.power = null;
     }
 
     // engineVolume

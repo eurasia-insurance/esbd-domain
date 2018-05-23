@@ -16,14 +16,16 @@ public class DriverLicenseInfo extends ADocumentInfo {
     public static final class DriverLicenseInfoBuilder
 	    extends ADocumentInfoBuilder<DriverLicenseInfo, DriverLicenseInfoBuilder> {
 
-	// private
+	// private & protected
 
 	@Override
 	protected DriverLicenseInfoBuilder _this() {
 	    return this;
 	}
 
-	private DriverLicenseInfoBuilder() {
+	// constructor
+
+	protected DriverLicenseInfoBuilder() {
 	}
 
 	// public
@@ -35,8 +37,13 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	}
     }
 
-    private DriverLicenseInfo(final String number,
+    // constructor
+
+    protected DriverLicenseInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	super(number, dateOfIssue);
+    }
+
+    protected DriverLicenseInfo() {
     }
 }

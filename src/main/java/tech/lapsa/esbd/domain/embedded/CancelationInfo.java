@@ -19,9 +19,9 @@ public class CancelationInfo extends ADomain {
     public static final class CancelationInfoBuilder
 	    extends ADomainBuilder<CancelationInfo, CancelationInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private LocalDate dateOf;
+	protected LocalDate dateOf;
 
 	private LocalDate getDateOf() {
 	    return dateOf;
@@ -31,7 +31,7 @@ public class CancelationInfo extends ADomain {
 	    this.dateOf = dateOf;
 	}
 
-	private CancelationReason reason;
+	protected CancelationReason reason;
 
 	private CancelationReason getReason() {
 	    return reason;
@@ -46,7 +46,9 @@ public class CancelationInfo extends ADomain {
 	    return this;
 	}
 
-	private CancelationInfoBuilder() {
+	// constructor
+
+	protected CancelationInfoBuilder() {
 	}
 
 	// public
@@ -68,10 +70,17 @@ public class CancelationInfo extends ADomain {
 	}
     }
 
-    private CancelationInfo(final LocalDate dateOf,
+    // constructor
+
+    protected CancelationInfo(final LocalDate dateOf,
 	    final CancelationReason reason) {
 	this.dateOf = dateOf;
 	this.reason = reason;
+    }
+
+    protected CancelationInfo() {
+	this.dateOf = null;
+	this.reason = null;
     }
 
     // dateOf

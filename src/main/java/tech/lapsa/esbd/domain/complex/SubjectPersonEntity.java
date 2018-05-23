@@ -22,9 +22,9 @@ public class SubjectPersonEntity extends SubjectEntity {
     public static final class SubjectPersonEntityBuilder
 	    extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private PersonalInfo personal;
+	protected PersonalInfo personal;
 
 	private PersonalInfo getPersonal() {
 	    return personal;
@@ -34,7 +34,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    this.personal = personal;
 	}
 
-	private IdentityCardInfo identityCard;
+	protected IdentityCardInfo identityCard;
 
 	private IdentityCardInfo getIdentityCard() {
 	    return identityCard;
@@ -49,7 +49,9 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    return this;
 	}
 
-	private SubjectPersonEntityBuilder() {
+	// constructor
+
+	protected SubjectPersonEntityBuilder() {
 	}
 
 	// public
@@ -81,7 +83,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 
     // constructor
 
-    private SubjectPersonEntity(final Integer id,
+    protected SubjectPersonEntity(final Integer id,
 	    final OriginInfo origin,
 	    final ContactInfo contact,
 	    final String taxPayerNumber,
@@ -94,6 +96,11 @@ public class SubjectPersonEntity extends SubjectEntity {
 	super(id, origin, contact, taxPayerNumber, comments, resident, idNumber, economicsSector);
 	this.personal = personal;
 	this.identityCard = identityCard;
+    }
+
+    protected SubjectPersonEntity() {
+	this.personal = null;
+	this.identityCard = null;
     }
 
     // subjectType

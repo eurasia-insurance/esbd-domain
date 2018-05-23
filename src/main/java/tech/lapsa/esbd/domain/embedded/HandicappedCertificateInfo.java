@@ -16,9 +16,9 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
     public static final class HandicappedCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<HandicappedCertificateInfo, HandicappedCertificateInfoBuilder> {
 
-	// private
+	// private & protected
 
-	private LocalDate validFrom;
+	protected LocalDate validFrom;
 
 	private LocalDate getValidFrom() {
 	    return validFrom;
@@ -28,7 +28,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    this.validFrom = validFrom;
 	}
 
-	private LocalDate validTill;
+	protected LocalDate validTill;
 
 	private LocalDate getValidTill() {
 	    return validTill;
@@ -43,7 +43,9 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    return this;
 	}
 
-	private HandicappedCertificateInfoBuilder() {
+	// constructor
+
+	protected HandicappedCertificateInfoBuilder() {
 	}
 
 	// public
@@ -70,12 +72,17 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     // constructor
 
-    private HandicappedCertificateInfo(final String number,
+    protected HandicappedCertificateInfo(final String number,
 	    final LocalDate validFrom,
 	    final LocalDate validTill) {
 	super(number, null);
 	this.validFrom = validFrom;
 	this.validTill = validTill;
+    }
+
+    protected HandicappedCertificateInfo() {
+	this.validFrom = null;
+	this.validTill = null;
     }
 
     // validFrom

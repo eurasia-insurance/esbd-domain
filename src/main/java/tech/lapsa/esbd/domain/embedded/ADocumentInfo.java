@@ -11,7 +11,7 @@ public abstract class ADocumentInfo extends ADomain {
     public static abstract class ADocumentInfoBuilder<ET extends ADocumentInfo, BT extends ADocumentInfoBuilder<ET, BT>>
 	    extends ADomainBuilder<ET, BT> {
 
-	// private
+	// private & protected
 
 	protected String number;
 
@@ -33,10 +33,10 @@ public abstract class ADocumentInfo extends ADomain {
 	    this.dateOfIssue = dateOfIssue;
 	}
 
+	// constructor
+
 	protected ADocumentInfoBuilder() {
 	}
-
-	protected abstract BT _this();
 
 	// public
 
@@ -51,10 +51,17 @@ public abstract class ADocumentInfo extends ADomain {
 	}
     }
 
+    // constructor
+
     protected ADocumentInfo(final String number,
 	    final LocalDate dateOfIssue) {
 	this.number = number;
 	this.dateOfIssue = dateOfIssue;
+    }
+
+    protected ADocumentInfo() {
+	this.number = null;
+	this.dateOfIssue = null;
     }
 
     // number

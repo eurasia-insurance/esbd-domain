@@ -22,9 +22,9 @@ public class PolicyVehicleEntity extends AEntity {
     public static final class PolicyVehicleEntityBuilder
 	    extends AEntityBuilder<PolicyVehicleEntity, PolicyVehicleEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private VehicleEntity vehicle;
+	protected VehicleEntity vehicle;
 
 	private VehicleEntity getVehicle() {
 	    return vehicle;
@@ -34,7 +34,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.vehicle = vehicle;
 	}
 
-	private VehicleClass vehicleClass;
+	protected VehicleClass vehicleClass;
 
 	private VehicleClass getVehicleClass() {
 	    return vehicleClass;
@@ -44,7 +44,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.vehicleClass = vehicleClass;
 	}
 
-	private VehicleAgeClass vehicleAgeClass;
+	protected VehicleAgeClass vehicleAgeClass;
 
 	private VehicleAgeClass getVehicleAgeClass() {
 	    return vehicleAgeClass;
@@ -54,7 +54,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.vehicleAgeClass = vehicleAgeClass;
 	}
 
-	private VehicleCertificateInfo certificate;
+	protected VehicleCertificateInfo certificate;
 
 	private VehicleCertificateInfo getCertificate() {
 	    return certificate;
@@ -64,7 +64,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.certificate = certificate;
 	}
 
-	private String vehiclePurpose;
+	protected String vehiclePurpose;
 
 	private String getVehiclePurpose() {
 	    return vehiclePurpose;
@@ -74,7 +74,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.vehiclePurpose = vehiclePurpose;
 	}
 
-	private Integer currentOdometerValue;
+	protected Integer currentOdometerValue;
 
 	private Integer getCurrentOdometerValue() {
 	    return currentOdometerValue;
@@ -84,7 +84,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.currentOdometerValue = currentOdometerValue;
 	}
 
-	private RecordOperationInfo created;
+	protected RecordOperationInfo created;
 
 	private RecordOperationInfo getCreated() {
 	    return created;
@@ -94,7 +94,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.created = created;
 	}
 
-	private RecordOperationInfo modified;
+	protected RecordOperationInfo modified;
 
 	private RecordOperationInfo getModified() {
 	    return modified;
@@ -104,7 +104,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.modified = modified;
 	}
 
-	private InsuranceCompanyEntity insurer;
+	protected InsuranceCompanyEntity insurer;
 
 	private InsuranceCompanyEntity getInsurer() {
 	    return insurer;
@@ -119,7 +119,9 @@ public class PolicyVehicleEntity extends AEntity {
 	    return this;
 	}
 
-	private PolicyVehicleEntityBuilder() {
+	// constructor
+
+	protected PolicyVehicleEntityBuilder() {
 	}
 
 	// public
@@ -195,7 +197,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // constructor
 
-    private PolicyVehicleEntity(final Integer id,
+    protected PolicyVehicleEntity(final Integer id,
 	    final VehicleEntity vehicle,
 	    final VehicleClass vehicleClass,
 	    final VehicleAgeClass vehicleAgeClass,

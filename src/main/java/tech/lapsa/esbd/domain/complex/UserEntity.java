@@ -19,9 +19,9 @@ public class UserEntity extends AEntity {
     public static final class UserEntityBuilder
 	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
 
-	// private
+	// private & protected
 
-	private String login;
+	protected String login;
 
 	private String getLogin() {
 	    return login;
@@ -31,7 +31,7 @@ public class UserEntity extends AEntity {
 	    this.login = login;
 	}
 
-	private BranchEntity branch;
+	protected BranchEntity branch;
 
 	private BranchEntity getBranch() {
 	    return branch;
@@ -41,7 +41,7 @@ public class UserEntity extends AEntity {
 	    this.branch = branch;
 	}
 
-	private SubjectEntity subject;
+	protected SubjectEntity subject;
 
 	private SubjectEntity getSubject() {
 	    return subject;
@@ -51,7 +51,7 @@ public class UserEntity extends AEntity {
 	    this.subject = subject;
 	}
 
-	private InsuranceCompanyEntity organization;
+	protected InsuranceCompanyEntity organization;
 
 	private InsuranceCompanyEntity getOrganization() {
 	    return organization;
@@ -61,7 +61,7 @@ public class UserEntity extends AEntity {
 	    this.organization = organization;
 	}
 
-	private Boolean authentificated;
+	protected Boolean authentificated;
 
 	private Boolean getAuthentificated() {
 	    return authentificated;
@@ -71,7 +71,7 @@ public class UserEntity extends AEntity {
 	    this.authentificated = authentificated;
 	}
 
-	private String lastSesionId;
+	protected String lastSesionId;
 
 	private String getLastSesionId() {
 	    return lastSesionId;
@@ -81,7 +81,7 @@ public class UserEntity extends AEntity {
 	    this.lastSesionId = lastSesionId;
 	}
 
-	private Instant lastActivity;
+	protected Instant lastActivity;
 
 	private Instant getLastActivity() {
 	    return lastActivity;
@@ -96,7 +96,9 @@ public class UserEntity extends AEntity {
 	    return this;
 	}
 
-	private UserEntityBuilder() {
+	// constructor
+
+	protected UserEntityBuilder() {
 	}
 
 	// public
@@ -152,7 +154,7 @@ public class UserEntity extends AEntity {
 
     // constructor
 
-    private UserEntity(final Integer id,
+    protected UserEntity(final Integer id,
 	    final String login,
 	    final BranchEntity branch,
 	    final SubjectEntity subject,
