@@ -7,6 +7,7 @@ import com.lapsa.insurance.elements.InsuredExpirienceClass;
 import com.lapsa.insurance.elements.MaritalStatus;
 
 import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.AEntity.AEntityBuilder;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.DriverLicenseInfo;
 import tech.lapsa.esbd.domain.embedded.GPWParticipantCertificateInfo;
@@ -30,16 +31,6 @@ public class PolicyDriverEntity extends AEntity {
 	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
 	// private
-
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	private SubjectPersonEntity insuredPerson;
 
@@ -171,15 +162,15 @@ public class PolicyDriverEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
+	@Override
+	protected PolicyDriverEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyDriverEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyDriverEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyDriverEntityBuilder withInsuredPerson(final SubjectPersonEntity insuredPerson)
 		throws IllegalArgumentException {
@@ -298,7 +289,7 @@ public class PolicyDriverEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final InsuranceCompanyEntity insurer) {
-	this.id = id;
+	super(id);
 	this.insuredPerson = insuredPerson;
 	this.maritalStatus = maritalStatus;
 	this.insuredAgeExpirienceClass = insuredAgeExpirienceClass;
@@ -314,12 +305,20 @@ public class PolicyDriverEntity extends AEntity {
 	this.insurer = insurer;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected PolicyDriverEntity() {
+	this.insuredPerson = null;
+	this.maritalStatus = null;
+	this.insuredAgeExpirienceClass = null;
+	this.drivingExpirience = null;
+	this.driverLicense = null;
+	this.insuranceClassType = null;
+	this.privilegerInfo = null;
+	this.gpwParticipantInfo = null;
+	this.pensionerInfo = null;
+	this.handicappedInfo = null;
+	this.created = null;
+	this.modified = null;
+	this.insurer = null;
     }
 
     // insuredPerson

@@ -14,16 +14,6 @@ public abstract class ADictEntity extends AEntity {
 
 	// private
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
 	private String code;
 
 	private String getCode() {
@@ -44,19 +34,12 @@ public abstract class ADictEntity extends AEntity {
 	    this.name = name;
 	}
 
-	protected abstract BT _this();
-
 	protected ADictEntityBuilder(final TriFunction<Integer, String, String, ET> constructor) {
 	    assert constructor != null;
 	    this.constructor = constructor;
 	}
 
 	// public
-
-	public BT withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return _this();
-	}
 
 	public BT withCode(final String code) {
 	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
@@ -77,17 +60,14 @@ public abstract class ADictEntity extends AEntity {
     // constructor
 
     protected ADictEntity(final Integer id, final String code, final String name) {
-	this.id = id;
+	super(id);
 	this.code = code;
 	this.name = name;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected ADictEntity() {
+	this.code = null;
+	this.name = null;
     }
 
     // code

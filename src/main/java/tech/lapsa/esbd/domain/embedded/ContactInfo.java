@@ -2,11 +2,11 @@ package tech.lapsa.esbd.domain.embedded;
 
 import com.lapsa.international.phone.PhoneNumber;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(251)
-public class ContactInfo extends AEntity {
+public class ContactInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,7 +15,7 @@ public class ContactInfo extends AEntity {
     }
 
     public static final class ContactInfoBuilder
-	    extends AEntityBuilder<ContactInfo, ContactInfoBuilder> {
+	    extends ADomainBuilder<ContactInfo, ContactInfoBuilder> {
 
 	// private
 
@@ -57,6 +57,11 @@ public class ContactInfo extends AEntity {
 
 	private void setSiteUrl(String siteUrl) {
 	    this.siteUrl = siteUrl;
+	}
+
+	@Override
+	protected ContactInfoBuilder _this() {
+	    return this;
 	}
 
 	private ContactInfoBuilder() {

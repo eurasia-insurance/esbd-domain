@@ -2,11 +2,11 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
-import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(239)
-public class ContractInfo extends AEntity {
+public class ContractInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,7 +15,7 @@ public class ContractInfo extends AEntity {
     }
 
     public static final class ContractInfoBuilder
-	    extends AEntityBuilder<ContractInfo, ContractInfoBuilder> {
+	    extends ADomainBuilder<ContractInfo, ContractInfoBuilder> {
 
 	// private
 
@@ -37,6 +37,11 @@ public class ContractInfo extends AEntity {
 
 	private void setDateOf(LocalDate dateOf) {
 	    this.dateOf = dateOf;
+	}
+
+	@Override
+	protected ContractInfoBuilder _this() {
+	    return this;
 	}
 
 	private ContractInfoBuilder() {

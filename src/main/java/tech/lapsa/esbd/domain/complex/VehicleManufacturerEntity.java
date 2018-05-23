@@ -17,16 +17,6 @@ public class VehicleManufacturerEntity extends AEntity {
 
 	// private
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
 	private String name;
 
 	private String getName() {
@@ -47,15 +37,15 @@ public class VehicleManufacturerEntity extends AEntity {
 	    this.foreign = foreign;
 	}
 
+	@Override
+	protected VehicleManufacturerEntityBuilder _this() {
+	    return this;
+	}
+
 	private VehicleManufacturerEntityBuilder() {
 	}
 
 	// public
-
-	public VehicleManufacturerEntityBuilder withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public VehicleManufacturerEntityBuilder withName(final String name) {
 	    setStringIfNullOrThrow("name", this::getName, this::setName, name);
@@ -80,17 +70,14 @@ public class VehicleManufacturerEntity extends AEntity {
     private VehicleManufacturerEntity(final Integer id,
 	    final String name,
 	    final Boolean foreign) {
-	this.id = id;
+	super(id);
 	this.name = name;
 	this.foreign = foreign;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected VehicleManufacturerEntity() {
+	this.name = null;
+	this.foreign = null;
     }
 
     // name

@@ -111,6 +111,11 @@ public class InsuranceAgentEntity extends AEntity {
 	    this.letterOfAttorneyNumber = letterOfAttorneyNumber;
 	}
 
+	@Override
+	protected InsuranceAgentEntityBuilder _this() {
+	    return this;
+	}
+
 	private InsuranceAgentEntityBuilder() {
 	}
 
@@ -186,7 +191,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final String letterOfAttorneyNumber) {
-	this.id = id;
+	super(id);
 	this.contract = contract;
 	this.branch = branch;
 	this.owner = owner;
@@ -196,12 +201,14 @@ public class InsuranceAgentEntity extends AEntity {
 	this.letterOfAttorneyNumber = letterOfAttorneyNumber;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected InsuranceAgentEntity() {
+	this.contract = null;
+	this.branch = null;
+	this.owner = null;
+	this.subject = null;
+	this.created = null;
+	this.modified = null;
+	this.letterOfAttorneyNumber = null;
     }
 
     // contract

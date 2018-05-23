@@ -24,16 +24,6 @@ public class PolicyVehicleEntity extends AEntity {
 
 	// private
 
-	private Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
-
 	private VehicleEntity vehicle;
 
 	private VehicleEntity getVehicle() {
@@ -124,15 +114,15 @@ public class PolicyVehicleEntity extends AEntity {
 	    this.insurer = insurer;
 	}
 
+	@Override
+	protected PolicyVehicleEntityBuilder _this() {
+	    return this;
+	}
+
 	private PolicyVehicleEntityBuilder() {
 	}
 
 	// public
-
-	public PolicyVehicleEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
 
 	public PolicyVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
 	    setIfNullOrThrow("vehicle", this::getVehicle, this::setVehicle, vehicle);
@@ -215,7 +205,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    final RecordOperationInfo created,
 	    final RecordOperationInfo modified,
 	    final InsuranceCompanyEntity insurer) {
-	this.id = id;
+	super(id);
 	this.vehicle = vehicle;
 	this.vehicleClass = vehicleClass;
 	this.vehicleAgeClass = vehicleAgeClass;
@@ -227,12 +217,16 @@ public class PolicyVehicleEntity extends AEntity {
 	this.insurer = insurer;
     }
 
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
+    protected PolicyVehicleEntity() {
+	this.vehicle = null;
+	this.vehicleClass = null;
+	this.vehicleAgeClass = null;
+	this.certificate = null;
+	this.vehiclePurpose = null;
+	this.currentOdometerValue = null;
+	this.created = null;
+	this.modified = null;
+	this.insurer = null;
     }
 
     // vehicle

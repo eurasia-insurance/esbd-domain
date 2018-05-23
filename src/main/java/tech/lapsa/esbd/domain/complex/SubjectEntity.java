@@ -6,6 +6,7 @@ import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
 import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.esbd.domain.AEntity.AEntityBuilder;
 import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
@@ -16,16 +17,6 @@ public abstract class SubjectEntity extends AEntity {
 
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, B extends SubjectEntityBuilder<T, B>>
 	    extends AEntityBuilder<T, B> {
-
-	protected Integer id;
-
-	private Integer getId() {
-	    return id;
-	}
-
-	private void setId(Integer id) {
-	    this.id = id;
-	}
 
 	protected OriginInfo origin;
 
@@ -104,11 +95,6 @@ public abstract class SubjectEntity extends AEntity {
 
 	// public
 
-	public B withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return _this();
-	}
-
 	public B withOrigin(final OriginInfo origin) {
 	    setIfNullOrThrow("origin", this::getOrigin, this::setOrigin, origin);
 	    return _this();
@@ -161,7 +147,7 @@ public abstract class SubjectEntity extends AEntity {
 	    final Boolean resident,
 	    final TaxpayerNumber idNumber,
 	    final KZEconomicSector economicsSector) {
-	this.id = id;
+	super(id);
 	this.origin = origin;
 	this.contact = contact;
 	this.taxPayerNumber = taxPayerNumber;
@@ -171,17 +157,19 @@ public abstract class SubjectEntity extends AEntity {
 	this.economicsSector = economicsSector;
     }
 
+    protected SubjectEntity() {
+	this.origin = null;
+	this.contact = null;
+	this.taxPayerNumber = null;
+	this.comments = null;
+	this.resident = null;
+	this.idNumber = null;
+	this.economicsSector = null;
+    }
+
     // subjectType
 
     public abstract SubjectType getSubjectType();
-
-    // id
-
-    private final Integer id;
-
-    public Integer getId() {
-	return id;
-    }
 
     // origin
 
