@@ -2,11 +2,18 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
+@AttributeOverrides({
+	@AttributeOverride(name = "number", column = @Column(name = "PENSIONER_CERTIFICATE_NUMBER")),
+	@AttributeOverride(name = "dateOfIssue", column = @Column(name = "PENSIONER_CERTIFICATE_DATE_OF_ISSUE"))
+})
 @HashCodePrime(283)
 public class PensionerCertificateInfo extends ADocumentInfo {
 

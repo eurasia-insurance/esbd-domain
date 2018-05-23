@@ -2,6 +2,8 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,6 +13,10 @@ import javax.persistence.TemporalType;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
+@AttributeOverrides({
+	@AttributeOverride(name = "number", column = @Column(name = "HANDICAPED_CERTIFICATE_NUMBER")),
+	@AttributeOverride(name = "dateOfIssue", column = @Column(name = "HANDICAPED_CERTIFICATE_DATE_OF_ISSUE"))
+})
 @HashCodePrime(271)
 public class HandicappedCertificateInfo extends ADocumentInfo {
 
@@ -94,7 +100,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     @Basic
     @Temporal(TemporalType.DATE)
-    @Column(name = "CERTIFICATE_VALID_FROM")
+    @Column(name = "HANDICAPED_CERTIFICATE_VALID_FROM")
     private final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
@@ -105,7 +111,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     @Basic
     @Temporal(TemporalType.DATE)
-    @Column(name = "CERTIFICATE_VALID_TILL")
+    @Column(name = "HANDICAPED_CERTIFICATE_VALID_TILL")
     private final LocalDate validTill;
 
     public LocalDate getValidTill() {

@@ -2,6 +2,8 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -13,6 +15,10 @@ import com.lapsa.insurance.elements.IdentityCardType;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
+@AttributeOverrides({
+	@AttributeOverride(name = "number", column = @Column(name = "IDENTITY_CARD_NUMBER")),
+	@AttributeOverride(name = "dateOfIssue", column = @Column(name = "IDENTITY_CARD_DATE_OF_ISSUE"))
+})
 @HashCodePrime(277)
 public class IdentityCardInfo extends ADocumentInfo {
 
