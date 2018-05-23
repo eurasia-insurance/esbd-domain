@@ -1,9 +1,15 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -271,6 +277,13 @@ public class InsuranceAgentEntity extends AEntity {
     // created
 
     @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "CREATED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
+
+    })
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -280,6 +293,13 @@ public class InsuranceAgentEntity extends AEntity {
     // modified
 
     @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "MODIFIED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
+
+    })
     private final RecordOperationInfo modified;
 
     public RecordOperationInfo getModified() {

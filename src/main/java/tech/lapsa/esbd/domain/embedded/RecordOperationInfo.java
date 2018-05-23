@@ -3,7 +3,9 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.Instant;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -86,6 +88,7 @@ public class RecordOperationInfo extends AEntity {
 
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "INSTANT")
     private final Instant instant;
 
     public Instant getInstant() {
@@ -95,6 +98,7 @@ public class RecordOperationInfo extends AEntity {
     // author
 
     @ManyToOne
+    @JoinColumn(name = "AUTHOR_ID")
     private final UserEntity author;
 
     public UserEntity getAuthor() {

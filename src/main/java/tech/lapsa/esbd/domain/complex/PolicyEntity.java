@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -627,7 +632,7 @@ public class PolicyEntity extends AEntity {
     // insuredDrivers
 
     @OneToMany
-    @JoinColumn(name="POLICY_ID")
+    @JoinColumn(name = "POLICY_ID")
     private final List<PolicyDriverEntity> insuredDrivers;
 
     public List<PolicyDriverEntity> getInsuredDrivers() {
@@ -637,7 +642,7 @@ public class PolicyEntity extends AEntity {
     // insuredVehicles
 
     @OneToMany
-    @JoinColumn(name="POLICY_ID")
+    @JoinColumn(name = "POLICY_ID")
     private final List<PolicyVehicleEntity> insuredVehicles;
 
     public List<PolicyVehicleEntity> getInsuredVehicles() {
@@ -647,6 +652,13 @@ public class PolicyEntity extends AEntity {
     // created
 
     @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "CREATED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
+
+    })
     private final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -656,6 +668,13 @@ public class PolicyEntity extends AEntity {
     // modified
 
     @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "MODIFIED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
+
+    })
     private final RecordOperationInfo modified;
 
     public boolean isModified() {
