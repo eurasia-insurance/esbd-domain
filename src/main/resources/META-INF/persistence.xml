@@ -19,6 +19,7 @@
 
 		<class>tech.lapsa.esbd.jpa.EsbdVersion</class>
 
+		<class>tech.lapsa.esbd.domain.ADomain</class>
 		<class>tech.lapsa.esbd.domain.AEntity</class>
 
 		<class>tech.lapsa.esbd.domain.embedded.ADocumentInfo</class>
