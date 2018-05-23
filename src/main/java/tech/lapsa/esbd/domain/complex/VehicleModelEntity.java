@@ -1,8 +1,10 @@
 package tech.lapsa.esbd.domain.complex;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -102,6 +104,7 @@ public class VehicleModelEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -111,6 +114,7 @@ public class VehicleModelEntity extends AEntity {
     // name
 
     @Basic
+    @Column(name = "NAME")
     private final String name;
 
     public String getName() {
@@ -120,6 +124,7 @@ public class VehicleModelEntity extends AEntity {
     // manufacturer
 
     @ManyToOne
+    @JoinColumn(name = "VEHICLE_MANUFACTURER_ID")
     private final VehicleManufacturerEntity manufacturer;
 
     public VehicleManufacturerEntity getManufacturer() {

@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.complex;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -101,6 +102,7 @@ public class VehicleManufacturerEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -110,6 +112,7 @@ public class VehicleManufacturerEntity extends AEntity {
     // name
 
     @Basic
+    @Column(name = "NAME")
     private final String name;
 
     public String getName() {
@@ -119,6 +122,7 @@ public class VehicleManufacturerEntity extends AEntity {
     // foreign
 
     @Basic
+    @Column(name = "FOREIGN")
     private final Boolean foreign;
 
     public Boolean isForeign() {
