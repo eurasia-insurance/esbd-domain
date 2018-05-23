@@ -108,14 +108,14 @@ public class PolicyDriverEntity extends AEntity {
 	    this.driverLicense = driverLicense;
 	}
 
-	private InsuranceClassType insuraceClassType;
+	private InsuranceClassType insuranceClassType;
 
-	private InsuranceClassType getInsuraceClassType() {
-	    return insuraceClassType;
+	private InsuranceClassType getInsuranceClassType() {
+	    return insuranceClassType;
 	}
 
-	private void setInsuraceClassType(InsuranceClassType insuraceClassType) {
-	    this.insuraceClassType = insuraceClassType;
+	private void setInsuranceClassType(InsuranceClassType insuranceClassType) {
+	    this.insuranceClassType = insuranceClassType;
 	}
 
 	private PrivilegerDocumentInfo privilegerInfo;
@@ -230,10 +230,10 @@ public class PolicyDriverEntity extends AEntity {
 	    return this;
 	}
 
-	public PolicyDriverEntityBuilder withInsuraceClassType(final InsuranceClassType insuraceClassType)
+	public PolicyDriverEntityBuilder withInsuranceClassType(final InsuranceClassType insuranceClassType)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insuraceClassType", this::getInsuraceClassType, this::setInsuraceClassType,
-		    insuraceClassType);
+	    setIfNullOrThrow("insuranceClassType", this::getInsuranceClassType, this::setInsuranceClassType,
+		    insuranceClassType);
 	    return this;
 	}
 
@@ -288,7 +288,7 @@ public class PolicyDriverEntity extends AEntity {
 		    insuredAgeExpirienceClass,
 		    drivingExpirience,
 		    driverLicense,
-		    insuraceClassType,
+		    insuranceClassType,
 		    privilegerInfo,
 		    gpwParticipantInfo,
 		    pensionerInfo,
@@ -307,7 +307,7 @@ public class PolicyDriverEntity extends AEntity {
 	    final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass,
 	    final Integer drivingExpirience,
 	    final DriverLicenseInfo driverLicense,
-	    final InsuranceClassType insuraceClassType,
+	    final InsuranceClassType insuranceClassType,
 	    final PrivilegerDocumentInfo privilegerInfo,
 	    final GPWParticipantCertificateInfo gpwParticipantInfo,
 	    final PensionerCertificateInfo pensionerInfo,
@@ -321,7 +321,7 @@ public class PolicyDriverEntity extends AEntity {
 	this.insuredAgeExpirienceClass = insuredAgeExpirienceClass;
 	this.drivingExpirience = drivingExpirience;
 	this.driverLicense = driverLicense;
-	this.insuraceClassType = insuraceClassType;
+	this.insuranceClassType = insuranceClassType;
 	this.privilegerInfo = privilegerInfo;
 	this.gpwParticipantInfo = gpwParticipantInfo;
 	this.pensionerInfo = pensionerInfo;
@@ -338,7 +338,7 @@ public class PolicyDriverEntity extends AEntity {
 	this.insuredAgeExpirienceClass = null;
 	this.drivingExpirience = null;
 	this.driverLicense = null;
-	this.insuraceClassType = null;
+	this.insuranceClassType = null;
 	this.privilegerInfo = null;
 	this.gpwParticipantInfo = null;
 	this.pensionerInfo = null;
@@ -421,15 +421,15 @@ public class PolicyDriverEntity extends AEntity {
 	return driverLicense;
     }
 
-    // insuraceClassType
+    // insuranceClassType
 
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "INSURANCE_CLASS_TYPE")
-    private final InsuranceClassType insuraceClassType;
+    private final InsuranceClassType insuranceClassType;
 
-    public InsuranceClassType getInsuraceClassType() {
-	return insuraceClassType;
+    public InsuranceClassType getInsuranceClassType() {
+	return insuranceClassType;
     }
 
     // privilegerInfo
