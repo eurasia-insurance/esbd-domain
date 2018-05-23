@@ -485,6 +485,7 @@ public class PolicyEntity extends AEntity {
     // id
 
     @Id
+    @Column(name = "ID")
     private final Integer id;
 
     public Integer getId() {
@@ -494,6 +495,7 @@ public class PolicyEntity extends AEntity {
     // number
 
     @Basic
+    @Column(name = "NUMBER")
     private final String number;
 
     public String getNumber() {
@@ -503,6 +505,7 @@ public class PolicyEntity extends AEntity {
     // internalNumber
 
     @Basic
+    @Column(name = "INTERNAL_NUMBER")
     private final String internalNumber;
 
     public String getInternalNumber() {
@@ -513,6 +516,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "VALID_FROM")
     private final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
@@ -523,6 +527,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "VALID_TILL")
     private final LocalDate validTill;
 
     public LocalDate getValidTill() {
@@ -532,6 +537,7 @@ public class PolicyEntity extends AEntity {
     // actualPremium
 
     @Basic
+    @Column(name = "ACTUAL_PREMIUM")
     private final Double actualPremium;
 
     public Double getActualPremium() {
@@ -541,6 +547,7 @@ public class PolicyEntity extends AEntity {
     // calculatedPremium
 
     @Basic
+    @Column(name = "CALCULATED_PREMIUM")
     private final Double calculatedPremium;
 
     public Double getCalculatedPremium() {
@@ -550,6 +557,7 @@ public class PolicyEntity extends AEntity {
     // insurer
 
     @ManyToOne
+    @JoinColumn(name = "INSURER_ID")
     private final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
@@ -559,6 +567,7 @@ public class PolicyEntity extends AEntity {
     // insurant
 
     @ManyToOne
+    @JoinColumn(name = "INSURANT_ID")
     private final SubjectEntity insurant;
 
     public SubjectEntity getInsurant() {
@@ -569,6 +578,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "INSURANT_PERSON_TYPE")
     private final PersonType insurantPersonType;
 
     public PersonType getInsurantPersonType() {
@@ -579,6 +589,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "DATE_OF_ISSUE")
     private final LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
@@ -601,6 +612,7 @@ public class PolicyEntity extends AEntity {
     // branch
 
     @ManyToOne
+    @JoinColumn(name = "BRANCH_ID")
     private final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -610,6 +622,7 @@ public class PolicyEntity extends AEntity {
     // reissuedPolicy
 
     @Basic
+    @Column(name = "REISSUED_POLICY_ID")
     private final Integer reissuedPolicyId;
 
     public boolean isReissued() {
@@ -623,6 +636,7 @@ public class PolicyEntity extends AEntity {
     // comments
 
     @Basic
+    @JoinColumn(name = "COMMENTS")
     private final String comments;
 
     public String getComments() {
@@ -689,6 +703,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Temporal(TemporalType.DATE)
+    @Column(name = "DATE_OF_PAYMENT")
     private final LocalDate dateOfPayment;
 
     public LocalDate getDateOfPayment() {
@@ -703,6 +718,7 @@ public class PolicyEntity extends AEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
+    @Column(name = "PAYMENT_TYPE")
     private final PaymentType paymentType;
 
     public PaymentType getPaymentType() {
@@ -712,6 +728,7 @@ public class PolicyEntity extends AEntity {
     // insuranceAgent
 
     @ManyToOne
+    @JoinColumn(name = "INSURANCE_AGENT_ID")
     private final InsuranceAgentEntity insuranceAgent;
 
     public InsuranceAgentEntity getInsuranceAgent() {
