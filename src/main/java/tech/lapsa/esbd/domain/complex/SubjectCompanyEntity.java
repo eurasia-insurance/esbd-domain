@@ -135,6 +135,13 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	this.companyActivityKind = companyActivityKind;
     }
 
+    protected SubjectCompanyEntity() {
+	this.companyName = null;
+	this.headName = null;
+	this.accountantName = null;
+	this.companyActivityKind = null;
+    }
+
     // subjectType
 
     @Override

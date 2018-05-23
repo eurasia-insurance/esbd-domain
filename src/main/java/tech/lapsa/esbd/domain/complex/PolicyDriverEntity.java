@@ -7,7 +7,6 @@ import com.lapsa.insurance.elements.InsuredExpirienceClass;
 import com.lapsa.insurance.elements.MaritalStatus;
 
 import tech.lapsa.esbd.domain.AEntity;
-import tech.lapsa.esbd.domain.AEntity.AEntityBuilder;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.DriverLicenseInfo;
 import tech.lapsa.esbd.domain.embedded.GPWParticipantCertificateInfo;

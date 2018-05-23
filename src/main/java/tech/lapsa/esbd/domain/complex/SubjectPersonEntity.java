@@ -98,6 +98,11 @@ public class SubjectPersonEntity extends SubjectEntity {
 	this.identityCard = identityCard;
     }
 
+    protected SubjectPersonEntity() {
+	this.personal = null;
+	this.identityCard = null;
+    }
+
     // subjectType
 
     @Override

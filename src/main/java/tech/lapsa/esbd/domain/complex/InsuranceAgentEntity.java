@@ -113,11 +113,6 @@ public class InsuranceAgentEntity extends AEntity {
 
 	// public
 
-	public InsuranceAgentEntityBuilder withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
-	    return this;
-	}
-
 	public InsuranceAgentEntityBuilder withContract(final ContractInfo contract) {
 	    setIfNullOrThrow("contract", this::getContract, this::setContract, contract);
 	    return this;
