@@ -1,5 +1,6 @@
 package tech.lapsa.esbd.domain;
 
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -49,6 +50,7 @@ public abstract class AEntity extends ADomain {
 
     // id
 
+    @Id
     private final Integer id;
 
     public Integer getId() {
