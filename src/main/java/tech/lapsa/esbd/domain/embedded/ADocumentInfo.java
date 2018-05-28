@@ -68,7 +68,7 @@ public abstract class ADocumentInfo extends ADomain {
 
     private final String number;
 
-    public String getCertificateNumber() {
+    public String getNumber() {
 	return number;
     }
 
@@ -76,7 +76,7 @@ public abstract class ADocumentInfo extends ADomain {
 
     private final LocalDate dateOfIssue;
 
-    public LocalDate getCertificateDateOfIssue() {
+    public LocalDate getDateOfIssue() {
 	return dateOfIssue;
     }
 
