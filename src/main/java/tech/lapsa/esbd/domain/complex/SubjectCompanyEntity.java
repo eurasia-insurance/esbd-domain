@@ -35,7 +35,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    return companyName;
 	}
 
-	private void setCompanyName(String companyName) {
+	private void setCompanyName(final String companyName) {
 	    this.companyName = companyName;
 	}
 
@@ -45,7 +45,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    return headName;
 	}
 
-	private void setHeadName(String headName) {
+	private void setHeadName(final String headName) {
 	    this.headName = headName;
 	}
 
@@ -55,7 +55,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    return accountantName;
 	}
 
-	private void setAccountantName(String accountantName) {
+	private void setAccountantName(final String accountantName) {
 	    this.accountantName = accountantName;
 	}
 
@@ -65,7 +65,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	    return companyActivityKind;
 	}
 
-	private void setCompanyActivityKind(CompanyActivityKindEntity companyActivityKind) {
+	private void setCompanyActivityKind(final CompanyActivityKindEntity companyActivityKind) {
 	    this.companyActivityKind = companyActivityKind;
 	}
 
@@ -79,12 +79,12 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	private SubjectCompanyEntityBuilder() {
 	}
 
-	protected SubjectCompanyEntityBuilder(SubjectCompanyEntity source) {
+	protected SubjectCompanyEntityBuilder(final SubjectCompanyEntity source) {
 	    super(source);
-	    this.companyName = source.companyName;
-	    this.headName = source.headName;
-	    this.accountantName = source.accountantName;
-	    this.companyActivityKind = source.companyActivityKind;
+	    companyName = source.companyName;
+	    headName = source.headName;
+	    accountantName = source.accountantName;
+	    companyActivityKind = source.companyActivityKind;
 	}
 
 	// public
@@ -130,7 +130,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // constructor
 
-    protected SubjectCompanyEntity(Integer id,
+    protected SubjectCompanyEntity(final Integer id,
 	    final OriginInfo origin,
 	    final ContactInfo contact,
 	    final String taxPayerNumber,
@@ -150,10 +150,10 @@ public class SubjectCompanyEntity extends SubjectEntity {
     }
 
     protected SubjectCompanyEntity() {
-	this.companyName = null;
-	this.headName = null;
-	this.accountantName = null;
-	this.companyActivityKind = null;
+	companyName = null;
+	headName = null;
+	accountantName = null;
+	companyActivityKind = null;
     }
 
     // subjectType

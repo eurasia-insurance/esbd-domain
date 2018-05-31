@@ -30,7 +30,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    return validFrom;
 	}
 
-	private void setValidFrom(LocalDate validFrom) {
+	private void setValidFrom(final LocalDate validFrom) {
 	    this.validFrom = validFrom;
 	}
 
@@ -40,7 +40,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    return validTill;
 	}
 
-	private void setValidTill(LocalDate validTill) {
+	private void setValidTill(final LocalDate validTill) {
 	    this.validTill = validTill;
 	}
 
@@ -54,10 +54,10 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	protected HandicappedCertificateInfoBuilder() {
 	}
 
-	protected HandicappedCertificateInfoBuilder(HandicappedCertificateInfo source) {
+	protected HandicappedCertificateInfoBuilder(final HandicappedCertificateInfo source) {
 	    super(source);
-	    this.validFrom = source.validFrom;
-	    this.validTill = source.validTill;
+	    validFrom = source.validFrom;
+	    validTill = source.validTill;
 	}
 
 	// public
@@ -93,8 +93,8 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
     }
 
     protected HandicappedCertificateInfo() {
-	this.validFrom = null;
-	this.validTill = null;
+	validFrom = null;
+	validTill = null;
     }
 
     // validFrom

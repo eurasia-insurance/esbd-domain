@@ -32,7 +32,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    return issuingAuthority;
 	}
 
-	private void setIssuingAuthority(String issuingAuthority) {
+	private void setIssuingAuthority(final String issuingAuthority) {
 	    this.issuingAuthority = issuingAuthority;
 	}
 
@@ -42,7 +42,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    return identityCardType;
 	}
 
-	private void setIdentityCardType(IdentityCardType identityCardType) {
+	private void setIdentityCardType(final IdentityCardType identityCardType) {
 	    this.identityCardType = identityCardType;
 	}
 
@@ -56,10 +56,10 @@ public class IdentityCardInfo extends ADocumentInfo {
 	protected IdentityCardInfoBuilder() {
 	}
 
-	protected IdentityCardInfoBuilder(IdentityCardInfo source) {
+	protected IdentityCardInfoBuilder(final IdentityCardInfo source) {
 	    super(source);
-	    this.issuingAuthority = source.issuingAuthority;
-	    this.identityCardType = source.identityCardType;
+	    issuingAuthority = source.issuingAuthority;
+	    identityCardType = source.identityCardType;
 	}
 
 	// public
@@ -97,13 +97,13 @@ public class IdentityCardInfo extends ADocumentInfo {
     }
 
     protected IdentityCardInfo() {
-	this.issuingAuthority = null;
-	this.identityCardType = null;
+	issuingAuthority = null;
+	identityCardType = null;
     }
 
     // issuingAuthority
 
-    private String issuingAuthority;
+    final String issuingAuthority;
 
     public String getIssuingAuthority() {
 	return issuingAuthority;
@@ -111,7 +111,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // identityCardType
 
-    private IdentityCardType identityCardType;
+    final IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {
 	return identityCardType;

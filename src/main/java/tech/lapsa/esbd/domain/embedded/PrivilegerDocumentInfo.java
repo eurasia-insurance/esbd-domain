@@ -30,7 +30,7 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	    return type;
 	}
 
-	private void setType(String type) {
+	private void setType(final String type) {
 	    this.type = type;
 	}
 
@@ -44,9 +44,9 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	protected PrivilegerDocumentInfoBuilder() {
 	}
 
-	protected PrivilegerDocumentInfoBuilder(PrivilegerDocumentInfo source) {
+	protected PrivilegerDocumentInfoBuilder(final PrivilegerDocumentInfo source) {
 	    super(source);
-	    this.type = source.type;
+	    type = source.type;
 	}
 
 	// public
@@ -74,7 +74,7 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
     }
 
     protected PrivilegerDocumentInfo() {
-	this.type = null;
+	type = null;
     }
 
     // type

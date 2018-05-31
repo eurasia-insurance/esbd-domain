@@ -33,7 +33,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    return registrationNumber;
 	}
 
-	private void setRegistrationNumber(VehicleRegNumber registrationNumber) {
+	private void setRegistrationNumber(final VehicleRegNumber registrationNumber) {
 	    this.registrationNumber = registrationNumber;
 	}
 
@@ -43,7 +43,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    return registrationRegion;
 	}
 
-	private void setRegistrationRegion(KZArea registrationRegion) {
+	private void setRegistrationRegion(final KZArea registrationRegion) {
 	    this.registrationRegion = registrationRegion;
 	}
 
@@ -53,7 +53,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	    return registrationMajorCity;
 	}
 
-	private void setRegistrationMajorCity(Boolean registrationMajorCity) {
+	private void setRegistrationMajorCity(final Boolean registrationMajorCity) {
 	    this.registrationMajorCity = registrationMajorCity;
 	}
 
@@ -67,11 +67,11 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	protected VehicleCertificateInfoBuilder() {
 	}
 
-	protected VehicleCertificateInfoBuilder(VehicleCertificateInfo source) {
+	protected VehicleCertificateInfoBuilder(final VehicleCertificateInfo source) {
 	    super(source);
-	    this.registrationNumber = source.registrationNumber;
-	    this.registrationRegion = source.registrationRegion;
-	    this.registrationMajorCity = source.registrationMajorCity;
+	    registrationNumber = source.registrationNumber;
+	    registrationRegion = source.registrationRegion;
+	    registrationMajorCity = source.registrationMajorCity;
 	}
 
 	// public
@@ -118,9 +118,9 @@ public class VehicleCertificateInfo extends ADocumentInfo {
     }
 
     protected VehicleCertificateInfo() {
-	this.registrationNumber = null;
-	this.registrationRegion = null;
-	this.registrationMajorCity = null;
+	registrationNumber = null;
+	registrationRegion = null;
+	registrationMajorCity = null;
     }
 
     // registrationNumber

@@ -33,7 +33,7 @@ public class CancelationInfo extends ADomain {
 	    return dateOf;
 	}
 
-	private void setDateOf(LocalDate dateOf) {
+	private void setDateOf(final LocalDate dateOf) {
 	    this.dateOf = dateOf;
 	}
 
@@ -43,7 +43,7 @@ public class CancelationInfo extends ADomain {
 	    return reason;
 	}
 
-	private void setReason(CancelationReason reason) {
+	private void setReason(final CancelationReason reason) {
 	    this.reason = reason;
 	}
 
@@ -57,10 +57,10 @@ public class CancelationInfo extends ADomain {
 	protected CancelationInfoBuilder() {
 	}
 
-	public CancelationInfoBuilder(CancelationInfo source) {
+	public CancelationInfoBuilder(final CancelationInfo source) {
 	    super(source);
-	    this.dateOf = source.dateOf;
-	    this.reason = source.reason;
+	    dateOf = source.dateOf;
+	    reason = source.reason;
 	}
 
 	// public
@@ -91,8 +91,8 @@ public class CancelationInfo extends ADomain {
     }
 
     protected CancelationInfo() {
-	this.dateOf = null;
-	this.reason = null;
+	dateOf = null;
+	reason = null;
     }
 
     // dateOf

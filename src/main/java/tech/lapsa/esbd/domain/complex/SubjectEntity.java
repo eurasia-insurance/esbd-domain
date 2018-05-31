@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -25,7 +23,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return origin;
 	}
 
-	private void setOrigin(OriginInfo origin) {
+	private void setOrigin(final OriginInfo origin) {
 	    this.origin = origin;
 	}
 
@@ -35,7 +33,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return contact;
 	}
 
-	private void setContact(ContactInfo contact) {
+	private void setContact(final ContactInfo contact) {
 	    this.contact = contact;
 	}
 
@@ -45,7 +43,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return taxPayerNumber;
 	}
 
-	private void setTaxPayerNumber(String taxPayerNumber) {
+	private void setTaxPayerNumber(final String taxPayerNumber) {
 	    this.taxPayerNumber = taxPayerNumber;
 	}
 
@@ -55,7 +53,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return comments;
 	}
 
-	private void setComments(String comments) {
+	private void setComments(final String comments) {
 	    this.comments = comments;
 	}
 
@@ -65,7 +63,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return resident;
 	}
 
-	private void setResident(Boolean resident) {
+	private void setResident(final Boolean resident) {
 	    this.resident = resident;
 	}
 
@@ -75,7 +73,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return idNumber;
 	}
 
-	private void setIdNumber(TaxpayerNumber idNumber) {
+	private void setIdNumber(final TaxpayerNumber idNumber) {
 	    this.idNumber = idNumber;
 	}
 
@@ -85,7 +83,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return economicsSector;
 	}
 
-	private void setEconomicsSector(KZEconomicSector economicsSector) {
+	private void setEconomicsSector(final KZEconomicSector economicsSector) {
 	    this.economicsSector = economicsSector;
 	}
 
@@ -94,7 +92,7 @@ public abstract class SubjectEntity extends AEntity {
 	protected SubjectEntityBuilder() {
 	}
 
-	protected SubjectEntityBuilder(T source) {
+	protected SubjectEntityBuilder(final T source) {
 	    super(source);
 	    this.origin = source.origin;
 	    this.contact = source.contact;
@@ -141,12 +139,6 @@ public abstract class SubjectEntity extends AEntity {
 	    setBuilderProperty("economicsSector", this::getEconomicsSector, this::setEconomicsSector, economicsSector);
 	    return _this();
 	}
-
-	public void buildTo(final Consumer<T> consumer) {
-	    consumer.accept(build());
-	}
-
-	public abstract T build() throws IllegalArgumentException;
     }
 
     // constructor
@@ -170,13 +162,13 @@ public abstract class SubjectEntity extends AEntity {
     }
 
     protected SubjectEntity() {
-	this.origin = null;
-	this.contact = null;
-	this.taxPayerNumber = null;
-	this.comments = null;
-	this.resident = null;
-	this.idNumber = null;
-	this.economicsSector = null;
+	origin = null;
+	contact = null;
+	taxPayerNumber = null;
+	comments = null;
+	resident = null;
+	idNumber = null;
+	economicsSector = null;
     }
 
     // subjectType

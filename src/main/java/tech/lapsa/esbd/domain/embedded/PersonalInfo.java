@@ -33,7 +33,7 @@ public class PersonalInfo extends ADomain {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -43,7 +43,7 @@ public class PersonalInfo extends ADomain {
 	    return surename;
 	}
 
-	private void setSurename(String surename) {
+	private void setSurename(final String surename) {
 	    this.surename = surename;
 	}
 
@@ -53,7 +53,7 @@ public class PersonalInfo extends ADomain {
 	    return patronymic;
 	}
 
-	private void setPatronymic(String patronymic) {
+	private void setPatronymic(final String patronymic) {
 	    this.patronymic = patronymic;
 	}
 
@@ -63,7 +63,7 @@ public class PersonalInfo extends ADomain {
 	    return dayOfBirth;
 	}
 
-	private void setDayOfBirth(LocalDate dayOfBirth) {
+	private void setDayOfBirth(final LocalDate dayOfBirth) {
 	    this.dayOfBirth = dayOfBirth;
 	}
 
@@ -73,7 +73,7 @@ public class PersonalInfo extends ADomain {
 	    return gender;
 	}
 
-	private void setGender(Sex gender) {
+	private void setGender(final Sex gender) {
 	    this.gender = gender;
 	}
 
@@ -87,13 +87,13 @@ public class PersonalInfo extends ADomain {
 	protected PersonalInfoBuilder() {
 	}
 
-	protected PersonalInfoBuilder(PersonalInfo source) {
+	protected PersonalInfoBuilder(final PersonalInfo source) {
 	    super(source);
-	    this.name = source.name;
-	    this.surename = source.surename;
-	    this.patronymic = source.patronymic;
-	    this.dayOfBirth = source.dayOfBirth;
-	    this.gender = source.gender;
+	    name = source.name;
+	    surename = source.surename;
+	    patronymic = source.patronymic;
+	    dayOfBirth = source.dayOfBirth;
+	    gender = source.gender;
 	}
 
 	// public
@@ -148,11 +148,11 @@ public class PersonalInfo extends ADomain {
     }
 
     protected PersonalInfo() {
-	this.name = null;
-	this.surename = null;
-	this.patronymic = null;
-	this.dayOfBirth = null;
-	this.gender = null;
+	name = null;
+	surename = null;
+	patronymic = null;
+	dayOfBirth = null;
+	gender = null;
     }
 
     // name

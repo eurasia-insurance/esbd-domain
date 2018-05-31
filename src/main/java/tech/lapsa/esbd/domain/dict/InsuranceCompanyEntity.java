@@ -32,7 +32,7 @@ public class InsuranceCompanyEntity extends ADictEntity {
 	protected InsuranceCompanyEntityBuilder() {
 	}
 
-	protected InsuranceCompanyEntityBuilder(InsuranceCompanyEntity from) {
+	protected InsuranceCompanyEntityBuilder(final InsuranceCompanyEntity from) {
 	    super(from);
 	}
 

@@ -35,7 +35,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicle;
 	}
 
-	private void setVehicle(VehicleEntity vehicle) {
+	private void setVehicle(final VehicleEntity vehicle) {
 	    this.vehicle = vehicle;
 	}
 
@@ -45,7 +45,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicleClass;
 	}
 
-	private void setVehicleClass(VehicleClass vehicleClass) {
+	private void setVehicleClass(final VehicleClass vehicleClass) {
 	    this.vehicleClass = vehicleClass;
 	}
 
@@ -55,7 +55,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicleAgeClass;
 	}
 
-	private void setVehicleAgeClass(VehicleAgeClass vehicleAgeClass) {
+	private void setVehicleAgeClass(final VehicleAgeClass vehicleAgeClass) {
 	    this.vehicleAgeClass = vehicleAgeClass;
 	}
 
@@ -65,7 +65,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return certificate;
 	}
 
-	private void setCertificate(VehicleCertificateInfo certificate) {
+	private void setCertificate(final VehicleCertificateInfo certificate) {
 	    this.certificate = certificate;
 	}
 
@@ -75,7 +75,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehiclePurpose;
 	}
 
-	private void setVehiclePurpose(String vehiclePurpose) {
+	private void setVehiclePurpose(final String vehiclePurpose) {
 	    this.vehiclePurpose = vehiclePurpose;
 	}
 
@@ -85,7 +85,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return currentOdometerValue;
 	}
 
-	private void setCurrentOdometerValue(Integer currentOdometerValue) {
+	private void setCurrentOdometerValue(final Integer currentOdometerValue) {
 	    this.currentOdometerValue = currentOdometerValue;
 	}
 
@@ -95,7 +95,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return created;
 	}
 
-	private void setCreated(RecordOperationInfo created) {
+	private void setCreated(final RecordOperationInfo created) {
 	    this.created = created;
 	}
 
@@ -105,7 +105,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return modified;
 	}
 
-	private void setModified(RecordOperationInfo modified) {
+	private void setModified(final RecordOperationInfo modified) {
 	    this.modified = modified;
 	}
 
@@ -115,7 +115,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return insurer;
 	}
 
-	private void setInsurer(InsuranceCompanyEntity insurer) {
+	private void setInsurer(final InsuranceCompanyEntity insurer) {
 	    this.insurer = insurer;
 	}
 
@@ -129,17 +129,17 @@ public class PolicyVehicleEntity extends AEntity {
 	protected PolicyVehicleEntityBuilder() {
 	}
 
-	protected PolicyVehicleEntityBuilder(PolicyVehicleEntity source) {
+	protected PolicyVehicleEntityBuilder(final PolicyVehicleEntity source) {
 	    super(source);
-	    this.vehicle = source.vehicle;
-	    this.vehicleClass = source.vehicleClass;
-	    this.vehicleAgeClass = source.vehicleAgeClass;
-	    this.certificate = source.certificate;
-	    this.vehiclePurpose = source.vehiclePurpose;
-	    this.currentOdometerValue = source.currentOdometerValue;
-	    this.created = source.created;
-	    this.modified = source.modified;
-	    this.insurer = source.insurer;
+	    vehicle = source.vehicle;
+	    vehicleClass = source.vehicleClass;
+	    vehicleAgeClass = source.vehicleAgeClass;
+	    certificate = source.certificate;
+	    vehiclePurpose = source.vehiclePurpose;
+	    currentOdometerValue = source.currentOdometerValue;
+	    created = source.created;
+	    modified = source.modified;
+	    insurer = source.insurer;
 	}
 
 	// public
@@ -175,7 +175,8 @@ public class PolicyVehicleEntity extends AEntity {
 
 	public PolicyVehicleEntityBuilder withCurrentOdometerValue(final Integer currentOdometerValue)
 		throws IllegalArgumentException {
-	    setBuilderPropertyNumber("currentOdometerValue", this::getCurrentOdometerValue, this::setCurrentOdometerValue,
+	    setBuilderPropertyNumber("currentOdometerValue", this::getCurrentOdometerValue,
+		    this::setCurrentOdometerValue,
 		    currentOdometerValue);
 	    return this;
 	}
@@ -238,15 +239,15 @@ public class PolicyVehicleEntity extends AEntity {
     }
 
     protected PolicyVehicleEntity() {
-	this.vehicle = null;
-	this.vehicleClass = null;
-	this.vehicleAgeClass = null;
-	this.certificate = null;
-	this.vehiclePurpose = null;
-	this.currentOdometerValue = null;
-	this.created = null;
-	this.modified = null;
-	this.insurer = null;
+	vehicle = null;
+	vehicleClass = null;
+	vehicleAgeClass = null;
+	certificate = null;
+	vehiclePurpose = null;
+	currentOdometerValue = null;
+	created = null;
+	modified = null;
+	insurer = null;
     }
 
     // vehicle

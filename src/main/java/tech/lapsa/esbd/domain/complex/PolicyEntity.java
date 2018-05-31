@@ -41,7 +41,7 @@ public class PolicyEntity extends AEntity {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -51,7 +51,7 @@ public class PolicyEntity extends AEntity {
 	    return internalNumber;
 	}
 
-	private void setInternalNumber(String internalNumber) {
+	private void setInternalNumber(final String internalNumber) {
 	    this.internalNumber = internalNumber;
 	}
 
@@ -61,7 +61,7 @@ public class PolicyEntity extends AEntity {
 	    return validFrom;
 	}
 
-	private void setValidFrom(LocalDate validFrom) {
+	private void setValidFrom(final LocalDate validFrom) {
 	    this.validFrom = validFrom;
 	}
 
@@ -71,7 +71,7 @@ public class PolicyEntity extends AEntity {
 	    return validTill;
 	}
 
-	private void setValidTill(LocalDate validTill) {
+	private void setValidTill(final LocalDate validTill) {
 	    this.validTill = validTill;
 	}
 
@@ -81,7 +81,7 @@ public class PolicyEntity extends AEntity {
 	    return actualPremium;
 	}
 
-	private void setActualPremium(Double actualPremium) {
+	private void setActualPremium(final Double actualPremium) {
 	    this.actualPremium = actualPremium;
 	}
 
@@ -91,7 +91,7 @@ public class PolicyEntity extends AEntity {
 	    return calculatedPremium;
 	}
 
-	private void setCalculatedPremium(Double calculatedPremium) {
+	private void setCalculatedPremium(final Double calculatedPremium) {
 	    this.calculatedPremium = calculatedPremium;
 	}
 
@@ -101,7 +101,7 @@ public class PolicyEntity extends AEntity {
 	    return insurer;
 	}
 
-	private void setInsurer(InsuranceCompanyEntity insurer) {
+	private void setInsurer(final InsuranceCompanyEntity insurer) {
 	    this.insurer = insurer;
 	}
 
@@ -111,7 +111,7 @@ public class PolicyEntity extends AEntity {
 	    return insurant;
 	}
 
-	private void setInsurant(SubjectEntity insurant) {
+	private void setInsurant(final SubjectEntity insurant) {
 	    this.insurant = insurant;
 	}
 
@@ -121,7 +121,7 @@ public class PolicyEntity extends AEntity {
 	    return insurantPersonType;
 	}
 
-	private void setInsurantPersonType(PersonType insurantPersonType) {
+	private void setInsurantPersonType(final PersonType insurantPersonType) {
 	    this.insurantPersonType = insurantPersonType;
 	}
 
@@ -131,7 +131,7 @@ public class PolicyEntity extends AEntity {
 	    return dateOfIssue;
 	}
 
-	private void setDateOfIssue(LocalDate dateOfIssue) {
+	private void setDateOfIssue(final LocalDate dateOfIssue) {
 	    this.dateOfIssue = dateOfIssue;
 	}
 
@@ -141,7 +141,7 @@ public class PolicyEntity extends AEntity {
 	    return cancelation;
 	}
 
-	private void setCancelation(CancelationInfo cancelation) {
+	private void setCancelation(final CancelationInfo cancelation) {
 	    this.cancelation = cancelation;
 	}
 
@@ -151,7 +151,7 @@ public class PolicyEntity extends AEntity {
 	    return branch;
 	}
 
-	private void setBranch(BranchEntity branch) {
+	private void setBranch(final BranchEntity branch) {
 	    this.branch = branch;
 	}
 
@@ -161,7 +161,7 @@ public class PolicyEntity extends AEntity {
 	    return reissuedPolicyId;
 	}
 
-	private void setReissuedPolicyId(Integer reissuedPolicyId) {
+	private void setReissuedPolicyId(final Integer reissuedPolicyId) {
 	    this.reissuedPolicyId = reissuedPolicyId;
 	}
 
@@ -171,7 +171,7 @@ public class PolicyEntity extends AEntity {
 	    return comments;
 	}
 
-	private void setComments(String comments) {
+	private void setComments(final String comments) {
 	    this.comments = comments;
 	}
 
@@ -185,7 +185,7 @@ public class PolicyEntity extends AEntity {
 	    return created;
 	}
 
-	private void setCreated(RecordOperationInfo created) {
+	private void setCreated(final RecordOperationInfo created) {
 	    this.created = created;
 	}
 
@@ -195,7 +195,7 @@ public class PolicyEntity extends AEntity {
 	    return modified;
 	}
 
-	private void setModified(RecordOperationInfo modified) {
+	private void setModified(final RecordOperationInfo modified) {
 	    this.modified = modified;
 	}
 
@@ -205,7 +205,7 @@ public class PolicyEntity extends AEntity {
 	    return dateOfPayment;
 	}
 
-	private void setDateOfPayment(LocalDate dateOfPayment) {
+	private void setDateOfPayment(final LocalDate dateOfPayment) {
 	    this.dateOfPayment = dateOfPayment;
 	}
 
@@ -215,7 +215,7 @@ public class PolicyEntity extends AEntity {
 	    return paymentType;
 	}
 
-	private void setPaymentType(PaymentType paymentType) {
+	private void setPaymentType(final PaymentType paymentType) {
 	    this.paymentType = paymentType;
 	}
 
@@ -225,7 +225,7 @@ public class PolicyEntity extends AEntity {
 	    return insuranceAgent;
 	}
 
-	private void setInsuranceAgent(InsuranceAgentEntity insuranceAgent) {
+	private void setInsuranceAgent(final InsuranceAgentEntity insuranceAgent) {
 	    this.insuranceAgent = insuranceAgent;
 	}
 
@@ -239,29 +239,29 @@ public class PolicyEntity extends AEntity {
 	protected PolicyEntityBuilder() {
 	}
 
-	protected PolicyEntityBuilder(PolicyEntity source) {
+	protected PolicyEntityBuilder(final PolicyEntity source) {
 	    super(source);
-	    this.number = source.number;
-	    this.internalNumber = source.internalNumber;
-	    this.validFrom = source.validFrom;
-	    this.validTill = source.validTill;
-	    this.actualPremium = source.actualPremium;
-	    this.calculatedPremium = source.calculatedPremium;
-	    this.insurer = source.insurer;
-	    this.insurant = source.insurant;
-	    this.insurantPersonType = source.insurantPersonType;
-	    this.dateOfIssue = source.dateOfIssue;
-	    this.cancelation = source.cancelation;
-	    this.branch = source.branch;
-	    this.reissuedPolicyId = source.reissuedPolicyId;
-	    this.comments = source.comments;
-	    this.insuredDrivers = MyObjects.nullOrGet(source.insuredDrivers, ArrayList::new);
-	    this.insuredVehicles = MyObjects.nullOrGet(source.insuredVehicles, ArrayList::new);
-	    this.created = source.created;
-	    this.modified = source.modified;
-	    this.dateOfPayment = source.dateOfPayment;
-	    this.paymentType = source.paymentType;
-	    this.insuranceAgent = source.insuranceAgent;
+	    number = source.number;
+	    internalNumber = source.internalNumber;
+	    validFrom = source.validFrom;
+	    validTill = source.validTill;
+	    actualPremium = source.actualPremium;
+	    calculatedPremium = source.calculatedPremium;
+	    insurer = source.insurer;
+	    insurant = source.insurant;
+	    insurantPersonType = source.insurantPersonType;
+	    dateOfIssue = source.dateOfIssue;
+	    cancelation = source.cancelation;
+	    branch = source.branch;
+	    reissuedPolicyId = source.reissuedPolicyId;
+	    comments = source.comments;
+	    insuredDrivers = MyObjects.nullOrGet(source.insuredDrivers, ArrayList::new);
+	    insuredVehicles = MyObjects.nullOrGet(source.insuredVehicles, ArrayList::new);
+	    created = source.created;
+	    modified = source.modified;
+	    dateOfPayment = source.dateOfPayment;
+	    paymentType = source.paymentType;
+	    insuranceAgent = source.insuranceAgent;
 	}
 
 	// public
@@ -385,6 +385,7 @@ public class PolicyEntity extends AEntity {
 	    return this;
 	}
 
+	@Override
 	public PolicyEntity build() throws IllegalArgumentException {
 	    return new PolicyEntity(id,
 		    number,
@@ -413,7 +414,7 @@ public class PolicyEntity extends AEntity {
 
     // constructor
 
-    protected PolicyEntity(Integer id,
+    protected PolicyEntity(final Integer id,
 	    final String number,
 	    final String internalNumber,
 	    final LocalDate validFrom,
@@ -460,27 +461,27 @@ public class PolicyEntity extends AEntity {
     }
 
     protected PolicyEntity() {
-	this.number = null;
-	this.internalNumber = null;
-	this.validFrom = null;
-	this.validTill = null;
-	this.actualPremium = null;
-	this.calculatedPremium = null;
-	this.insurer = null;
-	this.insurant = null;
-	this.insurantPersonType = null;
-	this.dateOfIssue = null;
-	this.cancelation = null;
-	this.branch = null;
-	this.reissuedPolicyId = null;
-	this.comments = null;
-	this.insuredDrivers = null;
-	this.insuredVehicles = null;
-	this.created = null;
-	this.modified = null;
-	this.dateOfPayment = null;
-	this.paymentType = null;
-	this.insuranceAgent = null;
+	number = null;
+	internalNumber = null;
+	validFrom = null;
+	validTill = null;
+	actualPremium = null;
+	calculatedPremium = null;
+	insurer = null;
+	insurant = null;
+	insurantPersonType = null;
+	dateOfIssue = null;
+	cancelation = null;
+	branch = null;
+	reissuedPolicyId = null;
+	comments = null;
+	insuredDrivers = null;
+	insuredVehicles = null;
+	created = null;
+	modified = null;
+	dateOfPayment = null;
+	paymentType = null;
+	insuranceAgent = null;
     }
 
     // number

@@ -34,7 +34,7 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 	protected GPWParticipantCertificateInfoBuilder() {
 	}
 
-	protected GPWParticipantCertificateInfoBuilder(GPWParticipantCertificateInfo source) {
+	protected GPWParticipantCertificateInfoBuilder(final GPWParticipantCertificateInfo source) {
 	    super(source);
 	}
 

@@ -29,7 +29,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return volume;
 	}
 
-	private void setVolume(Integer volume) {
+	private void setVolume(final Integer volume) {
 	    this.volume = volume;
 	}
 
@@ -39,7 +39,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -49,7 +49,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return power;
 	}
 
-	private void setPower(Integer power) {
+	private void setPower(final Integer power) {
 	    this.power = power;
 	}
 
@@ -63,11 +63,11 @@ public class VehicleEngineInfo extends ADomain {
 	protected VehicleEngineInfoBuilder() {
 	}
 
-	protected VehicleEngineInfoBuilder(VehicleEngineInfo source) {
+	protected VehicleEngineInfoBuilder(final VehicleEngineInfo source) {
 	    super(source);
-	    this.volume = source.volume;
-	    this.number = source.number;
-	    this.power = source.power;
+	    volume = source.volume;
+	    number = source.number;
+	    power = source.power;
 	}
 
 	// public
@@ -113,9 +113,9 @@ public class VehicleEngineInfo extends ADomain {
     }
 
     protected VehicleEngineInfo() {
-	this.volume = null;
-	this.number = null;
-	this.power = null;
+	volume = null;
+	number = null;
+	power = null;
     }
 
     // engineVolume

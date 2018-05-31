@@ -33,7 +33,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return contract;
 	}
 
-	private void setContract(ContractInfo contract) {
+	private void setContract(final ContractInfo contract) {
 	    this.contract = contract;
 	}
 
@@ -43,7 +43,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return branch;
 	}
 
-	private void setBranch(BranchEntity branch) {
+	private void setBranch(final BranchEntity branch) {
 	    this.branch = branch;
 	}
 
@@ -53,7 +53,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return owner;
 	}
 
-	private void setOwner(UserEntity owner) {
+	private void setOwner(final UserEntity owner) {
 	    this.owner = owner;
 	}
 
@@ -63,7 +63,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return subject;
 	}
 
-	private void setSubject(SubjectEntity subject) {
+	private void setSubject(final SubjectEntity subject) {
 	    this.subject = subject;
 	}
 
@@ -73,7 +73,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return created;
 	}
 
-	private void setCreated(RecordOperationInfo created) {
+	private void setCreated(final RecordOperationInfo created) {
 	    this.created = created;
 	}
 
@@ -83,7 +83,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return modified;
 	}
 
-	private void setModified(RecordOperationInfo modified) {
+	private void setModified(final RecordOperationInfo modified) {
 	    this.modified = modified;
 	}
 
@@ -93,7 +93,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return insurer;
 	}
 
-	private void setInsurer(InsuranceCompanyEntity insurer) {
+	private void setInsurer(final InsuranceCompanyEntity insurer) {
 	    this.insurer = insurer;
 	}
 
@@ -103,7 +103,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    return letterOfAttorneyNumber;
 	}
 
-	private void setLetterOfAttorneyNumber(String letterOfAttorneyNumber) {
+	private void setLetterOfAttorneyNumber(final String letterOfAttorneyNumber) {
 	    this.letterOfAttorneyNumber = letterOfAttorneyNumber;
 	}
 
@@ -117,15 +117,15 @@ public class InsuranceAgentEntity extends AEntity {
 	protected InsuranceAgentEntityBuilder() {
 	}
 
-	protected InsuranceAgentEntityBuilder(InsuranceAgentEntity source) {
+	protected InsuranceAgentEntityBuilder(final InsuranceAgentEntity source) {
 	    super(source);
-	    this.contract = source.contract;
-	    this.branch = source.branch;
-	    this.owner = source.owner;
-	    this.subject = source.subject;
-	    this.created = source.created;
-	    this.modified = source.modified;
-	    this.letterOfAttorneyNumber = source.letterOfAttorneyNumber;
+	    contract = source.contract;
+	    branch = source.branch;
+	    owner = source.owner;
+	    subject = source.subject;
+	    created = source.created;
+	    modified = source.modified;
+	    letterOfAttorneyNumber = source.letterOfAttorneyNumber;
 	}
 
 	// public
@@ -206,13 +206,13 @@ public class InsuranceAgentEntity extends AEntity {
     }
 
     protected InsuranceAgentEntity() {
-	this.contract = null;
-	this.branch = null;
-	this.owner = null;
-	this.subject = null;
-	this.created = null;
-	this.modified = null;
-	this.letterOfAttorneyNumber = null;
+	contract = null;
+	branch = null;
+	owner = null;
+	subject = null;
+	created = null;
+	modified = null;
+	letterOfAttorneyNumber = null;
     }
 
     // contract

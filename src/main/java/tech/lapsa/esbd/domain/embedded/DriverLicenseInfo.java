@@ -34,7 +34,7 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	protected DriverLicenseInfoBuilder() {
 	}
 
-	protected DriverLicenseInfoBuilder(DriverLicenseInfo source) {
+	protected DriverLicenseInfoBuilder(final DriverLicenseInfo source) {
 	    super(source);
 	}
 

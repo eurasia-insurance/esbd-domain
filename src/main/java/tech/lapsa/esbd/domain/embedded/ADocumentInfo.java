@@ -19,7 +19,7 @@ public abstract class ADocumentInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -29,7 +29,7 @@ public abstract class ADocumentInfo extends ADomain {
 	    return dateOfIssue;
 	}
 
-	private void setDateOfIssue(LocalDate dateOfIssue) {
+	private void setDateOfIssue(final LocalDate dateOfIssue) {
 	    this.dateOfIssue = dateOfIssue;
 	}
 
@@ -38,7 +38,7 @@ public abstract class ADocumentInfo extends ADomain {
 	protected ADocumentInfoBuilder() {
 	}
 
-	protected ADocumentInfoBuilder(ET source) {
+	protected ADocumentInfoBuilder(final ET source) {
 	    super(source);
 	    this.number = source.number;
 	    this.dateOfIssue = source.dateOfIssue;
@@ -66,8 +66,8 @@ public abstract class ADocumentInfo extends ADomain {
     }
 
     protected ADocumentInfo() {
-	this.number = null;
-	this.dateOfIssue = null;
+	number = null;
+	dateOfIssue = null;
     }
 
     // number

@@ -36,7 +36,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    return personal;
 	}
 
-	private void setPersonal(PersonalInfo personal) {
+	private void setPersonal(final PersonalInfo personal) {
 	    this.personal = personal;
 	}
 
@@ -46,7 +46,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    return identityCard;
 	}
 
-	private void setIdentityCard(IdentityCardInfo identityCard) {
+	private void setIdentityCard(final IdentityCardInfo identityCard) {
 	    this.identityCard = identityCard;
 	}
 
@@ -60,10 +60,10 @@ public class SubjectPersonEntity extends SubjectEntity {
 	protected SubjectPersonEntityBuilder() {
 	}
 
-	protected SubjectPersonEntityBuilder(SubjectPersonEntity source) {
+	protected SubjectPersonEntityBuilder(final SubjectPersonEntity source) {
 	    super(source);
-	    this.personal = source.personal;
-	    this.identityCard = source.identityCard;
+	    personal = source.personal;
+	    identityCard = source.identityCard;
 	}
 
 	// public
@@ -111,8 +111,8 @@ public class SubjectPersonEntity extends SubjectEntity {
     }
 
     protected SubjectPersonEntity() {
-	this.personal = null;
-	this.identityCard = null;
+	personal = null;
+	identityCard = null;
     }
 
     // subjectType

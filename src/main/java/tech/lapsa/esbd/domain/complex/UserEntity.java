@@ -33,7 +33,7 @@ public class UserEntity extends AEntity {
 	    return login;
 	}
 
-	private void setLogin(String login) {
+	private void setLogin(final String login) {
 	    this.login = login;
 	}
 
@@ -43,7 +43,7 @@ public class UserEntity extends AEntity {
 	    return branch;
 	}
 
-	private void setBranch(BranchEntity branch) {
+	private void setBranch(final BranchEntity branch) {
 	    this.branch = branch;
 	}
 
@@ -53,7 +53,7 @@ public class UserEntity extends AEntity {
 	    return subject;
 	}
 
-	private void setSubject(SubjectEntity subject) {
+	private void setSubject(final SubjectEntity subject) {
 	    this.subject = subject;
 	}
 
@@ -63,7 +63,7 @@ public class UserEntity extends AEntity {
 	    return organization;
 	}
 
-	private void setOrganization(InsuranceCompanyEntity organization) {
+	private void setOrganization(final InsuranceCompanyEntity organization) {
 	    this.organization = organization;
 	}
 
@@ -73,7 +73,7 @@ public class UserEntity extends AEntity {
 	    return authentificated;
 	}
 
-	private void setAuthentificated(Boolean authentificated) {
+	private void setAuthentificated(final Boolean authentificated) {
 	    this.authentificated = authentificated;
 	}
 
@@ -83,7 +83,7 @@ public class UserEntity extends AEntity {
 	    return lastSesionId;
 	}
 
-	private void setLastSesionId(String lastSesionId) {
+	private void setLastSesionId(final String lastSesionId) {
 	    this.lastSesionId = lastSesionId;
 	}
 
@@ -93,7 +93,7 @@ public class UserEntity extends AEntity {
 	    return lastActivity;
 	}
 
-	private void setLastActivity(Instant lastActivity) {
+	private void setLastActivity(final Instant lastActivity) {
 	    this.lastActivity = lastActivity;
 	}
 
@@ -107,15 +107,15 @@ public class UserEntity extends AEntity {
 	protected UserEntityBuilder() {
 	}
 
-	protected UserEntityBuilder(UserEntity source) {
+	protected UserEntityBuilder(final UserEntity source) {
 	    super(source);
-	    this.login = source.login;
-	    this.branch = source.branch;
-	    this.subject = source.subject;
-	    this.organization = source.organization;
-	    this.authentificated = source.authentificated;
-	    this.lastSesionId = source.lastSesionId;
-	    this.lastActivity = source.lastActivity;
+	    login = source.login;
+	    branch = source.branch;
+	    subject = source.subject;
+	    organization = source.organization;
+	    authentificated = source.authentificated;
+	    lastSesionId = source.lastSesionId;
+	    lastActivity = source.lastActivity;
 	}
 
 	// public
@@ -190,13 +190,13 @@ public class UserEntity extends AEntity {
     }
 
     protected UserEntity() {
-	this.login = null;
-	this.branch = null;
-	this.subject = null;
-	this.organization = null;
-	this.authentificated = null;
-	this.lastSesionId = null;
-	this.lastActivity = null;
+	login = null;
+	branch = null;
+	subject = null;
+	organization = null;
+	authentificated = null;
+	lastSesionId = null;
+	lastActivity = null;
     }
 
     // login

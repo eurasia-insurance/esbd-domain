@@ -32,7 +32,7 @@ public class CompanyActivityKindEntity extends ADictEntity {
 	protected CompanyActivityKindEntityBuilder() {
 	}
 
-	protected CompanyActivityKindEntityBuilder(CompanyActivityKindEntity source) {
+	protected CompanyActivityKindEntityBuilder(final CompanyActivityKindEntity source) {
 	    super(source);
 	}
 

@@ -29,7 +29,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -39,7 +39,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	    return foreign;
 	}
 
-	private void setForeign(Boolean foreign) {
+	private void setForeign(final Boolean foreign) {
 	    this.foreign = foreign;
 	}
 
@@ -53,10 +53,10 @@ public class VehicleManufacturerEntity extends AEntity {
 	protected VehicleManufacturerEntityBuilder() {
 	}
 
-	protected VehicleManufacturerEntityBuilder(VehicleManufacturerEntity source) {
+	protected VehicleManufacturerEntityBuilder(final VehicleManufacturerEntity source) {
 	    super(source);
-	    this.name = source.name;
-	    this.foreign = source.foreign;
+	    name = source.name;
+	    foreign = source.foreign;
 	}
 
 	// public
@@ -90,8 +90,8 @@ public class VehicleManufacturerEntity extends AEntity {
     }
 
     protected VehicleManufacturerEntity() {
-	this.name = null;
-	this.foreign = null;
+	name = null;
+	foreign = null;
     }
 
     // name

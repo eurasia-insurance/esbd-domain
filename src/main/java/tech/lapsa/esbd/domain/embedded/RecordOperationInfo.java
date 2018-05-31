@@ -32,7 +32,7 @@ public class RecordOperationInfo extends ADomain {
 	    return instant;
 	}
 
-	private void setInstant(Instant instant) {
+	private void setInstant(final Instant instant) {
 	    this.instant = instant;
 	}
 
@@ -42,7 +42,7 @@ public class RecordOperationInfo extends ADomain {
 	    return author;
 	}
 
-	private void setAuthor(UserEntity author) {
+	private void setAuthor(final UserEntity author) {
 	    this.author = author;
 	}
 
@@ -56,10 +56,10 @@ public class RecordOperationInfo extends ADomain {
 	protected RecordOperationInfoBuilder() {
 	}
 
-	protected RecordOperationInfoBuilder(RecordOperationInfo source) {
+	protected RecordOperationInfoBuilder(final RecordOperationInfo source) {
 	    super(source);
-	    this.instant = source.instant;
-	    this.author = source.author;
+	    instant = source.instant;
+	    author = source.author;
 	}
 
 	// public
@@ -90,8 +90,8 @@ public class RecordOperationInfo extends ADomain {
     }
 
     protected RecordOperationInfo() {
-	this.instant = null;
-	this.author = null;
+	instant = null;
+	author = null;
     }
 
     // res

@@ -32,7 +32,7 @@ public class BranchEntity extends ADictEntity {
 	protected BranchEntityBuilder() {
 	}
 
-	protected BranchEntityBuilder(BranchEntity source) {
+	protected BranchEntityBuilder(final BranchEntity source) {
 	    super(source);
 	}
 

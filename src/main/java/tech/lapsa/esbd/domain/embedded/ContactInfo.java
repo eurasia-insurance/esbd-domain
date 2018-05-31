@@ -31,7 +31,7 @@ public class ContactInfo extends ADomain {
 	    return phone;
 	}
 
-	private void setPhone(PhoneNumber phone) {
+	private void setPhone(final PhoneNumber phone) {
 	    this.phone = phone;
 	}
 
@@ -41,7 +41,7 @@ public class ContactInfo extends ADomain {
 	    return email;
 	}
 
-	private void setEmail(String email) {
+	private void setEmail(final String email) {
 	    this.email = email;
 	}
 
@@ -51,7 +51,7 @@ public class ContactInfo extends ADomain {
 	    return homeAdress;
 	}
 
-	private void setHomeAdress(String homeAdress) {
+	private void setHomeAdress(final String homeAdress) {
 	    this.homeAdress = homeAdress;
 	}
 
@@ -61,7 +61,7 @@ public class ContactInfo extends ADomain {
 	    return siteUrl;
 	}
 
-	private void setSiteUrl(String siteUrl) {
+	private void setSiteUrl(final String siteUrl) {
 	    this.siteUrl = siteUrl;
 	}
 
@@ -75,12 +75,12 @@ public class ContactInfo extends ADomain {
 	protected ContactInfoBuilder() {
 	}
 
-	protected ContactInfoBuilder(ContactInfo source) {
+	protected ContactInfoBuilder(final ContactInfo source) {
 	    super(source);
-	    this.phone = source.phone;
-	    this.email = source.email;
-	    this.homeAdress = source.homeAdress;
-	    this.siteUrl = source.siteUrl;
+	    phone = source.phone;
+	    email = source.email;
+	    homeAdress = source.homeAdress;
+	    siteUrl = source.siteUrl;
 	}
 
 	// public
@@ -127,10 +127,10 @@ public class ContactInfo extends ADomain {
     }
 
     protected ContactInfo() {
-	this.phone = null;
-	this.email = null;
-	this.homeAdress = null;
-	this.siteUrl = null;
+	phone = null;
+	email = null;
+	homeAdress = null;
+	siteUrl = null;
     }
 
     // phone

@@ -42,7 +42,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return insuredPerson;
 	}
 
-	private void setInsuredPerson(SubjectPersonEntity insuredPerson) {
+	private void setInsuredPerson(final SubjectPersonEntity insuredPerson) {
 	    this.insuredPerson = insuredPerson;
 	}
 
@@ -52,7 +52,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return maritalStatus;
 	}
 
-	private void setMaritalStatus(MaritalStatus maritalStatus) {
+	private void setMaritalStatus(final MaritalStatus maritalStatus) {
 	    this.maritalStatus = maritalStatus;
 	}
 
@@ -62,7 +62,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return insuredAgeExpirienceClass;
 	}
 
-	private void setInsuredAgeExpirienceClass(InsuredAgeAndExpirienceClass insuredAgeExpirienceClass) {
+	private void setInsuredAgeExpirienceClass(final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass) {
 	    this.insuredAgeExpirienceClass = insuredAgeExpirienceClass;
 	}
 
@@ -72,7 +72,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return drivingExpirience;
 	}
 
-	private void setDrivingExpirience(Integer drivingExpirience) {
+	private void setDrivingExpirience(final Integer drivingExpirience) {
 	    this.drivingExpirience = drivingExpirience;
 	}
 
@@ -82,7 +82,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return driverLicense;
 	}
 
-	private void setDriverLicense(DriverLicenseInfo driverLicense) {
+	private void setDriverLicense(final DriverLicenseInfo driverLicense) {
 	    this.driverLicense = driverLicense;
 	}
 
@@ -92,7 +92,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return insuranceClassType;
 	}
 
-	private void setInsuranceClassType(InsuranceClassType insuranceClassType) {
+	private void setInsuranceClassType(final InsuranceClassType insuranceClassType) {
 	    this.insuranceClassType = insuranceClassType;
 	}
 
@@ -102,7 +102,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return privilegerInfo;
 	}
 
-	private void setPrivilegerInfo(PrivilegerDocumentInfo privilegerInfo) {
+	private void setPrivilegerInfo(final PrivilegerDocumentInfo privilegerInfo) {
 	    this.privilegerInfo = privilegerInfo;
 	}
 
@@ -112,7 +112,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return gpwParticipantInfo;
 	}
 
-	private void setGpwParticipantInfo(GPWParticipantCertificateInfo gpwParticipantInfo) {
+	private void setGpwParticipantInfo(final GPWParticipantCertificateInfo gpwParticipantInfo) {
 	    this.gpwParticipantInfo = gpwParticipantInfo;
 	}
 
@@ -122,7 +122,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return pensionerInfo;
 	}
 
-	private void setPensionerInfo(PensionerCertificateInfo pensionerInfo) {
+	private void setPensionerInfo(final PensionerCertificateInfo pensionerInfo) {
 	    this.pensionerInfo = pensionerInfo;
 	}
 
@@ -132,7 +132,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return handicappedInfo;
 	}
 
-	private void setHandicappedInfo(HandicappedCertificateInfo handicappedInfo) {
+	private void setHandicappedInfo(final HandicappedCertificateInfo handicappedInfo) {
 	    this.handicappedInfo = handicappedInfo;
 	}
 
@@ -142,7 +142,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return created;
 	}
 
-	private void setCreated(RecordOperationInfo created) {
+	private void setCreated(final RecordOperationInfo created) {
 	    this.created = created;
 	}
 
@@ -152,7 +152,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return modified;
 	}
 
-	private void setModified(RecordOperationInfo modified) {
+	private void setModified(final RecordOperationInfo modified) {
 	    this.modified = modified;
 	}
 
@@ -162,7 +162,7 @@ public class PolicyDriverEntity extends AEntity {
 	    return insurer;
 	}
 
-	private void setInsurer(InsuranceCompanyEntity insurer) {
+	private void setInsurer(final InsuranceCompanyEntity insurer) {
 	    this.insurer = insurer;
 	}
 
@@ -178,19 +178,19 @@ public class PolicyDriverEntity extends AEntity {
 
 	protected PolicyDriverEntityBuilder(final PolicyDriverEntity source) {
 	    super(source);
-	    this.insuredPerson = source.insuredPerson;
-	    this.maritalStatus = source.maritalStatus;
-	    this.insuredAgeExpirienceClass = source.insuredAgeExpirienceClass;
-	    this.drivingExpirience = source.drivingExpirience;
-	    this.driverLicense = source.driverLicense;
-	    this.insuranceClassType = source.insuranceClassType;
-	    this.privilegerInfo = source.privilegerInfo;
-	    this.gpwParticipantInfo = source.gpwParticipantInfo;
-	    this.pensionerInfo = source.pensionerInfo;
-	    this.handicappedInfo = source.handicappedInfo;
-	    this.created = source.created;
-	    this.modified = source.modified;
-	    this.insurer = source.insurer;
+	    insuredPerson = source.insuredPerson;
+	    maritalStatus = source.maritalStatus;
+	    insuredAgeExpirienceClass = source.insuredAgeExpirienceClass;
+	    drivingExpirience = source.drivingExpirience;
+	    driverLicense = source.driverLicense;
+	    insuranceClassType = source.insuranceClassType;
+	    privilegerInfo = source.privilegerInfo;
+	    gpwParticipantInfo = source.gpwParticipantInfo;
+	    pensionerInfo = source.pensionerInfo;
+	    handicappedInfo = source.handicappedInfo;
+	    created = source.created;
+	    modified = source.modified;
+	    insurer = source.insurer;
 	}
 
 	// public
@@ -329,19 +329,19 @@ public class PolicyDriverEntity extends AEntity {
     }
 
     protected PolicyDriverEntity() {
-	this.insuredPerson = null;
-	this.maritalStatus = null;
-	this.insuredAgeExpirienceClass = null;
-	this.drivingExpirience = null;
-	this.driverLicense = null;
-	this.insuranceClassType = null;
-	this.privilegerInfo = null;
-	this.gpwParticipantInfo = null;
-	this.pensionerInfo = null;
-	this.handicappedInfo = null;
-	this.created = null;
-	this.modified = null;
-	this.insurer = null;
+	insuredPerson = null;
+	maritalStatus = null;
+	insuredAgeExpirienceClass = null;
+	drivingExpirience = null;
+	driverLicense = null;
+	insuranceClassType = null;
+	privilegerInfo = null;
+	gpwParticipantInfo = null;
+	pensionerInfo = null;
+	handicappedInfo = null;
+	created = null;
+	modified = null;
+	insurer = null;
     }
 
     // insuredPerson

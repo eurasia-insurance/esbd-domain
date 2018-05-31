@@ -31,7 +31,7 @@ public class ContractInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -41,7 +41,7 @@ public class ContractInfo extends ADomain {
 	    return dateOf;
 	}
 
-	private void setDateOf(LocalDate dateOf) {
+	private void setDateOf(final LocalDate dateOf) {
 	    this.dateOf = dateOf;
 	}
 
@@ -55,10 +55,10 @@ public class ContractInfo extends ADomain {
 	protected ContractInfoBuilder() {
 	}
 
-	protected ContractInfoBuilder(ContractInfo source) {
+	protected ContractInfoBuilder(final ContractInfo source) {
 	    super(source);
-	    this.number = source.number;
-	    this.dateOf = source.dateOf;
+	    number = source.number;
+	    dateOf = source.dateOf;
 	}
 
 	// public
@@ -68,7 +68,7 @@ public class ContractInfo extends ADomain {
 	    return this;
 	}
 
-	public ContractInfoBuilder withDateOf(LocalDate dateOf) {
+	public ContractInfoBuilder withDateOf(final LocalDate dateOf) {
 	    setBuilderProperty("dateOf", this::getDateOf, this::setDateOf, dateOf);
 	    return this;
 	}
@@ -89,8 +89,8 @@ public class ContractInfo extends ADomain {
     }
 
     protected ContractInfo() {
-	this.number = null;
-	this.dateOf = null;
+	number = null;
+	dateOf = null;
     }
 
     // certificateNumber

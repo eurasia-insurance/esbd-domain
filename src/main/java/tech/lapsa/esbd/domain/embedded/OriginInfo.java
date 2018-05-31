@@ -32,7 +32,7 @@ public class OriginInfo extends ADomain {
 	    return country;
 	}
 
-	private void setCountry(Country country) {
+	private void setCountry(final Country country) {
 	    this.country = country;
 	}
 
@@ -42,7 +42,7 @@ public class OriginInfo extends ADomain {
 	    return city;
 	}
 
-	private void setCity(KZCity city) {
+	private void setCity(final KZCity city) {
 	    this.city = city;
 	}
 
@@ -56,10 +56,10 @@ public class OriginInfo extends ADomain {
 	protected OriginInfoBuilder() {
 	}
 
-	protected OriginInfoBuilder(OriginInfo source) {
+	protected OriginInfoBuilder(final OriginInfo source) {
 	    super(source);
-	    this.country = source.country;
-	    this.city = source.city;
+	    country = source.country;
+	    city = source.city;
 	}
 
 	// public
@@ -89,8 +89,8 @@ public class OriginInfo extends ADomain {
     }
 
     protected OriginInfo() {
-	this.country = null;
-	this.city = null;
+	country = null;
+	city = null;
     }
 
     // country

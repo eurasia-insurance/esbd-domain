@@ -35,7 +35,7 @@ public class VehicleEntity extends AEntity {
 	    return vehicleClass;
 	}
 
-	private void setVehicleClass(VehicleClass vehicleClass) {
+	private void setVehicleClass(final VehicleClass vehicleClass) {
 	    this.vehicleClass = vehicleClass;
 	}
 
@@ -45,7 +45,7 @@ public class VehicleEntity extends AEntity {
 	    return vinCode;
 	}
 
-	private void setVinCode(String vinCode) {
+	private void setVinCode(final String vinCode) {
 	    this.vinCode = vinCode;
 	}
 
@@ -55,7 +55,7 @@ public class VehicleEntity extends AEntity {
 	    return vehicleModel;
 	}
 
-	private void setVehicleModel(VehicleModelEntity vehicleModel) {
+	private void setVehicleModel(final VehicleModelEntity vehicleModel) {
 	    this.vehicleModel = vehicleModel;
 	}
 
@@ -65,7 +65,7 @@ public class VehicleEntity extends AEntity {
 	    return steeringWheelLocation;
 	}
 
-	private void setSteeringWheelLocation(SteeringWheelLocation steeringWheelLocation) {
+	private void setSteeringWheelLocation(final SteeringWheelLocation steeringWheelLocation) {
 	    this.steeringWheelLocation = steeringWheelLocation;
 	}
 
@@ -75,7 +75,7 @@ public class VehicleEntity extends AEntity {
 	    return color;
 	}
 
-	private void setColor(String color) {
+	private void setColor(final String color) {
 	    this.color = color;
 	}
 
@@ -85,7 +85,7 @@ public class VehicleEntity extends AEntity {
 	    return realeaseDate;
 	}
 
-	private void setRealeaseDate(LocalDate realeaseDate) {
+	private void setRealeaseDate(final LocalDate realeaseDate) {
 	    this.realeaseDate = realeaseDate;
 	}
 
@@ -95,7 +95,7 @@ public class VehicleEntity extends AEntity {
 	    return engine;
 	}
 
-	private void setEngine(VehicleEngineInfo engine) {
+	private void setEngine(final VehicleEngineInfo engine) {
 	    this.engine = engine;
 	}
 
@@ -109,15 +109,15 @@ public class VehicleEntity extends AEntity {
 	protected VehicleEntityBuilder() {
 	}
 
-	protected VehicleEntityBuilder(VehicleEntity source) {
+	protected VehicleEntityBuilder(final VehicleEntity source) {
 	    super(source);
-	    this.vehicleClass = source.vehicleClass;
-	    this.vinCode = source.vinCode;
-	    this.vehicleModel = source.vehicleModel;
-	    this.steeringWheelLocation = source.steeringWheelLocation;
-	    this.engine = source.engine;
-	    this.color = source.color;
-	    this.realeaseDate = source.realeaseDate;
+	    vehicleClass = source.vehicleClass;
+	    vinCode = source.vinCode;
+	    vehicleModel = source.vehicleModel;
+	    steeringWheelLocation = source.steeringWheelLocation;
+	    engine = source.engine;
+	    color = source.color;
+	    realeaseDate = source.realeaseDate;
 	}
 
 	// public
@@ -192,13 +192,13 @@ public class VehicleEntity extends AEntity {
     }
 
     protected VehicleEntity() {
-	this.vehicleClass = null;
-	this.vinCode = null;
-	this.vehicleModel = null;
-	this.steeringWheelLocation = null;
-	this.engine = null;
-	this.color = null;
-	this.realeaseDate = null;
+	vehicleClass = null;
+	vinCode = null;
+	vehicleModel = null;
+	steeringWheelLocation = null;
+	engine = null;
+	color = null;
+	realeaseDate = null;
     }
 
     // vehicleClass

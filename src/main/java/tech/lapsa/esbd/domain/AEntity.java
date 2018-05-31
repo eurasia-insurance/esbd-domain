@@ -17,11 +17,9 @@ public abstract class AEntity extends ADomain implements Cloneable {
 	    return id;
 	}
 
-	private void setId(Integer id) {
+	private void setId(final Integer id) {
 	    this.id = id;
 	}
-
-	protected abstract BT _this();
 
 	// constructor
 
@@ -45,24 +43,24 @@ public abstract class AEntity extends ADomain implements Cloneable {
     public Object clone() {
 	try {
 	    return super.clone();
-	} catch (CloneNotSupportedException e) {
+	} catch (final CloneNotSupportedException e) {
 	    throw new RuntimeException(e);
 	}
     }
 
-    public <T> T clone(Class<T> clazz) {
+    public <T> T clone(final Class<T> clazz) {
 	final Object cloned = clone();
 	return MyObjects.requireA(cloned, clazz);
     }
 
     // constructor
 
-    protected AEntity(Integer id) {
+    protected AEntity(final Integer id) {
 	this.id = id;
     }
 
     protected AEntity() {
-	this.id = null;
+	id = null;
     }
 
     // id

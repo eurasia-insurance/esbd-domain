@@ -34,7 +34,7 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	protected PensionerCertificateInfoBuilder() {
 	}
 
-	protected PensionerCertificateInfoBuilder(PensionerCertificateInfo source) {
+	protected PensionerCertificateInfoBuilder(final PensionerCertificateInfo source) {
 	    super(source);
 	}
 
