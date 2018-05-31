@@ -26,6 +26,11 @@ public class PolicyDriverEntity extends AEntity {
 	return new PolicyDriverEntityBuilder();
     }
 
+    public static final PolicyDriverEntityBuilder builder(final PolicyDriverEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PolicyDriverEntityBuilder(source);
+    }
+
     public static final class PolicyDriverEntityBuilder
 	    extends AEntityBuilder<PolicyDriverEntity, PolicyDriverEntityBuilder> {
 
@@ -171,87 +176,104 @@ public class PolicyDriverEntity extends AEntity {
 	protected PolicyDriverEntityBuilder() {
 	}
 
+	protected PolicyDriverEntityBuilder(final PolicyDriverEntity source) {
+	    super(source);
+	    this.insuredPerson = source.insuredPerson;
+	    this.maritalStatus = source.maritalStatus;
+	    this.insuredAgeExpirienceClass = source.insuredAgeExpirienceClass;
+	    this.drivingExpirience = source.drivingExpirience;
+	    this.driverLicense = source.driverLicense;
+	    this.insuranceClassType = source.insuranceClassType;
+	    this.privilegerInfo = source.privilegerInfo;
+	    this.gpwParticipantInfo = source.gpwParticipantInfo;
+	    this.pensionerInfo = source.pensionerInfo;
+	    this.handicappedInfo = source.handicappedInfo;
+	    this.created = source.created;
+	    this.modified = source.modified;
+	    this.insurer = source.insurer;
+	}
+
 	// public
 
 	public PolicyDriverEntityBuilder withInsuredPerson(final SubjectPersonEntity insuredPerson)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insuredPerson", this::getInsuredPerson, this::setInsuredPerson, insuredPerson);
+	    setBuilderProperty("insuredPerson", this::getInsuredPerson, this::setInsuredPerson, insuredPerson);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withMaritalStatus(final MaritalStatus maritalStatus)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("maritalStatus", this::getMaritalStatus, this::setMaritalStatus, maritalStatus);
+	    setBuilderProperty("maritalStatus", this::getMaritalStatus, this::setMaritalStatus, maritalStatus);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withInsuredAgeExpirienceClass(
 		final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass) throws IllegalArgumentException {
-	    setIfNullOrThrow("insuredAgeExpirienceClass", this::getInsuredAgeExpirienceClass,
+	    setBuilderProperty("insuredAgeExpirienceClass", this::getInsuredAgeExpirienceClass,
 		    this::setInsuredAgeExpirienceClass, insuredAgeExpirienceClass);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withDrivingExpirience(final Integer drivingExpirience)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("drivingExpirience", this::getDrivingExpirience, this::setDrivingExpirience,
+	    setBuilderProperty("drivingExpirience", this::getDrivingExpirience, this::setDrivingExpirience,
 		    drivingExpirience);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withDriverLicense(final DriverLicenseInfo driverLicense)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("driverLicense", this::getDriverLicense, this::setDriverLicense, driverLicense);
+	    setBuilderProperty("driverLicense", this::getDriverLicense, this::setDriverLicense, driverLicense);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withInsuranceClassType(final InsuranceClassType insuranceClassType)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insuranceClassType", this::getInsuranceClassType, this::setInsuranceClassType,
+	    setBuilderProperty("insuranceClassType", this::getInsuranceClassType, this::setInsuranceClassType,
 		    insuranceClassType);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withPrivilegerInfo(final PrivilegerDocumentInfo privilegerInfo)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("privilegerInfo", this::getPrivilegerInfo, this::setPrivilegerInfo, privilegerInfo);
+	    setBuilderProperty("privilegerInfo", this::getPrivilegerInfo, this::setPrivilegerInfo, privilegerInfo);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withGpwParticipantInfo(final GPWParticipantCertificateInfo gpwParticipantInfo)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("gpwParticipantInfo", this::getGpwParticipantInfo, this::setGpwParticipantInfo,
+	    setBuilderProperty("gpwParticipantInfo", this::getGpwParticipantInfo, this::setGpwParticipantInfo,
 		    gpwParticipantInfo);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withPensionerInfo(final PensionerCertificateInfo pensionerInfo)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("pensionerInfo", this::getPensionerInfo, this::setPensionerInfo, pensionerInfo);
+	    setBuilderProperty("pensionerInfo", this::getPensionerInfo, this::setPensionerInfo, pensionerInfo);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withHandicappedInfo(final HandicappedCertificateInfo handicappedInfo)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("handicappedInfo", this::getHandicappedInfo, this::setHandicappedInfo, handicappedInfo);
+	    setBuilderProperty("handicappedInfo", this::getHandicappedInfo, this::setHandicappedInfo, handicappedInfo);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withCreated(final RecordOperationInfo created)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
+	    setBuilderProperty("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withModified(final RecordOperationInfo modified)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
+	    setBuilderProperty("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public PolicyDriverEntityBuilder withInsurer(final InsuranceCompanyEntity insurer)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
+	    setBuilderProperty("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 
@@ -324,7 +346,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredPerson
 
-    private final SubjectPersonEntity insuredPerson;
+    final SubjectPersonEntity insuredPerson;
 
     public SubjectPersonEntity getInsuredPerson() {
 	return insuredPerson;
@@ -332,7 +354,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // maritalStatus
 
-    private final MaritalStatus maritalStatus;
+    final MaritalStatus maritalStatus;
 
     public MaritalStatus getMaritalStatus() {
 	return maritalStatus;
@@ -340,7 +362,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredAgeExpirienceClass
 
-    private final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
+    final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 
     public InsuredAgeAndExpirienceClass getInsuredAgeExpirienceClass() {
 	return insuredAgeExpirienceClass;
@@ -360,13 +382,13 @@ public class PolicyDriverEntity extends AEntity {
 
     // drivingExpirience
 
-    private final Integer drivingExpirience;
+    final Integer drivingExpirience;
 
     public Integer getDrivingExpirience() {
 	return drivingExpirience;
     }
 
-    private final DriverLicenseInfo driverLicense;
+    final DriverLicenseInfo driverLicense;
 
     public DriverLicenseInfo getDriverLicense() {
 	return driverLicense;
@@ -374,7 +396,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuranceClassType
 
-    private final InsuranceClassType insuranceClassType;
+    final InsuranceClassType insuranceClassType;
 
     public InsuranceClassType getInsuranceClassType() {
 	return insuranceClassType;
@@ -382,7 +404,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // privilegerInfo
 
-    private final PrivilegerDocumentInfo privilegerInfo;
+    final PrivilegerDocumentInfo privilegerInfo;
 
     public boolean isPrivileger() {
 	return MyObjects.nonNull(privilegerInfo);
@@ -394,7 +416,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // gpwParticipantInfo
 
-    private final GPWParticipantCertificateInfo gpwParticipantInfo;
+    final GPWParticipantCertificateInfo gpwParticipantInfo;
 
     public boolean isGpwParticipant() {
 	return MyObjects.nonNull(gpwParticipantInfo);
@@ -406,7 +428,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // pensionerInfo
 
-    private final PensionerCertificateInfo pensionerInfo;
+    final PensionerCertificateInfo pensionerInfo;
 
     public boolean isPensioner() {
 	return MyObjects.nonNull(pensionerInfo);
@@ -418,7 +440,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // handicappedInfo
 
-    private final HandicappedCertificateInfo handicappedInfo;
+    final HandicappedCertificateInfo handicappedInfo;
 
     public boolean isHandicapped() {
 	return MyObjects.nonNull(handicappedInfo);
@@ -430,7 +452,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // created
 
-    private final RecordOperationInfo created;
+    final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
 	return created;
@@ -438,7 +460,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // modified
 
-    private final RecordOperationInfo modified;
+    final RecordOperationInfo modified;
 
     public boolean isModified() {
 	return MyObjects.nonNull(modified);
@@ -450,7 +472,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // insurer
 
-    private final InsuranceCompanyEntity insurer;
+    final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
 	return insurer;

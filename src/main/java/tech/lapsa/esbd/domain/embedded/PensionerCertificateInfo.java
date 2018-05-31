@@ -2,6 +2,7 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(283)
@@ -11,6 +12,11 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 
     public static final PensionerCertificateInfoBuilder builder() {
 	return new PensionerCertificateInfoBuilder();
+    }
+
+    public static final PensionerCertificateInfoBuilder builder(final PensionerCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PensionerCertificateInfoBuilder(source);
     }
 
     public static final class PensionerCertificateInfoBuilder
@@ -26,6 +32,10 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	// constructor
 
 	protected PensionerCertificateInfoBuilder() {
+	}
+
+	protected PensionerCertificateInfoBuilder(PensionerCertificateInfo source) {
+	    super(source);
 	}
 
 	// public

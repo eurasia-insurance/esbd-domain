@@ -6,7 +6,7 @@ public abstract class AEntity extends ADomain implements Cloneable {
 
     private static final long serialVersionUID = 1L;
 
-    public static abstract class AEntityBuilder<ET extends ADomain, BT extends AEntityBuilder<ET, BT>>
+    public static abstract class AEntityBuilder<ET extends AEntity, BT extends AEntityBuilder<ET, BT>>
 	    extends ADomainBuilder<ET, BT> {
 
 	// private & protected
@@ -28,10 +28,15 @@ public abstract class AEntity extends ADomain implements Cloneable {
 	protected AEntityBuilder() {
 	}
 
+	protected AEntityBuilder(final ET source) {
+	    super(source);
+	    this.id = source.id;
+	}
+
 	// public
 
 	public BT withId(final Integer id) {
-	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
+	    setBuilderPropertyNumber("id", this::getId, this::setId, id);
 	    return _this();
 	}
     }
@@ -62,7 +67,7 @@ public abstract class AEntity extends ADomain implements Cloneable {
 
     // id
 
-    private final Integer id;
+    final Integer id;
 
     public Integer getId() {
 	return id;

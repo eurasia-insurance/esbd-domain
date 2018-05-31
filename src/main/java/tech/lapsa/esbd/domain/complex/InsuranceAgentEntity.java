@@ -5,6 +5,7 @@ import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.esbd.domain.embedded.ContractInfo;
 import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(43)
@@ -14,6 +15,11 @@ public class InsuranceAgentEntity extends AEntity {
 
     public static final InsuranceAgentEntityBuilder builder() {
 	return new InsuranceAgentEntityBuilder();
+    }
+
+    public static final InsuranceAgentEntityBuilder builder(final InsuranceAgentEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new InsuranceAgentEntityBuilder(source);
     }
 
     public static final class InsuranceAgentEntityBuilder
@@ -111,40 +117,51 @@ public class InsuranceAgentEntity extends AEntity {
 	protected InsuranceAgentEntityBuilder() {
 	}
 
+	protected InsuranceAgentEntityBuilder(InsuranceAgentEntity source) {
+	    super(source);
+	    this.contract = source.contract;
+	    this.branch = source.branch;
+	    this.owner = source.owner;
+	    this.subject = source.subject;
+	    this.created = source.created;
+	    this.modified = source.modified;
+	    this.letterOfAttorneyNumber = source.letterOfAttorneyNumber;
+	}
+
 	// public
 
 	public InsuranceAgentEntityBuilder withContract(final ContractInfo contract) {
-	    setIfNullOrThrow("contract", this::getContract, this::setContract, contract);
+	    setBuilderProperty("contract", this::getContract, this::setContract, contract);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withBranch(final BranchEntity branch) {
-	    setIfNullOrThrow("branch", this::getBranch, this::setBranch, branch);
+	    setBuilderProperty("branch", this::getBranch, this::setBranch, branch);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withOwner(final UserEntity owner) {
-	    setIfNullOrThrow("owner", this::getOwner, this::setOwner, owner);
+	    setBuilderProperty("owner", this::getOwner, this::setOwner, owner);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withSubject(final SubjectEntity subject) {
-	    setIfNullOrThrow("subject", this::getSubject, this::setSubject, subject);
+	    setBuilderProperty("subject", this::getSubject, this::setSubject, subject);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withCreated(final RecordOperationInfo created) {
-	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
+	    setBuilderProperty("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withModified(final RecordOperationInfo modified) {
-	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
+	    setBuilderProperty("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public InsuranceAgentEntityBuilder withInsurer(final InsuranceCompanyEntity insurer) {
-	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
+	    setBuilderProperty("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 
@@ -200,7 +217,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // contract
 
-    private final ContractInfo contract;
+    final ContractInfo contract;
 
     public ContractInfo getContract() {
 	return contract;
@@ -208,7 +225,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // letterOfAttorneyNumber
 
-    private final String letterOfAttorneyNumber;
+    final String letterOfAttorneyNumber;
 
     public String getLetterOfAttorneyNumber() {
 	return letterOfAttorneyNumber;
@@ -216,7 +233,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // branch
 
-    private final BranchEntity branch;
+    final BranchEntity branch;
 
     public BranchEntity getBranch() {
 	return branch;
@@ -224,13 +241,15 @@ public class InsuranceAgentEntity extends AEntity {
 
     // user
 
-    private final UserEntity owner;
+    final UserEntity owner;
 
     public UserEntity getOwner() {
 	return owner;
     }
 
-    private final SubjectEntity subject;
+    // subject
+
+    final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
 	return subject;
@@ -238,7 +257,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // created
 
-    private final RecordOperationInfo created;
+    final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
 	return created;
@@ -246,7 +265,7 @@ public class InsuranceAgentEntity extends AEntity {
 
     // modified
 
-    private final RecordOperationInfo modified;
+    final RecordOperationInfo modified;
 
     public RecordOperationInfo getModified() {
 	return modified;

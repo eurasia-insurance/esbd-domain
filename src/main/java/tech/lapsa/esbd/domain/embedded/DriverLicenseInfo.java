@@ -2,6 +2,7 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(263)
@@ -11,6 +12,11 @@ public class DriverLicenseInfo extends ADocumentInfo {
 
     public static final DriverLicenseInfoBuilder builder() {
 	return new DriverLicenseInfoBuilder();
+    }
+
+    public static final DriverLicenseInfoBuilder builder(final DriverLicenseInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new DriverLicenseInfoBuilder(source);
     }
 
     public static final class DriverLicenseInfoBuilder
@@ -26,6 +32,10 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	// constructor
 
 	protected DriverLicenseInfoBuilder() {
+	}
+
+	protected DriverLicenseInfoBuilder(DriverLicenseInfo source) {
+	    super(source);
 	}
 
 	// public

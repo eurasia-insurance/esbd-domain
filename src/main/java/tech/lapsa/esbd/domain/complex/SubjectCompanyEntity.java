@@ -6,6 +6,7 @@ import com.lapsa.kz.economic.KZEconomicSector;
 import tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity;
 import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -16,6 +17,11 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     public static final SubjectCompanyEntityBuilder builder() {
 	return new SubjectCompanyEntityBuilder();
+    }
+
+    public static final SubjectCompanyEntityBuilder builder(final SubjectCompanyEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new SubjectCompanyEntityBuilder(source);
     }
 
     public static final class SubjectCompanyEntityBuilder
@@ -73,10 +79,18 @@ public class SubjectCompanyEntity extends SubjectEntity {
 	private SubjectCompanyEntityBuilder() {
 	}
 
+	protected SubjectCompanyEntityBuilder(SubjectCompanyEntity source) {
+	    super(source);
+	    this.companyName = source.companyName;
+	    this.headName = source.headName;
+	    this.accountantName = source.accountantName;
+	    this.companyActivityKind = source.companyActivityKind;
+	}
+
 	// public
 
 	public SubjectCompanyEntityBuilder withCompanyName(final String companyName) {
-	    setIfNullOrThrow("companyName", this::getCompanyName, this::setCompanyName, companyName);
+	    setBuilderProperty("companyName", this::getCompanyName, this::setCompanyName, companyName);
 	    return this;
 	}
 
@@ -92,7 +106,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
 	public SubjectCompanyEntityBuilder withCompanyActivityKind(
 		final CompanyActivityKindEntity companyActivityKind) {
-	    setIfNullOrThrow("companyActivityKind", this::getCompanyActivityKind, this::setCompanyActivityKind,
+	    setBuilderProperty("companyActivityKind", this::getCompanyActivityKind, this::setCompanyActivityKind,
 		    companyActivityKind);
 	    return this;
 	}
@@ -151,7 +165,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyName
 
-    private final String companyName;
+    final String companyName;
 
     public String getCompanyName() {
 	return companyName;
@@ -159,7 +173,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // headName
 
-    private final String headName;
+    final String headName;
 
     public String getHeadName() {
 	return headName;
@@ -167,7 +181,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // accountantName
 
-    private final String accountantName;
+    final String accountantName;
 
     public String getAccountantName() {
 	return accountantName;
@@ -175,7 +189,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyActivityKind
 
-    private final CompanyActivityKindEntity companyActivityKind;
+    final CompanyActivityKindEntity companyActivityKind;
 
     public CompanyActivityKindEntity getCompanyActivityKind() {
 	return companyActivityKind;

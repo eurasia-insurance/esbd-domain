@@ -2,6 +2,7 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(271)
@@ -11,6 +12,11 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     public static final HandicappedCertificateInfoBuilder builder() {
 	return new HandicappedCertificateInfoBuilder();
+    }
+
+    public static final HandicappedCertificateInfoBuilder builder(final HandicappedCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new HandicappedCertificateInfoBuilder(source);
     }
 
     public static final class HandicappedCertificateInfoBuilder
@@ -48,16 +54,22 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	protected HandicappedCertificateInfoBuilder() {
 	}
 
+	protected HandicappedCertificateInfoBuilder(HandicappedCertificateInfo source) {
+	    super(source);
+	    this.validFrom = source.validFrom;
+	    this.validTill = source.validTill;
+	}
+
 	// public
 
 	public HandicappedCertificateInfoBuilder withValidFrom(final LocalDate validFrom) {
-	    setIfNullOrThrow("validFrom", this::getValidFrom, this::setValidFrom,
+	    setBuilderProperty("validFrom", this::getValidFrom, this::setValidFrom,
 		    validFrom);
 	    return this;
 	}
 
 	public HandicappedCertificateInfoBuilder withValidTill(final LocalDate validTill) {
-	    setIfNullOrThrow("validTill", this::getValidTill, this::setValidTill,
+	    setBuilderProperty("validTill", this::getValidTill, this::setValidTill,
 		    validTill);
 	    return this;
 	}
@@ -87,7 +99,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     // validFrom
 
-    private final LocalDate validFrom;
+    final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
 	return validFrom;
@@ -95,7 +107,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 
     // validTill
 
-    private final LocalDate validTill;
+    final LocalDate validTill;
 
     public LocalDate getValidTill() {
 	return validTill;

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.lapsa.insurance.elements.CancelationReason;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(241)
@@ -14,6 +15,11 @@ public class CancelationInfo extends ADomain {
 
     public static final CancelationInfoBuilder builder() {
 	return new CancelationInfoBuilder();
+    }
+
+    public static final CancelationInfoBuilder builder(final CancelationInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new CancelationInfoBuilder(source);
     }
 
     public static final class CancelationInfoBuilder
@@ -51,15 +57,21 @@ public class CancelationInfo extends ADomain {
 	protected CancelationInfoBuilder() {
 	}
 
+	public CancelationInfoBuilder(CancelationInfo source) {
+	    super(source);
+	    this.dateOf = source.dateOf;
+	    this.reason = source.reason;
+	}
+
 	// public
 
 	public CancelationInfoBuilder withDateOf(final LocalDate dateOf) {
-	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
+	    setBuilderProperty("dateOf", this::getDateOf, this::setDateOf, dateOf);
 	    return this;
 	}
 
 	public CancelationInfoBuilder withReason(final CancelationReason reason) {
-	    setIfNullOrThrow("reason", this::getReason, this::setReason, reason);
+	    setBuilderProperty("reason", this::getReason, this::setReason, reason);
 	    return this;
 	}
 
@@ -85,7 +97,7 @@ public class CancelationInfo extends ADomain {
 
     // dateOf
 
-    private final LocalDate dateOf;
+    final LocalDate dateOf;
 
     public LocalDate getDateOf() {
 	return dateOf;
@@ -93,7 +105,7 @@ public class CancelationInfo extends ADomain {
 
     // reason
 
-    private final CancelationReason reason;
+    final CancelationReason reason;
 
     public CancelationReason getReason() {
 	return reason;

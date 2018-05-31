@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.lapsa.insurance.elements.IdentityCardType;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(277)
@@ -13,6 +14,11 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     public static final IdentityCardInfoBuilder builder() {
 	return new IdentityCardInfoBuilder();
+    }
+
+    public static final IdentityCardInfoBuilder builder(final IdentityCardInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new IdentityCardInfoBuilder(source);
     }
 
     public static final class IdentityCardInfoBuilder
@@ -50,6 +56,12 @@ public class IdentityCardInfo extends ADocumentInfo {
 	protected IdentityCardInfoBuilder() {
 	}
 
+	protected IdentityCardInfoBuilder(IdentityCardInfo source) {
+	    super(source);
+	    this.issuingAuthority = source.issuingAuthority;
+	    this.identityCardType = source.identityCardType;
+	}
+
 	// public
 
 	public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
@@ -59,7 +71,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	}
 
 	public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
-	    setIfNullOrThrow("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
+	    setBuilderProperty("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
 		    identityCardType);
 	    return this;
 	}

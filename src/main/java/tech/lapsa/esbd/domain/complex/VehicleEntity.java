@@ -7,6 +7,7 @@ import com.lapsa.insurance.elements.VehicleClass;
 
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(31)
@@ -16,6 +17,11 @@ public class VehicleEntity extends AEntity {
 
     public static final VehicleEntityBuilder builder() {
 	return new VehicleEntityBuilder();
+    }
+
+    public static final VehicleEntityBuilder builder(final VehicleEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleEntityBuilder(source);
     }
 
     public static final class VehicleEntityBuilder
@@ -103,10 +109,21 @@ public class VehicleEntity extends AEntity {
 	protected VehicleEntityBuilder() {
 	}
 
+	protected VehicleEntityBuilder(VehicleEntity source) {
+	    super(source);
+	    this.vehicleClass = source.vehicleClass;
+	    this.vinCode = source.vinCode;
+	    this.vehicleModel = source.vehicleModel;
+	    this.steeringWheelLocation = source.steeringWheelLocation;
+	    this.engine = source.engine;
+	    this.color = source.color;
+	    this.realeaseDate = source.realeaseDate;
+	}
+
 	// public
 
 	public VehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass) {
-	    setIfNullOrThrow("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
+	    setBuilderProperty("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
 	    return this;
 	}
 
@@ -116,12 +133,12 @@ public class VehicleEntity extends AEntity {
 	}
 
 	public VehicleEntityBuilder withVehicleModel(final VehicleModelEntity vehicleModel) {
-	    setIfNullOrThrow("vehicleModel", this::getVehicleModel, this::setVehicleModel, vehicleModel);
+	    setBuilderProperty("vehicleModel", this::getVehicleModel, this::setVehicleModel, vehicleModel);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withSteeringWheelLocation(final SteeringWheelLocation steeringWheelLocation) {
-	    setIfNullOrThrow("steeringWheelLocation", this::getSteeringWheelLocation, this::setSteeringWheelLocation,
+	    setBuilderProperty("steeringWheelLocation", this::getSteeringWheelLocation, this::setSteeringWheelLocation,
 		    steeringWheelLocation);
 	    return this;
 	}
@@ -132,12 +149,12 @@ public class VehicleEntity extends AEntity {
 	}
 
 	public VehicleEntityBuilder withRealeaseDate(final LocalDate realeaseDate) {
-	    setIfNullOrThrow("realeaseDate", this::getRealeaseDate, this::setRealeaseDate, realeaseDate);
+	    setBuilderProperty("realeaseDate", this::getRealeaseDate, this::setRealeaseDate, realeaseDate);
 	    return this;
 	}
 
 	public VehicleEntityBuilder withEngine(final VehicleEngineInfo engine) {
-	    setIfNullOrThrow("engine", this::getEngine, this::setEngine, engine);
+	    setBuilderProperty("engine", this::getEngine, this::setEngine, engine);
 	    return this;
 	}
 
@@ -186,7 +203,7 @@ public class VehicleEntity extends AEntity {
 
     // vehicleClass
 
-    private final VehicleClass vehicleClass;
+    final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
 	return vehicleClass;
@@ -194,7 +211,7 @@ public class VehicleEntity extends AEntity {
 
     // vinCode
 
-    private final String vinCode;
+    final String vinCode;
 
     public String getVinCode() {
 	return vinCode;
@@ -202,7 +219,7 @@ public class VehicleEntity extends AEntity {
 
     // vehicleModel
 
-    private final VehicleModelEntity vehicleModel;
+    final VehicleModelEntity vehicleModel;
 
     public VehicleModelEntity getVehicleModel() {
 	return vehicleModel;
@@ -210,7 +227,7 @@ public class VehicleEntity extends AEntity {
 
     // steeringWheelLocation
 
-    private final SteeringWheelLocation steeringWheelLocation;
+    final SteeringWheelLocation steeringWheelLocation;
 
     public SteeringWheelLocation getSteeringWheelLocation() {
 	return steeringWheelLocation;
@@ -218,7 +235,7 @@ public class VehicleEntity extends AEntity {
 
     // color
 
-    private final String color;
+    final String color;
 
     public String getColor() {
 	return color;
@@ -226,7 +243,7 @@ public class VehicleEntity extends AEntity {
 
     // realeaseDate
 
-    private final LocalDate realeaseDate;
+    final LocalDate realeaseDate;
 
     public LocalDate getRealeaseDate() {
 	return realeaseDate;
@@ -234,7 +251,7 @@ public class VehicleEntity extends AEntity {
 
     // engine
 
-    private final VehicleEngineInfo engine;
+    final VehicleEngineInfo engine;
 
     public VehicleEngineInfo getEngine() {
 	return engine;

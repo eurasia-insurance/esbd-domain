@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.embedded;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(233)
@@ -10,6 +11,11 @@ public class VehicleEngineInfo extends ADomain {
 
     public static final VehicleEngineInfoBuilder builder() {
 	return new VehicleEngineInfoBuilder();
+    }
+
+    public static final VehicleEngineInfoBuilder builder(final VehicleEngineInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleEngineInfoBuilder(source);
     }
 
     public static final class VehicleEngineInfoBuilder
@@ -55,6 +61,13 @@ public class VehicleEngineInfo extends ADomain {
 	// constructor
 
 	protected VehicleEngineInfoBuilder() {
+	}
+
+	protected VehicleEngineInfoBuilder(VehicleEngineInfo source) {
+	    super(source);
+	    this.volume = source.volume;
+	    this.number = source.number;
+	    this.power = source.power;
 	}
 
 	// public
@@ -107,7 +120,7 @@ public class VehicleEngineInfo extends ADomain {
 
     // engineVolume
 
-    private final Integer volume;
+    final Integer volume;
 
     public Integer getVolume() {
 	return volume;
@@ -115,7 +128,7 @@ public class VehicleEngineInfo extends ADomain {
 
     // engineNumber
 
-    private final String number;
+    final String number;
 
     public String getNumber() {
 	return number;
@@ -123,7 +136,7 @@ public class VehicleEngineInfo extends ADomain {
 
     // enginePower
 
-    private final Integer power;
+    final Integer power;
 
     public Integer getPower() {
 	return power;

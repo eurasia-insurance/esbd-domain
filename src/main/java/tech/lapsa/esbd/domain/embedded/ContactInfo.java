@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(251)
@@ -12,6 +13,11 @@ public class ContactInfo extends ADomain {
 
     public static final ContactInfoBuilder builder() {
 	return new ContactInfoBuilder();
+    }
+
+    public static final ContactInfoBuilder builder(final ContactInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new ContactInfoBuilder(source);
     }
 
     public static final class ContactInfoBuilder
@@ -69,10 +75,18 @@ public class ContactInfo extends ADomain {
 	protected ContactInfoBuilder() {
 	}
 
+	protected ContactInfoBuilder(ContactInfo source) {
+	    super(source);
+	    this.phone = source.phone;
+	    this.email = source.email;
+	    this.homeAdress = source.homeAdress;
+	    this.siteUrl = source.siteUrl;
+	}
+
 	// public
 
 	public ContactInfoBuilder withPhone(final PhoneNumber phone) {
-	    setIfNullOrThrow("phone", this::getPhone, this::setPhone, phone);
+	    setBuilderProperty("phone", this::getPhone, this::setPhone, phone);
 	    return this;
 	}
 
@@ -121,7 +135,7 @@ public class ContactInfo extends ADomain {
 
     // phone
 
-    private final PhoneNumber phone;
+    final PhoneNumber phone;
 
     public PhoneNumber getPhone() {
 	return phone;
@@ -129,7 +143,7 @@ public class ContactInfo extends ADomain {
 
     // email
 
-    private final String email;
+    final String email;
 
     public String getEmail() {
 	return email;
@@ -137,7 +151,7 @@ public class ContactInfo extends ADomain {
 
     // homeAdress
 
-    private final String homeAdress;
+    final String homeAdress;
 
     public String getHomeAdress() {
 	return homeAdress;
@@ -145,7 +159,7 @@ public class ContactInfo extends ADomain {
 
     // siteUrl
 
-    private final String siteUrl;
+    final String siteUrl;
 
     public String getSiteUrl() {
 	return siteUrl;

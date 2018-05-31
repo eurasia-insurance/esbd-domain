@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.lapsa.kz.country.KZArea;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -14,6 +15,11 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     public static final VehicleCertificateInfoBuilder builder() {
 	return new VehicleCertificateInfoBuilder();
+    }
+
+    public static final VehicleCertificateInfoBuilder builder(final VehicleCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleCertificateInfoBuilder(source);
     }
 
     public static final class VehicleCertificateInfoBuilder
@@ -61,22 +67,29 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 	protected VehicleCertificateInfoBuilder() {
 	}
 
+	protected VehicleCertificateInfoBuilder(VehicleCertificateInfo source) {
+	    super(source);
+	    this.registrationNumber = source.registrationNumber;
+	    this.registrationRegion = source.registrationRegion;
+	    this.registrationMajorCity = source.registrationMajorCity;
+	}
+
 	// public
 
 	public VehicleCertificateInfoBuilder withRegistrationNumber(final VehicleRegNumber registrationNumber) {
-	    setIfNullOrThrow("registrationNumber", this::getRegistrationNumber, this::setRegistrationNumber,
+	    setBuilderProperty("registrationNumber", this::getRegistrationNumber, this::setRegistrationNumber,
 		    registrationNumber);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withRegistrationRegion(final KZArea registrationRegion) {
-	    setIfNullOrThrow("registrationRegion", this::getRegistrationRegion, this::setRegistrationRegion,
+	    setBuilderProperty("registrationRegion", this::getRegistrationRegion, this::setRegistrationRegion,
 		    registrationRegion);
 	    return this;
 	}
 
 	public VehicleCertificateInfoBuilder withRegistrationMajorCity(final Boolean registrationMajorCity) {
-	    setIfNullOrThrow("registrationMajorCity", this::getRegistrationMajorCity, this::setRegistrationMajorCity,
+	    setBuilderProperty("registrationMajorCity", this::getRegistrationMajorCity, this::setRegistrationMajorCity,
 		    registrationMajorCity);
 	    return this;
 	}
@@ -112,7 +125,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationNumber
 
-    private final VehicleRegNumber registrationNumber;
+    final VehicleRegNumber registrationNumber;
 
     public VehicleRegNumber getRegistrationNumber() {
 	return registrationNumber;
@@ -120,7 +133,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationRegion
 
-    private final KZArea registrationRegion;
+    final KZArea registrationRegion;
 
     public KZArea getRegistrationRegion() {
 	return registrationRegion;
@@ -128,7 +141,7 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationMajorCity
 
-    private final Boolean registrationMajorCity;
+    final Boolean registrationMajorCity;
 
     boolean isRegistrationMajorCity() {
 	return registrationMajorCity;

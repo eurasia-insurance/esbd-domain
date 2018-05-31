@@ -38,6 +38,12 @@ public abstract class ADictEntity extends AEntity {
 
 	// public
 
+	public ADictEntityBuilder(ET source) {
+	    super(source);
+	    this.code = source.code;
+	    this.name = source.name;
+	}
+
 	public BT withCode(final String code) {
 	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
 	    return _this();
@@ -64,7 +70,7 @@ public abstract class ADictEntity extends AEntity {
 
     // code
 
-    private final String code;
+    final String code;
 
     public String getCode() {
 	return code;
@@ -72,7 +78,7 @@ public abstract class ADictEntity extends AEntity {
 
     // name
 
-    private final String name;
+    final String name;
 
     public String getName() {
 	return name;

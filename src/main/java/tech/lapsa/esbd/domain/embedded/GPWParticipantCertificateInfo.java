@@ -2,6 +2,7 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(269)
@@ -11,6 +12,11 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 
     public static final GPWParticipantCertificateInfoBuilder builder() {
 	return new GPWParticipantCertificateInfoBuilder();
+    }
+
+    public static final GPWParticipantCertificateInfoBuilder builder(final GPWParticipantCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new GPWParticipantCertificateInfoBuilder(source);
     }
 
     public static final class GPWParticipantCertificateInfoBuilder
@@ -26,6 +32,10 @@ public class GPWParticipantCertificateInfo extends ADocumentInfo {
 	// constructor
 
 	protected GPWParticipantCertificateInfoBuilder() {
+	}
+
+	protected GPWParticipantCertificateInfoBuilder(GPWParticipantCertificateInfo source) {
+	    super(source);
 	}
 
 	// public

@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.esbd.domain.complex.UserEntity;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(257)
@@ -13,6 +14,11 @@ public class RecordOperationInfo extends ADomain {
 
     public static final RecordOperationInfoBuilder builder() {
 	return new RecordOperationInfoBuilder();
+    }
+
+    public static final RecordOperationInfoBuilder builder(final RecordOperationInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new RecordOperationInfoBuilder(source);
     }
 
     public static final class RecordOperationInfoBuilder
@@ -50,15 +56,21 @@ public class RecordOperationInfo extends ADomain {
 	protected RecordOperationInfoBuilder() {
 	}
 
+	protected RecordOperationInfoBuilder(RecordOperationInfo source) {
+	    super(source);
+	    this.instant = source.instant;
+	    this.author = source.author;
+	}
+
 	// public
 
 	public RecordOperationInfoBuilder withInstant(final Instant instant) {
-	    setIfNullOrThrow("instant", this::getInstant, this::setInstant, instant);
+	    setBuilderProperty("instant", this::getInstant, this::setInstant, instant);
 	    return this;
 	}
 
 	public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
-	    setIfNullOrThrow("author", this::getAuthor, this::setAuthor, author);
+	    setBuilderProperty("author", this::getAuthor, this::setAuthor, author);
 	    return this;
 	}
 
@@ -84,7 +96,7 @@ public class RecordOperationInfo extends ADomain {
 
     // res
 
-    private final Instant instant;
+    final Instant instant;
 
     public Instant getInstant() {
 	return instant;
@@ -92,7 +104,7 @@ public class RecordOperationInfo extends ADomain {
 
     // author
 
-    private final UserEntity author;
+    final UserEntity author;
 
     public UserEntity getAuthor() {
 	return author;

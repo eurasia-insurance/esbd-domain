@@ -25,6 +25,11 @@ public class PolicyEntity extends AEntity {
 	return new PolicyEntityBuilder();
     }
 
+    public static final PolicyEntityBuilder builder(final PolicyEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PolicyEntityBuilder(source);
+    }
+
     public static final class PolicyEntityBuilder
 	    extends AEntityBuilder<PolicyEntity, PolicyEntityBuilder> {
 
@@ -234,6 +239,31 @@ public class PolicyEntity extends AEntity {
 	protected PolicyEntityBuilder() {
 	}
 
+	protected PolicyEntityBuilder(PolicyEntity source) {
+	    super(source);
+	    this.number = source.number;
+	    this.internalNumber = source.internalNumber;
+	    this.validFrom = source.validFrom;
+	    this.validTill = source.validTill;
+	    this.actualPremium = source.actualPremium;
+	    this.calculatedPremium = source.calculatedPremium;
+	    this.insurer = source.insurer;
+	    this.insurant = source.insurant;
+	    this.insurantPersonType = source.insurantPersonType;
+	    this.dateOfIssue = source.dateOfIssue;
+	    this.cancelation = source.cancelation;
+	    this.branch = source.branch;
+	    this.reissuedPolicyId = source.reissuedPolicyId;
+	    this.comments = source.comments;
+	    this.insuredDrivers = MyObjects.nullOrGet(source.insuredDrivers, ArrayList::new);
+	    this.insuredVehicles = MyObjects.nullOrGet(source.insuredVehicles, ArrayList::new);
+	    this.created = source.created;
+	    this.modified = source.modified;
+	    this.dateOfPayment = source.dateOfPayment;
+	    this.paymentType = source.paymentType;
+	    this.insuranceAgent = source.insuranceAgent;
+	}
+
 	// public
 
 	public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
@@ -247,12 +277,12 @@ public class PolicyEntity extends AEntity {
 	}
 
 	public PolicyEntityBuilder withValidFrom(final LocalDate validFrom) throws IllegalArgumentException {
-	    setIfNullOrThrow("validFrom", this::getValidFrom, this::setValidFrom, validFrom);
+	    setBuilderProperty("validFrom", this::getValidFrom, this::setValidFrom, validFrom);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withValidTill(final LocalDate validTill) throws IllegalArgumentException {
-	    setIfNullOrThrow("validTill", this::getValidTill, this::setValidTill, validTill);
+	    setBuilderProperty("validTill", this::getValidTill, this::setValidTill, validTill);
 	    return this;
 	}
 
@@ -270,35 +300,35 @@ public class PolicyEntity extends AEntity {
 	}
 
 	public PolicyEntityBuilder withInsurer(final InsuranceCompanyEntity insurer) throws IllegalArgumentException {
-	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
+	    setBuilderProperty("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsurant(final SubjectEntity insurant) throws IllegalArgumentException {
-	    setIfNullOrThrow("insurant", this::getInsurant, this::setInsurant, insurant);
+	    setBuilderProperty("insurant", this::getInsurant, this::setInsurant, insurant);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsurantPersonType(final PersonType insurantPersonType)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insurantPersonType", this::getInsurantPersonType, this::setInsurantPersonType,
+	    setBuilderProperty("insurantPersonType", this::getInsurantPersonType, this::setInsurantPersonType,
 		    insurantPersonType);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withDateOfIssue(final LocalDate dateOfIssue) throws IllegalArgumentException {
-	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
+	    setBuilderProperty("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withCancelation(final CancelationInfo cancelation)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("cancelation", this::getCancelation, this::setCancelation, cancelation);
+	    setBuilderProperty("cancelation", this::getCancelation, this::setCancelation, cancelation);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
-	    setIfNullOrThrow("branch", this::getBranch, this::setBranch, branch);
+	    setBuilderProperty("branch", this::getBranch, this::setBranch, branch);
 	    return this;
 	}
 
@@ -331,27 +361,27 @@ public class PolicyEntity extends AEntity {
 	}
 
 	public PolicyEntityBuilder withCreated(final RecordOperationInfo created) throws IllegalArgumentException {
-	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
+	    setBuilderProperty("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withModified(final RecordOperationInfo modified) throws IllegalArgumentException {
-	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
+	    setBuilderProperty("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withDateOfPayment(final LocalDate dateOfPayment) throws IllegalArgumentException {
-	    setIfNullOrThrow("dateOfPayment", this::getDateOfPayment, this::setDateOfPayment, dateOfPayment);
+	    setBuilderProperty("dateOfPayment", this::getDateOfPayment, this::setDateOfPayment, dateOfPayment);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withPaymentType(final PaymentType paymentType) {
-	    setIfNullOrThrow("paymentType", this::getPaymentType, this::setPaymentType, paymentType);
+	    setBuilderProperty("paymentType", this::getPaymentType, this::setPaymentType, paymentType);
 	    return this;
 	}
 
 	public PolicyEntityBuilder withInsuranceAgent(final InsuranceAgentEntity insuranceAgent) {
-	    setIfNullOrThrow("insuranceAgent", this::getInsuranceAgent, this::setInsuranceAgent, insuranceAgent);
+	    setBuilderProperty("insuranceAgent", this::getInsuranceAgent, this::setInsuranceAgent, insuranceAgent);
 	    return this;
 	}
 
@@ -455,7 +485,7 @@ public class PolicyEntity extends AEntity {
 
     // number
 
-    private final String number;
+    final String number;
 
     public String getNumber() {
 	return number;
@@ -463,7 +493,7 @@ public class PolicyEntity extends AEntity {
 
     // internalNumber
 
-    private final String internalNumber;
+    final String internalNumber;
 
     public String getInternalNumber() {
 	return internalNumber;
@@ -471,7 +501,7 @@ public class PolicyEntity extends AEntity {
 
     // validFrom
 
-    private final LocalDate validFrom;
+    final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
 	return validFrom;
@@ -479,7 +509,7 @@ public class PolicyEntity extends AEntity {
 
     // validTill
 
-    private final LocalDate validTill;
+    final LocalDate validTill;
 
     public LocalDate getValidTill() {
 	return validTill;
@@ -487,7 +517,7 @@ public class PolicyEntity extends AEntity {
 
     // actualPremium
 
-    private final Double actualPremium;
+    final Double actualPremium;
 
     public Double getActualPremium() {
 	return actualPremium;
@@ -495,7 +525,7 @@ public class PolicyEntity extends AEntity {
 
     // calculatedPremium
 
-    private final Double calculatedPremium;
+    final Double calculatedPremium;
 
     public Double getCalculatedPremium() {
 	return calculatedPremium;
@@ -503,7 +533,7 @@ public class PolicyEntity extends AEntity {
 
     // insurer
 
-    private final InsuranceCompanyEntity insurer;
+    final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
 	return insurer;
@@ -511,7 +541,7 @@ public class PolicyEntity extends AEntity {
 
     // insurant
 
-    private final SubjectEntity insurant;
+    final SubjectEntity insurant;
 
     public SubjectEntity getInsurant() {
 	return insurant;
@@ -519,7 +549,7 @@ public class PolicyEntity extends AEntity {
 
     // insurantType
 
-    private final PersonType insurantPersonType;
+    final PersonType insurantPersonType;
 
     public PersonType getInsurantPersonType() {
 	return insurantPersonType;
@@ -527,7 +557,7 @@ public class PolicyEntity extends AEntity {
 
     // dateOfIssue
 
-    private final LocalDate dateOfIssue;
+    final LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
 	return dateOfIssue;
@@ -535,7 +565,7 @@ public class PolicyEntity extends AEntity {
 
     // cancelation
 
-    private final CancelationInfo cancelation;
+    final CancelationInfo cancelation;
 
     public CancelationInfo getCancelation() {
 	return cancelation;
@@ -547,7 +577,7 @@ public class PolicyEntity extends AEntity {
 
     // branch
 
-    private final BranchEntity branch;
+    final BranchEntity branch;
 
     public BranchEntity getBranch() {
 	return branch;
@@ -555,7 +585,7 @@ public class PolicyEntity extends AEntity {
 
     // reissuedPolicy
 
-    private final Integer reissuedPolicyId;
+    final Integer reissuedPolicyId;
 
     public boolean isReissued() {
 	return MyObjects.nonNull(reissuedPolicyId);
@@ -567,7 +597,7 @@ public class PolicyEntity extends AEntity {
 
     // comments
 
-    private final String comments;
+    final String comments;
 
     public String getComments() {
 	return comments;
@@ -575,7 +605,7 @@ public class PolicyEntity extends AEntity {
 
     // insuredDrivers
 
-    private final List<PolicyDriverEntity> insuredDrivers;
+    final List<PolicyDriverEntity> insuredDrivers;
 
     public List<PolicyDriverEntity> getInsuredDrivers() {
 	return insuredDrivers;
@@ -583,7 +613,7 @@ public class PolicyEntity extends AEntity {
 
     // insuredVehicles
 
-    private final List<PolicyVehicleEntity> insuredVehicles;
+    final List<PolicyVehicleEntity> insuredVehicles;
 
     public List<PolicyVehicleEntity> getInsuredVehicles() {
 	return insuredVehicles;
@@ -591,7 +621,7 @@ public class PolicyEntity extends AEntity {
 
     // created
 
-    private final RecordOperationInfo created;
+    final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
 	return created;
@@ -599,7 +629,7 @@ public class PolicyEntity extends AEntity {
 
     // modified
 
-    private final RecordOperationInfo modified;
+    final RecordOperationInfo modified;
 
     public boolean isModified() {
 	return MyObjects.nonNull(modified);
@@ -611,7 +641,7 @@ public class PolicyEntity extends AEntity {
 
     // dateOfPayment
 
-    private final LocalDate dateOfPayment;
+    final LocalDate dateOfPayment;
 
     public LocalDate getDateOfPayment() {
 	return dateOfPayment;
@@ -623,7 +653,7 @@ public class PolicyEntity extends AEntity {
 
     // paymentType
 
-    private final PaymentType paymentType;
+    final PaymentType paymentType;
 
     public PaymentType getPaymentType() {
 	return paymentType;
@@ -631,7 +661,7 @@ public class PolicyEntity extends AEntity {
 
     // insuranceAgent
 
-    private final InsuranceAgentEntity insuranceAgent;
+    final InsuranceAgentEntity insuranceAgent;
 
     public InsuranceAgentEntity getInsuranceAgent() {
 	return insuranceAgent;

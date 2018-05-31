@@ -1,5 +1,6 @@
 package tech.lapsa.esbd.domain.dict;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(523)
@@ -9,6 +10,11 @@ public class InsuranceCompanyEntity extends ADictEntity {
 
     public static final InsuranceCompanyEntityBuilder builder() {
 	return new InsuranceCompanyEntityBuilder();
+    }
+
+    public static final InsuranceCompanyEntityBuilder builder(final InsuranceCompanyEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new InsuranceCompanyEntityBuilder(source);
     }
 
     public static final class InsuranceCompanyEntityBuilder
@@ -24,6 +30,10 @@ public class InsuranceCompanyEntity extends ADictEntity {
 	// constructor
 
 	protected InsuranceCompanyEntityBuilder() {
+	}
+
+	protected InsuranceCompanyEntityBuilder(InsuranceCompanyEntity from) {
+	    super(from);
 	}
 
 	// public
