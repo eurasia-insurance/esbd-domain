@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -23,6 +24,11 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	return new PensionerCertificateInfoBuilder();
     }
 
+    public static final PensionerCertificateInfoBuilder builder(final PensionerCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PensionerCertificateInfoBuilder(source);
+    }
+
     public static final class PensionerCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<PensionerCertificateInfo, PensionerCertificateInfoBuilder> {
 
@@ -36,6 +42,10 @@ public class PensionerCertificateInfo extends ADocumentInfo {
 	// constructor
 
 	protected PensionerCertificateInfoBuilder() {
+	}
+
+	protected PensionerCertificateInfoBuilder(final PensionerCertificateInfo source) {
+	    super(source);
 	}
 
 	// public

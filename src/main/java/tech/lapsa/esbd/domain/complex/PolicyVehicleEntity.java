@@ -35,6 +35,11 @@ public class PolicyVehicleEntity extends AEntity {
 	return new PolicyVehicleEntityBuilder();
     }
 
+    public static final PolicyVehicleEntityBuilder builder(final PolicyVehicleEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PolicyVehicleEntityBuilder(source);
+    }
+
     public static final class PolicyVehicleEntityBuilder
 	    extends AEntityBuilder<PolicyVehicleEntity, PolicyVehicleEntityBuilder> {
 
@@ -46,7 +51,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicle;
 	}
 
-	private void setVehicle(VehicleEntity vehicle) {
+	private void setVehicle(final VehicleEntity vehicle) {
 	    this.vehicle = vehicle;
 	}
 
@@ -56,7 +61,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicleClass;
 	}
 
-	private void setVehicleClass(VehicleClass vehicleClass) {
+	private void setVehicleClass(final VehicleClass vehicleClass) {
 	    this.vehicleClass = vehicleClass;
 	}
 
@@ -66,7 +71,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehicleAgeClass;
 	}
 
-	private void setVehicleAgeClass(VehicleAgeClass vehicleAgeClass) {
+	private void setVehicleAgeClass(final VehicleAgeClass vehicleAgeClass) {
 	    this.vehicleAgeClass = vehicleAgeClass;
 	}
 
@@ -76,7 +81,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return certificate;
 	}
 
-	private void setCertificate(VehicleCertificateInfo certificate) {
+	private void setCertificate(final VehicleCertificateInfo certificate) {
 	    this.certificate = certificate;
 	}
 
@@ -86,7 +91,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return vehiclePurpose;
 	}
 
-	private void setVehiclePurpose(String vehiclePurpose) {
+	private void setVehiclePurpose(final String vehiclePurpose) {
 	    this.vehiclePurpose = vehiclePurpose;
 	}
 
@@ -96,7 +101,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return currentOdometerValue;
 	}
 
-	private void setCurrentOdometerValue(Integer currentOdometerValue) {
+	private void setCurrentOdometerValue(final Integer currentOdometerValue) {
 	    this.currentOdometerValue = currentOdometerValue;
 	}
 
@@ -106,7 +111,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return created;
 	}
 
-	private void setCreated(RecordOperationInfo created) {
+	private void setCreated(final RecordOperationInfo created) {
 	    this.created = created;
 	}
 
@@ -116,7 +121,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return modified;
 	}
 
-	private void setModified(RecordOperationInfo modified) {
+	private void setModified(final RecordOperationInfo modified) {
 	    this.modified = modified;
 	}
 
@@ -126,7 +131,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    return insurer;
 	}
 
-	private void setInsurer(InsuranceCompanyEntity insurer) {
+	private void setInsurer(final InsuranceCompanyEntity insurer) {
 	    this.insurer = insurer;
 	}
 
@@ -140,59 +145,73 @@ public class PolicyVehicleEntity extends AEntity {
 	protected PolicyVehicleEntityBuilder() {
 	}
 
+	protected PolicyVehicleEntityBuilder(final PolicyVehicleEntity source) {
+	    super(source);
+	    vehicle = source.vehicle;
+	    vehicleClass = source.vehicleClass;
+	    vehicleAgeClass = source.vehicleAgeClass;
+	    certificate = source.certificate;
+	    vehiclePurpose = source.vehiclePurpose;
+	    currentOdometerValue = source.currentOdometerValue;
+	    created = source.created;
+	    modified = source.modified;
+	    insurer = source.insurer;
+	}
+
 	// public
 
 	public PolicyVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
-	    setIfNullOrThrow("vehicle", this::getVehicle, this::setVehicle, vehicle);
+	    setBuilderProperty("vehicle", this::getVehicle, this::setVehicle, vehicle);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
+	    setBuilderProperty("vehicleClass", this::getVehicleClass, this::setVehicleClass, vehicleClass);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehicleAgeClass(final VehicleAgeClass vehicleAgeClass)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("vehicleAgeClass", this::getVehicleAgeClass, this::setVehicleAgeClass, vehicleAgeClass);
+	    setBuilderProperty("vehicleAgeClass", this::getVehicleAgeClass, this::setVehicleAgeClass, vehicleAgeClass);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCertificate(final VehicleCertificateInfo certificate)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("certificate", this::getCertificate, this::setCertificate, certificate);
+	    setBuilderProperty("certificate", this::getCertificate, this::setCertificate, certificate);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withVehiclePurpose(final String vehiclePurpose)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("vehiclePurpose", this::getVehiclePurpose, this::setVehiclePurpose, vehiclePurpose);
+	    setBuilderProperty("vehiclePurpose", this::getVehiclePurpose, this::setVehiclePurpose, vehiclePurpose);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCurrentOdometerValue(final Integer currentOdometerValue)
 		throws IllegalArgumentException {
-	    setNumberIfNullOrThrow("currentOdometerValue", this::getCurrentOdometerValue, this::setCurrentOdometerValue,
+	    setBuilderPropertyNumber("currentOdometerValue", this::getCurrentOdometerValue,
+		    this::setCurrentOdometerValue,
 		    currentOdometerValue);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withCreated(final RecordOperationInfo created)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("created", this::getCreated, this::setCreated, created);
+	    setBuilderProperty("created", this::getCreated, this::setCreated, created);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withModified(final RecordOperationInfo modified)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("modified", this::getModified, this::setModified, modified);
+	    setBuilderProperty("modified", this::getModified, this::setModified, modified);
 	    return this;
 	}
 
 	public PolicyVehicleEntityBuilder withInsurer(final InsuranceCompanyEntity insurer)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("insurer", this::getInsurer, this::setInsurer, insurer);
+	    setBuilderProperty("insurer", this::getInsurer, this::setInsurer, insurer);
 	    return this;
 	}
 
@@ -236,22 +255,22 @@ public class PolicyVehicleEntity extends AEntity {
     }
 
     protected PolicyVehicleEntity() {
-	this.vehicle = null;
-	this.vehicleClass = null;
-	this.vehicleAgeClass = null;
-	this.certificate = null;
-	this.vehiclePurpose = null;
-	this.currentOdometerValue = null;
-	this.created = null;
-	this.modified = null;
-	this.insurer = null;
+	vehicle = null;
+	vehicleClass = null;
+	vehicleAgeClass = null;
+	certificate = null;
+	vehiclePurpose = null;
+	currentOdometerValue = null;
+	created = null;
+	modified = null;
+	insurer = null;
     }
 
     // vehicle
 
     @ManyToOne
     @JoinColumn(name = "VEHICLE_ID")
-    private final VehicleEntity vehicle;
+    final VehicleEntity vehicle;
 
     public VehicleEntity getVehicle() {
 	return vehicle;
@@ -262,7 +281,7 @@ public class PolicyVehicleEntity extends AEntity {
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "VEHICLE_CLASS")
-    private final VehicleClass vehicleClass;
+    final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
 	return vehicleClass;
@@ -273,7 +292,7 @@ public class PolicyVehicleEntity extends AEntity {
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "VEHICLE_AGE_CLASS")
-    private final VehicleAgeClass vehicleAgeClass;
+    final VehicleAgeClass vehicleAgeClass;
 
     public VehicleAgeClass getVehicleAgeClass() {
 	return vehicleAgeClass;
@@ -282,7 +301,7 @@ public class PolicyVehicleEntity extends AEntity {
     // certificate
 
     @Embedded
-    private final VehicleCertificateInfo certificate;
+    final VehicleCertificateInfo certificate;
 
     public VehicleCertificateInfo getCertificate() {
 	return certificate;
@@ -292,7 +311,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     @Basic
     @Column(name = "VEHICLE_PURPOSE")
-    private final String vehiclePurpose;
+    final String vehiclePurpose;
 
     public String getVehiclePurpose() {
 	return vehiclePurpose;
@@ -302,7 +321,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     @Basic
     @Column(name = "CURRENT_ODOMETER_VALUE")
-    private final Integer currentOdometerValue;
+    final Integer currentOdometerValue;
 
     public Integer getCurrentOdometerValue() {
 	return currentOdometerValue;
@@ -318,7 +337,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
 
     })
-    private final RecordOperationInfo created;
+    final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
 	return created;
@@ -334,7 +353,7 @@ public class PolicyVehicleEntity extends AEntity {
 	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
 
     })
-    private final RecordOperationInfo modified;
+    final RecordOperationInfo modified;
 
     public boolean isModified() {
 	return MyObjects.nonNull(modified);
@@ -348,7 +367,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     @ManyToOne
     @JoinColumn(name = "INSURER_ID")
-    private final InsuranceCompanyEntity insurer;
+    final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
 	return insurer;

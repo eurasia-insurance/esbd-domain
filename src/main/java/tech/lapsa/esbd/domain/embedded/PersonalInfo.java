@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 import com.lapsa.insurance.elements.Sex;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -23,6 +24,11 @@ public class PersonalInfo extends ADomain {
 
     public static final PersonalInfoBuilder builder() {
 	return new PersonalInfoBuilder();
+    }
+
+    public static final PersonalInfoBuilder builder(final PersonalInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PersonalInfoBuilder(source);
     }
 
     public static final class PersonalInfoBuilder
@@ -36,7 +42,7 @@ public class PersonalInfo extends ADomain {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -46,7 +52,7 @@ public class PersonalInfo extends ADomain {
 	    return surename;
 	}
 
-	private void setSurename(String surename) {
+	private void setSurename(final String surename) {
 	    this.surename = surename;
 	}
 
@@ -56,7 +62,7 @@ public class PersonalInfo extends ADomain {
 	    return patronymic;
 	}
 
-	private void setPatronymic(String patronymic) {
+	private void setPatronymic(final String patronymic) {
 	    this.patronymic = patronymic;
 	}
 
@@ -66,7 +72,7 @@ public class PersonalInfo extends ADomain {
 	    return dayOfBirth;
 	}
 
-	private void setDayOfBirth(LocalDate dayOfBirth) {
+	private void setDayOfBirth(final LocalDate dayOfBirth) {
 	    this.dayOfBirth = dayOfBirth;
 	}
 
@@ -76,7 +82,7 @@ public class PersonalInfo extends ADomain {
 	    return gender;
 	}
 
-	private void setGender(Sex gender) {
+	private void setGender(final Sex gender) {
 	    this.gender = gender;
 	}
 
@@ -88,6 +94,15 @@ public class PersonalInfo extends ADomain {
 	// constructor
 
 	protected PersonalInfoBuilder() {
+	}
+
+	protected PersonalInfoBuilder(final PersonalInfo source) {
+	    super(source);
+	    name = source.name;
+	    surename = source.surename;
+	    patronymic = source.patronymic;
+	    dayOfBirth = source.dayOfBirth;
+	    gender = source.gender;
 	}
 
 	// public
@@ -108,12 +123,12 @@ public class PersonalInfo extends ADomain {
 	}
 
 	public PersonalInfoBuilder withDayOfBirth(final LocalDate dayOfBirth) {
-	    setIfNullOrThrow("dayOfBirth", this::getDayOfBirth, this::setDayOfBirth, dayOfBirth);
+	    setBuilderProperty("dayOfBirth", this::getDayOfBirth, this::setDayOfBirth, dayOfBirth);
 	    return this;
 	}
 
 	public PersonalInfoBuilder withGender(final Sex gender) {
-	    setIfNullOrThrow("gender", this::getGender, this::setGender, gender);
+	    setBuilderProperty("gender", this::getGender, this::setGender, gender);
 	    return this;
 	}
 
@@ -142,18 +157,18 @@ public class PersonalInfo extends ADomain {
     }
 
     protected PersonalInfo() {
-	this.name = null;
-	this.surename = null;
-	this.patronymic = null;
-	this.dayOfBirth = null;
-	this.gender = null;
+	name = null;
+	surename = null;
+	patronymic = null;
+	dayOfBirth = null;
+	gender = null;
     }
 
     // name
 
     @Basic
     @Column(name = "PERSONAL_NAME")
-    private final String name;
+    final String name;
 
     public String getName() {
 	return name;
@@ -163,7 +178,7 @@ public class PersonalInfo extends ADomain {
 
     @Basic
     @Column(name = "PERSONAL_SURENAME")
-    private final String surename;
+    final String surename;
 
     public String getSurename() {
 	return surename;
@@ -173,7 +188,7 @@ public class PersonalInfo extends ADomain {
 
     @Basic
     @Column(name = "PERSONAL_PATRONYMIC")
-    private final String patronymic;
+    final String patronymic;
 
     public String getPatronymic() {
 	return patronymic;
@@ -184,7 +199,7 @@ public class PersonalInfo extends ADomain {
     @Basic
     @Temporal(TemporalType.DATE)
     @Column(name = "PERSONAL_DATE_OF_BIRTH")
-    private final LocalDate dayOfBirth;
+    final LocalDate dayOfBirth;
 
     public LocalDate getDayOfBirth() {
 	return dayOfBirth;
@@ -195,7 +210,7 @@ public class PersonalInfo extends ADomain {
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "PERSONAL_GENDER")
-    private final Sex gender;
+    final Sex gender;
 
     public Sex getGender() {
 	return gender;

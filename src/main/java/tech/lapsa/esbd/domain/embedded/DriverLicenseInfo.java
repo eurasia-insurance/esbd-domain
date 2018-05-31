@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -23,6 +24,11 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	return new DriverLicenseInfoBuilder();
     }
 
+    public static final DriverLicenseInfoBuilder builder(final DriverLicenseInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new DriverLicenseInfoBuilder(source);
+    }
+
     public static final class DriverLicenseInfoBuilder
 	    extends ADocumentInfoBuilder<DriverLicenseInfo, DriverLicenseInfoBuilder> {
 
@@ -36,6 +42,10 @@ public class DriverLicenseInfo extends ADocumentInfo {
 	// constructor
 
 	protected DriverLicenseInfoBuilder() {
+	}
+
+	protected DriverLicenseInfoBuilder(final DriverLicenseInfo source) {
+	    super(source);
 	}
 
 	// public

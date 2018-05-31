@@ -10,6 +10,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -26,6 +27,11 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	return new HandicappedCertificateInfoBuilder();
     }
 
+    public static final HandicappedCertificateInfoBuilder builder(final HandicappedCertificateInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new HandicappedCertificateInfoBuilder(source);
+    }
+
     public static final class HandicappedCertificateInfoBuilder
 	    extends ADocumentInfoBuilder<HandicappedCertificateInfo, HandicappedCertificateInfoBuilder> {
 
@@ -37,7 +43,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    return validFrom;
 	}
 
-	private void setValidFrom(LocalDate validFrom) {
+	private void setValidFrom(final LocalDate validFrom) {
 	    this.validFrom = validFrom;
 	}
 
@@ -47,7 +53,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	    return validTill;
 	}
 
-	private void setValidTill(LocalDate validTill) {
+	private void setValidTill(final LocalDate validTill) {
 	    this.validTill = validTill;
 	}
 
@@ -61,16 +67,22 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
 	protected HandicappedCertificateInfoBuilder() {
 	}
 
+	protected HandicappedCertificateInfoBuilder(final HandicappedCertificateInfo source) {
+	    super(source);
+	    validFrom = source.validFrom;
+	    validTill = source.validTill;
+	}
+
 	// public
 
 	public HandicappedCertificateInfoBuilder withValidFrom(final LocalDate validFrom) {
-	    setIfNullOrThrow("validFrom", this::getValidFrom, this::setValidFrom,
+	    setBuilderProperty("validFrom", this::getValidFrom, this::setValidFrom,
 		    validFrom);
 	    return this;
 	}
 
 	public HandicappedCertificateInfoBuilder withValidTill(final LocalDate validTill) {
-	    setIfNullOrThrow("validTill", this::getValidTill, this::setValidTill,
+	    setBuilderProperty("validTill", this::getValidTill, this::setValidTill,
 		    validTill);
 	    return this;
 	}
@@ -94,8 +106,8 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
     }
 
     protected HandicappedCertificateInfo() {
-	this.validFrom = null;
-	this.validTill = null;
+	validFrom = null;
+	validTill = null;
     }
 
     // validFrom
@@ -103,7 +115,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
     @Basic
     @Temporal(TemporalType.DATE)
     @Column(name = "HANDICAPED_CERTIFICATE_VALID_FROM")
-    private final LocalDate validFrom;
+    final LocalDate validFrom;
 
     public LocalDate getValidFrom() {
 	return validFrom;
@@ -114,7 +126,7 @@ public class HandicappedCertificateInfo extends ADocumentInfo {
     @Basic
     @Temporal(TemporalType.DATE)
     @Column(name = "HANDICAPED_CERTIFICATE_VALID_TILL")
-    private final LocalDate validTill;
+    final LocalDate validTill;
 
     public LocalDate getValidTill() {
 	return validTill;

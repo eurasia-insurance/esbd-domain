@@ -11,6 +11,7 @@ import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.IdentityCardInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.esbd.domain.embedded.PersonalInfo;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
@@ -25,6 +26,11 @@ public class SubjectPersonEntity extends SubjectEntity {
 	return new SubjectPersonEntityBuilder();
     }
 
+    public static final SubjectPersonEntityBuilder builder(final SubjectPersonEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new SubjectPersonEntityBuilder(source);
+    }
+
     public static final class SubjectPersonEntityBuilder
 	    extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
 
@@ -36,7 +42,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    return personal;
 	}
 
-	private void setPersonal(PersonalInfo personal) {
+	private void setPersonal(final PersonalInfo personal) {
 	    this.personal = personal;
 	}
 
@@ -46,7 +52,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 	    return identityCard;
 	}
 
-	private void setIdentityCard(IdentityCardInfo identityCard) {
+	private void setIdentityCard(final IdentityCardInfo identityCard) {
 	    this.identityCard = identityCard;
 	}
 
@@ -60,15 +66,21 @@ public class SubjectPersonEntity extends SubjectEntity {
 	protected SubjectPersonEntityBuilder() {
 	}
 
+	protected SubjectPersonEntityBuilder(final SubjectPersonEntity source) {
+	    super(source);
+	    personal = source.personal;
+	    identityCard = source.identityCard;
+	}
+
 	// public
 
 	public SubjectPersonEntityBuilder withPersonal(final PersonalInfo personal) {
-	    setIfNullOrThrow("personal", this::getPersonal, this::setPersonal, personal);
+	    setBuilderProperty("personal", this::getPersonal, this::setPersonal, personal);
 	    return this;
 	}
 
 	public SubjectPersonEntityBuilder withIdentityCard(final IdentityCardInfo identityCard) {
-	    setIfNullOrThrow("identityCard", this::getIdentityCard, this::setIdentityCard, identityCard);
+	    setBuilderProperty("identityCard", this::getIdentityCard, this::setIdentityCard, identityCard);
 	    return this;
 	}
 
@@ -105,8 +117,8 @@ public class SubjectPersonEntity extends SubjectEntity {
     }
 
     protected SubjectPersonEntity() {
-	this.personal = null;
-	this.identityCard = null;
+	personal = null;
+	identityCard = null;
     }
 
     // subjectType
@@ -119,7 +131,7 @@ public class SubjectPersonEntity extends SubjectEntity {
     // personal
 
     @Embedded
-    private final PersonalInfo personal;
+    final PersonalInfo personal;
 
     public PersonalInfo getPersonal() {
 	return personal;
@@ -128,7 +140,7 @@ public class SubjectPersonEntity extends SubjectEntity {
     // identityCard
 
     @Embedded
-    private final IdentityCardInfo identityCard;
+    final IdentityCardInfo identityCard;
 
     public IdentityCardInfo getIdentityCard() {
 	return identityCard;

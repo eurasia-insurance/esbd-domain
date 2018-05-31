@@ -27,7 +27,7 @@ public abstract class ADictEntity extends AEntity {
 	    return code;
 	}
 
-	private void setCode(String code) {
+	private void setCode(final String code) {
 	    this.code = code;
 	}
 
@@ -37,7 +37,7 @@ public abstract class ADictEntity extends AEntity {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -47,6 +47,12 @@ public abstract class ADictEntity extends AEntity {
 	}
 
 	// public
+
+	public ADictEntityBuilder(final ET source) {
+	    super(source);
+	    this.code = source.code;
+	    this.name = source.name;
+	}
 
 	public BT withCode(final String code) {
 	    setStringIfNullOrThrow("code", this::getCode, this::setCode, code);
@@ -68,15 +74,15 @@ public abstract class ADictEntity extends AEntity {
     }
 
     protected ADictEntity() {
-	this.code = null;
-	this.name = null;
+	code = null;
+	name = null;
     }
 
     // code
 
     @Basic
     @Column(name = "CODE")
-    private final String code;
+    final String code;
 
     public String getCode() {
 	return code;
@@ -86,7 +92,7 @@ public abstract class ADictEntity extends AEntity {
 
     @Basic
     @Column(name = "NAME")
-    private final String name;
+    final String name;
 
     public String getName() {
 	return name;

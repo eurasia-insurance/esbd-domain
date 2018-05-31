@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 import com.lapsa.insurance.elements.CancelationReason;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -23,6 +24,11 @@ public class CancelationInfo extends ADomain {
 
     public static final CancelationInfoBuilder builder() {
 	return new CancelationInfoBuilder();
+    }
+
+    public static final CancelationInfoBuilder builder(final CancelationInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new CancelationInfoBuilder(source);
     }
 
     public static final class CancelationInfoBuilder
@@ -36,7 +42,7 @@ public class CancelationInfo extends ADomain {
 	    return dateOf;
 	}
 
-	private void setDateOf(LocalDate dateOf) {
+	private void setDateOf(final LocalDate dateOf) {
 	    this.dateOf = dateOf;
 	}
 
@@ -46,7 +52,7 @@ public class CancelationInfo extends ADomain {
 	    return reason;
 	}
 
-	private void setReason(CancelationReason reason) {
+	private void setReason(final CancelationReason reason) {
 	    this.reason = reason;
 	}
 
@@ -60,15 +66,21 @@ public class CancelationInfo extends ADomain {
 	protected CancelationInfoBuilder() {
 	}
 
+	public CancelationInfoBuilder(final CancelationInfo source) {
+	    super(source);
+	    dateOf = source.dateOf;
+	    reason = source.reason;
+	}
+
 	// public
 
 	public CancelationInfoBuilder withDateOf(final LocalDate dateOf) {
-	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
+	    setBuilderProperty("dateOf", this::getDateOf, this::setDateOf, dateOf);
 	    return this;
 	}
 
 	public CancelationInfoBuilder withReason(final CancelationReason reason) {
-	    setIfNullOrThrow("reason", this::getReason, this::setReason, reason);
+	    setBuilderProperty("reason", this::getReason, this::setReason, reason);
 	    return this;
 	}
 
@@ -88,8 +100,8 @@ public class CancelationInfo extends ADomain {
     }
 
     protected CancelationInfo() {
-	this.dateOf = null;
-	this.reason = null;
+	dateOf = null;
+	reason = null;
     }
 
     // dateOf
@@ -97,7 +109,7 @@ public class CancelationInfo extends ADomain {
     @Basic
     @Temporal(TemporalType.DATE)
     @Column(name = "CANCELATION_DATE_OF")
-    private final LocalDate dateOf;
+    final LocalDate dateOf;
 
     public LocalDate getDateOf() {
 	return dateOf;
@@ -108,7 +120,7 @@ public class CancelationInfo extends ADomain {
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "CANCELATION_REASON")
-    private final CancelationReason reason;
+    final CancelationReason reason;
 
     public CancelationReason getReason() {
 	return reason;

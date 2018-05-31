@@ -8,6 +8,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -24,6 +25,11 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	return new PrivilegerDocumentInfoBuilder();
     }
 
+    public static final PrivilegerDocumentInfoBuilder builder(final PrivilegerDocumentInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new PrivilegerDocumentInfoBuilder(source);
+    }
+
     public static final class PrivilegerDocumentInfoBuilder
 	    extends ADocumentInfoBuilder<PrivilegerDocumentInfo, PrivilegerDocumentInfoBuilder> {
 
@@ -35,7 +41,7 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	    return type;
 	}
 
-	private void setType(String type) {
+	private void setType(final String type) {
 	    this.type = type;
 	}
 
@@ -47,6 +53,11 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
 	// constructor
 
 	protected PrivilegerDocumentInfoBuilder() {
+	}
+
+	protected PrivilegerDocumentInfoBuilder(final PrivilegerDocumentInfo source) {
+	    super(source);
+	    type = source.type;
 	}
 
 	// public
@@ -74,14 +85,14 @@ public class PrivilegerDocumentInfo extends ADocumentInfo {
     }
 
     protected PrivilegerDocumentInfo() {
-	this.type = null;
+	type = null;
     }
 
     // type
 
     @Basic
     @Column(name = "PRIVILEGER_DOCUMENT_TYPE")
-    private final String type;
+    final String type;
 
     public String getType() {
 	return type;

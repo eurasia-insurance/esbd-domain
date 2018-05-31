@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -15,6 +16,11 @@ public class VehicleEngineInfo extends ADomain {
 
     public static final VehicleEngineInfoBuilder builder() {
 	return new VehicleEngineInfoBuilder();
+    }
+
+    public static final VehicleEngineInfoBuilder builder(final VehicleEngineInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleEngineInfoBuilder(source);
     }
 
     public static final class VehicleEngineInfoBuilder
@@ -28,7 +34,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return volume;
 	}
 
-	private void setVolume(Integer volume) {
+	private void setVolume(final Integer volume) {
 	    this.volume = volume;
 	}
 
@@ -38,7 +44,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -48,7 +54,7 @@ public class VehicleEngineInfo extends ADomain {
 	    return power;
 	}
 
-	private void setPower(Integer power) {
+	private void setPower(final Integer power) {
 	    this.power = power;
 	}
 
@@ -60,6 +66,13 @@ public class VehicleEngineInfo extends ADomain {
 	// constructor
 
 	protected VehicleEngineInfoBuilder() {
+	}
+
+	protected VehicleEngineInfoBuilder(final VehicleEngineInfo source) {
+	    super(source);
+	    volume = source.volume;
+	    number = source.number;
+	    power = source.power;
 	}
 
 	// public
@@ -105,16 +118,16 @@ public class VehicleEngineInfo extends ADomain {
     }
 
     protected VehicleEngineInfo() {
-	this.volume = null;
-	this.number = null;
-	this.power = null;
+	volume = null;
+	number = null;
+	power = null;
     }
 
     // engineVolume
 
     @Basic
     @Column(name = "VEHICLE_ENGINE_VOLUME")
-    private final Integer volume;
+    final Integer volume;
 
     public Integer getVolume() {
 	return volume;
@@ -124,7 +137,7 @@ public class VehicleEngineInfo extends ADomain {
 
     @Basic
     @Column(name = "VEHICLE_ENGINE_NUMBER")
-    private final String number;
+    final String number;
 
     public String getNumber() {
 	return number;
@@ -134,7 +147,7 @@ public class VehicleEngineInfo extends ADomain {
 
     @Basic
     @Column(name = "VEHICLE_ENGINE_POWER")
-    private final Integer power;
+    final Integer power;
 
     public Integer getPower() {
 	return power;

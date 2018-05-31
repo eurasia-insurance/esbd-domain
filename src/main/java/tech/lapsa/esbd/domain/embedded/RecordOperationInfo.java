@@ -12,6 +12,7 @@ import javax.persistence.TemporalType;
 
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.esbd.domain.complex.UserEntity;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -22,6 +23,11 @@ public class RecordOperationInfo extends ADomain {
 
     public static final RecordOperationInfoBuilder builder() {
 	return new RecordOperationInfoBuilder();
+    }
+
+    public static final RecordOperationInfoBuilder builder(final RecordOperationInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new RecordOperationInfoBuilder(source);
     }
 
     public static final class RecordOperationInfoBuilder
@@ -35,7 +41,7 @@ public class RecordOperationInfo extends ADomain {
 	    return instant;
 	}
 
-	private void setInstant(Instant instant) {
+	private void setInstant(final Instant instant) {
 	    this.instant = instant;
 	}
 
@@ -45,7 +51,7 @@ public class RecordOperationInfo extends ADomain {
 	    return author;
 	}
 
-	private void setAuthor(UserEntity author) {
+	private void setAuthor(final UserEntity author) {
 	    this.author = author;
 	}
 
@@ -59,15 +65,21 @@ public class RecordOperationInfo extends ADomain {
 	protected RecordOperationInfoBuilder() {
 	}
 
+	protected RecordOperationInfoBuilder(final RecordOperationInfo source) {
+	    super(source);
+	    instant = source.instant;
+	    author = source.author;
+	}
+
 	// public
 
 	public RecordOperationInfoBuilder withInstant(final Instant instant) {
-	    setIfNullOrThrow("instant", this::getInstant, this::setInstant, instant);
+	    setBuilderProperty("instant", this::getInstant, this::setInstant, instant);
 	    return this;
 	}
 
 	public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
-	    setIfNullOrThrow("author", this::getAuthor, this::setAuthor, author);
+	    setBuilderProperty("author", this::getAuthor, this::setAuthor, author);
 	    return this;
 	}
 
@@ -87,8 +99,8 @@ public class RecordOperationInfo extends ADomain {
     }
 
     protected RecordOperationInfo() {
-	this.instant = null;
-	this.author = null;
+	instant = null;
+	author = null;
     }
 
     // instant
@@ -96,7 +108,7 @@ public class RecordOperationInfo extends ADomain {
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "OPERATION_INSTANT")
-    private final Instant instant;
+    final Instant instant;
 
     public Instant getInstant() {
 	return instant;
@@ -106,7 +118,7 @@ public class RecordOperationInfo extends ADomain {
 
     @ManyToOne
     @JoinColumn(name = "OPERATION_AUTHOR_ID")
-    private final UserEntity author;
+    final UserEntity author;
 
     public UserEntity getAuthor() {
 	return author;

@@ -1,6 +1,5 @@
 package tech.lapsa.esbd.jpa;
 
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;

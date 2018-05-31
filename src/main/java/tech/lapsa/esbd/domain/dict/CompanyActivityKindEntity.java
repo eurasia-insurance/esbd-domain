@@ -2,6 +2,7 @@ package tech.lapsa.esbd.domain.dict;
 
 import javax.persistence.Entity;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
@@ -12,6 +13,11 @@ public class CompanyActivityKindEntity extends ADictEntity {
 
     public static final CompanyActivityKindEntityBuilder builder() {
 	return new CompanyActivityKindEntityBuilder();
+    }
+
+    public static final CompanyActivityKindEntityBuilder builder(final CompanyActivityKindEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new CompanyActivityKindEntityBuilder(source);
     }
 
     public static final class CompanyActivityKindEntityBuilder
@@ -27,6 +33,10 @@ public class CompanyActivityKindEntity extends ADictEntity {
 	// constructor
 
 	protected CompanyActivityKindEntityBuilder() {
+	}
+
+	protected CompanyActivityKindEntityBuilder(final CompanyActivityKindEntity source) {
+	    super(source);
 	}
 
 	// public

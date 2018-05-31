@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
@@ -27,6 +28,11 @@ public class UserEntity extends AEntity {
 	return new UserEntityBuilder();
     }
 
+    public static final UserEntityBuilder builder(final UserEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new UserEntityBuilder(source);
+    }
+
     public static final class UserEntityBuilder
 	    extends AEntityBuilder<UserEntity, UserEntityBuilder> {
 
@@ -38,7 +44,7 @@ public class UserEntity extends AEntity {
 	    return login;
 	}
 
-	private void setLogin(String login) {
+	private void setLogin(final String login) {
 	    this.login = login;
 	}
 
@@ -48,7 +54,7 @@ public class UserEntity extends AEntity {
 	    return branch;
 	}
 
-	private void setBranch(BranchEntity branch) {
+	private void setBranch(final BranchEntity branch) {
 	    this.branch = branch;
 	}
 
@@ -58,7 +64,7 @@ public class UserEntity extends AEntity {
 	    return subject;
 	}
 
-	private void setSubject(SubjectEntity subject) {
+	private void setSubject(final SubjectEntity subject) {
 	    this.subject = subject;
 	}
 
@@ -68,7 +74,7 @@ public class UserEntity extends AEntity {
 	    return organization;
 	}
 
-	private void setOrganization(InsuranceCompanyEntity organization) {
+	private void setOrganization(final InsuranceCompanyEntity organization) {
 	    this.organization = organization;
 	}
 
@@ -78,7 +84,7 @@ public class UserEntity extends AEntity {
 	    return authentificated;
 	}
 
-	private void setAuthentificated(Boolean authentificated) {
+	private void setAuthentificated(final Boolean authentificated) {
 	    this.authentificated = authentificated;
 	}
 
@@ -88,7 +94,7 @@ public class UserEntity extends AEntity {
 	    return lastSesionId;
 	}
 
-	private void setLastSesionId(String lastSesionId) {
+	private void setLastSesionId(final String lastSesionId) {
 	    this.lastSesionId = lastSesionId;
 	}
 
@@ -98,7 +104,7 @@ public class UserEntity extends AEntity {
 	    return lastActivity;
 	}
 
-	private void setLastActivity(Instant lastActivity) {
+	private void setLastActivity(final Instant lastActivity) {
 	    this.lastActivity = lastActivity;
 	}
 
@@ -112,6 +118,17 @@ public class UserEntity extends AEntity {
 	protected UserEntityBuilder() {
 	}
 
+	protected UserEntityBuilder(final UserEntity source) {
+	    super(source);
+	    login = source.login;
+	    branch = source.branch;
+	    subject = source.subject;
+	    organization = source.organization;
+	    authentificated = source.authentificated;
+	    lastSesionId = source.lastSesionId;
+	    lastActivity = source.lastActivity;
+	}
+
 	// public
 
 	public UserEntityBuilder withLogin(final String login) throws IllegalArgumentException {
@@ -120,23 +137,23 @@ public class UserEntity extends AEntity {
 	}
 
 	public UserEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
-	    setIfNullOrThrow("branch", this::getBranch, this::setBranch, branch);
+	    setBuilderProperty("branch", this::getBranch, this::setBranch, branch);
 	    return this;
 	}
 
 	public UserEntityBuilder withSubject(final SubjectEntity subject) throws IllegalArgumentException {
-	    setIfNullOrThrow("subject", this::getSubject, this::setSubject, subject);
+	    setBuilderProperty("subject", this::getSubject, this::setSubject, subject);
 	    return this;
 	}
 
 	public UserEntityBuilder withOrganization(final InsuranceCompanyEntity organization)
 		throws IllegalArgumentException {
-	    setIfNullOrThrow("organization", this::getOrganization, this::setOrganization, organization);
+	    setBuilderProperty("organization", this::getOrganization, this::setOrganization, organization);
 	    return this;
 	}
 
 	public UserEntityBuilder withAuthentificated(final Boolean authentificated) {
-	    setIfNullOrThrow("authentificated", this::getAuthentificated, this::setAuthentificated, authentificated);
+	    setBuilderProperty("authentificated", this::getAuthentificated, this::setAuthentificated, authentificated);
 	    return this;
 	}
 
@@ -146,7 +163,7 @@ public class UserEntity extends AEntity {
 	}
 
 	public UserEntityBuilder withLastActivity(final Instant lastActivity) {
-	    setIfNullOrThrow("lastActivity", this::getLastActivity, this::setLastActivity, lastActivity);
+	    setBuilderProperty("lastActivity", this::getLastActivity, this::setLastActivity, lastActivity);
 	    return this;
 	}
 
@@ -184,20 +201,20 @@ public class UserEntity extends AEntity {
     }
 
     protected UserEntity() {
-	this.login = null;
-	this.branch = null;
-	this.subject = null;
-	this.organization = null;
-	this.authentificated = null;
-	this.lastSesionId = null;
-	this.lastActivity = null;
+	login = null;
+	branch = null;
+	subject = null;
+	organization = null;
+	authentificated = null;
+	lastSesionId = null;
+	lastActivity = null;
     }
 
     // login
 
     @Basic
     @Column(name = "LOGIN")
-    private final String login;
+    final String login;
 
     public String getLogin() {
 	return login;
@@ -207,7 +224,7 @@ public class UserEntity extends AEntity {
 
     @ManyToOne
     @JoinColumn(name = "BRANCH_ID")
-    private final BranchEntity branch;
+    final BranchEntity branch;
 
     public BranchEntity getBranch() {
 	return branch;
@@ -217,7 +234,7 @@ public class UserEntity extends AEntity {
 
     @ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
-    private final SubjectEntity subject;
+    final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
 	return subject;
@@ -227,7 +244,7 @@ public class UserEntity extends AEntity {
 
     @ManyToOne
     @JoinColumn(name = "ORGANIZATION_ID")
-    private final InsuranceCompanyEntity organization;
+    final InsuranceCompanyEntity organization;
 
     public InsuranceCompanyEntity getOrganization() {
 	return organization;
@@ -237,7 +254,7 @@ public class UserEntity extends AEntity {
 
     @Basic
     @Column(name = "AUTHENTIFICATED")
-    private final Boolean authentificated;
+    final Boolean authentificated;
 
     public Boolean isAuthentificated() {
 	return authentificated;
@@ -247,7 +264,7 @@ public class UserEntity extends AEntity {
 
     @Basic
     @Column(name = "LAST_SESSION_ID")
-    private final String lastSesionId;
+    final String lastSesionId;
 
     public String getLastSesionId() {
 	return lastSesionId;
@@ -258,7 +275,7 @@ public class UserEntity extends AEntity {
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "LAST_ACTIVITY")
-    private final Instant lastActivity;
+    final Instant lastActivity;
 
     public Instant getLastActivity() {
 	return lastActivity;

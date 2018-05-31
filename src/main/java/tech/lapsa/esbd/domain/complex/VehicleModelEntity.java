@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Entity
@@ -21,6 +22,11 @@ public class VehicleModelEntity extends AEntity {
 	return new VehicleModelEntityBuilder();
     }
 
+    public static final VehicleModelEntityBuilder builder(final VehicleModelEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleModelEntityBuilder(source);
+    }
+
     public static final class VehicleModelEntityBuilder
 	    extends AEntityBuilder<VehicleModelEntity, VehicleModelEntityBuilder> {
 
@@ -32,7 +38,7 @@ public class VehicleModelEntity extends AEntity {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -42,7 +48,7 @@ public class VehicleModelEntity extends AEntity {
 	    return manufacturer;
 	}
 
-	private void setManufacturer(VehicleManufacturerEntity manufacturer) {
+	private void setManufacturer(final VehicleManufacturerEntity manufacturer) {
 	    this.manufacturer = manufacturer;
 	}
 
@@ -56,6 +62,12 @@ public class VehicleModelEntity extends AEntity {
 	protected VehicleModelEntityBuilder() {
 	}
 
+	protected VehicleModelEntityBuilder(final VehicleModelEntity source) {
+	    super(source);
+	    name = source.name;
+	    manufacturer = source.manufacturer;
+	}
+
 	// public
 
 	public VehicleModelEntityBuilder withName(final String name) {
@@ -64,7 +76,7 @@ public class VehicleModelEntity extends AEntity {
 	}
 
 	public VehicleModelEntityBuilder withManufacturer(final VehicleManufacturerEntity manufacturer) {
-	    setIfNullOrThrow("manufacturer", this::getManufacturer, this::setManufacturer, manufacturer);
+	    setBuilderProperty("manufacturer", this::getManufacturer, this::setManufacturer, manufacturer);
 	    return this;
 	}
 
@@ -87,15 +99,15 @@ public class VehicleModelEntity extends AEntity {
     }
 
     protected VehicleModelEntity() {
-	this.name = null;
-	this.manufacturer = null;
+	name = null;
+	manufacturer = null;
     }
 
     // name
 
     @Basic
     @Column(name = "NAME")
-    private final String name;
+    final String name;
 
     public String getName() {
 	return name;
@@ -105,7 +117,7 @@ public class VehicleModelEntity extends AEntity {
 
     @ManyToOne
     @JoinColumn(name = "VEHICLE_MANUFACTURER_ID")
-    private final VehicleManufacturerEntity manufacturer;
+    final VehicleManufacturerEntity manufacturer;
 
     public VehicleManufacturerEntity getManufacturer() {
 	return manufacturer;

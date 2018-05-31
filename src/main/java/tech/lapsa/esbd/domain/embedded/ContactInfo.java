@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @Embeddable
@@ -17,6 +18,11 @@ public class ContactInfo extends ADomain {
 
     public static final ContactInfoBuilder builder() {
 	return new ContactInfoBuilder();
+    }
+
+    public static final ContactInfoBuilder builder(final ContactInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new ContactInfoBuilder(source);
     }
 
     public static final class ContactInfoBuilder
@@ -30,7 +36,7 @@ public class ContactInfo extends ADomain {
 	    return phone;
 	}
 
-	private void setPhone(PhoneNumber phone) {
+	private void setPhone(final PhoneNumber phone) {
 	    this.phone = phone;
 	}
 
@@ -40,7 +46,7 @@ public class ContactInfo extends ADomain {
 	    return email;
 	}
 
-	private void setEmail(String email) {
+	private void setEmail(final String email) {
 	    this.email = email;
 	}
 
@@ -50,7 +56,7 @@ public class ContactInfo extends ADomain {
 	    return homeAdress;
 	}
 
-	private void setHomeAdress(String homeAdress) {
+	private void setHomeAdress(final String homeAdress) {
 	    this.homeAdress = homeAdress;
 	}
 
@@ -60,7 +66,7 @@ public class ContactInfo extends ADomain {
 	    return siteUrl;
 	}
 
-	private void setSiteUrl(String siteUrl) {
+	private void setSiteUrl(final String siteUrl) {
 	    this.siteUrl = siteUrl;
 	}
 
@@ -74,10 +80,18 @@ public class ContactInfo extends ADomain {
 	protected ContactInfoBuilder() {
 	}
 
+	protected ContactInfoBuilder(final ContactInfo source) {
+	    super(source);
+	    phone = source.phone;
+	    email = source.email;
+	    homeAdress = source.homeAdress;
+	    siteUrl = source.siteUrl;
+	}
+
 	// public
 
 	public ContactInfoBuilder withPhone(final PhoneNumber phone) {
-	    setIfNullOrThrow("phone", this::getPhone, this::setPhone, phone);
+	    setBuilderProperty("phone", this::getPhone, this::setPhone, phone);
 	    return this;
 	}
 
@@ -118,17 +132,17 @@ public class ContactInfo extends ADomain {
     }
 
     protected ContactInfo() {
-	this.phone = null;
-	this.email = null;
-	this.homeAdress = null;
-	this.siteUrl = null;
+	phone = null;
+	email = null;
+	homeAdress = null;
+	siteUrl = null;
     }
 
     // phone
 
     @Basic
     @Column(name = "CONTACT_PHONE")
-    private final PhoneNumber phone;
+    final PhoneNumber phone;
 
     public PhoneNumber getPhone() {
 	return phone;
@@ -138,7 +152,7 @@ public class ContactInfo extends ADomain {
 
     @Basic
     @Column(name = "CONTACT_EMAIL")
-    private final String email;
+    final String email;
 
     public String getEmail() {
 	return email;
@@ -148,7 +162,7 @@ public class ContactInfo extends ADomain {
 
     @Basic
     @Column(name = "CONTACT_HOME_ADDRESS")
-    private final String homeAdress;
+    final String homeAdress;
 
     public String getHomeAdress() {
 	return homeAdress;
@@ -158,7 +172,7 @@ public class ContactInfo extends ADomain {
 
     @Basic
     @Column(name = "CONTACT_SITE_URL")
-    private final String siteUrl;
+    final String siteUrl;
 
     public String getSiteUrl() {
 	return siteUrl;
