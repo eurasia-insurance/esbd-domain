@@ -174,14 +174,15 @@ public class InsuranceAgentEntity extends AEntity {
 
 	@Override
 	public InsuranceAgentEntity build() throws IllegalArgumentException {
-	    return new InsuranceAgentEntity(id,
-		    contract,
-		    branch,
-		    owner,
-		    subject,
-		    created,
-		    modified,
-		    letterOfAttorneyNumber);
+	    return new InsuranceAgentEntity(id, 
+		    contract, 
+		    branch, 
+		    owner, 
+		    subject, 
+		    insurer, 
+		    letterOfAttorneyNumber, 
+		    created, 
+		    modified);
 	}
     }
 
@@ -192,17 +193,19 @@ public class InsuranceAgentEntity extends AEntity {
 	    final BranchEntity branch,
 	    final UserEntity owner,
 	    final SubjectEntity subject,
+	    final InsuranceCompanyEntity insurer,
+	    final String letterOfAttorneyNumber,
 	    final RecordOperationInfo created,
-	    final RecordOperationInfo modified,
-	    final String letterOfAttorneyNumber) {
+	    final RecordOperationInfo modified) {
 	super(id);
 	this.contract = contract;
 	this.branch = branch;
 	this.owner = owner;
 	this.subject = subject;
+	this.insurer = insurer;
+	this.letterOfAttorneyNumber = letterOfAttorneyNumber;
 	this.created = created;
 	this.modified = modified;
-	this.letterOfAttorneyNumber = letterOfAttorneyNumber;
     }
 
     protected InsuranceAgentEntity() {
@@ -210,9 +213,10 @@ public class InsuranceAgentEntity extends AEntity {
 	branch = null;
 	owner = null;
 	subject = null;
+	insurer = null;
+	letterOfAttorneyNumber = null;
 	created = null;
 	modified = null;
-	letterOfAttorneyNumber = null;
     }
 
     // contract
@@ -221,14 +225,6 @@ public class InsuranceAgentEntity extends AEntity {
 
     public ContractInfo getContract() {
 	return contract;
-    }
-
-    // letterOfAttorneyNumber
-
-    final String letterOfAttorneyNumber;
-
-    public String getLetterOfAttorneyNumber() {
-	return letterOfAttorneyNumber;
     }
 
     // branch
@@ -253,6 +249,22 @@ public class InsuranceAgentEntity extends AEntity {
 
     public SubjectEntity getSubject() {
 	return subject;
+    }
+
+    // insurer
+
+    final InsuranceCompanyEntity insurer;
+
+    public InsuranceCompanyEntity getInsurer() {
+	return insurer;
+    }
+
+    // letterOfAttorneyNumber
+
+    final String letterOfAttorneyNumber;
+
+    public String getLetterOfAttorneyNumber() {
+	return letterOfAttorneyNumber;
     }
 
     // created
