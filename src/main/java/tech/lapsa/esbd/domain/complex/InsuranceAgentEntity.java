@@ -123,6 +123,7 @@ public class InsuranceAgentEntity extends AEntity {
 	    branch = source.branch;
 	    owner = source.owner;
 	    subject = source.subject;
+	    insurer = source.insurer;
 	    created = source.created;
 	    modified = source.modified;
 	    letterOfAttorneyNumber = source.letterOfAttorneyNumber;
