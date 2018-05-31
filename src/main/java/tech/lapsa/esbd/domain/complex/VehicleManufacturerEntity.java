@@ -1,6 +1,7 @@
 package tech.lapsa.esbd.domain.complex;
 
 import tech.lapsa.esbd.domain.AEntity;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(37)
@@ -10,6 +11,11 @@ public class VehicleManufacturerEntity extends AEntity {
 
     public static final VehicleManufacturerEntityBuilder builder() {
 	return new VehicleManufacturerEntityBuilder();
+    }
+
+    public static final VehicleManufacturerEntityBuilder builder(final VehicleManufacturerEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new VehicleManufacturerEntityBuilder(source);
     }
 
     public static final class VehicleManufacturerEntityBuilder
@@ -23,7 +29,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	    return name;
 	}
 
-	private void setName(String name) {
+	private void setName(final String name) {
 	    this.name = name;
 	}
 
@@ -33,7 +39,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	    return foreign;
 	}
 
-	private void setForeign(Boolean foreign) {
+	private void setForeign(final Boolean foreign) {
 	    this.foreign = foreign;
 	}
 
@@ -47,6 +53,12 @@ public class VehicleManufacturerEntity extends AEntity {
 	protected VehicleManufacturerEntityBuilder() {
 	}
 
+	protected VehicleManufacturerEntityBuilder(final VehicleManufacturerEntity source) {
+	    super(source);
+	    name = source.name;
+	    foreign = source.foreign;
+	}
+
 	// public
 
 	public VehicleManufacturerEntityBuilder withName(final String name) {
@@ -55,7 +67,7 @@ public class VehicleManufacturerEntity extends AEntity {
 	}
 
 	public VehicleManufacturerEntityBuilder withForeign(final Boolean foreign) {
-	    setIfNullOrThrow("foreign", this::getForeign, this::setForeign, foreign);
+	    setBuilderProperty("foreign", this::getForeign, this::setForeign, foreign);
 	    return this;
 	}
 
@@ -78,13 +90,13 @@ public class VehicleManufacturerEntity extends AEntity {
     }
 
     protected VehicleManufacturerEntity() {
-	this.name = null;
-	this.foreign = null;
+	name = null;
+	foreign = null;
     }
 
     // name
 
-    private final String name;
+    final String name;
 
     public String getName() {
 	return name;
@@ -92,7 +104,7 @@ public class VehicleManufacturerEntity extends AEntity {
 
     // foreign
 
-    private final Boolean foreign;
+    final Boolean foreign;
 
     public Boolean isForeign() {
 	return foreign;

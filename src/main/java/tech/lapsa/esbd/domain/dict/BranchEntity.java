@@ -1,5 +1,6 @@
 package tech.lapsa.esbd.domain.dict;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(509)
@@ -9,6 +10,11 @@ public class BranchEntity extends ADictEntity {
 
     public static final BranchEntityBuilder builder() {
 	return new BranchEntityBuilder();
+    }
+
+    public static final BranchEntityBuilder builder(final BranchEntity source) {
+	MyObjects.requireNonNull(source, "source");
+	return new BranchEntityBuilder(source);
     }
 
     public static final class BranchEntityBuilder
@@ -24,6 +30,10 @@ public class BranchEntity extends ADictEntity {
 	// constructor
 
 	protected BranchEntityBuilder() {
+	}
+
+	protected BranchEntityBuilder(final BranchEntity source) {
+	    super(source);
 	}
 
 	// public

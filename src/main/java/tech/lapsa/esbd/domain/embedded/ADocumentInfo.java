@@ -19,7 +19,7 @@ public abstract class ADocumentInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -29,13 +29,19 @@ public abstract class ADocumentInfo extends ADomain {
 	    return dateOfIssue;
 	}
 
-	private void setDateOfIssue(LocalDate dateOfIssue) {
+	private void setDateOfIssue(final LocalDate dateOfIssue) {
 	    this.dateOfIssue = dateOfIssue;
 	}
 
 	// constructor
 
 	protected ADocumentInfoBuilder() {
+	}
+
+	protected ADocumentInfoBuilder(final ET source) {
+	    super(source);
+	    this.number = source.number;
+	    this.dateOfIssue = source.dateOfIssue;
 	}
 
 	// public
@@ -46,7 +52,7 @@ public abstract class ADocumentInfo extends ADomain {
 	}
 
 	public BT withDateOfIssue(final LocalDate dateOfIssue) {
-	    setIfNullOrThrow("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
+	    setBuilderProperty("dateOfIssue", this::getDateOfIssue, this::setDateOfIssue, dateOfIssue);
 	    return _this();
 	}
     }
@@ -60,13 +66,13 @@ public abstract class ADocumentInfo extends ADomain {
     }
 
     protected ADocumentInfo() {
-	this.number = null;
-	this.dateOfIssue = null;
+	number = null;
+	dateOfIssue = null;
     }
 
     // number
 
-    private final String number;
+    final String number;
 
     public String getNumber() {
 	return number;
@@ -74,7 +80,7 @@ public abstract class ADocumentInfo extends ADomain {
 
     // dateOfIssue
 
-    private final LocalDate dateOfIssue;
+    final LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
 	return dateOfIssue;

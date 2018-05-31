@@ -1,7 +1,5 @@
 package tech.lapsa.esbd.domain.complex;
 
-import java.util.function.Consumer;
-
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -25,7 +23,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return origin;
 	}
 
-	private void setOrigin(OriginInfo origin) {
+	private void setOrigin(final OriginInfo origin) {
 	    this.origin = origin;
 	}
 
@@ -35,7 +33,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return contact;
 	}
 
-	private void setContact(ContactInfo contact) {
+	private void setContact(final ContactInfo contact) {
 	    this.contact = contact;
 	}
 
@@ -45,7 +43,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return taxPayerNumber;
 	}
 
-	private void setTaxPayerNumber(String taxPayerNumber) {
+	private void setTaxPayerNumber(final String taxPayerNumber) {
 	    this.taxPayerNumber = taxPayerNumber;
 	}
 
@@ -55,7 +53,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return comments;
 	}
 
-	private void setComments(String comments) {
+	private void setComments(final String comments) {
 	    this.comments = comments;
 	}
 
@@ -65,7 +63,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return resident;
 	}
 
-	private void setResident(Boolean resident) {
+	private void setResident(final Boolean resident) {
 	    this.resident = resident;
 	}
 
@@ -75,7 +73,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return idNumber;
 	}
 
-	private void setIdNumber(TaxpayerNumber idNumber) {
+	private void setIdNumber(final TaxpayerNumber idNumber) {
 	    this.idNumber = idNumber;
 	}
 
@@ -85,7 +83,7 @@ public abstract class SubjectEntity extends AEntity {
 	    return economicsSector;
 	}
 
-	private void setEconomicsSector(KZEconomicSector economicsSector) {
+	private void setEconomicsSector(final KZEconomicSector economicsSector) {
 	    this.economicsSector = economicsSector;
 	}
 
@@ -94,20 +92,31 @@ public abstract class SubjectEntity extends AEntity {
 	protected SubjectEntityBuilder() {
 	}
 
+	protected SubjectEntityBuilder(final T source) {
+	    super(source);
+	    this.origin = source.origin;
+	    this.contact = source.contact;
+	    this.taxPayerNumber = source.taxPayerNumber;
+	    this.comments = source.comments;
+	    this.resident = source.resident;
+	    this.idNumber = source.idNumber;
+	    this.economicsSector = source.economicsSector;
+	}
+
 	// public
 
 	public B withOrigin(final OriginInfo origin) {
-	    setIfNullOrThrow("origin", this::getOrigin, this::setOrigin, origin);
+	    setBuilderProperty("origin", this::getOrigin, this::setOrigin, origin);
 	    return _this();
 	}
 
 	public B withContact(final ContactInfo contact) {
-	    setIfNullOrThrow("contact", this::getContact, this::setContact, contact);
+	    setBuilderProperty("contact", this::getContact, this::setContact, contact);
 	    return _this();
 	}
 
 	public B withTaxPayerNumber(final String taxPayerNumber) {
-	    setIfNullOrThrow("taxPayerNumber", this::getTaxPayerNumber, this::setTaxPayerNumber, taxPayerNumber);
+	    setBuilderProperty("taxPayerNumber", this::getTaxPayerNumber, this::setTaxPayerNumber, taxPayerNumber);
 	    return _this();
 	}
 
@@ -117,25 +126,19 @@ public abstract class SubjectEntity extends AEntity {
 	}
 
 	public B withResident(final Boolean resident) {
-	    setIfNullOrThrow("resident", this::getResident, this::setResident, resident);
+	    setBuilderProperty("resident", this::getResident, this::setResident, resident);
 	    return _this();
 	}
 
 	public B withIdNumber(final TaxpayerNumber idNumber) {
-	    setIfNullOrThrow("idNumber", this::getIdNumber, this::setIdNumber, idNumber);
+	    setBuilderProperty("idNumber", this::getIdNumber, this::setIdNumber, idNumber);
 	    return _this();
 	}
 
 	public B withEconomicsSector(final KZEconomicSector economicsSector) {
-	    setIfNullOrThrow("economicsSector", this::getEconomicsSector, this::setEconomicsSector, economicsSector);
+	    setBuilderProperty("economicsSector", this::getEconomicsSector, this::setEconomicsSector, economicsSector);
 	    return _this();
 	}
-
-	public void buildTo(final Consumer<T> consumer) {
-	    consumer.accept(build());
-	}
-
-	public abstract T build() throws IllegalArgumentException;
     }
 
     // constructor
@@ -159,13 +162,13 @@ public abstract class SubjectEntity extends AEntity {
     }
 
     protected SubjectEntity() {
-	this.origin = null;
-	this.contact = null;
-	this.taxPayerNumber = null;
-	this.comments = null;
-	this.resident = null;
-	this.idNumber = null;
-	this.economicsSector = null;
+	origin = null;
+	contact = null;
+	taxPayerNumber = null;
+	comments = null;
+	resident = null;
+	idNumber = null;
+	economicsSector = null;
     }
 
     // subjectType
@@ -174,7 +177,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // origin
 
-    private final OriginInfo origin;
+    final OriginInfo origin;
 
     public OriginInfo getOrigin() {
 	return origin;
@@ -182,7 +185,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // contact
 
-    private final ContactInfo contact;
+    final ContactInfo contact;
 
     public ContactInfo getContact() {
 	return contact;
@@ -190,7 +193,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // taxPayerNumber
 
-    private final String taxPayerNumber;
+    final String taxPayerNumber;
 
     public String getTaxPayerNumber() {
 	return taxPayerNumber;
@@ -198,7 +201,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // comments
 
-    private final String comments;
+    final String comments;
 
     public String getComments() {
 	return comments;
@@ -206,7 +209,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // resident
 
-    private final Boolean resident;
+    final Boolean resident;
 
     public Boolean isResident() {
 	return resident;
@@ -214,7 +217,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // idNumber
 
-    private final TaxpayerNumber idNumber;
+    final TaxpayerNumber idNumber;
 
     public TaxpayerNumber getIdNumber() {
 	return idNumber;
@@ -222,7 +225,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // economicsSector
 
-    private final KZEconomicSector economicsSector;
+    final KZEconomicSector economicsSector;
 
     public KZEconomicSector getEconomicsSector() {
 	return economicsSector;

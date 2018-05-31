@@ -24,6 +24,10 @@ public abstract class ADomain implements Serializable {
 	protected ADomainBuilder() {
 	}
 
+	protected ADomainBuilder(final ET source) {
+	    assert source != null;
+	}
+
 	// public
 
 	public abstract ET build();
@@ -34,24 +38,21 @@ public abstract class ADomain implements Serializable {
 
 	// static
 
-	protected static <T> T setIfNullOrThrow(final String propertyName,
+	protected static <T> T setBuilderProperty(final String propertyName,
 		final Supplier<T> geter,
 		final Consumer<T> seter,
 		final T newValue) throws IllegalStateException, IllegalArgumentException {
-	    final T oldValue = geter.get();
-	    MyObjects.requireNullMsg(IllegalStateException::new, oldValue, "'%1$s' property is already set",
-		    propertyName);
 	    MyObjects.requireNonNullMsg(IllegalArgumentException::new, newValue, "Null value for '%1$s' property",
 		    propertyName);
 	    seter.accept(newValue);
 	    return newValue;
 	}
 
-	protected static <T extends Number> T setNumberIfNullOrThrow(final String propertyName,
+	protected static <T extends Number> T setBuilderPropertyNumber(final String propertyName,
 		final Supplier<T> geter,
 		final Consumer<T> seter,
 		final T newValue) {
-	    return setIfNullOrThrow(propertyName,
+	    return setBuilderProperty(propertyName,
 		    geter,
 		    seter,
 		    MyNumbers.requireNonZeroMsg(IllegalArgumentException::new, newValue,
@@ -62,7 +63,7 @@ public abstract class ADomain implements Serializable {
 		final Supplier<T> geter,
 		final Consumer<T> seter,
 		final T newValue) {
-	    return setIfNullOrThrow(propertyName,
+	    return setBuilderProperty(propertyName,
 		    geter,
 		    seter,
 		    MyNumbers.requirePositiveMsg(IllegalArgumentException::new, newValue,
@@ -73,7 +74,7 @@ public abstract class ADomain implements Serializable {
 		final Supplier<String> geter,
 		final Consumer<String> seter,
 		final String newValue) {
-	    return setIfNullOrThrow(propertyName,
+	    return setBuilderProperty(propertyName,
 		    geter,
 		    seter,
 		    MyStrings.requireNonEmptyMsg(IllegalArgumentException::new, newValue,

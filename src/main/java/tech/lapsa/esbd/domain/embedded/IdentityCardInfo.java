@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.lapsa.insurance.elements.IdentityCardType;
 
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(277)
@@ -13,6 +14,11 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     public static final IdentityCardInfoBuilder builder() {
 	return new IdentityCardInfoBuilder();
+    }
+
+    public static final IdentityCardInfoBuilder builder(final IdentityCardInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new IdentityCardInfoBuilder(source);
     }
 
     public static final class IdentityCardInfoBuilder
@@ -26,7 +32,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    return issuingAuthority;
 	}
 
-	private void setIssuingAuthority(String issuingAuthority) {
+	private void setIssuingAuthority(final String issuingAuthority) {
 	    this.issuingAuthority = issuingAuthority;
 	}
 
@@ -36,7 +42,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	    return identityCardType;
 	}
 
-	private void setIdentityCardType(IdentityCardType identityCardType) {
+	private void setIdentityCardType(final IdentityCardType identityCardType) {
 	    this.identityCardType = identityCardType;
 	}
 
@@ -50,6 +56,12 @@ public class IdentityCardInfo extends ADocumentInfo {
 	protected IdentityCardInfoBuilder() {
 	}
 
+	protected IdentityCardInfoBuilder(final IdentityCardInfo source) {
+	    super(source);
+	    issuingAuthority = source.issuingAuthority;
+	    identityCardType = source.identityCardType;
+	}
+
 	// public
 
 	public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
@@ -59,7 +71,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 	}
 
 	public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
-	    setIfNullOrThrow("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
+	    setBuilderProperty("identityCardType", this::getIdentityCardType, this::setIdentityCardType,
 		    identityCardType);
 	    return this;
 	}
@@ -85,13 +97,13 @@ public class IdentityCardInfo extends ADocumentInfo {
     }
 
     protected IdentityCardInfo() {
-	this.issuingAuthority = null;
-	this.identityCardType = null;
+	issuingAuthority = null;
+	identityCardType = null;
     }
 
     // issuingAuthority
 
-    private String issuingAuthority;
+    final String issuingAuthority;
 
     public String getIssuingAuthority() {
 	return issuingAuthority;
@@ -99,7 +111,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // identityCardType
 
-    private IdentityCardType identityCardType;
+    final IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {
 	return identityCardType;

@@ -4,6 +4,7 @@ import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(281)
@@ -13,6 +14,11 @@ public class OriginInfo extends ADomain {
 
     public static final OriginInfoBuilder builder() {
 	return new OriginInfoBuilder();
+    }
+
+    public static final OriginInfoBuilder builder(final OriginInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new OriginInfoBuilder(source);
     }
 
     public static final class OriginInfoBuilder
@@ -26,7 +32,7 @@ public class OriginInfo extends ADomain {
 	    return country;
 	}
 
-	private void setCountry(Country country) {
+	private void setCountry(final Country country) {
 	    this.country = country;
 	}
 
@@ -36,7 +42,7 @@ public class OriginInfo extends ADomain {
 	    return city;
 	}
 
-	private void setCity(KZCity city) {
+	private void setCity(final KZCity city) {
 	    this.city = city;
 	}
 
@@ -50,15 +56,21 @@ public class OriginInfo extends ADomain {
 	protected OriginInfoBuilder() {
 	}
 
+	protected OriginInfoBuilder(final OriginInfo source) {
+	    super(source);
+	    country = source.country;
+	    city = source.city;
+	}
+
 	// public
 
 	public OriginInfoBuilder withCountry(final Country country) {
-	    setIfNullOrThrow("country", this::getCountry, this::setCountry, country);
+	    setBuilderProperty("country", this::getCountry, this::setCountry, country);
 	    return this;
 	}
 
 	public OriginInfoBuilder withCity(final KZCity city) {
-	    setIfNullOrThrow("city", this::getCity, this::setCity, city);
+	    setBuilderProperty("city", this::getCity, this::setCity, city);
 	    return this;
 	}
 
@@ -77,13 +89,13 @@ public class OriginInfo extends ADomain {
     }
 
     protected OriginInfo() {
-	this.country = null;
-	this.city = null;
+	country = null;
+	city = null;
     }
 
     // country
 
-    private final Country country;
+    final Country country;
 
     public Country getCountry() {
 	return country;
@@ -91,7 +103,7 @@ public class OriginInfo extends ADomain {
 
     // city
 
-    private final KZCity city;
+    final KZCity city;
 
     public KZCity getCity() {
 	return city;

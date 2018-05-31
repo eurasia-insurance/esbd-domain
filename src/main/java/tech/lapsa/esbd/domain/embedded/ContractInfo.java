@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.embedded;
 import java.time.LocalDate;
 
 import tech.lapsa.esbd.domain.ADomain;
+import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(239)
@@ -12,6 +13,11 @@ public class ContractInfo extends ADomain {
 
     public static final ContractInfoBuilder builder() {
 	return new ContractInfoBuilder();
+    }
+
+    public static final ContractInfoBuilder builder(final ContractInfo source) {
+	MyObjects.requireNonNull(source, "source");
+	return new ContractInfoBuilder(source);
     }
 
     public static final class ContractInfoBuilder
@@ -25,7 +31,7 @@ public class ContractInfo extends ADomain {
 	    return number;
 	}
 
-	private void setNumber(String number) {
+	private void setNumber(final String number) {
 	    this.number = number;
 	}
 
@@ -35,7 +41,7 @@ public class ContractInfo extends ADomain {
 	    return dateOf;
 	}
 
-	private void setDateOf(LocalDate dateOf) {
+	private void setDateOf(final LocalDate dateOf) {
 	    this.dateOf = dateOf;
 	}
 
@@ -49,6 +55,12 @@ public class ContractInfo extends ADomain {
 	protected ContractInfoBuilder() {
 	}
 
+	protected ContractInfoBuilder(final ContractInfo source) {
+	    super(source);
+	    number = source.number;
+	    dateOf = source.dateOf;
+	}
+
 	// public
 
 	public ContractInfoBuilder withNumber(final String number) {
@@ -56,8 +68,8 @@ public class ContractInfo extends ADomain {
 	    return this;
 	}
 
-	public ContractInfoBuilder withDateOf(LocalDate dateOf) {
-	    setIfNullOrThrow("dateOf", this::getDateOf, this::setDateOf, dateOf);
+	public ContractInfoBuilder withDateOf(final LocalDate dateOf) {
+	    setBuilderProperty("dateOf", this::getDateOf, this::setDateOf, dateOf);
 	    return this;
 	}
 
@@ -77,13 +89,13 @@ public class ContractInfo extends ADomain {
     }
 
     protected ContractInfo() {
-	this.number = null;
-	this.dateOf = null;
+	number = null;
+	dateOf = null;
     }
 
     // certificateNumber
 
-    private final String number;
+    final String number;
 
     public final String getNumber() {
 	return number;
@@ -91,7 +103,7 @@ public class ContractInfo extends ADomain {
 
     // certificateValidFrom
 
-    private final LocalDate dateOf;
+    final LocalDate dateOf;
 
     public LocalDate getDateOf() {
 	return dateOf;
