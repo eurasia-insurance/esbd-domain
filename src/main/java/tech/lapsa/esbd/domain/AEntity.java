@@ -1,6 +1,8 @@
 package tech.lapsa.esbd.domain;
 
-public abstract class AEntity extends ADomain {
+import tech.lapsa.java.commons.function.MyObjects;
+
+public abstract class AEntity extends ADomain implements Cloneable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,6 +34,20 @@ public abstract class AEntity extends ADomain {
 	    setNumberIfNullOrThrow("id", this::getId, this::setId, id);
 	    return _this();
 	}
+    }
+
+    @Override
+    public Object clone() {
+	try {
+	    return super.clone();
+	} catch (CloneNotSupportedException e) {
+	    throw new RuntimeException(e);
+	}
+    }
+
+    public <T> T clone(Class<T> clazz) {
+	final Object cloned = clone();
+	return MyObjects.requireA(cloned, clazz);
     }
 
     // constructor
