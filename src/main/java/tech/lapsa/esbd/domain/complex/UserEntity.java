@@ -2,12 +2,23 @@ package tech.lapsa.esbd.domain.complex;
 
 import java.time.Instant;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "USER")
 @HashCodePrime(29)
 public class UserEntity extends AEntity {
 
@@ -201,6 +212,8 @@ public class UserEntity extends AEntity {
 
     // login
 
+    @Basic
+    @Column(name = "LOGIN")
     final String login;
 
     public String getLogin() {
@@ -209,6 +222,8 @@ public class UserEntity extends AEntity {
 
     // branch
 
+    @ManyToOne
+    @JoinColumn(name = "BRANCH_ID")
     final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -217,6 +232,8 @@ public class UserEntity extends AEntity {
 
     // subject
 
+    @ManyToOne
+    @JoinColumn(name = "SUBJECT_ID")
     final SubjectEntity subject;
 
     public SubjectEntity getSubject() {
@@ -225,6 +242,8 @@ public class UserEntity extends AEntity {
 
     // organization
 
+    @ManyToOne
+    @JoinColumn(name = "ORGANIZATION_ID")
     final InsuranceCompanyEntity organization;
 
     public InsuranceCompanyEntity getOrganization() {
@@ -233,6 +252,8 @@ public class UserEntity extends AEntity {
 
     // authentificated
 
+    @Basic
+    @Column(name = "AUTHENTIFICATED")
     final Boolean authentificated;
 
     public Boolean isAuthentificated() {
@@ -241,6 +262,8 @@ public class UserEntity extends AEntity {
 
     // lastSesionId
 
+    @Basic
+    @Column(name = "LAST_SESSION_ID")
     final String lastSesionId;
 
     public String getLastSesionId() {
@@ -249,6 +272,9 @@ public class UserEntity extends AEntity {
 
     // lastActivity
 
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_ACTIVITY")
     final Instant lastActivity;
 
     public Instant getLastActivity() {

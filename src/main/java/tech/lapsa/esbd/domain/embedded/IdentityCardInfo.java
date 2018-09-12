@@ -2,11 +2,24 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.insurance.elements.IdentityCardType;
 
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
+@AttributeOverrides({
+	@AttributeOverride(name = "number", column = @Column(name = "IDENTITY_CARD_NUMBER")),
+	@AttributeOverride(name = "dateOfIssue", column = @Column(name = "IDENTITY_CARD_DATE_OF_ISSUE"))
+})
 @HashCodePrime(277)
 public class IdentityCardInfo extends ADocumentInfo {
 
@@ -103,6 +116,7 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // issuingAuthority
 
+    @Basic
     final String issuingAuthority;
 
     public String getIssuingAuthority() {
@@ -111,6 +125,9 @@ public class IdentityCardInfo extends ADocumentInfo {
 
     // identityCardType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "IDENTITY_CARD_TYPE")
     final IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {

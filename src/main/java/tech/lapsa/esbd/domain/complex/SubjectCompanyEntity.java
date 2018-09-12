@@ -1,5 +1,12 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -10,6 +17,8 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "SUBJECT_COMPANY")
 @HashCodePrime(19)
 public class SubjectCompanyEntity extends SubjectEntity {
 
@@ -165,6 +174,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyName
 
+    @Basic
+    @Column(name = "COMPANY_NAME")
     final String companyName;
 
     public String getCompanyName() {
@@ -173,6 +184,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // headName
 
+    @Basic
+    @Column(name = "HEAD_NAME")
     final String headName;
 
     public String getHeadName() {
@@ -181,6 +194,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // accountantName
 
+    @Basic
+    @Column(name = "ACCOUNTANT_NAME")
     final String accountantName;
 
     public String getAccountantName() {
@@ -189,6 +204,8 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     // companyActivityKind
 
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ACTIVITY_KIND_ID")
     final CompanyActivityKindEntity companyActivityKind;
 
     public CompanyActivityKindEntity getCompanyActivityKind() {

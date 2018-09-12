@@ -1,5 +1,19 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.lapsa.insurance.elements.InsuranceClassType;
 import com.lapsa.insurance.elements.InsuredAgeAndExpirienceClass;
 import com.lapsa.insurance.elements.InsuredAgeClass;
@@ -17,6 +31,8 @@ import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodeMultiplier;
 
+@Entity
+@Table(name = "POLICY_DRIVER")
 @HashCodeMultiplier(11)
 public class PolicyDriverEntity extends AEntity {
 
@@ -346,6 +362,8 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredPerson
 
+    @ManyToOne
+    @JoinColumn(name = "INSURED_PERSON_ID")
     final SubjectPersonEntity insuredPerson;
 
     public SubjectPersonEntity getInsuredPerson() {
@@ -354,6 +372,9 @@ public class PolicyDriverEntity extends AEntity {
 
     // maritalStatus
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "MARITAL_STATUS")
     final MaritalStatus maritalStatus;
 
     public MaritalStatus getMaritalStatus() {
@@ -362,6 +383,9 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuredAgeExpirienceClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "INSURED_AGE_EXPIRIENCE_CLASS")
     final InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 
     public InsuredAgeAndExpirienceClass getInsuredAgeExpirienceClass() {
@@ -382,12 +406,17 @@ public class PolicyDriverEntity extends AEntity {
 
     // drivingExpirience
 
+    @Basic
+    @Column(name = "DRIVING_EXPIRIENCE")
     final Integer drivingExpirience;
 
     public Integer getDrivingExpirience() {
 	return drivingExpirience;
     }
 
+    // driverLicense
+
+    @Embedded
     final DriverLicenseInfo driverLicense;
 
     public DriverLicenseInfo getDriverLicense() {
@@ -396,6 +425,9 @@ public class PolicyDriverEntity extends AEntity {
 
     // insuranceClassType
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "INSURANCE_CLASS_TYPE")
     final InsuranceClassType insuranceClassType;
 
     public InsuranceClassType getInsuranceClassType() {
@@ -404,6 +436,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // privilegerInfo
 
+    @Embedded
     final PrivilegerDocumentInfo privilegerInfo;
 
     public boolean isPrivileger() {
@@ -416,6 +449,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // gpwParticipantInfo
 
+    @Embedded
     final GPWParticipantCertificateInfo gpwParticipantInfo;
 
     public boolean isGpwParticipant() {
@@ -428,6 +462,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // pensionerInfo
 
+    @Embedded
     final PensionerCertificateInfo pensionerInfo;
 
     public boolean isPensioner() {
@@ -440,6 +475,7 @@ public class PolicyDriverEntity extends AEntity {
 
     // handicappedInfo
 
+    @Embedded
     final HandicappedCertificateInfo handicappedInfo;
 
     public boolean isHandicapped() {
@@ -452,6 +488,14 @@ public class PolicyDriverEntity extends AEntity {
 
     // created
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "CREATED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
+
+    })
     final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -460,6 +504,14 @@ public class PolicyDriverEntity extends AEntity {
 
     // modified
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "MODIFIED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
+
+    })
     final RecordOperationInfo modified;
 
     public boolean isModified() {
@@ -472,6 +524,8 @@ public class PolicyDriverEntity extends AEntity {
 
     // insurer
 
+    @ManyToOne
+    @JoinColumn(name = "INSURER_ID")
     final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {

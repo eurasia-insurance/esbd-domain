@@ -1,5 +1,17 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.esbd.domain.dict.BranchEntity;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
@@ -8,6 +20,8 @@ import tech.lapsa.esbd.domain.embedded.RecordOperationInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "INSURANCE_AGENT")
 @HashCodePrime(43)
 public class InsuranceAgentEntity extends AEntity {
 
@@ -175,14 +189,14 @@ public class InsuranceAgentEntity extends AEntity {
 
 	@Override
 	public InsuranceAgentEntity build() throws IllegalArgumentException {
-	    return new InsuranceAgentEntity(id, 
-		    contract, 
-		    branch, 
-		    owner, 
-		    subject, 
-		    insurer, 
-		    letterOfAttorneyNumber, 
-		    created, 
+	    return new InsuranceAgentEntity(id,
+		    contract,
+		    branch,
+		    owner,
+		    subject,
+		    insurer,
+		    letterOfAttorneyNumber,
+		    created,
 		    modified);
 	}
     }
@@ -222,14 +236,27 @@ public class InsuranceAgentEntity extends AEntity {
 
     // contract
 
+    @Embedded
     final ContractInfo contract;
 
     public ContractInfo getContract() {
 	return contract;
     }
 
+    // letterOfAttorneyNumber
+
+    @Basic
+    @Column(name = "LETTER_OF_ATTORNEY_NUMBER")
+    final String letterOfAttorneyNumber;
+
+    public String getLetterOfAttorneyNumber() {
+	return letterOfAttorneyNumber;
+    }
+
     // branch
 
+    @ManyToOne
+    @JoinColumn(name = "BRANCH_ID")
     final BranchEntity branch;
 
     public BranchEntity getBranch() {
@@ -238,6 +265,8 @@ public class InsuranceAgentEntity extends AEntity {
 
     // user
 
+    @ManyToOne
+    @JoinColumn(name = "OWNER_ID")
     final UserEntity owner;
 
     public UserEntity getOwner() {
@@ -245,6 +274,9 @@ public class InsuranceAgentEntity extends AEntity {
     }
 
     // subject
+
+    @ManyToOne
+    @JoinColumn(name = "SUBJECT_ID")
 
     final SubjectEntity subject;
 
@@ -270,6 +302,14 @@ public class InsuranceAgentEntity extends AEntity {
 
     // created
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "CREATED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
+
+    })
     final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -278,6 +318,14 @@ public class InsuranceAgentEntity extends AEntity {
 
     // modified
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "MODIFIED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
+
+    })
     final RecordOperationInfo modified;
 
     public RecordOperationInfo getModified() {

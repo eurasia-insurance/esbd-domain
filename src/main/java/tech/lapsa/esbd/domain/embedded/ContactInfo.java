@@ -1,11 +1,16 @@
 package tech.lapsa.esbd.domain.embedded;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 import com.lapsa.international.phone.PhoneNumber;
 
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(251)
 public class ContactInfo extends ADomain {
 
@@ -135,6 +140,8 @@ public class ContactInfo extends ADomain {
 
     // phone
 
+    @Basic
+    @Column(name = "CONTACT_PHONE")
     final PhoneNumber phone;
 
     public PhoneNumber getPhone() {
@@ -143,6 +150,8 @@ public class ContactInfo extends ADomain {
 
     // email
 
+    @Basic
+    @Column(name = "CONTACT_EMAIL")
     final String email;
 
     public String getEmail() {
@@ -151,6 +160,8 @@ public class ContactInfo extends ADomain {
 
     // homeAdress
 
+    @Basic
+    @Column(name = "CONTACT_HOME_ADDRESS")
     final String homeAdress;
 
     public String getHomeAdress() {
@@ -159,6 +170,8 @@ public class ContactInfo extends ADomain {
 
     // siteUrl
 
+    @Basic
+    @Column(name = "CONTACT_SITE_URL")
     final String siteUrl;
 
     public String getSiteUrl() {

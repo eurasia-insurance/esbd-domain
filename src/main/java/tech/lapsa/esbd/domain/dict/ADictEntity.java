@@ -1,7 +1,17 @@
 package tech.lapsa.esbd.domain.dict;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
 import tech.lapsa.esbd.domain.AEntity;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "DICTIONARY")
 public abstract class ADictEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -70,6 +80,8 @@ public abstract class ADictEntity extends AEntity {
 
     // code
 
+    @Basic
+    @Column(name = "CODE")
     final String code;
 
     public String getCode() {
@@ -78,6 +90,8 @@ public abstract class ADictEntity extends AEntity {
 
     // name
 
+    @Basic
+    @Column(name = "NAME")
     final String name;
 
     public String getName() {

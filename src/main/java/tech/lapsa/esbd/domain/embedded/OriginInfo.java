@@ -1,5 +1,11 @@
 package tech.lapsa.esbd.domain.embedded;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.international.country.Country;
 import com.lapsa.kz.country.KZCity;
 
@@ -7,6 +13,7 @@ import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(281)
 public class OriginInfo extends ADomain {
 
@@ -95,6 +102,9 @@ public class OriginInfo extends ADomain {
 
     // country
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ORIGIN_COUNTRY")
     final Country country;
 
     public Country getCountry() {
@@ -103,6 +113,9 @@ public class OriginInfo extends ADomain {
 
     // city
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ORIGIN_CITY")
     final KZCity city;
 
     public KZCity getCity() {

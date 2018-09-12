@@ -1,5 +1,15 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -8,6 +18,9 @@ import tech.lapsa.esbd.domain.embedded.ContactInfo;
 import tech.lapsa.esbd.domain.embedded.OriginInfo;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "SUBJECT")
 public abstract class SubjectEntity extends AEntity {
 
     private static final long serialVersionUID = 1L;
@@ -177,6 +190,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // origin
 
+    @Embedded
     final OriginInfo origin;
 
     public OriginInfo getOrigin() {
@@ -185,6 +199,7 @@ public abstract class SubjectEntity extends AEntity {
 
     // contact
 
+    @Embedded
     final ContactInfo contact;
 
     public ContactInfo getContact() {
@@ -193,6 +208,8 @@ public abstract class SubjectEntity extends AEntity {
 
     // taxPayerNumber
 
+    @Basic
+    @Column(name = "TAX_PAYER_NUMBER")
     final String taxPayerNumber;
 
     public String getTaxPayerNumber() {
@@ -201,6 +218,8 @@ public abstract class SubjectEntity extends AEntity {
 
     // comments
 
+    @Basic
+    @Column(name = "COMMENTS")
     final String comments;
 
     public String getComments() {
@@ -209,6 +228,8 @@ public abstract class SubjectEntity extends AEntity {
 
     // resident
 
+    @Basic
+    @Column(name = "RESIDENT")
     final Boolean resident;
 
     public Boolean isResident() {
@@ -217,6 +238,8 @@ public abstract class SubjectEntity extends AEntity {
 
     // idNumber
 
+    @Basic
+    @Column(name = "ID_NUMBER")
     final TaxpayerNumber idNumber;
 
     public TaxpayerNumber getIdNumber() {
@@ -225,6 +248,9 @@ public abstract class SubjectEntity extends AEntity {
 
     // economicsSector
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ECONOMICS_SECTOR")
     final KZEconomicSector economicsSector;
 
     public KZEconomicSector getEconomicsSector() {

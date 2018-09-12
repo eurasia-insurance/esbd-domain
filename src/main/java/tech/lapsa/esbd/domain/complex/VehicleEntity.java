@@ -2,6 +2,18 @@ package tech.lapsa.esbd.domain.complex;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.SteeringWheelLocation;
 import com.lapsa.insurance.elements.VehicleClass;
 
@@ -10,6 +22,8 @@ import tech.lapsa.esbd.domain.embedded.VehicleEngineInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "VEHICLE")
 @HashCodePrime(31)
 public class VehicleEntity extends AEntity {
 
@@ -203,6 +217,9 @@ public class VehicleEntity extends AEntity {
 
     // vehicleClass
 
+    @Basic
+    @Column(name = "VEHICLE_CLASS")
+    @Enumerated(EnumType.STRING)
     final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
@@ -211,6 +228,8 @@ public class VehicleEntity extends AEntity {
 
     // vinCode
 
+    @Basic
+    @Column(name = "VIN_CODE")
     final String vinCode;
 
     public String getVinCode() {
@@ -219,6 +238,8 @@ public class VehicleEntity extends AEntity {
 
     // vehicleModel
 
+    @ManyToOne
+    @JoinColumn(name = "VEHICLE_MODEL_ID")
     final VehicleModelEntity vehicleModel;
 
     public VehicleModelEntity getVehicleModel() {
@@ -227,6 +248,9 @@ public class VehicleEntity extends AEntity {
 
     // steeringWheelLocation
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STEERING_WHEEL_LOCATION")
     final SteeringWheelLocation steeringWheelLocation;
 
     public SteeringWheelLocation getSteeringWheelLocation() {
@@ -235,6 +259,8 @@ public class VehicleEntity extends AEntity {
 
     // color
 
+    @Basic
+    @Column(name = "COLOR")
     final String color;
 
     public String getColor() {
@@ -243,6 +269,9 @@ public class VehicleEntity extends AEntity {
 
     // realeaseDate
 
+    @Basic
+    @Temporal(TemporalType.DATE)
+    @Column(name = "RELEASE_DATE")
     final LocalDate realeaseDate;
 
     public LocalDate getRealeaseDate() {
@@ -251,6 +280,7 @@ public class VehicleEntity extends AEntity {
 
     // engine
 
+    @Embedded
     final VehicleEngineInfo engine;
 
     public VehicleEngineInfo getEngine() {

@@ -2,12 +2,21 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.lapsa.insurance.elements.Sex;
 
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(293)
 public class PersonalInfo extends ADomain {
 
@@ -157,6 +166,8 @@ public class PersonalInfo extends ADomain {
 
     // name
 
+    @Basic
+    @Column(name = "PERSONAL_NAME")
     final String name;
 
     public String getName() {
@@ -165,6 +176,8 @@ public class PersonalInfo extends ADomain {
 
     // surename
 
+    @Basic
+    @Column(name = "PERSONAL_SURENAME")
     final String surename;
 
     public String getSurename() {
@@ -173,6 +186,8 @@ public class PersonalInfo extends ADomain {
 
     // patronymic
 
+    @Basic
+    @Column(name = "PERSONAL_PATRONYMIC")
     final String patronymic;
 
     public String getPatronymic() {
@@ -181,6 +196,9 @@ public class PersonalInfo extends ADomain {
 
     // dayOfBirth
 
+    @Basic
+    @Temporal(TemporalType.DATE)
+    @Column(name = "PERSONAL_DATE_OF_BIRTH")
     final LocalDate dayOfBirth;
 
     public LocalDate getDayOfBirth() {
@@ -189,6 +207,9 @@ public class PersonalInfo extends ADomain {
 
     // gender
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "PERSONAL_GENDER")
     final Sex gender;
 
     public Sex getGender() {

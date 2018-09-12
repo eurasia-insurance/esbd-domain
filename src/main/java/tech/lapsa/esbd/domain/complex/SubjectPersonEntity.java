@@ -1,5 +1,9 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
@@ -11,6 +15,8 @@ import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "SUBJECT_PERSON")
 @HashCodePrime(23)
 public class SubjectPersonEntity extends SubjectEntity {
 
@@ -124,6 +130,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 
     // personal
 
+    @Embedded
     final PersonalInfo personal;
 
     public PersonalInfo getPersonal() {
@@ -132,6 +139,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 
     // identityCard
 
+    @Embedded
     final IdentityCardInfo identityCard;
 
     public IdentityCardInfo getIdentityCard() {

@@ -1,9 +1,16 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "VEHICLE_MANUFACTURER")
 @HashCodePrime(37)
 public class VehicleManufacturerEntity extends AEntity {
 
@@ -96,6 +103,8 @@ public class VehicleManufacturerEntity extends AEntity {
 
     // name
 
+    @Basic
+    @Column(name = "NAME")
     final String name;
 
     public String getName() {
@@ -104,6 +113,8 @@ public class VehicleManufacturerEntity extends AEntity {
 
     // foreign
 
+    @Basic
+    @Column(name = "FOREIGN")
     final Boolean foreign;
 
     public Boolean isForeign() {

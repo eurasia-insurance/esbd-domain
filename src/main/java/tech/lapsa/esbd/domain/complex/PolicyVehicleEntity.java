@@ -1,5 +1,19 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.lapsa.insurance.elements.VehicleAgeClass;
 import com.lapsa.insurance.elements.VehicleClass;
 
@@ -10,6 +24,8 @@ import tech.lapsa.esbd.domain.embedded.VehicleCertificateInfo;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "POLICY_VEHICLE")
 @HashCodePrime(13)
 public class PolicyVehicleEntity extends AEntity {
 
@@ -252,6 +268,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicle
 
+    @ManyToOne
+    @JoinColumn(name = "VEHICLE_ID")
     final VehicleEntity vehicle;
 
     public VehicleEntity getVehicle() {
@@ -260,6 +278,9 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicleClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "VEHICLE_CLASS")
     final VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
@@ -268,6 +289,9 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehicleAgeClass
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "VEHICLE_AGE_CLASS")
     final VehicleAgeClass vehicleAgeClass;
 
     public VehicleAgeClass getVehicleAgeClass() {
@@ -276,6 +300,7 @@ public class PolicyVehicleEntity extends AEntity {
 
     // certificate
 
+    @Embedded
     final VehicleCertificateInfo certificate;
 
     public VehicleCertificateInfo getCertificate() {
@@ -284,6 +309,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // vehiclePurpose
 
+    @Basic
+    @Column(name = "VEHICLE_PURPOSE")
     final String vehiclePurpose;
 
     public String getVehiclePurpose() {
@@ -292,6 +319,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // currentOdometerValue
 
+    @Basic
+    @Column(name = "CURRENT_ODOMETER_VALUE")
     final Integer currentOdometerValue;
 
     public Integer getCurrentOdometerValue() {
@@ -300,6 +329,14 @@ public class PolicyVehicleEntity extends AEntity {
 
     // created
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "CREATED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "CREATED_INSTANT"))
+
+    })
     final RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
@@ -308,6 +345,14 @@ public class PolicyVehicleEntity extends AEntity {
 
     // modified
 
+    @Embedded
+    @AssociationOverrides({
+	    @AssociationOverride(name = "author", joinColumns = @JoinColumn(name = "MODIFIED_AUTHOR_ID"))
+    })
+    @AttributeOverrides({
+	    @AttributeOverride(name = "instant", column = @Column(name = "MODIFIED_INSTANT"))
+
+    })
     final RecordOperationInfo modified;
 
     public boolean isModified() {
@@ -320,6 +365,8 @@ public class PolicyVehicleEntity extends AEntity {
 
     // insurer
 
+    @ManyToOne
+    @JoinColumn(name = "INSURER_ID")
     final InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {

@@ -1,8 +1,11 @@
 package tech.lapsa.esbd.domain.dict;
 
+import javax.persistence.Entity;
+
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
 @HashCodePrime(521)
 public class CompanyActivityKindEntity extends ADictEntity {
 

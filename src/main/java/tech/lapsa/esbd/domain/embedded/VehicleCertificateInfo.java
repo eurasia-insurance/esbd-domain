@@ -2,12 +2,25 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.lapsa.kz.country.KZArea;
 
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.vehicle.VehicleRegNumber;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
+@AttributeOverrides({
+	@AttributeOverride(name = "number", column = @Column(name = "VEGICLE_CERTIFICATE_NUMBER")),
+	@AttributeOverride(name = "dateOfIssue", column = @Column(name = "VEGICLE_CERTIFICATE_DATE_OF_ISSUE"))
+})
 @HashCodePrime(311)
 public class VehicleCertificateInfo extends ADocumentInfo {
 
@@ -125,6 +138,8 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationNumber
 
+    @Basic
+    @Column(name = "VEGICLE_CERTIFICATE_REGNUM")
     final VehicleRegNumber registrationNumber;
 
     public VehicleRegNumber getRegistrationNumber() {
@@ -133,6 +148,9 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationRegion
 
+    @Basic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "VEGICLE_CERTIFICATE_REGION")
     final KZArea registrationRegion;
 
     public KZArea getRegistrationRegion() {
@@ -141,6 +159,8 @@ public class VehicleCertificateInfo extends ADocumentInfo {
 
     // registrationMajorCity
 
+    @Basic
+    @Column(name = "VEGICLE_CERTIFICATE_MAJOR_CITY")
     final Boolean registrationMajorCity;
 
     boolean isRegistrationMajorCity() {

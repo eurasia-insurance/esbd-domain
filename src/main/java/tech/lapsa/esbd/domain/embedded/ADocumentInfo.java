@@ -2,8 +2,15 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.ADomain;
 
+@MappedSuperclass
 public abstract class ADocumentInfo extends ADomain {
 
     private static final long serialVersionUID = 1L;
@@ -72,6 +79,8 @@ public abstract class ADocumentInfo extends ADomain {
 
     // number
 
+    @Basic
+    @Column(name = "DOCUMENT_NUMBER")
     final String number;
 
     public String getNumber() {
@@ -80,6 +89,9 @@ public abstract class ADocumentInfo extends ADomain {
 
     // dateOfIssue
 
+    @Basic
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DOCUMENT_DATE_OF_ISSUE")
     final LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {

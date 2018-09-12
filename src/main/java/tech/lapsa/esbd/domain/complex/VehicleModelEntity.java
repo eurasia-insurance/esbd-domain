@@ -1,9 +1,18 @@
 package tech.lapsa.esbd.domain.complex;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import tech.lapsa.esbd.domain.AEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Entity
+@Table(name = "VEHICLE_MODEL")
 @HashCodePrime(41)
 public class VehicleModelEntity extends AEntity {
 
@@ -96,6 +105,8 @@ public class VehicleModelEntity extends AEntity {
 
     // name
 
+    @Basic
+    @Column(name = "NAME")
     final String name;
 
     public String getName() {
@@ -104,6 +115,8 @@ public class VehicleModelEntity extends AEntity {
 
     // manufacturer
 
+    @ManyToOne
+    @JoinColumn(name = "VEHICLE_MANUFACTURER_ID")
     final VehicleManufacturerEntity manufacturer;
 
     public VehicleManufacturerEntity getManufacturer() {

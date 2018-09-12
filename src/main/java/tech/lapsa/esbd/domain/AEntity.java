@@ -1,7 +1,11 @@
 package tech.lapsa.esbd.domain;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 import tech.lapsa.java.commons.function.MyObjects;
 
+@MappedSuperclass
 public abstract class AEntity extends ADomain implements Cloneable {
 
     private static final long serialVersionUID = 1L;
@@ -65,6 +69,7 @@ public abstract class AEntity extends ADomain implements Cloneable {
 
     // id
 
+    @Id
     final Integer id;
 
     public Integer getId() {

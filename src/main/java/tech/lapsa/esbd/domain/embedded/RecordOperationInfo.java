@@ -2,11 +2,20 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.Instant;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.esbd.domain.complex.UserEntity;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(257)
 public class RecordOperationInfo extends ADomain {
 
@@ -94,8 +103,11 @@ public class RecordOperationInfo extends ADomain {
 	author = null;
     }
 
-    // res
+    // instant
 
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "OPERATION_INSTANT")
     final Instant instant;
 
     public Instant getInstant() {
@@ -104,6 +116,8 @@ public class RecordOperationInfo extends ADomain {
 
     // author
 
+    @ManyToOne
+    @JoinColumn(name = "OPERATION_AUTHOR_ID")
     final UserEntity author;
 
     public UserEntity getAuthor() {

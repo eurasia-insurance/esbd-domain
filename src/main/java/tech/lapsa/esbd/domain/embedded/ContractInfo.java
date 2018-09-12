@@ -2,10 +2,17 @@ package tech.lapsa.esbd.domain.embedded;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(239)
 public class ContractInfo extends ADomain {
 
@@ -95,6 +102,8 @@ public class ContractInfo extends ADomain {
 
     // certificateNumber
 
+    @Basic
+    @Column(name = "CONTRACT_NUMBER")
     final String number;
 
     public final String getNumber() {
@@ -103,6 +112,9 @@ public class ContractInfo extends ADomain {
 
     // certificateValidFrom
 
+    @Basic
+    @Temporal(TemporalType.DATE)
+    @Column(name = "CONTRACT_DATE_OF")
     final LocalDate dateOf;
 
     public LocalDate getDateOf() {

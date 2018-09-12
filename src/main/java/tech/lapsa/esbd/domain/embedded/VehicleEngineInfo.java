@@ -1,9 +1,14 @@
 package tech.lapsa.esbd.domain.embedded;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 import tech.lapsa.esbd.domain.ADomain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
+@Embeddable
 @HashCodePrime(233)
 public class VehicleEngineInfo extends ADomain {
 
@@ -120,6 +125,8 @@ public class VehicleEngineInfo extends ADomain {
 
     // engineVolume
 
+    @Basic
+    @Column(name = "VEHICLE_ENGINE_VOLUME")
     final Integer volume;
 
     public Integer getVolume() {
@@ -128,6 +135,8 @@ public class VehicleEngineInfo extends ADomain {
 
     // engineNumber
 
+    @Basic
+    @Column(name = "VEHICLE_ENGINE_NUMBER")
     final String number;
 
     public String getNumber() {
@@ -136,6 +145,8 @@ public class VehicleEngineInfo extends ADomain {
 
     // enginePower
 
+    @Basic
+    @Column(name = "VEHICLE_ENGINE_POWER")
     final Integer power;
 
     public Integer getPower() {
