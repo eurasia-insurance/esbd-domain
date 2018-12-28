@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.entities;
+package tech.lapsa.esbd.domain.entities;
 
 import java.util.function.Consumer;
 
@@ -8,8 +8,8 @@ import com.lapsa.insurance.elements.InsuredAgeClass;
 import com.lapsa.insurance.elements.InsuredExpirienceClass;
 import com.lapsa.insurance.elements.MaritalStatus;
 
-import tech.lapsa.esbd.dao.Domain;
-import tech.lapsa.esbd.dao.dict.InsuranceCompanyEntity;
+import tech.lapsa.esbd.domain.Domain;
+import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodeMultiplier;

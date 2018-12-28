@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.entities;
+package tech.lapsa.esbd.domain.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,11 +6,11 @@ import java.util.List;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
-import tech.lapsa.esbd.dao.Domain;
-import tech.lapsa.esbd.dao.dict.BranchEntity;
-import tech.lapsa.esbd.dao.dict.InsuranceCompanyEntity;
-import tech.lapsa.esbd.dao.entities.InsuredDriverEntity.InsuredDriverEntityBuilder;
-import tech.lapsa.esbd.dao.entities.InsuredVehicleEntity.InsuredVehicleEntityBuilder;
+import tech.lapsa.esbd.domain.Domain;
+import tech.lapsa.esbd.domain.dict.BranchEntity;
+import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
+import tech.lapsa.esbd.domain.entities.InsuredDriverEntity.InsuredDriverEntityBuilder;
+import tech.lapsa.esbd.domain.entities.InsuredVehicleEntity.InsuredVehicleEntityBuilder;
 import tech.lapsa.java.commons.function.MyCollections;
 import tech.lapsa.java.commons.function.MyCollectors;
 import tech.lapsa.java.commons.function.MyNumbers;

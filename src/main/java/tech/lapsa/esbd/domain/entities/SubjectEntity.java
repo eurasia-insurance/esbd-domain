@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.entities;
+package tech.lapsa.esbd.domain.entities;
 
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import com.lapsa.insurance.elements.SubjectType;
 import com.lapsa.kz.economic.KZEconomicSector;
 
-import tech.lapsa.esbd.dao.Domain;
+import tech.lapsa.esbd.domain.Domain;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.kz.taxpayer.TaxpayerNumber;

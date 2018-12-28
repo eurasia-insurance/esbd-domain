@@ -1,8 +1,8 @@
-package tech.lapsa.esbd.dao.dict;
+package tech.lapsa.esbd.domain.dict;
 
 import java.util.function.Consumer;
 
-import tech.lapsa.esbd.dao.Domain;
+import tech.lapsa.esbd.domain.Domain;
 
 public abstract class DictionaryEntity extends Domain {
 
