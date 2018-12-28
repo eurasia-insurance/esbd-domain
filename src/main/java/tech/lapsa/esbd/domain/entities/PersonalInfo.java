@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.entities;
+package tech.lapsa.esbd.domain.entities;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.Sex;
 
-import tech.lapsa.esbd.dao.Domain;
+import tech.lapsa.esbd.domain.Domain;
 import tech.lapsa.java.commons.function.MyObjects;
 import tech.lapsa.patterns.domain.HashCodePrime;
 

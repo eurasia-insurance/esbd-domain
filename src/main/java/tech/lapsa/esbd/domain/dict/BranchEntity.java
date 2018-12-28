@@ -1,4 +1,4 @@
-package tech.lapsa.esbd.dao.dict;
+package tech.lapsa.esbd.domain.dict;
 
 import tech.lapsa.patterns.domain.HashCodePrime;
 
