@@ -1,5 +1,6 @@
 package tech.lapsa.esbd.domain.entities;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.InsuranceClassType;
@@ -63,6 +64,14 @@ public class InsuredDriverEntity extends Domain {
 	public InsuredDriverEntityBuilder withMaritalStatus(final MaritalStatus maritalStatus)
 		throws IllegalArgumentException {
 	    this.maritalStatus = MyObjects.requireNonNull(maritalStatus, "maritalStatus");
+	    return this;
+	}
+
+	public InsuredDriverEntityBuilder withMaritalStatus(final Optional<MaritalStatus> maritalStatus)
+		throws IllegalArgumentException {
+	    if (MyObjects.requireNonNull(maritalStatus, "maritalStatus").isPresent())
+		return withMaritalStatus(maritalStatus.get());
+	    this.maritalStatus = null;
 	    return this;
 	}
 
@@ -138,7 +147,7 @@ public class InsuredDriverEntity extends Domain {
 	    res.id = MyNumbers.requirePositive(id, "id");
 	    res.policy = MyObjects.requireNonNull(policy, "policy");
 	    res.insuredPerson = MyObjects.requireNonNull(insuredPerson, "insuredPerson");
-	    res.maritalStatus = MyObjects.requireNonNull(maritalStatus, "maritalStatus");
+	    res.maritalStatus = maritalStatus;
 	    res.insuredAgeExpirienceClass = MyObjects.requireNonNull(insuredAgeExpirienceClass,
 		    "insuredAgeExpirienceClass");
 	    res.drivingExpirience = drivingExpirience;
