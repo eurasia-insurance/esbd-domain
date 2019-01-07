@@ -3,6 +3,7 @@ package tech.lapsa.esbd.domain.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.lapsa.insurance.elements.CancelationReason;
 
@@ -36,6 +37,7 @@ public class PolicyEntity extends Domain {
 	private LocalDate validTill;
 	private Double actualPremium;
 	private Double calculatedPremium;
+	private LocalDate paymentDate;
 	private InsuranceCompanyEntity insurer;
 	private SubjectEntity insurant;
 	private LocalDate dateOfIssue;
@@ -87,6 +89,17 @@ public class PolicyEntity extends Domain {
 	public PolicyEntityBuilder withCalculatedPremium(final Double calculatedPremium)
 		throws IllegalArgumentException {
 	    this.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+	    return this;
+	}
+
+	public PolicyEntityBuilder withPaymentDate(final LocalDate paymentDate) throws IllegalArgumentException {
+	    this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate");
+	    return this;
+	}
+
+	public PolicyEntityBuilder withPaymentDate(final Optional<LocalDate> paymentDate)
+		throws IllegalArgumentException {
+	    this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate").orElse(null);
 	    return this;
 	}
 
@@ -162,6 +175,7 @@ public class PolicyEntity extends Domain {
 	    res.validTill = MyObjects.requireNonNull(validTill, "validTill");
 	    res.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
 	    res.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+	    res.paymentDate = paymentDate;
 	    res.insurer = MyObjects.requireNonNull(insurer, "insurer");
 	    res.insurant = MyObjects.requireNonNull(insurant, "insurant");
 	    res.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
@@ -245,6 +259,14 @@ public class PolicyEntity extends Domain {
 
     public Double getCalculatedPremium() {
 	return calculatedPremium;
+    }
+
+    // paymentDate
+
+    private LocalDate paymentDate;
+
+    public LocalDate getPaymentDate() {
+	return paymentDate;
     }
 
     // insurer
