@@ -37,6 +37,7 @@ public class PolicyEntity extends Domain {
 	private LocalDate validTill;
 	private Double actualPremium;
 	private Double calculatedPremium;
+	private LocalDate policyDate;
 	private LocalDate paymentDate;
 	private InsuranceCompanyEntity insurer;
 	private SubjectEntity insurant;
@@ -89,6 +90,16 @@ public class PolicyEntity extends Domain {
 	public PolicyEntityBuilder withCalculatedPremium(final Double calculatedPremium)
 		throws IllegalArgumentException {
 	    this.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+	    return this;
+	}
+
+	public PolicyEntityBuilder withPolicyDate(final LocalDate policyDate) throws IllegalArgumentException {
+	    this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate");
+	    return this;
+	}
+
+	public PolicyEntityBuilder withPolicyDate(final Optional<LocalDate> policyDate) throws IllegalArgumentException {
+	    this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate").orElse(null);
 	    return this;
 	}
 
@@ -175,6 +186,7 @@ public class PolicyEntity extends Domain {
 	    res.validTill = MyObjects.requireNonNull(validTill, "validTill");
 	    res.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
 	    res.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+	    res.policyDate = policyDate;
 	    res.paymentDate = paymentDate;
 	    res.insurer = MyObjects.requireNonNull(insurer, "insurer");
 	    res.insurant = MyObjects.requireNonNull(insurant, "insurant");
@@ -269,6 +281,12 @@ public class PolicyEntity extends Domain {
 	return paymentDate;
     }
 
+    private LocalDate policyDate;
+
+    public LocalDate getPolicyDate() {
+        return policyDate;
+    }
+    
     // insurer
 
     private InsuranceCompanyEntity insurer;
