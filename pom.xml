@@ -16,11 +16,11 @@
 
 	<properties>
 		<!-- tech -->
-		<patterns-domain.version>CURRENT-SNAPSHOT</patterns-domain.version>
+		<patterns-domain.version>20190127r1</patterns-domain.version>
 		<!-- oldies -->
-		<insurance-lib.version>CURRENT-SNAPSHOT</insurance-lib.version>
-		<kz-lib.version>CURRENT-SNAPSHOT</kz-lib.version>
-		<international-lib.version>CURRENT-SNAPSHOT</international-lib.version>
+		<insurance-lib.version>20190127r1</insurance-lib.version>
+		<kz-lib.version>20190127r1</kz-lib.version>
+		<international-lib.version>20190127r1</international-lib.version>
 	</properties>
 
 	<dependencyManagement>
