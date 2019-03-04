@@ -152,7 +152,7 @@ public class InsuredDriverEntity extends Domain {
 		    "insuredAgeExpirienceClass");
 	    res.drivingExpirience = drivingExpirience;
 	    res.driverLicense = MyObjects.requireNonNull(driverLicense, "driverLicense");
-	    res.insuraceClassType = MyObjects.requireNonNull(insuraceClassType, "insuraceClassType");
+	    res.insuraceClassType = insuraceClassType; // not required when legal entity
 	    res.privilegerInfo = privilegerInfo;
 	    res.gpwParticipantInfo = gpwParticipantInfo;
 	    res.pensionerInfo = pensionerInfo;
