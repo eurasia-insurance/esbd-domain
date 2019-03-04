@@ -28,7 +28,7 @@ public class InsuredDriverEntity extends Domain {
 
 	private Integer id;
 	private PolicyEntity policy;
-	private SubjectPersonEntity insuredPerson;
+	private SubjectEntity insured;
 	private MaritalStatus maritalStatus;
 	private InsuredAgeAndExpirienceClass insuredAgeExpirienceClass;
 	private int drivingExpirience;
@@ -55,9 +55,9 @@ public class InsuredDriverEntity extends Domain {
 	    return this;
 	}
 
-	public InsuredDriverEntityBuilder withInsuredPerson(final SubjectPersonEntity insuredPerson)
+	public InsuredDriverEntityBuilder withInsured(final SubjectEntity insured)
 		throws IllegalArgumentException {
-	    this.insuredPerson = MyObjects.requireNonNull(insuredPerson, "insuredPerson");
+	    this.insured = MyObjects.requireNonNull(insured, "insured");
 	    return this;
 	}
 
@@ -146,13 +146,13 @@ public class InsuredDriverEntity extends Domain {
 	    final InsuredDriverEntity res = new InsuredDriverEntity();
 	    res.id = MyNumbers.requirePositive(id, "id");
 	    res.policy = MyObjects.requireNonNull(policy, "policy");
-	    res.insuredPerson = MyObjects.requireNonNull(insuredPerson, "insuredPerson");
+	    res.insured = MyObjects.requireNonNull(insured, "insured");
 	    res.maritalStatus = maritalStatus;
 	    res.insuredAgeExpirienceClass = MyObjects.requireNonNull(insuredAgeExpirienceClass,
 		    "insuredAgeExpirienceClass");
 	    res.drivingExpirience = drivingExpirience;
 	    res.driverLicense = MyObjects.requireNonNull(driverLicense, "driverLicense");
-	    res.insuraceClassType = MyObjects.requireNonNull(insuraceClassType, "insuraceClassType");
+	    res.insuraceClassType = insuraceClassType; // not required when legal entity
 	    res.privilegerInfo = privilegerInfo;
 	    res.gpwParticipantInfo = gpwParticipantInfo;
 	    res.pensionerInfo = pensionerInfo;
@@ -187,12 +187,12 @@ public class InsuredDriverEntity extends Domain {
 	return policy;
     }
 
-    // insuredPerson
+    // insured
 
-    private SubjectPersonEntity insuredPerson;
+    private SubjectEntity insured;
 
-    public SubjectPersonEntity getInsuredPerson() {
-	return insuredPerson;
+    public SubjectEntity getInsured() {
+	return insured;
     }
 
     // maritalStatus
