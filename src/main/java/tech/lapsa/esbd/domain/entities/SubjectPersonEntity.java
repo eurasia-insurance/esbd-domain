@@ -16,41 +16,41 @@ public class SubjectPersonEntity extends SubjectEntity {
     private static final long serialVersionUID = 1L;
 
     public static final SubjectPersonEntityBuilder builder() {
-	return new SubjectPersonEntityBuilder();
+        return new SubjectPersonEntityBuilder();
     }
 
     public static final class SubjectPersonEntityBuilder
-	    extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
+            extends SubjectEntityBuilder<SubjectPersonEntity, SubjectPersonEntityBuilder> {
 
-	private PersonalInfo personal;
-	private IdentityCardInfo identityCard;
+        private PersonalInfo personal;
+        private IdentityCardInfo identityCard;
 
-	private SubjectPersonEntityBuilder() {
-	}
+        private SubjectPersonEntityBuilder() {
+        }
 
-	public SubjectPersonEntityBuilder withPersonal(final PersonalInfo personal) {
-	    this.personal = personal;
-	    return this;
-	}
+        public SubjectPersonEntityBuilder withPersonal(final PersonalInfo personal) {
+            this.personal = personal;
+            return this;
+        }
 
-	public SubjectPersonEntityBuilder withIdentityCard(final IdentityCardInfo identityCard) {
-	    this.identityCard = identityCard;
-	    return this;
-	}
+        public SubjectPersonEntityBuilder withIdentityCard(final IdentityCardInfo identityCard) {
+            this.identityCard = identityCard;
+            return this;
+        }
 
-	@Override
-	protected SubjectPersonEntityBuilder _this() {
-	    return this;
-	}
+        @Override
+        protected SubjectPersonEntityBuilder _this() {
+            return this;
+        }
 
-	@Override
-	public SubjectPersonEntity build() throws IllegalArgumentException {
-	    final SubjectPersonEntity res = new SubjectPersonEntity();
-	    superFill(res);
-	    res.identityCard = identityCard;
-	    res.personal = personal;
-	    return res;
-	}
+        @Override
+        public SubjectPersonEntity build() throws IllegalArgumentException {
+            final SubjectPersonEntity res = new SubjectPersonEntity();
+            superFill(res);
+            res.identityCard = identityCard;
+            res.personal = personal;
+            return res;
+        }
     }
 
     private SubjectPersonEntity() {
@@ -58,7 +58,7 @@ public class SubjectPersonEntity extends SubjectEntity {
 
     @Override
     public SubjectType getSubjectType() {
-	return SubjectType.PERSON;
+        return SubjectType.PERSON;
     }
 
     // personal
@@ -66,7 +66,7 @@ public class SubjectPersonEntity extends SubjectEntity {
     private PersonalInfo personal;
 
     public PersonalInfo getPersonal() {
-	return personal;
+        return personal;
     }
 
     // identityCard
@@ -74,6 +74,6 @@ public class SubjectPersonEntity extends SubjectEntity {
     private IdentityCardInfo identityCard;
 
     public IdentityCardInfo getIdentityCard() {
-	return identityCard;
+        return identityCard;
     }
 }

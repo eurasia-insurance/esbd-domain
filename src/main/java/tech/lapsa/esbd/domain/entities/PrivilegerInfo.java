@@ -12,44 +12,44 @@ public class PrivilegerInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final PrivilegerInfoBuilder builder() {
-	return new PrivilegerInfoBuilder();
+        return new PrivilegerInfoBuilder();
     }
 
     public static final class PrivilegerInfoBuilder {
 
-	private String type;
-	private String certificateNumber;
-	private LocalDate certificateDateOfIssue;
+        private String type;
+        private String certificateNumber;
+        private LocalDate certificateDateOfIssue;
 
-	private PrivilegerInfoBuilder() {
-	}
+        private PrivilegerInfoBuilder() {
+        }
 
-	public PrivilegerInfoBuilder withType(final String type) {
-	    this.type = type;
-	    return this;
-	}
+        public PrivilegerInfoBuilder withType(final String type) {
+            this.type = type;
+            return this;
+        }
 
-	public PrivilegerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	    return this;
-	}
+        public PrivilegerInfoBuilder withCertificateNumber(final String certificateNumber) {
+            this.certificateNumber = certificateNumber;
+            return this;
+        }
 
-	public PrivilegerInfoBuilder withCertificateDateOfIssue(final LocalDate certificateDateOfIssue) {
-	    this.certificateDateOfIssue = certificateDateOfIssue;
-	    return this;
-	}
+        public PrivilegerInfoBuilder withCertificateDateOfIssue(final LocalDate certificateDateOfIssue) {
+            this.certificateDateOfIssue = certificateDateOfIssue;
+            return this;
+        }
 
-	public PrivilegerInfo build() {
-	    final PrivilegerInfo res = new PrivilegerInfo();
-	    res.type = type;
-	    res.certificateNumber = certificateNumber;
-	    res.certificateDateOfIssue = certificateDateOfIssue;
-	    return res;
-	}
+        public PrivilegerInfo build() {
+            final PrivilegerInfo res = new PrivilegerInfo();
+            res.type = type;
+            res.certificateNumber = certificateNumber;
+            res.certificateDateOfIssue = certificateDateOfIssue;
+            return res;
+        }
 
-	public void buildTo(final Consumer<PrivilegerInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<PrivilegerInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private PrivilegerInfo() {
@@ -60,7 +60,7 @@ public class PrivilegerInfo extends Domain {
     private String type;
 
     public String getType() {
-	return type;
+        return type;
     }
 
     // certificateNumber
@@ -68,7 +68,7 @@ public class PrivilegerInfo extends Domain {
     private String certificateNumber;
 
     public String getCertificateNumber() {
-	return certificateNumber;
+        return certificateNumber;
     }
 
     // certificateDateOfIssue
@@ -76,6 +76,6 @@ public class PrivilegerInfo extends Domain {
     private LocalDate certificateDateOfIssue;
 
     public LocalDate getCertificateDateOfIssue() {
-	return certificateDateOfIssue;
+        return certificateDateOfIssue;
     }
 }

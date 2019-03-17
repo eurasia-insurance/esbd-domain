@@ -14,58 +14,58 @@ public class VehicleCertificateInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final VehicleCertificateInfoBuilder builder() {
-	return new VehicleCertificateInfoBuilder();
+        return new VehicleCertificateInfoBuilder();
     }
 
     public static final class VehicleCertificateInfoBuilder {
 
-	private String registrationNumber;
-	private String certificateNumber;
-	private LocalDate dateOfIssue;
-	private KZArea registrationRegion;
-	private boolean registrationMajorCity;
+        private String registrationNumber;
+        private String certificateNumber;
+        private LocalDate dateOfIssue;
+        private KZArea registrationRegion;
+        private boolean registrationMajorCity;
 
-	private VehicleCertificateInfoBuilder() {
-	}
+        private VehicleCertificateInfoBuilder() {
+        }
 
-	public VehicleCertificateInfoBuilder withRegistrationNumber(final String registrationNumber) {
-	    this.registrationNumber = registrationNumber;
-	    return this;
-	}
+        public VehicleCertificateInfoBuilder withRegistrationNumber(final String registrationNumber) {
+            this.registrationNumber = registrationNumber;
+            return this;
+        }
 
-	public VehicleCertificateInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	    return this;
-	}
+        public VehicleCertificateInfoBuilder withCertificateNumber(final String certificateNumber) {
+            this.certificateNumber = certificateNumber;
+            return this;
+        }
 
-	public VehicleCertificateInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = dateOfIssue;
-	    return this;
-	}
+        public VehicleCertificateInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
+            this.dateOfIssue = dateOfIssue;
+            return this;
+        }
 
-	public VehicleCertificateInfoBuilder withRegistrationRegion(final KZArea registrationRegion) {
-	    this.registrationRegion = registrationRegion;
-	    return this;
-	}
+        public VehicleCertificateInfoBuilder withRegistrationRegion(final KZArea registrationRegion) {
+            this.registrationRegion = registrationRegion;
+            return this;
+        }
 
-	public VehicleCertificateInfoBuilder withRegistrationMajorCity(final boolean registrationMajorCity) {
-	    this.registrationMajorCity = registrationMajorCity;
-	    return this;
-	}
+        public VehicleCertificateInfoBuilder withRegistrationMajorCity(final boolean registrationMajorCity) {
+            this.registrationMajorCity = registrationMajorCity;
+            return this;
+        }
 
-	public VehicleCertificateInfo build() {
-	    final VehicleCertificateInfo res = new VehicleCertificateInfo();
-	    res.registrationNumber = registrationNumber;
-	    res.certificateNumber = certificateNumber;
-	    res.dateOfIssue = dateOfIssue;
-	    res.registrationRegion = registrationRegion;
-	    res.registrationMajorCity = registrationMajorCity;
-	    return res;
-	}
+        public VehicleCertificateInfo build() {
+            final VehicleCertificateInfo res = new VehicleCertificateInfo();
+            res.registrationNumber = registrationNumber;
+            res.certificateNumber = certificateNumber;
+            res.dateOfIssue = dateOfIssue;
+            res.registrationRegion = registrationRegion;
+            res.registrationMajorCity = registrationMajorCity;
+            return res;
+        }
 
-	public void buildTo(final Consumer<VehicleCertificateInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<VehicleCertificateInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private VehicleCertificateInfo() {
@@ -76,7 +76,7 @@ public class VehicleCertificateInfo extends Domain {
     private String registrationNumber;
 
     public String getRegistrationNumber() {
-	return registrationNumber;
+        return registrationNumber;
     }
 
     // certificateNumber
@@ -84,7 +84,7 @@ public class VehicleCertificateInfo extends Domain {
     private String certificateNumber;
 
     public String getCertificateNumber() {
-	return certificateNumber;
+        return certificateNumber;
     }
 
     // dateOfIssue
@@ -92,7 +92,7 @@ public class VehicleCertificateInfo extends Domain {
     private LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
-	return dateOfIssue;
+        return dateOfIssue;
     }
 
     // registrationRegion
@@ -100,7 +100,7 @@ public class VehicleCertificateInfo extends Domain {
     private KZArea registrationRegion;
 
     public KZArea getRegistrationRegion() {
-	return registrationRegion;
+        return registrationRegion;
     }
 
     // registrationMajorCity
@@ -108,6 +108,6 @@ public class VehicleCertificateInfo extends Domain {
     private boolean registrationMajorCity;
 
     boolean isRegistrationMajorCity() {
-	return registrationMajorCity;
+        return registrationMajorCity;
     }
 }

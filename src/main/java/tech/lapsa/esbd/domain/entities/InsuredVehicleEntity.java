@@ -1,5 +1,6 @@
 package tech.lapsa.esbd.domain.entities;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.lapsa.insurance.elements.VehicleAgeClass;
@@ -9,6 +10,7 @@ import tech.lapsa.esbd.domain.Domain;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyOptionals;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(13)
@@ -17,108 +19,113 @@ public class InsuredVehicleEntity extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static InsuredVehicleEntityBuilder builder() {
-	return new InsuredVehicleEntityBuilder();
+        return new InsuredVehicleEntityBuilder();
     }
 
     public static final class InsuredVehicleEntityBuilder {
 
-	private Integer id;
-	private PolicyEntity policy;
-	private VehicleEntity vehicle;
-	private VehicleClass vehicleClass;
-	private VehicleAgeClass vehicleAgeClass;
-	private VehicleCertificateInfo certificate;
-	private String vehiclePurpose;
-	private int currentOdometerValue;
-	private RecordOperationInfo created;
-	private RecordOperationInfo modified;
-	private InsuranceCompanyEntity insurer;
+        private Integer id;
+        private PolicyEntity policy;
+        private VehicleEntity vehicle;
+        private VehicleClass vehicleClass;
+        private VehicleAgeClass vehicleAgeClass;
+        private VehicleCertificateInfo certificate;
+        private String vehiclePurpose;
+        private int currentOdometerValue;
+        private RecordOperationInfo created;
+        private RecordOperationInfo modified;
+        private InsuranceCompanyEntity insurer;
 
-	private InsuredVehicleEntityBuilder() {
-	}
+        private InsuredVehicleEntityBuilder() {
+        }
 
-	public InsuredVehicleEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    this.id = MyNumbers.requirePositive(id, "id");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withId(final Integer id) throws IllegalArgumentException {
+            this.id = MyNumbers.requirePositive(id, "id");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withPolicy(final PolicyEntity policy) throws IllegalArgumentException {
-	    this.policy = MyObjects.requireNonNull(policy, "policy");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withPolicy(final PolicyEntity policy) throws IllegalArgumentException {
+            this.policy = MyObjects.requireNonNull(policy, "policy");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
-	    this.vehicle = MyObjects.requireNonNull(vehicle, "vehicle");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withVehicle(final VehicleEntity vehicle) throws IllegalArgumentException {
+            this.vehicle = MyObjects.requireNonNull(vehicle, "vehicle");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass)
-		throws IllegalArgumentException {
-	    this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withVehicle(Optional<VehicleEntity> vehicle) {
+            this.vehicle = MyObjects.requireNonNull(vehicle, "vehicle").orElse(null);
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withVehicleAgeClass(final VehicleAgeClass vehicleAgeClass)
-		throws IllegalArgumentException {
-	    this.vehicleAgeClass = MyObjects.requireNonNull(vehicleAgeClass, "vehicleAgeClass");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass)
+                throws IllegalArgumentException {
+            this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withCertificate(final VehicleCertificateInfo certificate)
-		throws IllegalArgumentException {
-	    this.certificate = MyObjects.requireNonNull(certificate, "certificate");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withVehicleAgeClass(final VehicleAgeClass vehicleAgeClass)
+                throws IllegalArgumentException {
+            this.vehicleAgeClass = MyObjects.requireNonNull(vehicleAgeClass, "vehicleAgeClass");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withVehiclePurpose(final String vehiclePurpose)
-		throws IllegalArgumentException {
-	    this.vehiclePurpose = vehiclePurpose;
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withCertificate(final VehicleCertificateInfo certificate)
+                throws IllegalArgumentException {
+            this.certificate = MyObjects.requireNonNull(certificate, "certificate");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withCurrentOdometerValue(final int currentOdometerValue)
-		throws IllegalArgumentException {
-	    this.currentOdometerValue = currentOdometerValue;
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withVehiclePurpose(final String vehiclePurpose)
+                throws IllegalArgumentException {
+            this.vehiclePurpose = vehiclePurpose;
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withCreated(final RecordOperationInfo created)
-		throws IllegalArgumentException {
-	    this.created = MyObjects.requireNonNull(created, "created");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withCurrentOdometerValue(final int currentOdometerValue)
+                throws IllegalArgumentException {
+            this.currentOdometerValue = currentOdometerValue;
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withModified(final RecordOperationInfo modified)
-		throws IllegalArgumentException {
-	    this.modified = modified;
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withCreated(final RecordOperationInfo created)
+                throws IllegalArgumentException {
+            this.created = MyObjects.requireNonNull(created, "created");
+            return this;
+        }
 
-	public InsuredVehicleEntityBuilder withInsurer(final InsuranceCompanyEntity insurer)
-		throws IllegalArgumentException {
-	    this.insurer = MyObjects.requireNonNull(insurer, "insurer");
-	    return this;
-	}
+        public InsuredVehicleEntityBuilder withModified(final RecordOperationInfo modified)
+                throws IllegalArgumentException {
+            this.modified = modified;
+            return this;
+        }
 
-	public InsuredVehicleEntity build() throws IllegalArgumentException {
-	    final InsuredVehicleEntity res = new InsuredVehicleEntity();
-	    res.id = MyNumbers.requirePositive(id, "id");
-	    res.policy = MyObjects.requireNonNull(policy, "policy");
-	    res.vehicle = MyObjects.requireNonNull(vehicle, "vehicle");
-	    res.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
-	    res.vehicleAgeClass = MyObjects.requireNonNull(vehicleAgeClass, "vehicleAgeClass");
-	    res.certificate = MyObjects.requireNonNull(certificate, "certificate");
-	    res.vehiclePurpose = vehiclePurpose;
-	    res.currentOdometerValue = currentOdometerValue;
-	    res.created = MyObjects.requireNonNull(created, "created");
-	    res.modified = modified;
-	    res.insurer = MyObjects.requireNonNull(insurer, "insurer");
-	    return res;
-	}
+        public InsuredVehicleEntityBuilder withInsurer(final InsuranceCompanyEntity insurer)
+                throws IllegalArgumentException {
+            this.insurer = MyObjects.requireNonNull(insurer, "insurer");
+            return this;
+        }
 
-	public void buildTo(final Consumer<InsuredVehicleEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
-	}
+        public InsuredVehicleEntity build() throws IllegalArgumentException {
+            final InsuredVehicleEntity res = new InsuredVehicleEntity();
+            res.id = MyNumbers.requirePositive(id, "id");
+            res.policy = MyObjects.requireNonNull(policy, "policy");
+            res.vehicle = vehicle;
+            res.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+            res.vehicleAgeClass = MyObjects.requireNonNull(vehicleAgeClass, "vehicleAgeClass");
+            res.certificate = MyObjects.requireNonNull(certificate, "certificate");
+            res.vehiclePurpose = vehiclePurpose;
+            res.currentOdometerValue = currentOdometerValue;
+            res.created = MyObjects.requireNonNull(created, "created");
+            res.modified = modified;
+            res.insurer = MyObjects.requireNonNull(insurer, "insurer");
+            return res;
+        }
+
+        public void buildTo(final Consumer<InsuredVehicleEntity> consumer) throws IllegalArgumentException {
+            consumer.accept(build());
+        }
     }
 
     private InsuredVehicleEntity() {
@@ -129,7 +136,7 @@ public class InsuredVehicleEntity extends Domain {
     private Integer id;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     // policy
@@ -137,15 +144,15 @@ public class InsuredVehicleEntity extends Domain {
     private PolicyEntity policy;
 
     public PolicyEntity getPolicy() {
-	return policy;
+        return policy;
     }
 
     // vehicle
 
     private VehicleEntity vehicle;
 
-    public VehicleEntity getVehicle() {
-	return vehicle;
+    public Optional<VehicleEntity> getVehicle() {
+        return MyOptionals.of(vehicle);
     }
 
     // vehicleClass
@@ -153,7 +160,7 @@ public class InsuredVehicleEntity extends Domain {
     private VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
-	return vehicleClass;
+        return vehicleClass;
     }
 
     // vehicleAgeClass
@@ -161,7 +168,7 @@ public class InsuredVehicleEntity extends Domain {
     private VehicleAgeClass vehicleAgeClass;
 
     public VehicleAgeClass getVehicleAgeClass() {
-	return vehicleAgeClass;
+        return vehicleAgeClass;
     }
 
     // certificate
@@ -169,7 +176,7 @@ public class InsuredVehicleEntity extends Domain {
     private VehicleCertificateInfo certificate;
 
     public VehicleCertificateInfo getCertificate() {
-	return certificate;
+        return certificate;
     }
 
     // vehiclePurpose
@@ -177,7 +184,7 @@ public class InsuredVehicleEntity extends Domain {
     private String vehiclePurpose;
 
     public String getVehiclePurpose() {
-	return vehiclePurpose;
+        return vehiclePurpose;
     }
 
     // currentOdometerValue
@@ -185,7 +192,7 @@ public class InsuredVehicleEntity extends Domain {
     private int currentOdometerValue;
 
     public int getCurrentOdometerValue() {
-	return currentOdometerValue;
+        return currentOdometerValue;
     }
 
     // created
@@ -193,7 +200,7 @@ public class InsuredVehicleEntity extends Domain {
     private RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
-	return created;
+        return created;
     }
 
     // modified
@@ -201,11 +208,11 @@ public class InsuredVehicleEntity extends Domain {
     private RecordOperationInfo modified;
 
     public boolean isModified() {
-	return MyObjects.nonNull(modified);
+        return MyObjects.nonNull(modified);
     }
 
     public RecordOperationInfo getModified() {
-	return modified;
+        return modified;
     }
 
     // insurer
@@ -213,6 +220,6 @@ public class InsuredVehicleEntity extends Domain {
     private InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
-	return insurer;
+        return insurer;
     }
 }

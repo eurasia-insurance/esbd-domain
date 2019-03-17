@@ -12,37 +12,37 @@ public class DriverLicenseInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final DriverLicenseInfoBuilder builder() {
-	return new DriverLicenseInfoBuilder();
+        return new DriverLicenseInfoBuilder();
     }
 
     public static final class DriverLicenseInfoBuilder {
 
-	private String number;
-	private LocalDate dateOfIssue;
+        private String number;
+        private LocalDate dateOfIssue;
 
-	private DriverLicenseInfoBuilder() {
-	}
+        private DriverLicenseInfoBuilder() {
+        }
 
-	public DriverLicenseInfoBuilder withNumber(final String number) {
-	    this.number = number;
-	    return this;
-	}
+        public DriverLicenseInfoBuilder withNumber(final String number) {
+            this.number = number;
+            return this;
+        }
 
-	public DriverLicenseInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = dateOfIssue;
-	    return this;
-	}
+        public DriverLicenseInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
+            this.dateOfIssue = dateOfIssue;
+            return this;
+        }
 
-	public DriverLicenseInfo build() {
-	    final DriverLicenseInfo res = new DriverLicenseInfo();
-	    res.number = number;
-	    res.dateOfIssue = dateOfIssue;
-	    return res;
-	}
+        public DriverLicenseInfo build() {
+            final DriverLicenseInfo res = new DriverLicenseInfo();
+            res.number = number;
+            res.dateOfIssue = dateOfIssue;
+            return res;
+        }
 
-	public void buildTo(final Consumer<DriverLicenseInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<DriverLicenseInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private DriverLicenseInfo() {
@@ -53,7 +53,7 @@ public class DriverLicenseInfo extends Domain {
     private String number;
 
     public String getNumber() {
-	return number;
+        return number;
     }
 
     // dateOfIssue
@@ -61,6 +61,6 @@ public class DriverLicenseInfo extends Domain {
     private LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
-	return dateOfIssue;
+        return dateOfIssue;
     }
 }

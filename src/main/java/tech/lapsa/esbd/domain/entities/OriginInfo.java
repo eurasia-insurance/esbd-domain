@@ -22,58 +22,58 @@ public class OriginInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final OriginInfoBuilder builder() {
-	return new OriginInfoBuilder();
+        return new OriginInfoBuilder();
     }
 
     public static final class OriginInfoBuilder {
 
-	private boolean resident;
-	private Country country;
-	private KZCity city;
+        private boolean resident;
+        private Country country;
+        private KZCity city;
 
-	private OriginInfoBuilder() {
-	}
+        private OriginInfoBuilder() {
+        }
 
-	public OriginInfoBuilder withResident(final boolean resident) {
-	    this.resident = resident;
-	    return this;
-	}
+        public OriginInfoBuilder withResident(final boolean resident) {
+            this.resident = resident;
+            return this;
+        }
 
-	public OriginInfoBuilder withCountry(final Country country) {
-	    this.country = country;
-	    return this;
-	}
+        public OriginInfoBuilder withCountry(final Country country) {
+            this.country = country;
+            return this;
+        }
 
-	public OriginInfoBuilder withCountry(final Optional<Country> optCountry) {
-	    if (MyObjects.requireNonNull(optCountry, "optCountry").isPresent())
-		return withCountry(optCountry.get());
-	    country = null;
-	    return this;
-	}
+        public OriginInfoBuilder withCountry(final Optional<Country> optCountry) {
+            if (MyObjects.requireNonNull(optCountry, "optCountry").isPresent())
+                return withCountry(optCountry.get());
+            country = null;
+            return this;
+        }
 
-	public OriginInfoBuilder withCity(final KZCity city) {
-	    this.city = city;
-	    return this;
-	}
+        public OriginInfoBuilder withCity(final KZCity city) {
+            this.city = city;
+            return this;
+        }
 
-	public OriginInfoBuilder withCity(final Optional<KZCity> optCity) {
-	    if (MyObjects.requireNonNull(optCity, "optCity").isPresent())
-		return withCity(optCity.get());
-	    city = null;
-	    return this;
-	}
+        public OriginInfoBuilder withCity(final Optional<KZCity> optCity) {
+            if (MyObjects.requireNonNull(optCity, "optCity").isPresent())
+                return withCity(optCity.get());
+            city = null;
+            return this;
+        }
 
-	public OriginInfo build() {
-	    final OriginInfo res = new OriginInfo();
-	    res.resident = resident;
-	    res.country = country;
-	    res.city = city;
-	    return res;
-	}
+        public OriginInfo build() {
+            final OriginInfo res = new OriginInfo();
+            res.resident = resident;
+            res.country = country;
+            res.city = city;
+            return res;
+        }
 
-	public void buildTo(final Consumer<OriginInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<OriginInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private OriginInfo() {
@@ -84,7 +84,7 @@ public class OriginInfo extends Domain {
     private boolean resident;
 
     public boolean isResident() {
-	return resident;
+        return resident;
     }
 
     // country
@@ -92,7 +92,7 @@ public class OriginInfo extends Domain {
     private Country country;
 
     public Country getCountry() {
-	return country;
+        return country;
     }
 
     // city
@@ -100,6 +100,6 @@ public class OriginInfo extends Domain {
     private KZCity city;
 
     public KZCity getCity() {
-	return city;
+        return city;
     }
 }

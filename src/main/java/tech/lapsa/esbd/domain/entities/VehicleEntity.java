@@ -18,107 +18,105 @@ public class VehicleEntity extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final VehicleEntityBuilder builder() {
-	return new VehicleEntityBuilder();
+        return new VehicleEntityBuilder();
     }
 
     public static final class VehicleEntityBuilder {
 
-	private Integer id;
-	private VehicleClass vehicleClass;
-	private String vinCode;
-	private VehicleModelEntity vehicleModel;
-	private SteeringWheelLocation steeringWheelLocation;
-	private int engineVolume;
-	private String engineNumber;
-	private int enginePower;
-	private String color;
-	private LocalDate realeaseDate;
-	private VehicleRegNumber regNum;
+        private Integer id;
+        private VehicleClass vehicleClass;
+        private String vinCode;
+        private VehicleModelEntity vehicleModel;
+        private SteeringWheelLocation steeringWheelLocation;
+        private int engineVolume;
+        private String engineNumber;
+        private int enginePower;
+        private String color;
+        private LocalDate realeaseDate;
+        private VehicleRegNumber regNum;
 
-	private VehicleEntityBuilder() {
-	}
+        private VehicleEntityBuilder() {
+        }
 
-	public VehicleEntityBuilder withId(final Integer id) {
-	    this.id = id;
-	    return this;
-	}
+        public VehicleEntityBuilder withId(final Integer id) {
+            this.id = id;
+            return this;
+        }
 
-	public VehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass) {
-	    this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
-	    return this;
-	}
+        public VehicleEntityBuilder withVehicleClass(final VehicleClass vehicleClass) {
+            this.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+            return this;
+        }
 
-	public VehicleEntityBuilder withVinCode(final String vinCode) {
-	    this.vinCode = vinCode;
-	    return this;
-	}
+        public VehicleEntityBuilder withVinCode(final String vinCode) {
+            this.vinCode = vinCode;
+            return this;
+        }
 
-	public VehicleEntityBuilder withVehicleModel(final VehicleModelEntity vehicleModel) {
-	    this.vehicleModel = MyObjects.requireNonNull(vehicleModel, "vehicleModel");
-	    return this;
-	}
+        public VehicleEntityBuilder withVehicleModel(final VehicleModelEntity vehicleModel) {
+            this.vehicleModel = MyObjects.requireNonNull(vehicleModel, "vehicleModel");
+            return this;
+        }
 
-	public VehicleEntityBuilder withSteeringWheelLocation(final SteeringWheelLocation steeringWheelLocation) {
-	    this.steeringWheelLocation = MyObjects.requireNonNull(steeringWheelLocation, "steeringWheelLocation");
-	    return this;
-	}
+        public VehicleEntityBuilder withSteeringWheelLocation(final SteeringWheelLocation steeringWheelLocation) {
+            this.steeringWheelLocation = MyObjects.requireNonNull(steeringWheelLocation, "steeringWheelLocation");
+            return this;
+        }
 
-	public VehicleEntityBuilder withEngineVolume(final int engineVolume) {
-	    this.engineVolume = engineVolume;
-	    return this;
-	}
+        public VehicleEntityBuilder withEngineVolume(final int engineVolume) {
+            this.engineVolume = engineVolume;
+            return this;
+        }
 
-	public VehicleEntityBuilder withEngineNumber(final String engineNumber) {
-	    this.engineNumber = engineNumber;
-	    return this;
-	}
+        public VehicleEntityBuilder withEngineNumber(final String engineNumber) {
+            this.engineNumber = engineNumber;
+            return this;
+        }
 
-	public VehicleEntityBuilder withEnginePower(final int enginePower) {
-	    this.enginePower = enginePower;
-	    return this;
-	}
+        public VehicleEntityBuilder withEnginePower(final int enginePower) {
+            this.enginePower = enginePower;
+            return this;
+        }
 
-	public VehicleEntityBuilder withEngine(final String engineNumber, final int engineVolume,
-		final int enginePower) {
-	    return withEngineNumber(engineNumber)
-		    .withEnginePower(enginePower)
-		    .withEngineVolume(engineVolume);
-	}
+        public VehicleEntityBuilder withEngine(final String engineNumber, final int engineVolume,
+                final int enginePower) {
+            return withEngineNumber(engineNumber).withEnginePower(enginePower).withEngineVolume(engineVolume);
+        }
 
-	public VehicleEntityBuilder withColor(final String color) {
-	    this.color = color;
-	    return this;
-	}
+        public VehicleEntityBuilder withColor(final String color) {
+            this.color = color;
+            return this;
+        }
 
-	public VehicleEntityBuilder withRealeaseDate(final LocalDate realeaseDate) {
-	    this.realeaseDate = realeaseDate;
-	    return this;
-	}
+        public VehicleEntityBuilder withRealeaseDate(final LocalDate realeaseDate) {
+            this.realeaseDate = realeaseDate;
+            return this;
+        }
 
-	public VehicleEntityBuilder withRegNum(final VehicleRegNumber regNum) {
-	    this.regNum = MyObjects.requireNonNull(regNum, "regNum");
-	    return this;
-	}
+        public VehicleEntityBuilder withRegNum(final VehicleRegNumber regNum) {
+            this.regNum = MyObjects.requireNonNull(regNum, "regNum");
+            return this;
+        }
 
-	public VehicleEntity build() throws IllegalArgumentException {
-	    final VehicleEntity res = new VehicleEntity();
-	    res.id = MyNumbers.requirePositive(id, "id");
-	    res.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
-	    res.vinCode = vinCode;
-	    res.vehicleModel = MyObjects.requireNonNull(vehicleModel, "vehicleModel");
-	    res.steeringWheelLocation = MyObjects.requireNonNull(steeringWheelLocation, "steeringWheelLocation");
-	    res.engineVolume = engineVolume;
-	    res.engineNumber = engineNumber;
-	    res.enginePower = enginePower;
-	    res.color = color;
-	    res.realeaseDate = realeaseDate;
-	    res.regNum = regNum;
-	    return res;
-	}
+        public VehicleEntity build() throws IllegalArgumentException {
+            final VehicleEntity res = new VehicleEntity();
+            res.id = MyNumbers.requirePositive(id, "id");
+            res.vehicleClass = MyObjects.requireNonNull(vehicleClass, "vehicleClass");
+            res.vinCode = vinCode;
+            res.vehicleModel = MyObjects.requireNonNull(vehicleModel, "vehicleModel");
+            res.steeringWheelLocation = MyObjects.requireNonNull(steeringWheelLocation, "steeringWheelLocation");
+            res.engineVolume = engineVolume;
+            res.engineNumber = engineNumber;
+            res.enginePower = enginePower;
+            res.color = color;
+            res.realeaseDate = realeaseDate;
+            res.regNum = regNum;
+            return res;
+        }
 
-	public void buildTo(final Consumer<VehicleEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<VehicleEntity> consumer) throws IllegalArgumentException {
+            consumer.accept(build());
+        }
     }
 
     private VehicleEntity() {
@@ -129,7 +127,7 @@ public class VehicleEntity extends Domain {
     private Integer id;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     // vehicleClass
@@ -137,7 +135,7 @@ public class VehicleEntity extends Domain {
     private VehicleClass vehicleClass;
 
     public VehicleClass getVehicleClass() {
-	return vehicleClass;
+        return vehicleClass;
     }
 
     // vinCode
@@ -145,7 +143,7 @@ public class VehicleEntity extends Domain {
     private String vinCode;
 
     public String getVinCode() {
-	return vinCode;
+        return vinCode;
     }
 
     // vehicleModel
@@ -153,7 +151,7 @@ public class VehicleEntity extends Domain {
     private VehicleModelEntity vehicleModel;
 
     public VehicleModelEntity getVehicleModel() {
-	return vehicleModel;
+        return vehicleModel;
     }
 
     // steeringWheelLocation
@@ -161,7 +159,7 @@ public class VehicleEntity extends Domain {
     private SteeringWheelLocation steeringWheelLocation;
 
     public SteeringWheelLocation getSteeringWheelLocation() {
-	return steeringWheelLocation;
+        return steeringWheelLocation;
     }
 
     // engineVolume
@@ -169,7 +167,7 @@ public class VehicleEntity extends Domain {
     private int engineVolume;
 
     public int getEngineVolume() {
-	return engineVolume;
+        return engineVolume;
     }
 
     // engineNumber
@@ -177,7 +175,7 @@ public class VehicleEntity extends Domain {
     private String engineNumber;
 
     public String getEngineNumber() {
-	return engineNumber;
+        return engineNumber;
     }
 
     // enginePower
@@ -185,7 +183,7 @@ public class VehicleEntity extends Domain {
     private int enginePower;
 
     public int getEnginePower() {
-	return enginePower;
+        return enginePower;
     }
 
     // color
@@ -193,7 +191,7 @@ public class VehicleEntity extends Domain {
     private String color;
 
     public String getColor() {
-	return color;
+        return color;
     }
 
     // realeaseDate
@@ -201,7 +199,7 @@ public class VehicleEntity extends Domain {
     private LocalDate realeaseDate;
 
     public LocalDate getRealeaseDate() {
-	return realeaseDate;
+        return realeaseDate;
     }
 
     // regNum
@@ -209,6 +207,6 @@ public class VehicleEntity extends Domain {
     private VehicleRegNumber regNum;
 
     public VehicleRegNumber getRegNum() {
-	return regNum;
+        return regNum;
     }
 }

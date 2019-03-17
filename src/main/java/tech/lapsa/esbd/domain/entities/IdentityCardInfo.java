@@ -17,72 +17,72 @@ public class IdentityCardInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final IdentityCardInfoBuilder builder() {
-	return new IdentityCardInfoBuilder();
+        return new IdentityCardInfoBuilder();
     }
 
     public static final class IdentityCardInfoBuilder {
 
-	private LocalDate dateOfIssue;
-	private String issuingAuthority;
-	private String number;
-	private IdentityCardType identityCardType;
+        private LocalDate dateOfIssue;
+        private String issuingAuthority;
+        private String number;
+        private IdentityCardType identityCardType;
 
-	private IdentityCardInfoBuilder() {
-	}
+        private IdentityCardInfoBuilder() {
+        }
 
-	public IdentityCardInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
-	    return this;
-	}
+        public IdentityCardInfoBuilder withDateOfIssue(final LocalDate dateOfIssue) {
+            this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withDateOfIssue(final Optional<LocalDate> optDateOfIssue) {
-	    if (MyObjects.requireNonNull(optDateOfIssue, "optDateOfIssue").isPresent())
-		return withDateOfIssue(optDateOfIssue.get());
-	    dateOfIssue = null;
-	    return this;
-	}
+        public IdentityCardInfoBuilder withDateOfIssue(final Optional<LocalDate> optDateOfIssue) {
+            if (MyObjects.requireNonNull(optDateOfIssue, "optDateOfIssue").isPresent())
+                return withDateOfIssue(optDateOfIssue.get());
+            dateOfIssue = null;
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
-	    this.issuingAuthority = issuingAuthority;
-	    return this;
-	}
+        public IdentityCardInfoBuilder withIssuingAuthority(final String issuingAuthority) {
+            this.issuingAuthority = issuingAuthority;
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withNumber(final String number) {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
-	    return this;
-	}
+        public IdentityCardInfoBuilder withNumber(final String number) {
+            this.number = MyStrings.requireNonEmpty(number, "number");
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withNumber(final Optional<String> optNumber) {
-	    if (MyObjects.requireNonNull(optNumber, "optNumber").isPresent())
-		return withNumber(optNumber.get());
-	    number = null;
-	    return this;
-	}
+        public IdentityCardInfoBuilder withNumber(final Optional<String> optNumber) {
+            if (MyObjects.requireNonNull(optNumber, "optNumber").isPresent())
+                return withNumber(optNumber.get());
+            number = null;
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
-	    this.identityCardType = MyObjects.requireNonNull(identityCardType, "identityCardType");
-	    return this;
-	}
+        public IdentityCardInfoBuilder withIdentityCardType(final IdentityCardType identityCardType) {
+            this.identityCardType = MyObjects.requireNonNull(identityCardType, "identityCardType");
+            return this;
+        }
 
-	public IdentityCardInfoBuilder withIdentityCardType(final Optional<IdentityCardType> optIdentityCardType) {
-	    if (MyObjects.requireNonNull(optIdentityCardType, "optIdentityCardType").isPresent())
-		return withIdentityCardType(optIdentityCardType.get());
-	    identityCardType = null;
-	    return this;
-	}
+        public IdentityCardInfoBuilder withIdentityCardType(final Optional<IdentityCardType> optIdentityCardType) {
+            if (MyObjects.requireNonNull(optIdentityCardType, "optIdentityCardType").isPresent())
+                return withIdentityCardType(optIdentityCardType.get());
+            identityCardType = null;
+            return this;
+        }
 
-	public IdentityCardInfo build() {
-	    final IdentityCardInfo res = new IdentityCardInfo();
-	    res.dateOfIssue = dateOfIssue;
-	    res.issuingAuthority = issuingAuthority;
-	    res.number = number;
-	    res.identityCardType = identityCardType;
-	    return res;
-	}
+        public IdentityCardInfo build() {
+            final IdentityCardInfo res = new IdentityCardInfo();
+            res.dateOfIssue = dateOfIssue;
+            res.issuingAuthority = issuingAuthority;
+            res.number = number;
+            res.identityCardType = identityCardType;
+            return res;
+        }
 
-	public void buildTo(final Consumer<IdentityCardInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<IdentityCardInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private IdentityCardInfo() {
@@ -93,7 +93,7 @@ public class IdentityCardInfo extends Domain {
     private LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
-	return dateOfIssue;
+        return dateOfIssue;
     }
 
     // issuingAuthority
@@ -101,7 +101,7 @@ public class IdentityCardInfo extends Domain {
     private String issuingAuthority;
 
     public String getIssuingAuthority() {
-	return issuingAuthority;
+        return issuingAuthority;
     }
 
     // number
@@ -109,7 +109,7 @@ public class IdentityCardInfo extends Domain {
     private String number;
 
     public String getNumber() {
-	return number;
+        return number;
     }
 
     // identityCardType
@@ -117,6 +117,6 @@ public class IdentityCardInfo extends Domain {
     private IdentityCardType identityCardType;
 
     public IdentityCardType getIdentityCardType() {
-	return identityCardType;
+        return identityCardType;
     }
 }

@@ -6,6 +6,7 @@ import com.lapsa.insurance.elements.SubjectType;
 
 import tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity;
 import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyOptionals;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 /**
@@ -20,64 +21,64 @@ public class SubjectCompanyEntity extends SubjectEntity {
     private static final long serialVersionUID = 1L;
 
     public static final SubjectCompanyEntityBuilder builder() {
-	return new SubjectCompanyEntityBuilder();
+        return new SubjectCompanyEntityBuilder();
     }
 
     public static final class SubjectCompanyEntityBuilder
-	    extends SubjectEntityBuilder<SubjectCompanyEntity, SubjectCompanyEntityBuilder> {
+            extends SubjectEntityBuilder<SubjectCompanyEntity, SubjectCompanyEntityBuilder> {
 
-	private String companyName;
-	private String headName;
-	private String accountantName;
-	private CompanyActivityKindEntity companyActivityKind;
+        private String companyName;
+        private String headName;
+        private String accountantName;
+        private CompanyActivityKindEntity companyActivityKind;
 
-	private SubjectCompanyEntityBuilder() {
-	}
+        private SubjectCompanyEntityBuilder() {
+        }
 
-	public SubjectCompanyEntityBuilder withCompanyName(final String companyName) {
-	    this.companyName = companyName;
-	    return this;
-	}
+        public SubjectCompanyEntityBuilder withCompanyName(final String companyName) {
+            this.companyName = companyName;
+            return this;
+        }
 
-	public SubjectCompanyEntityBuilder withHeadName(final String headName) {
-	    this.headName = headName;
-	    return this;
-	}
+        public SubjectCompanyEntityBuilder withHeadName(final String headName) {
+            this.headName = headName;
+            return this;
+        }
 
-	public SubjectCompanyEntityBuilder withAccountantName(final String accountantName) {
-	    this.accountantName = accountantName;
-	    return this;
-	}
+        public SubjectCompanyEntityBuilder withAccountantName(final String accountantName) {
+            this.accountantName = accountantName;
+            return this;
+        }
 
-	public SubjectCompanyEntityBuilder withCompanyActivityKind(
-		final CompanyActivityKindEntity companyActivityKind) {
-	    this.companyActivityKind = companyActivityKind;
-	    return this;
-	}
+        public SubjectCompanyEntityBuilder withCompanyActivityKind(
+                final CompanyActivityKindEntity companyActivityKind) {
+            this.companyActivityKind = companyActivityKind;
+            return this;
+        }
 
-	public SubjectCompanyEntityBuilder withCompanyActivityKind(
-		final Optional<CompanyActivityKindEntity> optCompanyActivityKind) {
-	    if (MyObjects.requireNonNull(optCompanyActivityKind, "optCompanyActivityKind").isPresent())
-		return withCompanyActivityKind(optCompanyActivityKind.get());
-	    companyActivityKind = null;
-	    return this;
-	}
+        public SubjectCompanyEntityBuilder withCompanyActivityKind(
+                final Optional<CompanyActivityKindEntity> optCompanyActivityKind) {
+            if (MyObjects.requireNonNull(optCompanyActivityKind, "optCompanyActivityKind").isPresent())
+                return withCompanyActivityKind(optCompanyActivityKind.get());
+            companyActivityKind = null;
+            return this;
+        }
 
-	@Override
-	protected SubjectCompanyEntityBuilder _this() {
-	    return this;
-	}
+        @Override
+        protected SubjectCompanyEntityBuilder _this() {
+            return this;
+        }
 
-	@Override
-	public SubjectCompanyEntity build() throws IllegalArgumentException {
-	    final SubjectCompanyEntity res = new SubjectCompanyEntity();
-	    superFill(res);
-	    res.companyName = companyName;
-	    res.headName = headName;
-	    res.accountantName = accountantName;
-	    res.companyActivityKind = companyActivityKind;
-	    return res;
-	}
+        @Override
+        public SubjectCompanyEntity build() throws IllegalArgumentException {
+            final SubjectCompanyEntity res = new SubjectCompanyEntity();
+            superFill(res);
+            res.companyName = companyName;
+            res.headName = headName;
+            res.accountantName = accountantName;
+            res.companyActivityKind = companyActivityKind;
+            return res;
+        }
     }
 
     private SubjectCompanyEntity() {
@@ -85,7 +86,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     @Override
     public SubjectType getSubjectType() {
-	return SubjectType.COMPANY;
+        return SubjectType.COMPANY;
     }
 
     // companyName
@@ -93,7 +94,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     private String companyName;
 
     public String getCompanyName() {
-	return companyName;
+        return companyName;
     }
 
     // headName
@@ -101,7 +102,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
     private String headName;
 
     public String getHeadName() {
-	return headName;
+        return headName;
     }
 
     // accountantName
@@ -109,14 +110,14 @@ public class SubjectCompanyEntity extends SubjectEntity {
     private String accountantName;
 
     public String getAccountantName() {
-	return accountantName;
+        return accountantName;
     }
 
     // companyActivityKind
 
     private CompanyActivityKindEntity companyActivityKind;
 
-    public CompanyActivityKindEntity getCompanyActivityKind() {
-	return companyActivityKind;
+    public Optional<CompanyActivityKindEntity> getCompanyActivityKind() {
+        return MyOptionals.of(companyActivityKind);
     }
 }

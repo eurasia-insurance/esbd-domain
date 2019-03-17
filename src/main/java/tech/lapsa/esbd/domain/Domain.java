@@ -13,16 +13,16 @@ public abstract class Domain implements Serializable {
 
     @Override
     public String toString() {
-	return MyHcEqToStr.toString(this);
+        return MyHcEqToStr.toString(this);
     }
 
     @Override
     public final int hashCode() {
-	return MyHcEqToStr.hashCode(this);
+        return MyHcEqToStr.hashCode(this);
     }
 
     @Override
     public final boolean equals(final Object other) {
-	return MyHcEqToStr.equals(this, other);
+        return MyHcEqToStr.equals(this, other);
     }
 }
