@@ -23,62 +23,62 @@ public class PersonalInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final PersonalInfoBuilder builder() {
-	return new PersonalInfoBuilder();
+        return new PersonalInfoBuilder();
     }
 
     public static final class PersonalInfoBuilder {
 
-	private String name;
-	private String surename;
-	private String patronymic;
-	private LocalDate dayOfBirth;
-	private Sex gender;
+        private String name;
+        private String surename;
+        private String patronymic;
+        private LocalDate dayOfBirth;
+        private Sex gender;
 
-	private PersonalInfoBuilder() {
-	}
+        private PersonalInfoBuilder() {
+        }
 
-	public PersonalInfoBuilder withName(final String name) {
-	    this.name = name;
-	    return this;
-	}
+        public PersonalInfoBuilder withName(final String name) {
+            this.name = name;
+            return this;
+        }
 
-	public PersonalInfoBuilder withSurename(final String surename) {
-	    this.surename = surename;
-	    return this;
-	}
+        public PersonalInfoBuilder withSurename(final String surename) {
+            this.surename = surename;
+            return this;
+        }
 
-	public PersonalInfoBuilder withPatronymic(final String patronymic) {
-	    this.patronymic = patronymic;
-	    return this;
-	}
+        public PersonalInfoBuilder withPatronymic(final String patronymic) {
+            this.patronymic = patronymic;
+            return this;
+        }
 
-	public PersonalInfoBuilder withDayOfBirth(final LocalDate dayOfBirth) {
-	    this.dayOfBirth = dayOfBirth;
-	    return this;
-	}
+        public PersonalInfoBuilder withDayOfBirth(final LocalDate dayOfBirth) {
+            this.dayOfBirth = dayOfBirth;
+            return this;
+        }
 
-	public PersonalInfoBuilder withGender(final Sex gender) {
-	    this.gender = gender;
-	    return this;
-	}
+        public PersonalInfoBuilder withGender(final Sex gender) {
+            this.gender = gender;
+            return this;
+        }
 
-	public PersonalInfoBuilder withGender(final Optional<Sex> optGender) {
-	    return withGender(MyObjects.requireNonNull(optGender, "optGender").orElse(null));
-	}
+        public PersonalInfoBuilder withGender(final Optional<Sex> optGender) {
+            return withGender(MyObjects.requireNonNull(optGender, "optGender").orElse(null));
+        }
 
-	public PersonalInfo build() {
-	    final PersonalInfo res = new PersonalInfo();
-	    res.name = name;
-	    res.surename = surename;
-	    res.patronymic = patronymic;
-	    res.dayOfBirth = dayOfBirth;
-	    res.gender = gender;
-	    return res;
-	}
+        public PersonalInfo build() {
+            final PersonalInfo res = new PersonalInfo();
+            res.name = name;
+            res.surename = surename;
+            res.patronymic = patronymic;
+            res.dayOfBirth = dayOfBirth;
+            res.gender = gender;
+            return res;
+        }
 
-	public void buildTo(final Consumer<PersonalInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<PersonalInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private PersonalInfo() {
@@ -89,7 +89,7 @@ public class PersonalInfo extends Domain {
     private String name;
 
     public String getName() {
-	return name;
+        return name;
     }
 
     // surename
@@ -97,7 +97,7 @@ public class PersonalInfo extends Domain {
     private String surename;
 
     public String getSurename() {
-	return surename;
+        return surename;
     }
 
     // patronymic
@@ -105,7 +105,7 @@ public class PersonalInfo extends Domain {
     private String patronymic;
 
     public String getPatronymic() {
-	return patronymic;
+        return patronymic;
     }
 
     // dayOfBirth
@@ -113,7 +113,7 @@ public class PersonalInfo extends Domain {
     private LocalDate dayOfBirth;
 
     public LocalDate getDayOfBirth() {
-	return dayOfBirth;
+        return dayOfBirth;
     }
 
     // gender
@@ -121,6 +121,6 @@ public class PersonalInfo extends Domain {
     private Sex gender;
 
     public Sex getGender() {
-	return gender;
+        return gender;
     }
 }

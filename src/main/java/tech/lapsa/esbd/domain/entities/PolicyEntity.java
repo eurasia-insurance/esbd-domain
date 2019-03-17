@@ -25,193 +25,189 @@ public class PolicyEntity extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final PolicyEntityBuilder builder() {
-	return new PolicyEntityBuilder();
+        return new PolicyEntityBuilder();
     }
 
     public static final class PolicyEntityBuilder {
 
-	private Integer id;
-	private String number;
-	private String internalNumber;
-	private LocalDate validFrom;
-	private LocalDate validTill;
-	private Double actualPremium;
-	private Double calculatedPremium;
-	private LocalDate policyDate;
-	private LocalDate paymentDate;
-	private InsuranceCompanyEntity insurer;
-	private SubjectEntity insurant;
-	private LocalDate dateOfIssue;
+        private Integer id;
+        private String number;
+        private String internalNumber;
+        private LocalDate validFrom;
+        private LocalDate validTill;
+        private Double actualPremium;
+        private Double calculatedPremium;
+        private LocalDate policyDate;
+        private LocalDate paymentDate;
+        private InsuranceCompanyEntity insurer;
+        private SubjectEntity insurant;
+        private LocalDate dateOfIssue;
 
-	private LocalDate dateOfCancelation;
-	private CancelationReason cancelationReasonType;
+        private LocalDate dateOfCancelation;
+        private CancelationReason cancelationReasonType;
 
-	private BranchEntity branch;
-	private Integer reissuedPolicyId;
-	private String comments;
-	private final List<InsuredDriverEntityBuilder> insuredDrivers = new ArrayList<>();
-	private final List<InsuredVehicleEntityBuilder> insuredVehicles = new ArrayList<>();
-	private RecordOperationInfo created;
-	private RecordOperationInfo modified;
+        private BranchEntity branch;
+        private Integer reissuedPolicyId;
+        private String comments;
+        private final List<InsuredDriverEntityBuilder> insuredDrivers = new ArrayList<>();
+        private final List<InsuredVehicleEntityBuilder> insuredVehicles = new ArrayList<>();
+        private RecordOperationInfo created;
+        private RecordOperationInfo modified;
 
-	private PolicyEntityBuilder() {
-	}
+        private PolicyEntityBuilder() {
+        }
 
-	public PolicyEntityBuilder withId(final Integer id) throws IllegalArgumentException {
-	    this.id = MyNumbers.requirePositive(id, "id");
-	    return this;
-	}
+        public PolicyEntityBuilder withId(final Integer id) throws IllegalArgumentException {
+            this.id = MyNumbers.requirePositive(id, "id");
+            return this;
+        }
 
-	public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
-	    this.number = MyStrings.requireNonEmpty(number, "number");
-	    return this;
-	}
+        public PolicyEntityBuilder withNumber(final String number) throws IllegalArgumentException {
+            this.number = MyStrings.requireNonEmpty(number, "number");
+            return this;
+        }
 
-	public PolicyEntityBuilder withInternalNumber(final String internalNumber) throws IllegalArgumentException {
-	    this.internalNumber = MyStrings.requireNonEmpty(internalNumber, "internalNumber");
-	    return this;
-	}
+        public PolicyEntityBuilder withInternalNumber(final String internalNumber) throws IllegalArgumentException {
+            this.internalNumber = MyStrings.requireNonEmpty(internalNumber, "internalNumber");
+            return this;
+        }
 
-	public PolicyEntityBuilder withValidFrom(final LocalDate validFrom) throws IllegalArgumentException {
-	    this.validFrom = MyObjects.requireNonNull(validFrom, "validFrom");
-	    return this;
-	}
+        public PolicyEntityBuilder withValidFrom(final LocalDate validFrom) throws IllegalArgumentException {
+            this.validFrom = MyObjects.requireNonNull(validFrom, "validFrom");
+            return this;
+        }
 
-	public PolicyEntityBuilder withValidTill(final LocalDate validTill) throws IllegalArgumentException {
-	    this.validTill = MyObjects.requireNonNull(validTill, "validTill");
-	    return this;
-	}
+        public PolicyEntityBuilder withValidTill(final LocalDate validTill) throws IllegalArgumentException {
+            this.validTill = MyObjects.requireNonNull(validTill, "validTill");
+            return this;
+        }
 
-	public PolicyEntityBuilder withActualPremium(final Double actualPremium) throws IllegalArgumentException {
-	    this.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
-	    return this;
-	}
+        public PolicyEntityBuilder withActualPremium(final Double actualPremium) throws IllegalArgumentException {
+            this.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
+            return this;
+        }
 
-	public PolicyEntityBuilder withCalculatedPremium(final Double calculatedPremium)
-		throws IllegalArgumentException {
-	    this.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
-	    return this;
-	}
+        public PolicyEntityBuilder withCalculatedPremium(final Double calculatedPremium)
+                throws IllegalArgumentException {
+            this.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+            return this;
+        }
 
-	public PolicyEntityBuilder withPolicyDate(final LocalDate policyDate) throws IllegalArgumentException {
-	    this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate");
-	    return this;
-	}
+        public PolicyEntityBuilder withPolicyDate(final LocalDate policyDate) throws IllegalArgumentException {
+            this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate");
+            return this;
+        }
 
-	public PolicyEntityBuilder withPolicyDate(final Optional<LocalDate> policyDate) throws IllegalArgumentException {
-	    this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate").orElse(null);
-	    return this;
-	}
+        public PolicyEntityBuilder withPolicyDate(final Optional<LocalDate> policyDate)
+                throws IllegalArgumentException {
+            this.policyDate = MyObjects.requireNonNull(policyDate, "policyDate").orElse(null);
+            return this;
+        }
 
-	public PolicyEntityBuilder withPaymentDate(final LocalDate paymentDate) throws IllegalArgumentException {
-	    this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate");
-	    return this;
-	}
+        public PolicyEntityBuilder withPaymentDate(final LocalDate paymentDate) throws IllegalArgumentException {
+            this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate");
+            return this;
+        }
 
-	public PolicyEntityBuilder withPaymentDate(final Optional<LocalDate> paymentDate)
-		throws IllegalArgumentException {
-	    this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate").orElse(null);
-	    return this;
-	}
+        public PolicyEntityBuilder withPaymentDate(final Optional<LocalDate> paymentDate)
+                throws IllegalArgumentException {
+            this.paymentDate = MyObjects.requireNonNull(paymentDate, "paymentDate").orElse(null);
+            return this;
+        }
 
-	public PolicyEntityBuilder withInsurer(final InsuranceCompanyEntity insurer) throws IllegalArgumentException {
-	    this.insurer = MyObjects.requireNonNull(insurer, "insurer");
-	    return this;
-	}
+        public PolicyEntityBuilder withInsurer(final InsuranceCompanyEntity insurer) throws IllegalArgumentException {
+            this.insurer = MyObjects.requireNonNull(insurer, "insurer");
+            return this;
+        }
 
-	public PolicyEntityBuilder withInsurant(final SubjectEntity insurant) throws IllegalArgumentException {
-	    this.insurant = MyObjects.requireNonNull(insurant, "insurant");
-	    return this;
-	}
+        public PolicyEntityBuilder withInsurant(final SubjectEntity insurant) throws IllegalArgumentException {
+            this.insurant = MyObjects.requireNonNull(insurant, "insurant");
+            return this;
+        }
 
-	public PolicyEntityBuilder withDateOfIssue(final LocalDate dateOfIssue) throws IllegalArgumentException {
-	    this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
-	    return this;
-	}
+        public PolicyEntityBuilder withDateOfIssue(final LocalDate dateOfIssue) throws IllegalArgumentException {
+            this.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+            return this;
+        }
 
-	public PolicyEntityBuilder withCancelation(final LocalDate dateOfCancelation,
-		final CancelationReason cancelationReasonType)
-		throws IllegalArgumentException {
-	    MyObjects.requireNonNull(dateOfCancelation, "dateOfCancelation");
-	    MyObjects.requireNonNull(cancelationReasonType, "cancelationReasonType");
-	    this.dateOfCancelation = dateOfCancelation;
-	    this.cancelationReasonType = cancelationReasonType;
-	    return this;
-	}
+        public PolicyEntityBuilder withCancelation(final LocalDate dateOfCancelation,
+                final CancelationReason cancelationReasonType) throws IllegalArgumentException {
+            MyObjects.requireNonNull(dateOfCancelation, "dateOfCancelation");
+            MyObjects.requireNonNull(cancelationReasonType, "cancelationReasonType");
+            this.dateOfCancelation = dateOfCancelation;
+            this.cancelationReasonType = cancelationReasonType;
+            return this;
+        }
 
-	public PolicyEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
-	    this.branch = MyObjects.requireNonNull(branch, "branch");
-	    return this;
-	}
+        public PolicyEntityBuilder withBranch(final BranchEntity branch) throws IllegalArgumentException {
+            this.branch = MyObjects.requireNonNull(branch, "branch");
+            return this;
+        }
 
-	public PolicyEntityBuilder withReissuedPolicyId(final Integer reissuedPolicyId)
-		throws IllegalArgumentException {
-	    this.reissuedPolicyId = MyNumbers.requirePositive(reissuedPolicyId, "reissuedPolicyId");
-	    return this;
-	}
+        public PolicyEntityBuilder withReissuedPolicyId(final Integer reissuedPolicyId)
+                throws IllegalArgumentException {
+            this.reissuedPolicyId = MyNumbers.requirePositive(reissuedPolicyId, "reissuedPolicyId");
+            return this;
+        }
 
-	public PolicyEntityBuilder withComments(final String comments) throws IllegalArgumentException {
-	    this.comments = comments;
-	    return this;
-	}
+        public PolicyEntityBuilder withComments(final String comments) throws IllegalArgumentException {
+            this.comments = comments;
+            return this;
+        }
 
-	public PolicyEntityBuilder addDriverBuilder(final InsuredDriverEntityBuilder insuredDriver)
-		throws IllegalArgumentException {
-	    insuredDrivers.add(MyObjects.requireNonNull(insuredDriver, "insuredDriver"));
-	    return this;
-	}
+        public PolicyEntityBuilder addDriverBuilder(final InsuredDriverEntityBuilder insuredDriver)
+                throws IllegalArgumentException {
+            insuredDrivers.add(MyObjects.requireNonNull(insuredDriver, "insuredDriver"));
+            return this;
+        }
 
-	public PolicyEntityBuilder addVehicleBuilder(final InsuredVehicleEntityBuilder insuredVehicle)
-		throws IllegalArgumentException {
-	    insuredVehicles.add(MyObjects.requireNonNull(insuredVehicle, "insuredVehicle"));
-	    return this;
-	}
+        public PolicyEntityBuilder addVehicleBuilder(final InsuredVehicleEntityBuilder insuredVehicle)
+                throws IllegalArgumentException {
+            insuredVehicles.add(MyObjects.requireNonNull(insuredVehicle, "insuredVehicle"));
+            return this;
+        }
 
-	public PolicyEntityBuilder withCreated(final RecordOperationInfo created) throws IllegalArgumentException {
-	    this.created = MyObjects.requireNonNull(created, "created");
-	    return this;
-	}
+        public PolicyEntityBuilder withCreated(final RecordOperationInfo created) throws IllegalArgumentException {
+            this.created = MyObjects.requireNonNull(created, "created");
+            return this;
+        }
 
-	public PolicyEntityBuilder withModified(final RecordOperationInfo modified) throws IllegalArgumentException {
-	    this.modified = MyObjects.requireNonNull(modified, "modified");
-	    return this;
-	}
+        public PolicyEntityBuilder withModified(final RecordOperationInfo modified) throws IllegalArgumentException {
+            this.modified = MyObjects.requireNonNull(modified, "modified");
+            return this;
+        }
 
-	public PolicyEntity build() throws IllegalArgumentException {
-	    final PolicyEntity res = new PolicyEntity();
-	    res.id = MyNumbers.requirePositive(id, "id");
-	    res.number = MyObjects.requireNonNull(number, "number");
-	    res.internalNumber = MyStrings.requireNonEmpty(internalNumber, "internalNumber");
-	    res.validFrom = MyObjects.requireNonNull(validFrom, "validFrom");
-	    res.validTill = MyObjects.requireNonNull(validTill, "validTill");
-	    res.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
-	    res.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
-	    res.policyDate = policyDate;
-	    res.paymentDate = paymentDate;
-	    res.insurer = MyObjects.requireNonNull(insurer, "insurer");
-	    res.insurant = MyObjects.requireNonNull(insurant, "insurant");
-	    res.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
-	    if (MyObjects.nonNull(dateOfCancelation) || MyObjects.nonNull(cancelationReasonType)) {
-		res.dateOfCancelation = MyObjects.requireNonNull(dateOfCancelation, "dateOfCancelation");
-		res.cancelationReasonType = MyObjects.requireNonNull(cancelationReasonType, "cancelationReasonType");
-	    }
-	    res.branch = MyObjects.requireNonNull(branch, "branch");
-	    res.reissuedPolicyId = reissuedPolicyId;
-	    res.comments = comments;
-	    res.insuredDrivers = MyCollections.requireNonEmpty(insuredDrivers, "insuredDrivers")
-		    .stream()
-		    .map(x -> x.withPolicy(res))
-		    .map(InsuredDriverEntityBuilder::build)
-		    .collect(MyCollectors.unmodifiableList());
-	    res.insuredVehicles = MyCollections.requireNonEmpty(insuredVehicles, "insuredVehicles")
-		    .stream()
-		    .map(x -> x.withPolicy(res))
-		    .map(InsuredVehicleEntityBuilder::build)
-		    .collect(MyCollectors.unmodifiableList());
-	    res.created = MyObjects.requireNonNull(created, "created");
-	    res.modified = modified;
-	    return res;
-	}
+        public PolicyEntity build() throws IllegalArgumentException {
+            final PolicyEntity res = new PolicyEntity();
+            res.id = MyNumbers.requirePositive(id, "id");
+            res.number = MyObjects.requireNonNull(number, "number");
+            res.internalNumber = MyStrings.requireNonEmpty(internalNumber, "internalNumber");
+            res.validFrom = MyObjects.requireNonNull(validFrom, "validFrom");
+            res.validTill = MyObjects.requireNonNull(validTill, "validTill");
+            res.actualPremium = MyNumbers.requirePositive(actualPremium, "actualPremium");
+            res.calculatedPremium = MyNumbers.requirePositive(calculatedPremium, "calculatedPremium");
+            res.policyDate = policyDate;
+            res.paymentDate = paymentDate;
+            res.insurer = MyObjects.requireNonNull(insurer, "insurer");
+            res.insurant = MyObjects.requireNonNull(insurant, "insurant");
+            res.dateOfIssue = MyObjects.requireNonNull(dateOfIssue, "dateOfIssue");
+            if (MyObjects.nonNull(dateOfCancelation) || MyObjects.nonNull(cancelationReasonType)) {
+                res.dateOfCancelation = MyObjects.requireNonNull(dateOfCancelation, "dateOfCancelation");
+                res.cancelationReasonType = MyObjects.requireNonNull(cancelationReasonType, "cancelationReasonType");
+            }
+            res.branch = MyObjects.requireNonNull(branch, "branch");
+            res.reissuedPolicyId = reissuedPolicyId;
+            res.comments = comments;
+            res.insuredDrivers = MyCollections.requireNonEmpty(insuredDrivers, "insuredDrivers").stream()
+                    .map(x -> x.withPolicy(res)).map(InsuredDriverEntityBuilder::build)
+                    .collect(MyCollectors.unmodifiableList());
+            res.insuredVehicles = MyCollections.requireNonEmpty(insuredVehicles, "insuredVehicles").stream()
+                    .map(x -> x.withPolicy(res)).map(InsuredVehicleEntityBuilder::build)
+                    .collect(MyCollectors.unmodifiableList());
+            res.created = MyObjects.requireNonNull(created, "created");
+            res.modified = modified;
+            return res;
+        }
     }
 
     private PolicyEntity() {
@@ -222,7 +218,7 @@ public class PolicyEntity extends Domain {
     private Integer id;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     // number
@@ -230,7 +226,7 @@ public class PolicyEntity extends Domain {
     private String number;
 
     public String getNumber() {
-	return number;
+        return number;
     }
 
     // internalNumber
@@ -238,7 +234,7 @@ public class PolicyEntity extends Domain {
     private String internalNumber;
 
     public String getInternalNumber() {
-	return internalNumber;
+        return internalNumber;
     }
 
     // validFrom
@@ -246,7 +242,7 @@ public class PolicyEntity extends Domain {
     private LocalDate validFrom;
 
     public LocalDate getValidFrom() {
-	return validFrom;
+        return validFrom;
     }
 
     // validTill
@@ -254,7 +250,7 @@ public class PolicyEntity extends Domain {
     private LocalDate validTill;
 
     public LocalDate getValidTill() {
-	return validTill;
+        return validTill;
     }
 
     // actualPremium
@@ -262,7 +258,7 @@ public class PolicyEntity extends Domain {
     private Double actualPremium;
 
     public Double getActualPremium() {
-	return actualPremium;
+        return actualPremium;
     }
 
     // calculatedPremium
@@ -270,7 +266,7 @@ public class PolicyEntity extends Domain {
     private Double calculatedPremium;
 
     public Double getCalculatedPremium() {
-	return calculatedPremium;
+        return calculatedPremium;
     }
 
     // paymentDate
@@ -278,7 +274,7 @@ public class PolicyEntity extends Domain {
     private LocalDate paymentDate;
 
     public LocalDate getPaymentDate() {
-	return paymentDate;
+        return paymentDate;
     }
 
     private LocalDate policyDate;
@@ -286,13 +282,13 @@ public class PolicyEntity extends Domain {
     public LocalDate getPolicyDate() {
         return policyDate;
     }
-    
+
     // insurer
 
     private InsuranceCompanyEntity insurer;
 
     public InsuranceCompanyEntity getInsurer() {
-	return insurer;
+        return insurer;
     }
 
     // insurant
@@ -300,7 +296,7 @@ public class PolicyEntity extends Domain {
     private SubjectEntity insurant;
 
     public SubjectEntity getInsurant() {
-	return insurant;
+        return insurant;
     }
 
     // dateOfIssue
@@ -308,7 +304,7 @@ public class PolicyEntity extends Domain {
     private LocalDate dateOfIssue;
 
     public LocalDate getDateOfIssue() {
-	return dateOfIssue;
+        return dateOfIssue;
     }
 
     // dateOfCancelation
@@ -316,11 +312,11 @@ public class PolicyEntity extends Domain {
     private LocalDate dateOfCancelation;
 
     public LocalDate getDateOfCancelation() {
-	return dateOfCancelation;
+        return dateOfCancelation;
     }
 
     public boolean isCanceled() {
-	return dateOfCancelation != null;
+        return dateOfCancelation != null;
     }
 
     // cancelationReasonType
@@ -328,7 +324,7 @@ public class PolicyEntity extends Domain {
     private CancelationReason cancelationReasonType;
 
     public CancelationReason getCancelationReasonType() {
-	return cancelationReasonType;
+        return cancelationReasonType;
     }
 
     // branch
@@ -336,7 +332,7 @@ public class PolicyEntity extends Domain {
     private BranchEntity branch;
 
     public BranchEntity getBranch() {
-	return branch;
+        return branch;
     }
 
     // reissuedPolicy
@@ -344,11 +340,11 @@ public class PolicyEntity extends Domain {
     private Integer reissuedPolicyId;
 
     public boolean isReissued() {
-	return MyObjects.nonNull(reissuedPolicyId);
+        return MyObjects.nonNull(reissuedPolicyId);
     }
 
     public Integer getReissuedPolicyId() {
-	return reissuedPolicyId;
+        return reissuedPolicyId;
     }
 
     // comments
@@ -356,7 +352,7 @@ public class PolicyEntity extends Domain {
     private String comments;
 
     public String getComments() {
-	return comments;
+        return comments;
     }
 
     // insuredDrivers
@@ -364,7 +360,7 @@ public class PolicyEntity extends Domain {
     private List<InsuredDriverEntity> insuredDrivers;
 
     public List<InsuredDriverEntity> getInsuredDrivers() {
-	return insuredDrivers;
+        return insuredDrivers;
     }
 
     // insuredVehicles
@@ -372,7 +368,7 @@ public class PolicyEntity extends Domain {
     private List<InsuredVehicleEntity> insuredVehicles;
 
     public List<InsuredVehicleEntity> getInsuredVehicles() {
-	return insuredVehicles;
+        return insuredVehicles;
     }
 
     // created
@@ -380,7 +376,7 @@ public class PolicyEntity extends Domain {
     private RecordOperationInfo created;
 
     public RecordOperationInfo getCreated() {
-	return created;
+        return created;
     }
 
     // modified
@@ -388,10 +384,10 @@ public class PolicyEntity extends Domain {
     private RecordOperationInfo modified;
 
     public boolean isModified() {
-	return MyObjects.nonNull(modified);
+        return MyObjects.nonNull(modified);
     }
 
     public RecordOperationInfo getModified() {
-	return modified;
+        return modified;
     }
 }

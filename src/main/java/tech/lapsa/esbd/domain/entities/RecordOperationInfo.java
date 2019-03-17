@@ -13,37 +13,37 @@ public class RecordOperationInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final RecordOperationInfoBuilder builder() {
-	return new RecordOperationInfoBuilder();
+        return new RecordOperationInfoBuilder();
     }
 
     public static final class RecordOperationInfoBuilder {
 
-	private LocalDate date;
-	private UserEntity author;
+        private LocalDate date;
+        private UserEntity author;
 
-	private RecordOperationInfoBuilder() {
-	}
+        private RecordOperationInfoBuilder() {
+        }
 
-	public RecordOperationInfoBuilder withDate(final LocalDate date) {
-	    this.date = MyObjects.requireNonNull(date, "date");
-	    return this;
-	}
+        public RecordOperationInfoBuilder withDate(final LocalDate date) {
+            this.date = MyObjects.requireNonNull(date, "date");
+            return this;
+        }
 
-	public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
-	    this.author = MyObjects.requireNonNull(author, "author");
-	    return this;
-	}
+        public RecordOperationInfoBuilder withAuthor(final UserEntity author) {
+            this.author = MyObjects.requireNonNull(author, "author");
+            return this;
+        }
 
-	public RecordOperationInfo build() {
-	    final RecordOperationInfo res = new RecordOperationInfo();
-	    res.date = MyObjects.requireNonNull(date, "date");
-	    res.author = MyObjects.requireNonNull(author, "author");
-	    return res;
-	}
+        public RecordOperationInfo build() {
+            final RecordOperationInfo res = new RecordOperationInfo();
+            res.date = MyObjects.requireNonNull(date, "date");
+            res.author = MyObjects.requireNonNull(author, "author");
+            return res;
+        }
 
-	public void buildTo(final Consumer<RecordOperationInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<RecordOperationInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private RecordOperationInfo() {
@@ -54,7 +54,7 @@ public class RecordOperationInfo extends Domain {
     private LocalDate date;
 
     public LocalDate getDate() {
-	return date;
+        return date;
     }
 
     // author
@@ -62,6 +62,6 @@ public class RecordOperationInfo extends Domain {
     private UserEntity author;
 
     public UserEntity getAuthor() {
-	return author;
+        return author;
     }
 }

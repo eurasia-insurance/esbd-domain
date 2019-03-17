@@ -12,37 +12,37 @@ public class GPWParticipantInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final GPWParticipantInfoBuilder builder() {
-	return new GPWParticipantInfoBuilder();
+        return new GPWParticipantInfoBuilder();
     }
 
     public static final class GPWParticipantInfoBuilder {
 
-	private String certificateNumber;
-	private LocalDate certificateDateOfIssue;
+        private String certificateNumber;
+        private LocalDate certificateDateOfIssue;
 
-	private GPWParticipantInfoBuilder() {
-	}
+        private GPWParticipantInfoBuilder() {
+        }
 
-	public GPWParticipantInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	    return this;
-	}
+        public GPWParticipantInfoBuilder withCertificateNumber(final String certificateNumber) {
+            this.certificateNumber = certificateNumber;
+            return this;
+        }
 
-	public GPWParticipantInfoBuilder withCertificateDateOfIssue(final LocalDate dateOfIssue) {
-	    certificateDateOfIssue = dateOfIssue;
-	    return this;
-	}
+        public GPWParticipantInfoBuilder withCertificateDateOfIssue(final LocalDate dateOfIssue) {
+            certificateDateOfIssue = dateOfIssue;
+            return this;
+        }
 
-	public GPWParticipantInfo build() {
-	    final GPWParticipantInfo res = new GPWParticipantInfo();
-	    res.certificateNumber = certificateNumber;
-	    res.certificateDateOfIssue = certificateDateOfIssue;
-	    return res;
-	}
+        public GPWParticipantInfo build() {
+            final GPWParticipantInfo res = new GPWParticipantInfo();
+            res.certificateNumber = certificateNumber;
+            res.certificateDateOfIssue = certificateDateOfIssue;
+            return res;
+        }
 
-	public void buildTo(final Consumer<GPWParticipantInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<GPWParticipantInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private GPWParticipantInfo() {
@@ -53,7 +53,7 @@ public class GPWParticipantInfo extends Domain {
     private String certificateNumber;
 
     public String getCertificateNumber() {
-	return certificateNumber;
+        return certificateNumber;
     }
 
     // certificateDateOfIssue
@@ -61,6 +61,6 @@ public class GPWParticipantInfo extends Domain {
     private LocalDate certificateDateOfIssue;
 
     public LocalDate getCertificateDateOfIssue() {
-	return certificateDateOfIssue;
+        return certificateDateOfIssue;
     }
 }

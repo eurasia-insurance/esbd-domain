@@ -23,90 +23,90 @@ public abstract class SubjectEntity extends Domain {
 
     public abstract static class SubjectEntityBuilder<T extends SubjectEntity, THIS> {
 
-	private Integer id;
-	private OriginInfo origin;
-	private ContactInfo contact;
-	private String taxPayerNumber;
-	private String comments;
-	private boolean resident;
-	private TaxpayerNumber idNumber;
-	private KZEconomicSector economicsSector;
+        private Integer id;
+        private OriginInfo origin;
+        private ContactInfo contact;
+        private String taxPayerNumber;
+        private String comments;
+        private boolean resident;
+        private TaxpayerNumber idNumber;
+        private KZEconomicSector economicsSector;
 
-	protected abstract THIS _this();
+        protected abstract THIS _this();
 
-	protected SubjectEntityBuilder() {
-	}
+        protected SubjectEntityBuilder() {
+        }
 
-	public THIS withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
-	    return _this();
-	}
+        public THIS withId(final Integer id) {
+            this.id = MyNumbers.requirePositive(id, "id");
+            return _this();
+        }
 
-	public THIS withOrigin(final OriginInfo origin) {
-	    this.origin = origin;
-	    return _this();
-	}
+        public THIS withOrigin(final OriginInfo origin) {
+            this.origin = origin;
+            return _this();
+        }
 
-	public THIS withContact(final ContactInfo contact) {
-	    this.contact = contact;
-	    return _this();
-	}
+        public THIS withContact(final ContactInfo contact) {
+            this.contact = contact;
+            return _this();
+        }
 
-	public THIS withTaxPayerNumber(final String taxPayerNumber) {
-	    this.taxPayerNumber = taxPayerNumber;
-	    return _this();
-	}
+        public THIS withTaxPayerNumber(final String taxPayerNumber) {
+            this.taxPayerNumber = taxPayerNumber;
+            return _this();
+        }
 
-	public THIS withComments(final String comments) {
-	    this.comments = comments;
-	    return _this();
-	}
+        public THIS withComments(final String comments) {
+            this.comments = comments;
+            return _this();
+        }
 
-	public THIS withResident(final boolean resident) {
-	    this.resident = resident;
-	    return _this();
-	}
+        public THIS withResident(final boolean resident) {
+            this.resident = resident;
+            return _this();
+        }
 
-	public THIS withIdNumber(final TaxpayerNumber idNumber) {
-	    this.idNumber = idNumber;
-	    return _this();
-	}
+        public THIS withIdNumber(final TaxpayerNumber idNumber) {
+            this.idNumber = idNumber;
+            return _this();
+        }
 
-	public THIS withIdNumber(final Optional<TaxpayerNumber> optIdNumber) {
-	    if (MyObjects.requireNonNull(optIdNumber, "optIdNumber").isPresent())
-		return withIdNumber(optIdNumber.get());
-	    this.idNumber = null;
-	    return _this();
-	}
+        public THIS withIdNumber(final Optional<TaxpayerNumber> optIdNumber) {
+            if (MyObjects.requireNonNull(optIdNumber, "optIdNumber").isPresent())
+                return withIdNumber(optIdNumber.get());
+            this.idNumber = null;
+            return _this();
+        }
 
-	public THIS withEconomicsSector(final KZEconomicSector economicsSector) {
-	    this.economicsSector = economicsSector;
-	    return _this();
-	}
+        public THIS withEconomicsSector(final KZEconomicSector economicsSector) {
+            this.economicsSector = economicsSector;
+            return _this();
+        }
 
-	public THIS withEconomicsSector(final Optional<KZEconomicSector> optEconomicsSector) {
-	    if (MyObjects.requireNonNull(optEconomicsSector, "optEconomicsSector").isPresent())
-		return withEconomicsSector(optEconomicsSector.get());
-	    this.economicsSector = null;
-	    return _this();
-	}
+        public THIS withEconomicsSector(final Optional<KZEconomicSector> optEconomicsSector) {
+            if (MyObjects.requireNonNull(optEconomicsSector, "optEconomicsSector").isPresent())
+                return withEconomicsSector(optEconomicsSector.get());
+            this.economicsSector = null;
+            return _this();
+        }
 
-	public void buildTo(final Consumer<T> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<T> consumer) {
+            consumer.accept(build());
+        }
 
-	public abstract T build() throws IllegalArgumentException;
+        public abstract T build() throws IllegalArgumentException;
 
-	protected void superFill(final SubjectEntity res) {
-	    res.id = MyNumbers.requirePositive(id, "id");
-	    res.origin = origin;
-	    res.contact = contact;
-	    res.taxPayerNumber = taxPayerNumber;
-	    res.comments = comments;
-	    res.resident = resident;
-	    res.idNumber = idNumber;
-	    res.economicsSector = economicsSector;
-	}
+        protected void superFill(final SubjectEntity res) {
+            res.id = MyNumbers.requirePositive(id, "id");
+            res.origin = origin;
+            res.contact = contact;
+            res.taxPayerNumber = taxPayerNumber;
+            res.comments = comments;
+            res.resident = resident;
+            res.idNumber = idNumber;
+            res.economicsSector = economicsSector;
+        }
     }
 
     protected SubjectEntity() {
@@ -119,7 +119,7 @@ public abstract class SubjectEntity extends Domain {
     private Integer id;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     // origin
@@ -127,7 +127,7 @@ public abstract class SubjectEntity extends Domain {
     private OriginInfo origin;
 
     public OriginInfo getOrigin() {
-	return origin;
+        return origin;
     }
 
     // contact
@@ -135,7 +135,7 @@ public abstract class SubjectEntity extends Domain {
     private ContactInfo contact;
 
     public ContactInfo getContact() {
-	return contact;
+        return contact;
     }
 
     // taxPayerNumber
@@ -143,7 +143,7 @@ public abstract class SubjectEntity extends Domain {
     private String taxPayerNumber;
 
     public String getTaxPayerNumber() {
-	return taxPayerNumber;
+        return taxPayerNumber;
     }
 
     // comments
@@ -151,7 +151,7 @@ public abstract class SubjectEntity extends Domain {
     private String comments;
 
     public String getComments() {
-	return comments;
+        return comments;
     }
 
     // resident
@@ -159,7 +159,7 @@ public abstract class SubjectEntity extends Domain {
     private boolean resident;
 
     public boolean isResident() {
-	return resident;
+        return resident;
     }
 
     // idNumber
@@ -167,7 +167,7 @@ public abstract class SubjectEntity extends Domain {
     private TaxpayerNumber idNumber;
 
     public TaxpayerNumber getIdNumber() {
-	return idNumber;
+        return idNumber;
     }
 
     // economicsSector
@@ -175,6 +175,6 @@ public abstract class SubjectEntity extends Domain {
     private KZEconomicSector economicsSector;
 
     public KZEconomicSector getEconomicsSector() {
-	return economicsSector;
+        return economicsSector;
     }
 }

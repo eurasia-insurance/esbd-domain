@@ -12,37 +12,37 @@ public class PensionerInfo extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final PensionerInfoBuilder builder() {
-	return new PensionerInfoBuilder();
+        return new PensionerInfoBuilder();
     }
 
     public static final class PensionerInfoBuilder {
 
-	private String certificateNumber;
-	private LocalDate certiticateDateOfIssue;
+        private String certificateNumber;
+        private LocalDate certiticateDateOfIssue;
 
-	private PensionerInfoBuilder() {
-	}
+        private PensionerInfoBuilder() {
+        }
 
-	public PensionerInfoBuilder withCertificateNumber(final String certificateNumber) {
-	    this.certificateNumber = certificateNumber;
-	    return this;
-	}
+        public PensionerInfoBuilder withCertificateNumber(final String certificateNumber) {
+            this.certificateNumber = certificateNumber;
+            return this;
+        }
 
-	public PensionerInfoBuilder withCertiticateDateOfIssue(final LocalDate certiticateDateOfIssue) {
-	    this.certiticateDateOfIssue = certiticateDateOfIssue;
-	    return this;
-	}
+        public PensionerInfoBuilder withCertiticateDateOfIssue(final LocalDate certiticateDateOfIssue) {
+            this.certiticateDateOfIssue = certiticateDateOfIssue;
+            return this;
+        }
 
-	public PensionerInfo build() {
-	    final PensionerInfo res = new PensionerInfo();
-	    res.certificateNumber = certificateNumber;
-	    res.certiticateDateOfIssue = certiticateDateOfIssue;
-	    return res;
-	}
+        public PensionerInfo build() {
+            final PensionerInfo res = new PensionerInfo();
+            res.certificateNumber = certificateNumber;
+            res.certiticateDateOfIssue = certiticateDateOfIssue;
+            return res;
+        }
 
-	public void buildTo(final Consumer<PensionerInfo> consumer) {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<PensionerInfo> consumer) {
+            consumer.accept(build());
+        }
     }
 
     private PensionerInfo() {
@@ -53,7 +53,7 @@ public class PensionerInfo extends Domain {
     private String certificateNumber;
 
     public String getCertificateNumber() {
-	return certificateNumber;
+        return certificateNumber;
     }
 
     // certiticateDateOfIssue
@@ -61,6 +61,6 @@ public class PensionerInfo extends Domain {
     private LocalDate certiticateDateOfIssue;
 
     public LocalDate getCertiticateDateOfIssue() {
-	return certiticateDateOfIssue;
+        return certiticateDateOfIssue;
     }
 }

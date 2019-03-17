@@ -14,44 +14,44 @@ public class VehicleManufacturerEntity extends Domain {
     private static final long serialVersionUID = 1L;
 
     public static final VehicleManufacturerEntityBuilder builder() {
-	return new VehicleManufacturerEntityBuilder();
+        return new VehicleManufacturerEntityBuilder();
     }
 
     public static final class VehicleManufacturerEntityBuilder {
 
-	private Integer id;
-	private String name;
-	private Boolean foreign;
+        private Integer id;
+        private String name;
+        private Boolean foreign;
 
-	private VehicleManufacturerEntityBuilder() {
-	}
+        private VehicleManufacturerEntityBuilder() {
+        }
 
-	public VehicleManufacturerEntityBuilder withId(final Integer id) {
-	    this.id = MyNumbers.requirePositive(id, "id");
-	    return this;
-	}
+        public VehicleManufacturerEntityBuilder withId(final Integer id) {
+            this.id = MyNumbers.requirePositive(id, "id");
+            return this;
+        }
 
-	public VehicleManufacturerEntityBuilder withName(final String name) {
-	    this.name = MyStrings.requireNonEmpty(name, "name");
-	    return this;
-	}
+        public VehicleManufacturerEntityBuilder withName(final String name) {
+            this.name = MyStrings.requireNonEmpty(name, "name");
+            return this;
+        }
 
-	public VehicleManufacturerEntityBuilder withForeign(final Boolean foreign) {
-	    this.foreign = MyObjects.requireNonNull(foreign, "foreign");
-	    return this;
-	}
+        public VehicleManufacturerEntityBuilder withForeign(final Boolean foreign) {
+            this.foreign = MyObjects.requireNonNull(foreign, "foreign");
+            return this;
+        }
 
-	public VehicleManufacturerEntity build() throws IllegalArgumentException {
-	    final VehicleManufacturerEntity res = new VehicleManufacturerEntity();
-	    res.id = MyNumbers.requirePositive(id, "id");
-	    res.name = MyStrings.requireNonEmpty(name, "name");
-	    res.foreign = MyObjects.requireNonNull(foreign, "foreign");
-	    return res;
-	}
+        public VehicleManufacturerEntity build() throws IllegalArgumentException {
+            final VehicleManufacturerEntity res = new VehicleManufacturerEntity();
+            res.id = MyNumbers.requirePositive(id, "id");
+            res.name = MyStrings.requireNonEmpty(name, "name");
+            res.foreign = MyObjects.requireNonNull(foreign, "foreign");
+            return res;
+        }
 
-	public void buildTo(final Consumer<VehicleManufacturerEntity> consumer) throws IllegalArgumentException {
-	    consumer.accept(build());
-	}
+        public void buildTo(final Consumer<VehicleManufacturerEntity> consumer) throws IllegalArgumentException {
+            consumer.accept(build());
+        }
     }
 
     private VehicleManufacturerEntity() {
@@ -62,7 +62,7 @@ public class VehicleManufacturerEntity extends Domain {
     private Integer id;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     // name
@@ -70,7 +70,7 @@ public class VehicleManufacturerEntity extends Domain {
     private String name;
 
     public String getName() {
-	return name;
+        return name;
     }
 
     // foreign
@@ -78,6 +78,6 @@ public class VehicleManufacturerEntity extends Domain {
     private Boolean foreign;
 
     public Boolean isForeign() {
-	return foreign;
+        return foreign;
     }
 }
