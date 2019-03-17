@@ -6,6 +6,7 @@ import com.lapsa.insurance.elements.SubjectType;
 
 import tech.lapsa.esbd.domain.dict.CompanyActivityKindEntity;
 import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyOptionals;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 /**
@@ -116,7 +117,7 @@ public class SubjectCompanyEntity extends SubjectEntity {
 
     private CompanyActivityKindEntity companyActivityKind;
 
-    public CompanyActivityKindEntity getCompanyActivityKind() {
-        return companyActivityKind;
+    public Optional<CompanyActivityKindEntity> getCompanyActivityKind() {
+        return MyOptionals.of(companyActivityKind);
     }
 }

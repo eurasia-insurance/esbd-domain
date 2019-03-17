@@ -10,6 +10,7 @@ import tech.lapsa.esbd.domain.Domain;
 import tech.lapsa.esbd.domain.dict.InsuranceCompanyEntity;
 import tech.lapsa.java.commons.function.MyNumbers;
 import tech.lapsa.java.commons.function.MyObjects;
+import tech.lapsa.java.commons.function.MyOptionals;
 import tech.lapsa.patterns.domain.HashCodePrime;
 
 @HashCodePrime(13)
@@ -150,8 +151,8 @@ public class InsuredVehicleEntity extends Domain {
 
     private VehicleEntity vehicle;
 
-    public VehicleEntity getVehicle() {
-        return vehicle;
+    public Optional<VehicleEntity> getVehicle() {
+        return MyOptionals.of(vehicle);
     }
 
     // vehicleClass
